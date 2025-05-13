@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SpaceTeamMystery
+namespace Spaceteam_Murder_Mystery
 {
     public partial class MainWindow : Window
     {
