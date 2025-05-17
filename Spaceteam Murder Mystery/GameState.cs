@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Spaceteam_Murder_Mystery
+namespace SMM
 {
     public static class GameState
     {

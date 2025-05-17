@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Spaceteam_Murder_Mystery
+namespace SMM
 {
     /// <summary>
     /// Interaction logic for App.xaml

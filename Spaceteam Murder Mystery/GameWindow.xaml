@@ -1,4 +1,4 @@
-<Window x:Class="Spaceteam_Murder_Mystery.GameWindow"
+<Window x:Class="SMM.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Mystery In Progress" Height="400" Width="600">
