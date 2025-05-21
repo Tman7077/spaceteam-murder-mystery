@@ -6,13 +6,13 @@
     StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontFamily" Value="#pack://application:,,,/Resources/Fonts/#Electrolize" />
+            <Setter Property="FontFamily" Value="#pack://application:,,,/Assets/Fonts/#Electrolize" />
         </Style>
         <Style TargetType="{x:Type Label}">
-            <Setter Property="FontFamily" Value="#pack://application:,,,/Resources/Fonts/#Electrolize" />
+            <Setter Property="FontFamily" Value="#pack://application:,,,/Assets/Fonts/#Electrolize" />
         </Style>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="FontFamily" Value="#pack://application:,,,/Resources/Fonts/#Electrolize" />
+            <Setter Property="FontFamily" Value="#pack://application:,,,/Assets/Fonts/#Electrolize" />
         </Style>
     </Application.Resources>
 </Application>

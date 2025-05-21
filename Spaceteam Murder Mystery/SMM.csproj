@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\Audiowide-Regular.ttf" />
-    <None Remove="Fonts\Electrolize-Regular.ttf" />
+    <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
+    <None Remove="Assets\Fonts\Electrolize-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\Audiowide-Regular.ttf" />
-    <Resource Include="Fonts\Electrolize-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Electrolize-Regular.ttf" />
   </ItemGroup>
 
 </Project>
