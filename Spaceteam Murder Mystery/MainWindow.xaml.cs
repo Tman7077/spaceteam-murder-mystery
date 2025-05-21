@@ -1,24 +1,33 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using SMM.Views;
 
 namespace SMM
 {
     public partial class MainWindow : Window
     {
+        private readonly Dictionary<string, Func<UserControl>> _viewMap;
         public MainWindow()
         {
             InitializeComponent();
+            _viewMap = new Dictionary<string, Func<UserControl>>
+            {
+                { "Title", () => new TitleScreen(this) },
+                { "Game", () => new GameScreen(this) }
+            };
+            ChangeView("Title");
         }
 
-        private void StartGame_Click(object sender, RoutedEventArgs e)
+        public void ChangeView(string viewName)
         {
-            GameWindow gameWindow = new();
-            gameWindow.Show();
-            Close();
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            if (_viewMap.TryGetValue(viewName, out Func<UserControl>? createView))
+            {
+                MainContent.Content = createView();
+            }
+            else
+            {
+                MessageBox.Show("View not found: " + viewName, "View Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

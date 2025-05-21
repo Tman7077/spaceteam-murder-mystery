@@ -1,24 +1,29 @@
 using System.Windows;
+using System.Windows.Controls;
+using SMM.Services;
 
-namespace SMM
+namespace SMM.Views
 {
-    public partial class GameWindow : Window
+    public partial class GameScreen : UserControl
     {
-        public GameWindow()
+        private MainWindow _main;
+        private static string CurrentScene = "Intro";
+        public GameScreen(MainWindow main)
         {
             InitializeComponent();
+            _main = main;
         }
 
         private void Choice1_Click(object sender, RoutedEventArgs e)
         {
             txtStory.Text = "In the Engine Room, you find a mysterious scorched glove.";
-            GameState.FoundClues.Add("Scorched Glove");
+            GameState.Find("Scorched Glove");
         }
 
         private void Choice2_Click(object sender, RoutedEventArgs e)
         {
             txtStory.Text = "In the Crew Quarters, the bed is made—but someone's missing.";
-            GameState.CurrentScene = "Crew Quarters";
+            CurrentScene = "Crew Quarters";
         }
     }
 }
