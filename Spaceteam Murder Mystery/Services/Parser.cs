@@ -1,9 +1,10 @@
 using System.IO;
+using System.Text.RegularExpressions;
 using SMM.Models;
 
 namespace SMM.Services
 {
-    public static class Parser
+    public static partial class Parser
     {
         public static string ProjectRoot { get; } = PathHelper.GetProjectRoot();
         public static CharacterData ParseCharacter(string characterName)
@@ -75,7 +76,7 @@ namespace SMM.Services
                     string[] parts = line[2..].Split(": ");
                     if (parts.Length == 2)
                     {
-                        clues.Add(new Clue(parts[0].Trim(), parts[1].Trim(), characterName));
+                        clues.Add(new Clue(parts[0].Trim('*', ' '), parts[1].Trim(), characterName));
                     }
                 }
             }
@@ -87,12 +88,15 @@ namespace SMM.Services
 
             for (int i = 0; i < lines.Length; i += 3)
             {
-                string name = lines[i].Trim('#', ' ', ':');
+                string name = RegexCharacterName().Replace(lines[i], "$1").Trim('#', ' ', ':');
                 string innocent = lines[i + 1].Trim('>', ' ');
                 string guilty = lines[i + 2].Trim('>', ' ');
                 responses.Add(name, new ResponseSet(innocent, guilty));
             }
             return responses;
         }
+
+        [GeneratedRegex(@"\[([A-Za-z]+)\]\(.+\)")]
+        private static partial Regex RegexCharacterName();
     }
 }

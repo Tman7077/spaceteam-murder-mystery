@@ -35,10 +35,10 @@ namespace SMMTests.Services
         {
             // Confirm that the character name is at least right
             // This will come from reading the files in the directory
-            Output.WriteLine($"Name: {characterName}");
+            Output.WriteLine($"Loaded Character: {characterName}");
             CharacterData character = Parser.ParseCharacter(characterName);
 
-            // If something was read correctly, this will pass.
+            // If at least the name was read correctly, this will pass.
             Assert.Contains(characterName, character.Name);
 
             if (Debugger.IsAttached)
