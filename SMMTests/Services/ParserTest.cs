@@ -52,20 +52,19 @@ namespace SMMTests.Services
                 Output.WriteLine($"  ImagePath : {character.ImagePath}");
                 Output.WriteLine($"Description : {character.Description}");
                 Output.WriteLine($" DeathStory : {character.DeathStory}");
-                for (int i = 0; i < character.Clues.Count; i++)
+                foreach (var clue in character.Clues)
                 {
-                    var clue = character.Clues[i];
-                    Output.WriteLine($"Clue {i + 1}:");
+                    Output.WriteLine($"Clue for {clue.CharacterName}:");
                     Output.WriteLine($"       Name : {clue.Name}");
                     Output.WriteLine($"Description : {clue.Description}");
                 }
-                foreach (string deadChar in character.Interviews.Characters)
+                foreach (string deadChar in character.Interviews.CharacterNames)
                 {
                     Output.WriteLine($"Interview Responses ({deadChar}):");
                     Output.WriteLine($">  Innocent : {character.Interviews.GetInnocentResponse(deadChar)}");
                     Output.WriteLine($">    Guilty : {character.Interviews.GetGuiltyResponse(deadChar)}");
                 }
-                foreach (string deadChar in character.Accusations.Characters)
+                foreach (string deadChar in character.Accusations.CharacterNames)
                 {
                     Output.WriteLine($"Accusation Responses ({deadChar}):");
                     Output.WriteLine($">  Innocent : {character.Accusations.GetInnocentResponse(deadChar)}");

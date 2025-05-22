@@ -3,7 +3,7 @@ namespace SMM.Models
     public class InterviewSet
     {
         private readonly Dictionary<string, ResponseSet> _responses = [];
-        public IEnumerable<string> Characters => _responses.Keys;
+        public IEnumerable<string> CharacterNames => _responses.Keys;
 
         public void Add(string characterName, ResponseSet responses)
         {

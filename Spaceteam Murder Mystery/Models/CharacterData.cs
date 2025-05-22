@@ -7,7 +7,7 @@ namespace SMM.Models
         string ImagePath,
         string Description,
         string DeathStory,
-        List<Clue> Clues,
+        HashSet<Clue> Clues,
         InterviewSet Interviews,
         InterviewSet Accusations
     );

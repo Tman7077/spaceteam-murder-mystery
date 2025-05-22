@@ -31,7 +31,7 @@ namespace SMM.Services
             int accusationsIndex = Array.FindIndex(lines, line => line == "## ACCUSATION RESPONSES") + 1;
 
             string[] clueLines = lines[cluesIndex..(interviewsIndex-1)];
-            List<Clue> clues = ParseClues(clueLines);
+            HashSet<Clue> clues = ParseClues(clueLines);
 
             string[] interviewLines = lines[interviewsIndex..(accusationsIndex-1)];
             InterviewSet interviews = ParseResponses(interviewLines);
@@ -60,9 +60,9 @@ namespace SMM.Services
             }
             return (parts[0].Trim(), parts[1].Trim());
         }
-        public static List<Clue> ParseClues(string[] lines)
+        public static HashSet<Clue> ParseClues(string[] lines)
         {
-            List<Clue> clues = [];
+            HashSet<Clue> clues = [];
             string characterName = "";
             foreach (string line in lines)
             {
