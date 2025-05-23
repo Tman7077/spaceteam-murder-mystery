@@ -11,68 +11,68 @@ Cade was taking a break in the recreation room, practicing his swings in the bat
 ## CLUES & HINTS
 
 ### Alex
-- Cracked Band: A cracked sports band, the same kind that Alex wears for his daily run. 
+- *Cracked Band*: A cracked sports band, the same kind that Alex wears for his daily run. 
 
 ### Cade
-- Broken Bat: A broken wooden bat, belonging to Cade.
+- *Broken Bat*: A broken wooden bat, belonging to Cade.
 
 ### Colter
-- Burnt Turf: A small burnt patch of turf, possibly because of one of Colter's chemical reactions. 
+- *Burnt Turf*: A small burnt patch of turf, possibly because of one of Colter's chemical reactions. 
 
 ### Courtney
-- Oily Boot Print: A boot print covered in oil, likely from Courtney’s mechanical work.
+- *Oily Boot Print*: A boot print covered in oil, likely from Courtney’s mechanical work.
 
 ### Ethan
-- : 
+- *Phone*: A phone that looks like Ethan's, sitting on the bench. 
 
 ### Jacie
-- Mysterious Dirt: A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod. 
+- *Mysterious Dirt*: A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod. 
 
 ### Olsen
-- Translation Dictionary: An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried. 
+- *Translation Dictionary*: An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried. 
 
 ### Tyler
-- Cracked Laptop: A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room. 
+- *Cracked Laptop*: A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room. 
 
 ## INTERVIEW RESPONSES
 
-### Alex:
+### [Alex](Alex.md#death):
 
 > You’re right, I borrowed the pencil from Alex. I gave it back earlier, in one piece, because he needed it to jot some nav notes down. I was in the batting cages most of the afternoon, too, so I’ve got nothing.
 
 > Yeah, I borrowed the pencil, so what? That was hours ago, and I gave it back.
 
-### Colter:
+### [Colter](Colter.md#death):
 
 > Sometimes when I hang out with Colter, his reactions make my eyes water a little, so I leave my helmet in there to protect my eyes. We’re not really using them right now anyways, in the middle of nowhere in space.
 
 > Colter’s dumb experiments stink up the whole room sometimes, so it’s hard to sit in there without a mask on. I just use my helmet so I can sit in there without being poisoned.
 
-### Courtney:
+### [Courtney](Courtney.md#death):
 
 > My hat, with Courtney? I’ve got nothing, that makes no sense to me.
 
 > You really think that if I killed Courtney, I would leave my hat behind just to rat myself out? I’m not that big of a bozo. I don’t know why she had my hat.
 
-### Ethan:
+### [Ethan](Ethan.md#death):
 
-> 
+> Spooky, Cade's hat in the kitchen. Sorry I left it there? I didn't do anything to Ethan.
 
-> 
+> Bruh. It's. A. Hat. Not a gun. Not a knife. It goes on my head, it doesn't take his off. Shut up.
 
-### Jacie:
+### [Jacie](Jacie.md#death):
 
 > I really don’t know what that wood is from. I know we don’t have a lot that’s wooden on this ship, but I promise I didn’t do anything.
 
 > Just because you have what looks like pieces of wood means that I killed Jacie? There are other wooden things on this ship, and you don’t even know that’s what it is. I would never hurt her, you idiots.
 
-### Olsen:
+### [Olsen](Olsen.md#death):
 
 > Okay, throwing a puzzle piece across the room to mess with him is definitely something I would do, but killing him? No way. I did nothing to him.
 
 > A puzzle piece is laying on the other side of the room and you think it’s me? You’re making things up. There are a million reasons why it could be over there, and maybe two of them are because I’m a “prankster.” That’s such a weak argument, bozos. Try again.
 
-### Tyler:
+### [Tyler](Tyler.md#death):
 
 > Yeah! I was telling Tyler about Madden earlier, so I was in there on the PS5 with him last night. It was late and we were tired so I just left the stuff in there. Totally innocent.
 
@@ -80,43 +80,43 @@ Cade was taking a break in the recreation room, practicing his swings in the bat
 
 ## ACCUSATION RESPONSES
 
-### Alex:
+### [Alex](Alex.md#death):
 
 > I didn’t kill Alex! I told you, I gave his pencil back, and didn’t see him all afternoon! You’re making a mistake.
 
 > Fine. I admit it. He was ticking me off, so when he asked for the pencil back, I jammed it into the console, and it sparked. It burnt his hand and shocked him pretty bad, so I freaked out and ran. I went right back to the cages to blow off steam and figure out what to do. You found him before I had the courage to say anything.
 
-### Colter:
+### [Colter](Colter.md#death):
 
 > Just because I don’t like Colter’s stupid chemicals doesn’t mean I didn’t like him. I never hurt the guy.
 
 > Honestly I was just so over his stupid chemistry “projects.” How much can you do with a few bottles of random stuff on a spaceship? Probably nothing important. They stink, they burn my eyes, and he’s always messing with those instead of hanging out with us. I just wanted him to stop, so I took off my helmet to talk to him face-to-face, and knocked over a vial of whatever garbage he was brewing up. It started smoking and we both started coughing. I made it out of the room, but he didn’t. I passed out in the hallway, but he never woke back up since he was so close to it. Dumb reaction anyways, the bozo got what he deserved.
 
-### Courtney:
+### [Courtney](Courtney.md#death):
 
 > I told you, my hat was there but I wasn’t. I did not kill Courtney, bro.
 
 > Alright, whatever. She had my favorite Rockies hat—who knows why—and she got her stupid engine oil all over it! I mean, what gives? I came into the room and saw it, took it back, and pushed her. She hit her head pretty hard on the floor, but I was angry so I just walked out. I love the hat, but I shouldn’t have hurt her over it.
 
-### Ethan:
+### [Ethan](Ethan.md#death):
 
-> 
+> I didn't mean to leave my stuff around, but come on. I don't like leaving a mess. But it was one hat, and that doesn't mean that I did anything to him. I have known Ethan for a long time—if we had a problem, we would have talked about it.
 
-> 
+> K look. I know it was wrong. Bro's showing me up left and right. I don't cook, and I'm tired of him consistently impressing everyone while I sit here and eat my lazy meals. I asked him to show me how to make some things, and he just made fun of me. We started arguing, and it escalated to fighting. I pushed him and he hit his head on that hot pan, leaving a burn mark. I didn't even notice that my hat ended up on the floor and I just ran. I hate that I killed him, but I couldn't do anything about it. It all happened so fast.
 
-### Jacie:
+### [Jacie](Jacie.md#death):
 
 > Maybe it’s wood from one of my broken bats, and maybe it isn’t! Please, trust me, I really don’t know what it is or how it got there. I definitely did not kill Jacie.
 
 > Fine! I killed her. She has been getting on my nerves a lot recently, and she won’t even talk to me because she spends all her time tending to the stupid plants. I grabbed one of my broken bats and just deeshed her with it. Since it was already broken, I thought nothing would be different and you wouldn’t know it was me, but I guess I left splinters. Stupid.
 
-### Olsen:
+### [Olsen](Olsen.md#death):
 
 > I already told you, I didn’t do it. Not that you believe me anyways.
 
 > You know what? Whatever. I chucked his puzzle piece across the room when he wasn’t looking, just to mess with him. He turned around at just the right time and saw me, and got angry. We squared up and he pushed me, so I pushed him back! Then he got really mad, and we ended up on the floor. I put him in a headlock until he stopped moving, because at that point I was so worked up I didn’t know what else to do, and I hate being pushed around. What can I say?
 
-### Tyler:
+### [Tyler](Tyler.md#death):
 
 > Guys! We were having a great night last night. Playing games, having a good conversation. I had no reason to kill him! It wasn’t me.
 
