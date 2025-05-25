@@ -1,16 +1,16 @@
 using System.IO;
 using System.Text.RegularExpressions;
 using SMM.Models;
+using SMM.Models.Helpers;
 
 namespace SMM.Services
 {
     public static partial class Parser
     {
-        public static string ProjectRoot { get; } = PathHelper.GetProjectRoot();
+        public static string AssetDir { get; } = PathHelper.GetAssetDirectory();
         public static CharacterData ParseCharacter(string characterName)
         {
-            string assetDir = Path.Combine(ProjectRoot, "Assets");
-            string charDir = Path.Combine(assetDir, "Text", "Characters");
+            string charDir = Path.Combine(AssetDir, "Text", "Characters");
 
             string[] lineswithEmpty = File.ReadAllLines(Path.Combine(charDir, $"{characterName}.md"));
             string[] lines = [..lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
@@ -20,7 +20,8 @@ namespace SMM.Services
             int mottoIndex = Array.FindIndex(lines, line => line.StartsWith("*\""));
             string motto = lines[mottoIndex].Trim('*');
 
-            string imagePath = Path.Combine(assetDir, "Images", "Portraits", $"{characterName}.png");
+            string profileImagePath = Path.Combine(AssetDir, "Images", "Portraits", $"{characterName}.png");
+            string csImagePath = Path.Combine(AssetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
             string description = lines[mottoIndex + 1];
 
@@ -44,7 +45,8 @@ namespace SMM.Services
                 name,
                 role,
                 motto,
-                imagePath,
+                profileImagePath,
+                csImagePath,
                 description,
                 deathStory,
                 clues,
@@ -52,37 +54,55 @@ namespace SMM.Services
                 accusations
             );
         }
-        public static (string, string) ParseNameAndRole(string line)
+        public static Story ParseStoryData()
+        {
+            string[] lineswithEmpty = File.ReadAllLines(Path.Combine(AssetDir, "Text", "Overview.md"));
+            string[] lines = [.. lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
+
+            int introIndex = Array.FindIndex(lines, line => line == "### Intro") + 1;
+            int firstMurderIndex = Array.FindIndex(lines, line => line == "### First Murder Intro") + 1;
+            int stopIndex = Array.FindIndex(lines, line => line == "*There's probably going to be more here*");
+
+            string[] introLines = lines[introIndex..(firstMurderIndex - 1)];
+            string[] firstMurderLines = lines[firstMurderIndex..stopIndex];
+
+            string intro = string.Join("\n\n", introLines);
+            string firstMurder = string.Join("\n\n", firstMurderLines);
+
+            return new Story(intro, firstMurder);
+        }
+
+        private static (string, string) ParseNameAndRole(string line)
         {
             string[] parts = line.Replace("# ", "").Split(": ");
-            if (parts.Length != 2)
-            {
-                throw new FormatException($"Invalid name and role format: {line}");
-            }
             return (parts[0].Trim(), parts[1].Trim());
         }
-        public static HashSet<Clue> ParseClues(string[] lines)
+        private static HashSet<Clue> ParseClues(string[] lines)
         {
             HashSet<Clue> clues = [];
             string characterName = "";
+            string imageFolder = "";
             foreach (string line in lines)
             {
                 if (line.StartsWith('#'))
                 {
                     characterName = line.Trim('#', ' ');
+                    imageFolder = Path.Combine(AssetDir, "Images", "Clues", $"{characterName}");
                 }
                 else // if (line.StartsWith('-'))
                 {
                     string[] parts = line[2..].Split(": ");
-                    if (parts.Length == 2)
-                    {
-                        clues.Add(new Clue(parts[0].Trim('*', ' '), parts[1].Trim(), characterName));
-                    }
+                    string clueName = parts[0].Trim('*', ' ');
+                    string clueDesc = parts[1].Trim();
+
+                    string imagePath = Path.Combine(imageFolder, $"{clueName.ToLower().Replace(" ", "-")}.png");
+
+                    clues.Add(new Clue(clueName, clueDesc, characterName, imagePath));
                 }
             }
             return clues;
         }
-        public static InterviewSet ParseResponses(string[] lines)
+        private static InterviewSet ParseResponses(string[] lines)
         {
             InterviewSet responses = new();
 

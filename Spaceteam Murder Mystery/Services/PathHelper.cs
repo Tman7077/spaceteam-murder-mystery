@@ -21,5 +21,9 @@ namespace SMM.Services
 
             return Path.Combine(dir.FullName, "Spaceteam Murder Mystery");
         }
+        public static string GetAssetDirectory()
+        {
+            return Path.Combine(GetProjectRoot(), "Assets");
+        }
     }
 }
