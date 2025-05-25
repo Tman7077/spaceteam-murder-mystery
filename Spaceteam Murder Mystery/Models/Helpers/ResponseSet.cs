@@ -1,4 +1,4 @@
-namespace SMM.Models
+namespace SMM.Models.Helpers
 {
     public class ResponseSet(string innocent, string guilty)
     {
