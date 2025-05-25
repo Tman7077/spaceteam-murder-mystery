@@ -5,11 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SMM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="800"
-    Height="450"
-    mc:Ignorable="d">
-    <Grid Margin="20">
+    mc:Ignorable="d"
+    Title="Space Team Murder Mystery"
+    Width="854"
+    Height="480"
+    MinWidth="854"
+    MinHeight="480">
+    <Grid Margin="18 10">
         <ContentControl x:Name="MainContent" />
     </Grid>
 </Window>

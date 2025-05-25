@@ -1,0 +1,22 @@
+<!-- General Theme Information -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- This file contains the general theme settings for
+         the Space Team Murder Mystery project.
+         This includes fonts, colors, and other variables
+         that will be reused throughout the UI. -->
+
+    <!-- Fonts -->
+    <FontFamily x:Key="BodyFont">pack://application:,,,/Assets/Fonts/#Electrolize</FontFamily>
+    
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="SMMWhite" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="SMMBlack" Color="#FF000000" />
+    <SolidColorBrush x:Key="SMMYellow" Color="#FFFFC625" />
+    <SolidColorBrush x:Key="SMMOrange" Color="#FFFE4416" />
+    <SolidColorBrush x:Key="SMMNavy" Color="#FF16284B" />
+    <SolidColorBrush x:Key="SMMBlueGray" Color="#FF424C6F" />
+    <SolidColorBrush x:Key="SMMLightGray" Color="#FFA5B0B8" />
+</ResourceDictionary>
