@@ -1,10 +1,11 @@
-namespace SMM.Models
+namespace SMM.Models.Helpers
 {
     public record CharacterData(
         string Name,
         string Role,
         string Motto,
-        string ImagePath,
+        string ProfileImagePath,
+        string CrimeSceneImagePath,
         string Description,
         string DeathStory,
         HashSet<Clue> Clues,

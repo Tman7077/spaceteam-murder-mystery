@@ -1,14 +1,15 @@
-using System.Xml;
+using SMM.Models.Helpers;
 
 namespace SMM.Models
 {
-    public class Character(CharacterData data, bool isSuspect)
+    public class Character(CharacterData data)
     {
         // About the character: static
         public string Name { get; } = data.Name;
         public string Role { get; } = data.Role;
         public string Motto { get; } = data.Motto;
-        public string ImagePath { get; } = data.ImagePath;
+        public string ProfileImagePath { get; } = data.ProfileImagePath;
+        public string CrimeSceneImagePath { get; } = data.CrimeSceneImagePath;
         public string Description { get; } = data.Description;
         public string DeathStory { get; } = data.DeathStory;
         public HashSet<Clue> Clues { get; } = data.Clues;
@@ -16,7 +17,7 @@ namespace SMM.Models
         public InterviewSet Accusations { get; } = data.Accusations;
 
         // Mutable character status: change mid-game and game-to-game
-        public bool IsSuspect { get; set; } = isSuspect;
+        public bool IsSuspect { get; set; } = false;
         public bool IsAlive { get; set; } = true;
     }
 }
