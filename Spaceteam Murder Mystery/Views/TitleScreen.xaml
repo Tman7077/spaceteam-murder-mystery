@@ -1,22 +1,33 @@
 <UserControl
-    x:Class="SMM.Views.TitleScreen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="av"
+    x:Class="SMM.Views.TitleScreen">
     <Grid Margin="20">
         <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CornerCutButton}">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
             <TextBlock
-                Margin="0,0,0,20"
                 FontSize="20"
-                Text="Welcome to the Space Team Murder Mystery!" />
+                Text="Space Team Murder Mystery"
+                TextAlignment="Center" />
             <Button
-                Width="120"
-                Margin="0,0,0,10"
+                Width="100"
                 Click="StartGame_Click"
                 Content="Start Game" />
             <Button
-                Width="120"
-                Click="Exit_Click"
-                Content="Exit" />
+                Width="100"
+                Click="Settings_Click"
+                Content="Settings"/>
+            <Button
+                Width="100"
+                Click="Quit_Click"
+                Content="Quit"/>
         </StackPanel>
     </Grid>
 </UserControl>

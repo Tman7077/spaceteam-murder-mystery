@@ -6,7 +6,7 @@ namespace SMM.Views
     public partial class TitleScreen : UserControl
     {
         // Reference to the main window
-        private MainWindow _main;
+        private readonly MainWindow _main;
 
         public TitleScreen(MainWindow main)
         {
@@ -18,7 +18,13 @@ namespace SMM.Views
             // Navigate to the game window
             _main.ChangeView("Game");
         }
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            _main.ChangeView("Game");
+            // Application.Current.Shutdown();
+            return;
+        }
+        private void Quit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }

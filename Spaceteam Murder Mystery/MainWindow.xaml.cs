@@ -13,7 +13,8 @@ namespace SMM
             _viewMap = new Dictionary<string, Func<UserControl>>
             {
                 { "Title", () => new TitleScreen(this) },
-                { "Game", () => new GameScreen(this) }
+                { "Settings", () => new SettingsScreen(this) }
+                // { "Game", () => new GameScreen(this) } // Need to implement the choice for GameScreen difficulty.
             };
             ChangeView("Title");
         }
