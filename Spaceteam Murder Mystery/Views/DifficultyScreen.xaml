@@ -4,7 +4,7 @@
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="av"
-    x:Class="SMM.Views.TitleScreen">
+    x:Class="SMM.Views.DifficultyScreen">
     <Grid Margin="20">
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
@@ -30,23 +30,26 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 FontSize="20"
-                Text="Space Team Murder Mystery"
+                Text="Choose a Difficulty"
                 TextAlignment="Center" />
             <Button
                 Grid.Row="2"
                 Grid.Column="1"
-                Click="StartGame_Click"
-                Content="Start Game" />
+                Click="DifficultyButton_Click"
+                Tag="Easy"
+                Content="Easy" />
             <Button
                 Grid.Row="3"
                 Grid.Column="1"
-                Click="Settings_Click"
-                Content="Settings"/>
+                Click="DifficultyButton_Click"
+                Tag="Medium"
+                Content="Medium" />
             <Button
                 Grid.Row="4"
                 Grid.Column="1"
-                Click="Quit_Click"
-                Content="Quit"/>
+                Click="DifficultyButton_Click"
+                Tag="Hard"
+                Content="Hard" />
         </Grid>
     </Grid>
 </UserControl>

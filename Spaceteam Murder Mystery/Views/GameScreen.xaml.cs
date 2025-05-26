@@ -17,6 +17,7 @@ namespace SMM.Views
             _main = main;
             _currentScene = "Intro";
             _gameState = new GameState(difficulty);
+            txtStory.Text = _gameState.GetDifficulty() + " mode selected. ";
         }
         private void Choice1_Click(object sender, RoutedEventArgs e)
         {

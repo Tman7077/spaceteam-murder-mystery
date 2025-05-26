@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using SMM.Models.Difficulties;
 using SMM.Views;
 
 namespace SMM
@@ -13,8 +14,11 @@ namespace SMM
             _viewMap = new Dictionary<string, Func<UserControl>>
             {
                 { "Title", () => new TitleScreen(this) },
-                { "Settings", () => new SettingsScreen(this) }
-                // { "Game", () => new GameScreen(this) } // Need to implement the choice for GameScreen difficulty.
+                { "Settings", () => new SettingsScreen(this) },
+                { "Difficulty", () => new DifficultyScreen(this) },
+                { "EasyGame", () => new GameScreen(this, new DEasy()) },
+                { "MediumGame", () => new GameScreen(this, new DMedium()) },
+                { "HardGame", () => new GameScreen(this, new DHard()) }
             };
             ChangeView("Title");
         }
