@@ -89,7 +89,7 @@ namespace SMM.Services
                     characterName = line.Trim('#', ' ');
                     imageFolder = Path.Combine(AssetDir, "Images", "Clues", $"{characterName}");
                 }
-                else // if (line.StartsWith('-'))
+                else if (line.StartsWith('-'))
                 {
                     string[] parts = line[2..].Split(": ");
                     string clueName = parts[0].Trim('*', ' ');
