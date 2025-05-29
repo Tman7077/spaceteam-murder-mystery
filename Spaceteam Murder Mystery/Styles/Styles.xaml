@@ -8,15 +8,20 @@
          This includes buttons, text boxes, and other shapes
          that will be reused throughout the UI. -->
     
-    <!-- Always-Applicable Styles -->
-    <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
-    </Style>
-    <Style TargetType="{x:Type Control}">
-        <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+    <!-- - - - - - - - - - - - - - - - - - - -->
+    <!--       Always-Applicable Styles      -->
+    <!-- - - - - - - - - - - - - - - - - - - -->
+
+    <Style x:Key="DarkTheme" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource SMMBackgroundDark}"/>
+        <Setter Property="Foreground" Value="{StaticResource SMMWhite}"/>
     </Style>
 
-    <!-- Other Styles -->
+    <!-- - - - - - - - - - - - - -->
+    <!--       Other Styles      -->
+    <!-- - - - - - - - - - - - - -->
+
+    <!-- Standard styled button with "cut" corners -->
     <Style x:Key="CornerCutButton" TargetType="{x:Type Button}">
         <Setter Property="Template">
             <Setter.Value>
@@ -41,7 +46,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
         <Setter Property="Foreground" Value="{StaticResource SMMBlack}" />
         <Setter Property="Background" Value="{StaticResource SMMYellow}" />
     </Style>
+
+    <!-- Screen header/title -->
+    <Style x:Key="ScreenHeader" TargetType="{x:Type Label}" BasedOn="{x:Null}">
+        <Setter Property="FontFamily" Value="{StaticResource HeaderFont}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{StaticResource SMMWhite}" />
+    </Style>
+
 </ResourceDictionary>
