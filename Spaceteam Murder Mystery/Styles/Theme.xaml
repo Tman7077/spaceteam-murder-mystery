@@ -9,11 +9,14 @@
          that will be reused throughout the UI. -->
 
     <!-- Fonts -->
+    <FontFamily x:Key="HeaderFont">pack://application:,,,/Assets/Fonts/#Audiowide</FontFamily>
     <FontFamily x:Key="BodyFont">pack://application:,,,/Assets/Fonts/#Electrolize</FontFamily>
     
     <!-- Brushes -->
+    <SolidColorBrush x:Key="SMMBackgroundDark" Color="#FF111418" />
     <SolidColorBrush x:Key="SMMWhite" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="SMMBlack" Color="#FF000000" />
+    
     <SolidColorBrush x:Key="SMMYellow" Color="#FFFFC625" />
     <SolidColorBrush x:Key="SMMOrange" Color="#FFFE4416" />
     <SolidColorBrush x:Key="SMMNavy" Color="#FF16284B" />
