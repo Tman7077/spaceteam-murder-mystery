@@ -11,7 +11,7 @@
     Height="480"
     MinWidth="854"
     MinHeight="480"
-    Icon="pack://application:,,,/Assets/Images/nebula.ico"
+    Icon="pack://application:,,,/Assets/Images/nebula-rounded.ico"
     Style="{StaticResource DarkTheme}">
     <Grid Margin="18,10">
         <ContentControl

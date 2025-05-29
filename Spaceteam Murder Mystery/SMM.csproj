@@ -7,17 +7,24 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Images\nebula-rounded.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\Electrolize-Regular.ttf" />
+    <None Remove="Assets\Images\nebula-rounded.ico" />
     <None Remove="Assets\Images\nebula.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\nebula-rounded.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\Electrolize-Regular.ttf" />
+    <Resource Include="Assets\Images\nebula-rounded.ico" />
     <Resource Include="Assets\Images\nebula.ico" />
   </ItemGroup>
 
