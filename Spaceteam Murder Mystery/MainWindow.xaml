@@ -10,8 +10,13 @@
     Width="854"
     Height="480"
     MinWidth="854"
-    MinHeight="480">
-    <Grid Margin="18 10">
-        <ContentControl x:Name="MainContent" />
+    MinHeight="480"
+    Icon="pack://application:,,,/Assets/Images/nebula.ico"
+    Style="{StaticResource DarkTheme}">
+    <Grid Margin="18,10">
+        <ContentControl
+            x:Name="MainContent"
+            Grid.Row="0"
+            Grid.Column="0" />
     </Grid>
 </Window>

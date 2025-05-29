@@ -12,11 +12,13 @@
   <ItemGroup>
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\Electrolize-Regular.ttf" />
+    <None Remove="Assets\Images\nebula.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\Electrolize-Regular.ttf" />
+    <Resource Include="Assets\Images\nebula.ico" />
   </ItemGroup>
 
 </Project>
