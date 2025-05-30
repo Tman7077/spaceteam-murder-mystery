@@ -1,7 +1,7 @@
 namespace SMM.Models;
 
-using System.IO;
 using Services;
+using System.IO;
 
 public class Clue(string clueName, string description, string characterName)
 {
