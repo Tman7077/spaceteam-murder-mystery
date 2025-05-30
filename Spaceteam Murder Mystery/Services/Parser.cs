@@ -7,10 +7,10 @@ namespace SMM.Services
 {
     public static partial class Parser
     {
-        public static string AssetDir { get; } = PathHelper.GetAssetDirectory();
+        private static readonly string _assetDir = PathHelper.GetAssetDirectory();
         public static CharacterData ParseCharacter(string characterName)
         {
-            string charDir = Path.Combine(AssetDir, "Text", "Characters");
+            string charDir = Path.Combine(_assetDir, "Text", "Characters");
 
             string[] lineswithEmpty = File.ReadAllLines(Path.Combine(charDir, $"{characterName}.md"));
             string[] lines = [..lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
@@ -20,8 +20,8 @@ namespace SMM.Services
             int mottoIndex = Array.FindIndex(lines, line => line.StartsWith("*\""));
             string motto   = lines[mottoIndex].Trim('*');
 
-            string profileImagePath = Path.Combine(AssetDir, "Images", "Portraits",    $"{characterName}.png");
-            string csImagePath      = Path.Combine(AssetDir, "Images", "Crime Scenes", $"{characterName}.png");
+            string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits",    $"{characterName}.png");
+            string csImagePath      = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
             string description = lines[mottoIndex + 1];
 
@@ -56,7 +56,7 @@ namespace SMM.Services
         }
         public static Story ParseStoryData()
         {
-            string[] lineswithEmpty = File.ReadAllLines(Path.Combine(AssetDir, "Text", "Overview.md"));
+            string[] lineswithEmpty = File.ReadAllLines(Path.Combine(_assetDir, "Text", "Overview.md"));
             string[] lines = [.. lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
 
             int introIndex       = Array.FindIndex(lines, line => line == "### Intro") + 1;
@@ -81,13 +81,11 @@ namespace SMM.Services
         {
             HashSet<Clue> clues  = [];
             string characterName = "";
-            string imageFolder   = "";
             foreach (string line in lines)
             {
                 if (line.StartsWith('#'))
                 {
                     characterName = line.Trim('#', ' ');
-                    imageFolder   = Path.Combine(AssetDir, "Images", "Clues", $"{characterName}");
                 }
                 else if (line.StartsWith('-'))
                 {
@@ -95,9 +93,7 @@ namespace SMM.Services
                     string clueName = parts[0].Trim('*', ' ');
                     string clueDesc = parts[1].Trim();
 
-                    string imagePath = Path.Combine(imageFolder, $"{clueName.ToLower().Replace(" ", "-")}.png");
-
-                    clues.Add(new Clue(clueName, clueDesc, characterName, imagePath));
+                    clues.Add(new Clue(clueName, clueDesc, characterName));
                 }
             }
             return clues;

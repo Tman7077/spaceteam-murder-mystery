@@ -1,11 +1,18 @@
+using System.IO;
+using SMM.Services;
 namespace SMM.Models
 {
-    public class Clue(string name, string description, string characterName, string imagePath)
+    public class Clue(string clueName, string description, string characterName)
     {
-        public string Name { get; } = name;
+        public string Name { get; } = clueName;
         public string Description { get; } = description;
         public string CharacterName { get; } = characterName;
-        public string ImagePath { get; } = imagePath;
         public bool IsFound { get; set; } = false;
+
+        public string GetImagePath(string owner)
+        {
+            string assetDir = PathHelper.GetAssetDirectory();
+            return Path.Combine(assetDir, "Images", "Crime Scenes", $"{CharacterName}Clues", $"{owner}.png");
+        }
     }
 }
