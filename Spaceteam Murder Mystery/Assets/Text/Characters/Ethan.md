@@ -11,28 +11,28 @@ Ethan spent the afternoon prepping dinner in the galley, upbeat as always, jokin
 ## CLUES & HINTS
 
 ### Alex
-- *Bagel Bag*: An open bag of Alex’s bagels, despite Ethan cooking alone that evening.
+- *Sweatband*: A sweatband from Ethan's workout set, draped over the back of Alex's chair.
 
 ### Cade
-- *Hat*: A hat of Cade’s, left on the floor beside the galley entrance.
+- *Phone*: A phone that looks like Ethan's, sitting on the bench.
 
 ### Colter
-- *Musical Note*: A scrap of lab notebook with musical notes scrawled in Colter's handwriting.
+- *Unusual Beef*: A bag of Ethan's ground beef, half-defrosted, turned some unnatural colors.
 
 ### Courtney
-- *Scorched Pan*: A pan Ethan was using, with an obvious scorch mark on the otherwise-pristine bottom, suggesting Courtney's blow torch.
+- *Tortilla Press*: A press for making tortillas, one of Ethan's oft-used kitchen gadgets.
 
 ### Ethan
 - *Melted Frisbee*: A frisbee Ethan often used, laying half-melted and scorched by the oven burners.
 
 ### Jacie
-- *Vegetable Clump*: A clump of root vegetables from Jacie’s garden, unusually placed near the stovetop.
+- *Dirty Cleats*: A pair of Ethan's cleats, dirty on all sides.
 
 ### Olsen
-- *Bowl of Broth*: A bowl from Olsen's fine china set, filled with still-steaming broth.
+- *Half-Eaten Burger*: A hand-crafted hamburger, obviously Ethan's, sitting half-eaten on a plate.
 
 ### Tyler
-- *Miswired Speaker*: A tiny speaker used for diagnostics, crunched and playing static, known to be from Tyler’s audio kit.
+- *Handheld Device*: A handheld gaming device belonging to Ethan, resting on the table next to Tyler.
 
 ## INTERVIEW RESPONSES
 

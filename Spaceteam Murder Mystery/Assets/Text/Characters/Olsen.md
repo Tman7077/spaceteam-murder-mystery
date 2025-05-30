@@ -11,28 +11,28 @@ Olsen spends most of his free time in the common area, solving puzzles, reading 
 ## CLUES & HINTS
 
 ### Alex
-- *Cup, Part 2*: A second cup, placed opposite Olsen’s seat, still warm, matching Alex's preferred drinkware. 
+- *Cocoa Mug*: A mug of hot cocoa sitting on the console, the same mug Olsen often drinks out of.
 
 ### Cade
-- *Faraway Puzzle Piece*: A puzzle piece all the way across the room, possibly linked to Cade's mischievous nature. 
+- *Translation Dictionary*: An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried.
 
 ### Colter
-- *Mysterious Handprint*: A large, faint handprint on Olsen’s cup, identified as Colter's.
+- *Charred Puzzle Piece*: A charred puzzle piece doused in the spill, from Olsen's puzzle.
 
 ### Courtney
-- *Sheared Fabric*: A tuft of blue fabric, matching Courtney's shark onesie.
+- *Borrowed Book*: A book Olsen was last seen reading.
 
 ### Ethan
-- *Half-Eaten Burger*: A hand-crafted hamburger, obviously Ethan's, sitting half-eaten on a plate.
+- *Bowl of Broth*: A bowl from Olsen's fine china set, filled with still-steaming broth.
 
 ### Jacie
-- *Dirty Track*: A dirty footprint, likely tracked in from Jacie's geoponics bay. 
+- *Soup*: A half-eaten container of some chicken soup Olsen made earlier.
 
 ### Olsen
-- *Handwritten Note*: A notebook page with a handwritten message, matching Olsen’s style. 
+- *Handwritten Note*: A notebook page with a handwritten message, matching Olsen’s style.
 
 ### Tyler
-- *Plastic Chip*: A chipped piece of orange plastic, possibly from part of Tyler's suit. 
+- *Puzzle Reference*: A puzzle reference image left on the console, from the puzzle Olsen was last seen doing.
 
 ## INTERVIEW RESPONSES
 

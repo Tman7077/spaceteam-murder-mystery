@@ -11,28 +11,28 @@ Alex was conducting a routine inspection of the ship’s navigation systems to i
 ## CLUES & HINTS
 
 ### Alex
-- *Knife*: A utility knife with a faint trace of dried blood, often carried by Alex. 
+- *Knife*: A utility knife with a faint trace of dried blood, often carried by Alex.
 
 ### Cade
-- *Charcoal Pencil*: A charcoal pencil broken in half, something Cade was seen borrowing earlier. 
+- *Cracked Band*: A cracked sports band, the same kind that Alex wears for his daily run.
 
 ### Colter
-- *Diagnostic Notebook*: A notebook with partially erased notes about system diagnostics, in Colter's handwriting. 
+- *Burnt Glove*: A white glove with faint burns, often seen worn by Alex.
 
 ### Courtney
-- *Screwdriver*: A stray screwdriver left near the console, matching Courtney's usual tools.
+- *Interstellar Pen*: A blue and silver Interstellar pen that both Courtney and Alex own, something that Alex might know about.
 
 ### Ethan
-- *Sweatband*: A sweatband from Ethan's workout set, draped over the back of Alex's chair. 
+- *Bagel Bag*: An open bag of Alex’s bagels, despite Ethan cooking alone that evening.
 
 ### Jacie
-- *Wristband*: A white wristband that matches Jacie's sterile suit. 
+- *Pruning Shears*: A set of pruning shears left open nearby, commonly used by Alex.
 
 ### Olsen
-- *Cocoa Mug*: A mug of hot cocoa sitting on the console, the same mug Olsen often drinks out of. 
+- *Cup, Part 2*: A second cup, placed opposite Olsen’s seat, still warm, matching Alex's preferred drinkware.
 
 ### Tyler
-- *Cryptic Note*: A cryptic note tucked into the console’s edge, containing coding symbols Tyler would recognize. 
+- *Navigation Notebook*: A small notepad used to note navigation and trajectory info, shared by Tyler and Alex.
 
 ## INTERVIEW RESPONSES
 

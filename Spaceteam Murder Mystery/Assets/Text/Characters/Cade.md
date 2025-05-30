@@ -11,28 +11,28 @@ Cade was taking a break in the recreation room, practicing his swings in the bat
 ## CLUES & HINTS
 
 ### Alex
-- *Cracked Band*: A cracked sports band, the same kind that Alex wears for his daily run. 
+- *Charcoal Pencil*: A charcoal pencil broken in half, something Cade was seen borrowing earlier.
 
 ### Cade
 - *Broken Bat*: A broken wooden bat, belonging to Cade.
 
 ### Colter
-- *Burnt Turf*: A small burnt patch of turf, possibly because of one of Colter's chemical reactions. 
+- *Helmet Visor*: A part of a space suit’s helmet visor, matching Cade’s suit.
 
 ### Courtney
-- *Oily Boot Print*: A boot print covered in oil, likely from Courtney’s mechanical work.
+- *Greasy Hat*: A baseball cap with a faint smudge of grease, known to belong to Cade.
 
 ### Ethan
-- *Phone*: A phone that looks like Ethan's, sitting on the bench. 
+- *Hat*: A hat of Cade’s, left on the floor beside the galley entrance.
 
 ### Jacie
-- *Mysterious Dirt*: A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod. 
+- *Wooden Splinters*: A small patch of soil with small splinters of wood, possibly from a bat Cade brought.
 
 ### Olsen
-- *Translation Dictionary*: An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried. 
+- *Faraway Puzzle Piece*: A puzzle piece all the way across the room, possibly linked to Cade's mischievous nature.
 
 ### Tyler
-- *Cracked Laptop*: A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room. 
+- *Game Controller*: A game controller Cade often used in the control room, because of the big screens.
 
 ## INTERVIEW RESPONSES
 

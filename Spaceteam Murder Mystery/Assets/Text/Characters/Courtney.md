@@ -11,29 +11,29 @@ Courtney often retreats to the observation deck to find inspiration among the st
 ## CLUES & HINTS
 
 ### Alex
-- *Interstellar Pen*: A blue and silver Interstellar pen that both Courtney and Alex own, something that Alex might know about. 
+- *Screwdriver*: A stray screwdriver left near the console, matching Courtney's usual tools.
 
 ### Cade
-- *Greasy Hat*: A baseball cap with a faint smudge of grease, known to belong to Cade. 
+- *Oily Boot Print*: A boot print covered in oil, likely from Courtney’s mechanical work.
 
 ### Colter
-- *Colored Smudge*: A smudge on the edge of the drawing pad, similar in color to one of Colter's recent experiments. 
+- *Keycard*: A keycard left on the counter, opening Courtney's bedroom door.
 
 ### Courtney
 - *Scribbled Plans*: A brief explanation of Courtney’s plans for what turned out to be her final night.
   - *She was writing kind notes about everyone, to distribute at the upcoming celebratory dinner, to express her gratitude for everyone on the ship. She gathered something small from everyone, and went to the stars for inspiration in her writing.*
 
 ### Ethan
-- *Tortilla Press*: A press for making tortillas, one of Ethan's oft-used kitchen gadgets.
+- *Scorched Pan*: A pan Ethan was using, with an obvious scorch mark on the otherwise-pristine bottom, suggesting Courtney's blow torch.
 
 ### Jacie
-- *Vine Clipping*: A fragment of vine from Jacie's garden stuffed in between the pages of the sketchbook. 
+- *Dragon Medallion*: A dragon medallion, the same one Courtney typically wears on her shoulder.
 
 ### Olsen
-- *Borrowed Book*: A book Olsen was last seen reading. 
+- *Sheared Fabric*: A tuft of blue fabric, matching Courtney's shark onesie.
 
 ### Tyler
-- *Torn Page*: A page ripped out of Courtney's notepad, with "Ty-" written right before the tear. 
+- *Charcoal Pencil*: A charcoal pencil, like what Courtney uses for sketching, broken on top of the navigation notepad.
 
 ## INTERVIEW RESPONSES
 

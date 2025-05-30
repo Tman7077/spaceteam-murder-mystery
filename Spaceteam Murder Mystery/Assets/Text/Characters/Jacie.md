@@ -11,28 +11,28 @@ Jacie spent her evening tending to the geoponics bay, as she often does, ensurin
 ## CLUES & HINTS
 
 ### Alex
-- *Pruning Shears*: A set of pruning shears left open nearby, commonly used by Alex. 
+- *Wristband*: A white wristband that matches Jacie's sterile suit.
 
 ### Cade
-- *Wooden Splinters*: A small patch of soil with small splinters of wood, possibly from a bat Cade brought. 
+- *Mysterious Dirt*: A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod.
 
 ### Colter
-- *Chemical-stained Glove*: A glove with faint chemical residue, often used by Colter. 
+- *Luscious Lock*: A tuft of blonde hair matching Jacie's hair color.
 
 ### Courtney
-- *Dragon Medallion*: A dragon medallion, the same one Courtney typically wears on her shoulder.
+- *Vine Clipping*: A fragment of vine from Jacie's garden stuffed in between the pages of the sketchbook.
 
 ### Ethan
-- *Dirty Cleats*: A pair of Ethan's cleats, dirty on all sides.
+- *Vegetable Clump*: A clump of root vegetables from Jacie’s garden, unusually placed near the stovetop.
 
 ### Jacie
-- *Blood-stained Leaf*: A trace of blood on a pineapple crown leaf clutched in Jacie's hand. 
+- *Blood-stained Leaf*: A trace of blood on a pineapple crown leaf clutched in Jacie's hand.
 
 ### Olsen
-- *Soup*: A half-eaten container of some chicken soup Olsen made earlier. 
+- *Dirty Track*: A dirty footprint, likely tracked in from Jacie's geoponics bay.
 
 ### Tyler
-- *Circuit Board*: A small circuit board fragment from Tyler’s toolkit, found near the watering system. 
+- *Spilled Juice*: A spilled bit of pineapple juice spilled on the wiring, likely from Jacie's plant.
 
 ## INTERVIEW RESPONSES
 

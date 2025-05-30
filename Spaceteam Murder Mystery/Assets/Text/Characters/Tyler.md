@@ -11,28 +11,28 @@ Tyler spends long hours in the control room, fine-tuning the ship’s systems an
 ## CLUES & HINTS
 
 ### Alex
-- *Navigation Notebook*: A small notepad used to note navigation and trajectory info, shared by Tyler and Alex. 
+- *Cryptic Note*: A cryptic note tucked into the console’s edge, containing coding symbols Tyler would recognize.
 
 ### Cade
-- *Game Controller*: A game controller Cade often used in the control room, because of the big screens. 
+- *Cracked Laptop*: A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room.
 
 ### Colter
-- *Chemical Note*: A cryptic note tucked under the keyboard, containing symbols resembling Colter's chemical formulas. 
+- *Diagnostic Tools*: A set of diagnostic tools nearby, typically found in Tyler's workspace.
 
 ### Courtney
-- *Charcoal Pencil*: A charcoal pencil, like what Courtney uses for sketching, broken on top of the navigation notepad. 
+- *Torn Page*: A page ripped out of Courtney's notepad, with "Ty-" written right before the tear.
 
 ### Ethan
-- *Handheld Device*: A handheld gaming device belonging to Ethan, resting on the table next to Tyler.
+- *Miswired Speaker*: A tiny speaker used for diagnostics, crunched and playing static, known to be from Tyler’s audio kit.
 
 ### Jacie
-- *Spilled Juice*: A spilled bit of pineapple juice spilled on the wiring, likely from Jacie's plant. 
+- *Circuit Board*: A small circuit board fragment from Tyler’s toolkit, found near the watering system.
 
 ### Olsen
-- *Puzzle Key*: A puzzle reference image left on the console, from the puzzle Olsen was last seen doing. 
+- *Plastic Chip*: A chipped piece of orange plastic, possibly from part of Tyler's suit.
 
 ### Tyler
-- *Diagnostic Tablet*: A diagnostic tablet left on the table, showing Tyler's latest analysis logs. 
+- *Diagnostic Tablet*: A diagnostic tablet left on the table, showing Tyler's latest analysis logs.
 
 ## INTERVIEW RESPONSES
 

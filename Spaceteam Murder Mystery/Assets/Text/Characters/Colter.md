@@ -11,28 +11,28 @@ Colter spends the evenings engrossed in experiments within the laboratory, his n
 ## CLUES & HINTS
 
 ### Alex
-- *Burnt Glove*: A white glove with faint burns, often seen worn by Alex. 
+- *Diagnostic Notebook*: A notebook with partially erased notes about system diagnostics, in Colter's handwriting.
 
 ### Cade
-- *Helmet Visor*: A part of a space suit’s helmet visor, matching Cade’s suit. 
+- *Burnt Turf*: A small burnt patch of turf, possibly because of one of Colter's chemical reactions.
 
 ### Colter
-- *Shattered Vial*: A broken vial with a faint residue near Colter's workstation, with traces of his chemicals. 
+- *Shattered Vial*: A broken vial with a faint residue near Colter's workstation, with traces of his chemicals.
 
 ### Courtney
-- *Keycard*: A keycard left on the counter, opening Courtney's bedroom door.
+- *Colored Smudge*: A smudge on the edge of the drawing pad, similar in color to one of Colter's recent experiments.
 
 ### Ethan
-- *Unusual Beef*: A bag of half-defrosted ground beef, turned some unnatural colors.
+- *Musical Note*: A scrap of lab notebook with musical notes scrawled in Colter's handwriting.
 
 ### Jacie
-- *Luscious Lock*: A tuft of blonde hair matching Jacie's hair color. 
+- *Chemical-stained Glove*: A glove with faint chemical residue, often used by Colter.
 
 ### Olsen
-- *Charred Puzzle Piece*: A charred puzzle piece doused in the spill, from Olsen's puzzle. 
+- *Mysterious Handprint*: A large, faint handprint on Olsen’s cup, identified as Colter's.
 
 ### Tyler
-- *Diagnostic Tools*: A set of diagnostic tools nearby, typically found in Tyler's workspace. 
+- *Chemical Note*: A cryptic note tucked under the keyboard, containing symbols resembling Colter's chemical formulas.
 
 ## INTERVIEW RESPONSES
 
