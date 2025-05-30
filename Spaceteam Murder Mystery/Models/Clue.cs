@@ -3,16 +3,27 @@ namespace SMM.Models;
 using Services;
 using System.IO;
 
-public class Clue(string clueName, string description, string characterName)
+public class Clue
 {
-    public string Name { get; } = clueName;
-    public string Description { get; } = description;
-    public string CharacterName { get; } = characterName;
-    public bool IsFound { get; set; } = false;
+    public string Name { get; }
+    public string Description { get; }
+    public string Victim { get; }
+    public string Owner { get; set; }
+    public string ImagePath { get; set; }
+    public bool IsFound { get; set; }
 
-    public string GetImagePath(string owner)
+    public Clue(string clueName, string description, string victim, string owner)
+    {
+        Name = clueName;
+        Description = description;
+        Victim = victim;
+        Owner = owner;
+        ImagePath = GetImagePath();
+        IsFound = false;
+    }
+    private string GetImagePath()
     {
         string assetDir = PathHelper.GetAssetDirectory();
-        return Path.Combine(assetDir, "Images", "Crime Scenes", $"{CharacterName}Clues", $"{owner}.png");
+        return Path.Combine(assetDir, "Images", "Crime Scenes", $"{Victim}Clues", $"{Owner}.png");
     }
 }

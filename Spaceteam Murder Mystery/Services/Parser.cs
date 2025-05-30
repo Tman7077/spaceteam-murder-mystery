@@ -33,7 +33,7 @@ public static partial class Parser
         int accusationsIndex = Array.FindIndex(lines, line => line == "## ACCUSATION RESPONSES") + 1;
 
         string[] clueLines  = lines[cluesIndex..(interviewsIndex-1)];
-        HashSet<Clue> clues = ParseClues(clueLines);
+        HashSet<Clue> clues = ParseClues(clueLines, characterName);
 
         string[] interviewLines = lines[interviewsIndex..(accusationsIndex-1)];
         InterviewSet interviews = ParseResponses(interviewLines);
@@ -77,15 +77,15 @@ public static partial class Parser
         string[] parts = line.Replace("# ", "").Split(": ");
         return (parts[0].Trim(), parts[1].Trim());
     }
-    private static HashSet<Clue> ParseClues(string[] lines)
+    private static HashSet<Clue> ParseClues(string[] lines, string owner)
     {
         HashSet<Clue> clues  = [];
-        string characterName = "";
+        string deadCharName = "";
         foreach (string line in lines)
         {
             if (line.StartsWith('#'))
             {
-                characterName = line.Trim('#', ' ');
+                deadCharName = line.Trim('#', ' ');
             }
             else if (line.StartsWith('-'))
             {
@@ -93,7 +93,7 @@ public static partial class Parser
                 string clueName = parts[0].Trim('*', ' ');
                 string clueDesc = parts[1].Trim();
 
-                clues.Add(new Clue(clueName, clueDesc, characterName));
+                clues.Add(new Clue(clueName, clueDesc, deadCharName, owner));
             }
         }
         return clues;
