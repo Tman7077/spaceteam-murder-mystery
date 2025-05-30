@@ -1,12 +1,11 @@
-namespace SMM.Models.Difficulties
+namespace SMM.Models.Difficulties;
+
+public interface IDifficulty
 {
-    public interface IDifficulty
+    void SelectGuilty(Dictionary<string, Character> chars)
     {
-        void SelectGuilty(Dictionary<string, Character> chars)
-        {
-            string key = chars.Keys.ElementAt(new Random().Next(chars.Count));
-            chars[key].IsSuspect = true;
-        }
-        void SelectClues();
+        string key = chars.Keys.ElementAt(new Random().Next(chars.Count));
+        chars[key].IsSuspect = true;
     }
+    void SelectClues();
 }

@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Images\nebula-rounded.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\Electrolize-Regular.ttf" />
     <Resource Include="Assets\Images\nebula-rounded.ico" />

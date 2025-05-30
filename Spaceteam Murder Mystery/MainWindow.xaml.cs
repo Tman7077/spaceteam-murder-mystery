@@ -1,38 +1,37 @@
-﻿using System.Windows;
+﻿namespace SMM;
+
+using System.Windows;
 using System.Windows.Controls;
-using SMM.Models.Difficulties;
-using SMM.Views;
+using Models.Difficulties;
+using Views;
 
-namespace SMM
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    private readonly Dictionary<string, Func<UserControl>> _viewMap;
+    public MainWindow()
     {
-        private readonly Dictionary<string, Func<UserControl>> _viewMap;
-        public MainWindow()
+        InitializeComponent();
+        _viewMap = new Dictionary<string, Func<UserControl>>
         {
-            InitializeComponent();
-            _viewMap = new Dictionary<string, Func<UserControl>>
-            {
-                { "Title", () => new TitleScreen(this) },
-                { "Settings", () => new SettingsScreen(this) },
-                { "Difficulty", () => new DifficultyScreen(this) },
-                { "EasyGame", () => new GameScreen(this, new DEasy()) },
-                { "MediumGame", () => new GameScreen(this, new DMedium()) },
-                { "HardGame", () => new GameScreen(this, new DHard()) }
-            };
-            ChangeView("Title");
-        }
+            { "Title", () => new TitleScreen(this) },
+            { "Settings", () => new SettingsScreen(this) },
+            { "Difficulty", () => new DifficultyScreen(this) },
+            { "EasyGame", () => new GameScreen(this, new DEasy()) },
+            { "MediumGame", () => new GameScreen(this, new DMedium()) },
+            { "HardGame", () => new GameScreen(this, new DHard()) }
+        };
+        ChangeView("Title");
+    }
 
-        public void ChangeView(string viewName)
+    public void ChangeView(string viewName)
+    {
+        if (_viewMap.TryGetValue(viewName, out Func<UserControl>? createView))
         {
-            if (_viewMap.TryGetValue(viewName, out Func<UserControl>? createView))
-            {
-                MainContent.Content = createView();
-            }
-            else
-            {
-                MessageBox.Show("View not found: " + viewName, "View Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            MainContent.Content = createView();
+        }
+        else
+        {
+            MessageBox.Show("View not found: " + viewName, "View Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

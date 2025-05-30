@@ -1,14 +1,12 @@
-﻿using System.Configuration;
+﻿namespace SMM;
+
+using System.Configuration;
 using System.Data;
 using System.Windows;
 
-namespace SMM
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-    }
-
 }

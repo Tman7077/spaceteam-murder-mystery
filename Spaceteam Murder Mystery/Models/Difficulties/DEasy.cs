@@ -1,10 +1,9 @@
-namespace SMM.Models.Difficulties
+namespace SMM.Models.Difficulties;
+
+public class DEasy : IDifficulty
 {
-    public class DEasy : IDifficulty
+    public void SelectClues()
     {
-        public void SelectClues()
-        {
-            // Something here
-        }
+        // Something here
     }
 }
