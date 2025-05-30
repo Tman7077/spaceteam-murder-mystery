@@ -1,5 +1,6 @@
 ﻿namespace SMMTests.Services;
 
+using SMM.Models;
 using SMM.Models.Helpers;
 using SMM.Services;
 using System.Diagnostics;
@@ -14,14 +15,13 @@ public class TestParser(ITestOutputHelper output)
     {
         get
         {
+            var data = new TheoryData<string>();
             string assetDir = PathHelper.GetAssetDirectory();
             string mdFolder = Path.Combine(assetDir, "Text", "Characters");
 
-            var data = new TheoryData<string>();
-
-            foreach (var path in Directory.GetFiles(mdFolder, "*.md"))
+            foreach (var charFile in Directory.GetFiles(mdFolder, "*.md"))
             {
-                string characterName = Path.GetFileName(path)[..^3];
+                string characterName = Path.GetFileNameWithoutExtension(charFile);
                 data.Add(characterName);
             }
 
@@ -31,7 +31,7 @@ public class TestParser(ITestOutputHelper output)
 
     [Theory]
     [MemberData(nameof(MarkdownFiles))]
-    public void ParseMarkdownFile(string characterName)
+    public void TestParseMDFile(string characterName)
     {
         // Confirm that the character name is at least right
         // This will come from reading the files in the directory
@@ -46,6 +46,9 @@ public class TestParser(ITestOutputHelper output)
             // This is just for manual verification:
             // It will print out the character data to the console
             // so you can see if it looks right.
+            Output.WriteLine(new string('-', 50));
+            Output.WriteLine("Debugging is attached, printing character data:");
+
             Output.WriteLine($"          Name : {character.Name}");
             Output.WriteLine($"          Role : {character.Role}");
             Output.WriteLine($"         Motto : {character.Motto}");
@@ -53,24 +56,48 @@ public class TestParser(ITestOutputHelper output)
             Output.WriteLine($"     CSImgPath : {character.CrimeSceneImagePath}");
             Output.WriteLine($"   Description : {character.Description}");
             Output.WriteLine($"    DeathStory : {character.DeathStory}");
+
+            Output.WriteLine(new string('-', 25));
             foreach (var clue in character.Clues)
             {
-                Output.WriteLine($"Clue for {clue.CharacterName}:");
-                Output.WriteLine($"          Name : {clue.Name}");
-                Output.WriteLine($"   Description : {clue.Description}");
+                Output.WriteLine($"Clue for {clue.Victim}'s death:");
+                Output.WriteLine($"       Name : {clue.Name}");
+                Output.WriteLine($"Description : {clue.Description}");
+                Output.WriteLine($" Image Path : {clue.ImagePath}\n");
             }
+
+            Output.WriteLine(new string('-', 25));
             foreach (string deadChar in character.Interviews.CharacterNames)
             {
                 Output.WriteLine($"Interview Responses ({deadChar}):");
-                Output.WriteLine($">     Innocent : {character.Interviews.GetInnocentResponse(deadChar)}");
-                Output.WriteLine($">       Guilty : {character.Interviews.GetGuiltyResponse(deadChar)}");
+                Output.WriteLine($"> Innocent : {character.Interviews.GetInnocentResponse(deadChar)}");
+                Output.WriteLine($">   Guilty : {character.Interviews.GetGuiltyResponse(deadChar)}\n");
             }
+
+            Output.WriteLine(new string('-', 25));
             foreach (string deadChar in character.Accusations.CharacterNames)
             {
                 Output.WriteLine($"Accusation Responses ({deadChar}):");
-                Output.WriteLine($">     Innocent : {character.Accusations.GetInnocentResponse(deadChar)}");
-                Output.WriteLine($">       Guilty : {character.Accusations.GetGuiltyResponse(deadChar)}");
+                Output.WriteLine($"> Innocent : {character.Accusations.GetInnocentResponse(deadChar)}");
+                Output.WriteLine($">   Guilty : {character.Accusations.GetGuiltyResponse(deadChar)}\n");
             }
+        }
+    }
+
+    [Fact]
+    public void TestParseStory()
+    {
+        Story story = Parser.ParseStoryData();
+        Assert.NotNull(story);
+        Assert.NotEmpty(story.Intro);
+        Assert.NotEmpty(story.FirstMurder);
+        Output.WriteLine("Story parsed successfully.");
+        if (Debugger.IsAttached)
+        {
+            Output.WriteLine(new string('-', 50));
+            Output.WriteLine("Debugging is attached, printing story data:");
+            Output.WriteLine($"       Intro : {story.Intro}\n");
+            Output.WriteLine($"First Murder : {story.FirstMurder}");
         }
     }
 }
