@@ -7,39 +7,63 @@ using System.IO;
 
 public class GameState
 {
-    public Dictionary<string, Character> Characters { get; } = [];
-    public IDifficulty Difficulty { get; set; } = null!;
+    private IDifficulty _difficulty;
+    private CharacterSet _characters = new();
+    public CharacterSet Characters { get => _characters; }
 
     public GameState(IDifficulty difficulty)
     {
-        StartReset(difficulty);
-    }
-    public void StartReset(IDifficulty? difficulty = null)
-    {
-        ChangeDifficulty(difficulty);
+        _difficulty = difficulty;
         LoadCharacters();
     }
-    public void ChangeDifficulty(IDifficulty? difficulty = null)
-    {
-        Difficulty = difficulty ?? Difficulty;
-    }
+
+    #region Settings
     public string GetDifficulty()
     {
-        return Difficulty.GetType().Name[1..];
+        return _difficulty.GetType().Name[1..];
     }
+    public void ChangeDifficulty(IDifficulty difficulty)
+    {
+        _difficulty = difficulty;
+    }
+    #endregion
 
+    #region In-Game Actions
+    public string KillCharacter(string? name)
+    {
+        if (string.IsNullOrEmpty(name))
+        { name = Characters.Keys.ElementAt(new Random().Next(Characters.Count)); }
+
+        if (!Characters.TryGetValue(name, out Character? character))
+        { throw new ArgumentException($"Character '{name}' does not exist."); }
+
+        character.IsAlive = false;
+        return character.Name;
+    }
+    public void SelectClues(ref HashSet<Clue> clues, string victimName)
+    {
+        if (!Characters.ContainsKey(victimName))
+        { throw new ArgumentException($"Character '{victimName}' does not exist."); }
+
+        _difficulty.SelectClues(ref clues, ref _characters, victimName);
+    }
+    #endregion
+
+    #region Private Methods
     private void LoadCharacters()
     {
         Characters.Clear();
         string assetDir = PathHelper.GetAssetDirectory();
         string charDir = Path.Combine(assetDir, "Text", "Characters");
 
-        foreach (string characterFile in Directory.GetFiles(charDir, "*.md"))
+        foreach (string charFile in Directory.GetFiles(charDir, "*.md"))
         {
-            string characterName = Path.GetFileNameWithoutExtension(characterFile);
-            CharacterData data = Parser.ParseCharacter(characterName);
-            Characters[characterName] = new Character(data);
+            string charName = Path.GetFileNameWithoutExtension(charFile);
+            CharacterData data = Parser.ParseCharacter(charName);
+            Characters[charName] = new Character(data);
         }
-        Difficulty.SelectGuilty(Characters);
+
+        _difficulty.SelectGuilty(Characters);
     }
+    #endregion
 }
