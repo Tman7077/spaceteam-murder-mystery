@@ -8,8 +8,8 @@ public class Clue
     public string Name { get; }
     public string Description { get; }
     public string Victim { get; }
-    public string Owner { get; set; }
-    public string ImagePath { get; set; }
+    public string Owner { get; }
+    public string ImagePath { get; }
     public bool IsFound { get; set; }
 
     public Clue(string clueName, string description, string victim, string owner)
@@ -18,12 +18,7 @@ public class Clue
         Description = description;
         Victim = victim;
         Owner = owner;
-        ImagePath = GetImagePath();
+        ImagePath = Path.Combine(PathHelper.GetAssetDirectory(), "Images", "Crime Scenes", $"{Victim}Clues", $"{Owner}.png");
         IsFound = false;
-    }
-    private string GetImagePath()
-    {
-        string assetDir = PathHelper.GetAssetDirectory();
-        return Path.Combine(assetDir, "Images", "Crime Scenes", $"{Victim}Clues", $"{Owner}.png");
     }
 }
