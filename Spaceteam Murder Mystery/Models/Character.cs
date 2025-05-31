@@ -16,7 +16,12 @@ public class Character(CharacterData data)
     public InterviewSet Interviews { get; } = data.Interviews;
     public InterviewSet Accusations { get; } = data.Accusations;
 
-    // Mutable character status: change mid-game and game-to-game
-    public bool IsSuspect { get; set; } = false;
+    // Mutable character status: can change mid-game.
+    public bool IsGuilty { get; set; } = false;
     public bool IsAlive { get; set; } = true;
+
+    public Clue GetClue(string victim)
+    {
+        return Clues.FirstOrDefault(clue => clue.Victim == victim) ?? throw new InvalidOperationException($"No clue found for victim '{victim}' in character '{Name}'.");
+    }
 }
