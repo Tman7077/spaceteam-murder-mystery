@@ -21,7 +21,7 @@ public class CharacterSet
 
     public bool ContainsKey(string key) => _characters.ContainsKey(key);
 
-    public string[] GetGuiltyNames(bool onlyLiving = true)
+    public List<string> GetGuiltyNames(bool onlyLiving = true)
     {
         List<string> guilty = [];
         foreach (string name in _characters.Keys)
@@ -30,17 +30,17 @@ public class CharacterSet
             if (character.IsGuilty && (!onlyLiving || character.IsAlive))
                 guilty.Add(name);
         }
-        return [.. guilty];
+        return guilty;
     }
-    public string[] GetLivingNames()
+    public List<string> GetLivingNames(bool omitGuilty = false)
     {
         List<string> living = [];
         foreach (string name in _characters.Keys)
         {
             Character character = _characters[name];
-            if (character.IsAlive)
+            if (character.IsAlive && (!omitGuilty || !character.IsGuilty))
                 living.Add(name);
         }
-        return [.. living];
+        return living;
     }
 }

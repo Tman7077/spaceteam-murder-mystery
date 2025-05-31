@@ -1,11 +1,13 @@
 namespace SMM.Models.Difficulties;
 
+using SMM.Models.Helpers;
+
 public interface IDifficulty
 {
-    void SelectGuilty(Dictionary<string, Character> chars)
+    void SelectGuilty(CharacterSet chars)
     {
         string key = chars.Keys.ElementAt(new Random().Next(chars.Count));
-        chars[key].IsSuspect = true;
+        chars[key].IsGuilty = true;
     }
-    void SelectClues();
+    void SelectClues(ref HashSet<Clue> clues, ref CharacterSet chars, string victim);
 }
