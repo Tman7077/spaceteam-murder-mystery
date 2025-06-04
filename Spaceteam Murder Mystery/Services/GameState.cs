@@ -29,16 +29,22 @@ public class GameState
     #endregion
 
     #region In-Game Actions
-    public string KillCharacter(string? name)
+    public string KillCharacter(string? name = null)
     {
+        Random r = new();
         if (string.IsNullOrEmpty(name))
-        { name = Characters.Keys.ElementAt(new Random().Next(Characters.Count)); }
+        { name = Characters.Keys.ElementAt(r.Next(Characters.Count)); }
 
-        if (!Characters.TryGetValue(name, out Character? character))
-        { throw new ArgumentException($"Character '{name}' does not exist."); }
+        Character? character;
+        do
+        {
+            if (!Characters.TryGetValue(name, out character))
+            { throw new ArgumentException($"Character '{name}' does not exist."); }
+            name = Characters.Keys.ElementAt(r.Next(Characters.Count));
+        } while (character.IsGuilty);
 
         character.IsAlive = false;
-        return character.Name;
+        return character.ShortName;
     }
     public void SelectClues(ref HashSet<Clue> clues, string victimName)
     {
