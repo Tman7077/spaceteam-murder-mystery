@@ -27,7 +27,7 @@ public class TestDMedium(ITestOutputHelper output)
     /// <param name="testChars">A set of characters used to determine what requirements <b>testClues</b> must meet.</param>
     private static void MediumAsserts(HashSet<Clue> testClues, CharacterSet testChars)
     {
-        int numLivingInnocent = testChars.GetLivingNames(omitGuilty: true).Count;
+        int numLivingInnocent = testChars.GetLivingNames(includeGuilty: false).Count;
         // The number of clues is randomized, but must be between
         // (the number of living innocents + 1)
         int minClues = numLivingInnocent >= 4 ? 4 : numLivingInnocent;

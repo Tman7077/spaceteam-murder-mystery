@@ -29,7 +29,7 @@ public class TestDEasy(ITestOutputHelper output)
     private static void EasyAsserts(HashSet<Clue> testClues, CharacterSet testChars)
     {
         string owner = testChars.GetGuiltyNames()[0];
-        int numLivingInnocent = testChars.GetLivingNames(omitGuilty: true).Count;
+        int numLivingInnocent = testChars.GetLivingNames(includeGuilty: false).Count;
         // The number of clues is either:
         // 4 (guilty character), or
         // the number of living innocents + 1 (for the guilty character).

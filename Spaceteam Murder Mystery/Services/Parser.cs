@@ -5,37 +5,46 @@ using Models.Helpers;
 using System.IO;
 using System.Text.RegularExpressions;
 
+/// <summary>
+/// A helper class used to read in data from the character and story markdown files.
+/// </summary>
 public static partial class Parser
 {
     private static readonly string _assetDir = PathHelper.GetAssetDirectory();
+
+    /// <summary>
+    /// Parses a character's data from the markdown file with the given name.
+    /// </summary>
+    /// <param name="characterName">The short name of a character, aligning with a filename to parse.</param>
+    /// <returns>The data necessary to create a Character.</returns>
     public static CharacterData ParseCharacter(string characterName)
     {
         string charDir = Path.Combine(_assetDir, "Text", "Characters");
 
         string[] lineswithEmpty = File.ReadAllLines(Path.Combine(charDir, $"{characterName}.md"));
-        string[] lines = [..lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
+        string[] lines = [.. lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
 
         (string name, string role) = ParseNameAndRole(lines[0]);
 
         int mottoIndex = Array.FindIndex(lines, line => line.StartsWith("*\""));
-        string motto   = lines[mottoIndex].Trim('*');
+        string motto = lines[mottoIndex].Trim('*');
 
-        string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits",    $"{characterName}.png");
-        string csImagePath      = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
+        string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits", $"{characterName}.png");
+        string csImagePath = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
         string description = lines[mottoIndex + 1];
 
-        int deathIndex    = Array.FindIndex(lines, line => line == "## DEATH") + 1;
+        int deathIndex = Array.FindIndex(lines, line => line == "## DEATH") + 1;
         string deathStory = lines[deathIndex];
 
-        int cluesIndex       = Array.FindIndex(lines, line => line == "## CLUES & HINTS") + 1;
-        int interviewsIndex  = Array.FindIndex(lines, line => line == "## INTERVIEW RESPONSES") + 1;
+        int cluesIndex = Array.FindIndex(lines, line => line == "## CLUES & HINTS") + 1;
+        int interviewsIndex = Array.FindIndex(lines, line => line == "## INTERVIEW RESPONSES") + 1;
         int accusationsIndex = Array.FindIndex(lines, line => line == "## ACCUSATION RESPONSES") + 1;
 
-        string[] clueLines  = lines[cluesIndex..(interviewsIndex-1)];
+        string[] clueLines = lines[cluesIndex..(interviewsIndex - 1)];
         HashSet<Clue> clues = ParseClues(clueLines, characterName);
 
-        string[] interviewLines = lines[interviewsIndex..(accusationsIndex-1)];
+        string[] interviewLines = lines[interviewsIndex..(accusationsIndex - 1)];
         InterviewSet interviews = ParseResponses(interviewLines);
 
         string[] accusationLines = lines[accusationsIndex..];
@@ -54,19 +63,24 @@ public static partial class Parser
             accusations
         );
     }
+
+    /// <summary>
+    /// Parses the story data from the overview markdown file.
+    /// </summary>
+    /// <returns>A complete Story object with all relevant information.</returns>
     public static Story ParseStoryData()
     {
         string[] lineswithEmpty = File.ReadAllLines(Path.Combine(_assetDir, "Text", "Overview.md"));
         string[] lines = [.. lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
 
-        int introIndex       = Array.FindIndex(lines, line => line == "### Intro") + 1;
+        int introIndex = Array.FindIndex(lines, line => line == "### Intro") + 1;
         int firstMurderIndex = Array.FindIndex(lines, line => line == "### First Murder Intro") + 1;
-        int stopIndex        = Array.FindIndex(lines, line => line == "*There's probably going to be more here*");
+        int stopIndex = Array.FindIndex(lines, line => line == "*There's probably going to be more here*");
 
-        string[] introLines       = lines[introIndex..(firstMurderIndex - 1)];
+        string[] introLines = lines[introIndex..(firstMurderIndex - 1)];
         string[] firstMurderLines = lines[firstMurderIndex..stopIndex];
 
-        string intro       = string.Join("\n\n", introLines);
+        string intro = string.Join("\n\n", introLines);
         string firstMurder = string.Join("\n\n", firstMurderLines);
 
         return new Story(intro, firstMurder);
@@ -79,7 +93,7 @@ public static partial class Parser
     }
     private static HashSet<Clue> ParseClues(string[] lines, string owner)
     {
-        HashSet<Clue> clues  = [];
+        HashSet<Clue> clues = [];
         string deadCharName = "";
         foreach (string line in lines)
         {
@@ -89,7 +103,7 @@ public static partial class Parser
             }
             else if (line.StartsWith('-'))
             {
-                string[] parts  = line[2..].Split(": ");
+                string[] parts = line[2..].Split(": ");
                 string clueName = parts[0].Trim('*', ' ');
                 string clueDesc = parts[1].Trim();
 
@@ -104,9 +118,9 @@ public static partial class Parser
 
         for (int i = 0; i < lines.Length; i += 3)
         {
-            string name     = RegexCharacterName().Replace(lines[i], "$1").Trim('#', ' ', ':');
+            string name = RegexCharacterName().Replace(lines[i], "$1").Trim('#', ' ', ':');
             string innocent = lines[i + 1].Trim('>', ' ');
-            string guilty   = lines[i + 2].Trim('>', ' ');
+            string guilty = lines[i + 2].Trim('>', ' ');
             responses.Add(name, new ResponseSet(innocent, guilty));
         }
         return responses;

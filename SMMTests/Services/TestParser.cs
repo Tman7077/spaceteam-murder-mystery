@@ -10,7 +10,6 @@ public class TestParser(ITestOutputHelper output)
 {
     ITestOutputHelper Output { get; } = output;
 
-    // public static string ProjectRoot { get; } = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../Spaceteam Murder Mystery"));
     public static TheoryData<string> MarkdownFiles
     {
         get

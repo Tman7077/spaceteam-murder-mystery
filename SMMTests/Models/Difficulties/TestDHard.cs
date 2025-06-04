@@ -33,7 +33,7 @@ public class TestDHard(ITestOutputHelper output)
     /// <param name="testChars">A set of characters used to determine what requirements <b>testClues</b> must meet.</param>
     private static void HardAsserts(HashSet<Clue> testClues, CharacterSet testChars)
     {
-        int numLivingInnocent = testChars.GetLivingNames(omitGuilty: true).Count;
+        int numLivingInnocent = testChars.GetLivingNames(includeGuilty: false).Count;
         int minClues = numLivingInnocent + 1;
         int maxClues = minClues + 2;
         Assert.InRange(testClues.Count, minClues, maxClues);

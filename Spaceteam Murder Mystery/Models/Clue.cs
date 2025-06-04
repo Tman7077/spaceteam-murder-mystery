@@ -3,6 +3,10 @@ namespace SMM.Models;
 using Services;
 using System.IO;
 
+/// <summary>
+/// Contains all information relevant to a single clue, including
+/// its textual information, image file path, and "found" state.
+/// </summary>
 public class Clue
 {
     public string Name { get; }
@@ -12,6 +16,13 @@ public class Clue
     public string ImagePath { get; }
     public bool IsFound { get; set; }
 
+    /// <summary>
+    ///  Initializes a new instance of the Clue class with the specified parameters.
+    /// </summary>
+    /// <param name="clueName">The "name" of the clue, which is a short description of the item.</param>
+    /// <param name="description">The more full description of the item. This hints at who the clue is meant to implicate.</param>
+    /// <param name="victim">The character to whose death this clue is relevant.</param>
+    /// <param name="owner">The character this clue implicates.</param>
     public Clue(string clueName, string description, string victim, string owner)
     {
         Name = clueName;

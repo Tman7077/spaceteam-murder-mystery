@@ -2,6 +2,12 @@ namespace SMM.Models;
 
 using Helpers;
 
+/// <summary>
+/// Represents an entire character, including their personal information,
+/// relevant image filepaths, quotes, and clues to other characters.
+/// Built from a CharacterData object.
+/// </summary>
+/// <param name="data">All data necessary to create a character. See CharacterData record for details.</param>
 public class Character(CharacterData data)
 {
     // About the character: static
@@ -21,6 +27,11 @@ public class Character(CharacterData data)
     public bool IsGuilty { get; set; } = false;
     public bool IsAlive { get; set; } = true;
 
+    /// <summary>
+    /// Gets the Clue implicating this character in the death of the given victim.
+    /// </summary>
+    /// <param name="victim">The name of the victim for whom to retrieve a clue.</param>
+    /// <returns>The relevant clue.</returns>
     public Clue GetClue(string victim)
     {
         return Clues.FirstOrDefault(clue => clue.Victim == victim)

@@ -82,7 +82,6 @@ public static class TestDifficultyHelper
         // The goal is to ensure that every possible scenario is tested,
         // and when randomness is onvolved, that requires some extra "just in case" iterations.
 
-
         CharacterSet characters = MockCharSet();
         HashSet<Clue> clues = [];
         IDifficulty difficulty = diff;
@@ -101,7 +100,7 @@ public static class TestDifficultyHelper
         {
             // Set the victim to unalive, and greab everyone else.
             characters[victim].IsAlive = false;
-            List<string> livingInnocent = characters.GetLivingNames(omitGuilty: true);
+            List<string> livingInnocent = characters.GetLivingNames(includeGuilty: false);
 
             // This loops through all living characters,
             // selects clues for the remaining group,
