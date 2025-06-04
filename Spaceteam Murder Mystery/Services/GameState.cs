@@ -51,21 +51,18 @@ public class GameState
     /// </returns>
     public string KillCharacter(string? name = null)
     {
-        // Select a random character if no name is provided.
-        Random r = new();
-        if (string.IsNullOrEmpty(name))
-        { name = Characters.Keys.ElementAt(r.Next(Characters.Count)); }
+        // Select a random character if no name is provided. Ignores guilty characters.
+        List<string> livingInnocents = Characters.GetLivingNames(includeGuilty: false);
 
-        // Select a random character to kill, ignoring guilty characters.
-        Character? character;
-        do
-        {
-            if (!Characters.TryGetValue(name, out character))
-            { throw new ArgumentException($"Character '{name}' does not exist."); }
-            name = Characters.Keys.ElementAt(r.Next(Characters.Count));
-        } while (character.IsGuilty);
+        // Make sure there are living characters available to kill.
+        if (livingInnocents.Count == 0)
+        { throw new InvalidOperationException("No living characters available to kill."); }
+
+        if (string.IsNullOrEmpty(name))
+        { name = livingInnocents[new Random().Next(livingInnocents.Count)]; }
 
         // Kill the character and return their short name.
+        Character character =  Characters[name];
         character.IsAlive = false;
         return character.ShortName;
     }
