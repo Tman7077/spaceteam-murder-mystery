@@ -4,19 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Margin="20">
         <StackPanel>
-            <TextBlock
-                x:Name="txtStory"
+            <Label
+                x:Name="header"
                 Margin="0,0,0,20"
                 FontSize="16"
-                Text="You're on the spaceship..."
-                TextWrapping="Wrap" />
+                Style="{StaticResource ScreenHeader}"
+                Content="You're on the spaceship..." />
             <Button
-                Margin="0,0,0,10"
-                Click="Choice1_Click"
-                Content="Search the Engine Room" />
-            <Button
-                Click="Choice2_Click"
-                Content="Check the Crew Quarters" />
+                Style="{StaticResource CornerCutButton}"
+                Width="200"
+                Click="Kill_Click"
+                Content="Kill Someone!" />
         </StackPanel>
     </Grid>
 </UserControl>

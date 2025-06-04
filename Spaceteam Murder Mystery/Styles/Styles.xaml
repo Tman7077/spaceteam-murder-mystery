@@ -59,4 +59,9 @@
         <Setter Property="Foreground" Value="{StaticResource SMMWhite}" />
     </Style>
 
+    <!-- Body Text -->
+    <Style x:Key="BodyText" TargetType="{x:Type Label}" BasedOn="{StaticResource ScreenHeader}">
+        <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+    </Style>
+
 </ResourceDictionary>

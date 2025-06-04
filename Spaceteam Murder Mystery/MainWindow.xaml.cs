@@ -34,4 +34,16 @@ public partial class MainWindow : Window
             MessageBox.Show("View not found: " + viewName, "View Navigation Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
+
+    public void LoadCrimeScene(string victimName)
+    {
+        if (MainContent.Content is GameScreen gameScreen)
+        {
+            MainContent.Content = new CrimeSceneScreen(this, gameScreen.State, victimName);
+        }
+        else
+        {
+            MessageBox.Show("No game screen found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
 }

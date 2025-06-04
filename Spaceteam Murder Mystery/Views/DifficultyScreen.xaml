@@ -28,13 +28,13 @@
                 <Setter Property="Margin" Value="10"/>
             </Style>
         </Grid.Resources>
-        <TextBlock
+        <Label
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
             FontSize="20"
-            Text="Choose a Difficulty"
-            TextAlignment="Center" />
+            Style="{StaticResource ScreenHeader}"
+            Content="Choose a Difficulty" />
         <Button
             Grid.Row="2"
             Grid.Column="1"
