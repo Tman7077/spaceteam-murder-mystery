@@ -18,21 +18,23 @@ public class DHard : IDifficulty
     public void SelectClues(ref HashSet<Clue> clues, ref CharacterSet chars, string victim)
     {
         List<string> guilty = chars.GetGuiltyNames();
-        List<string> others = chars.GetLivingNames(omitGuilty: true);
+        List<string> livingInnocent = chars.GetLivingNames(omitGuilty: true);
         Random r = new();
+
+        clues.Add(chars[victim].GetClue(victim)); // Add the victim's own clue into the mix
 
         foreach (string guiltyChar in guilty)
         {
-            bool chance = r.Next(0, 2) != 0; // 50% chance to include a guilty clue
-            if (chance) clues.Add(chars[guiltyChar].GetClue(victim));
+            bool maybe = r.Next(0, 2) != 0; // 50% chance to include a guilty clue
+            if (maybe) { clues.Add(chars[guiltyChar].GetClue(victim)); }
         }
 
-        int num = others.Count;
+        int num = livingInnocent.Count;
         for (int i = 0; i < num; i++)
         {
-            int index = r.Next(0, others.Count);
-            string name = others[index];
-            others.Remove(name);
+            int index = r.Next(0, livingInnocent.Count);
+            string name = livingInnocent[index];
+            livingInnocent.Remove(name);
             clues.Add(chars[name].GetClue(victim));
         }
     }
