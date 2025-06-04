@@ -6,6 +6,7 @@ public class Character(CharacterData data)
 {
     // About the character: static
     public string Name { get; } = data.Name;
+    public string ShortName { get; } = data.Name.Split()[0];
     public string Role { get; } = data.Role;
     public string Motto { get; } = data.Motto;
     public string ProfileImagePath { get; } = data.ProfileImagePath;
@@ -22,6 +23,7 @@ public class Character(CharacterData data)
 
     public Clue GetClue(string victim)
     {
-        return Clues.FirstOrDefault(clue => clue.Victim == victim) ?? throw new InvalidOperationException($"No clue found for victim '{victim}' in character '{Name}'.");
+        return Clues.FirstOrDefault(clue => clue.Victim == victim)
+            ?? throw new InvalidOperationException($"No clue found for victim '{victim}' in character '{ShortName}'.");
     }
 }
