@@ -113,7 +113,7 @@ public static class TestDifficultyHelper
                 for (int j = 1; j <= 50; j++)
                 {
                     if (Debugger.IsAttached)
-                    { output.WriteLine(new string('-', 50) + $"\nIteration {j} for victim: {victim}\n" + new string('-', 50)); }
+                    { output.WriteLine(new string('-', 50) + $"\nIteration {j} for victim: {victim}\nDifficulty: {difficulty.GetType().Name[1..]} | Living Characters: {livingInnocent.Count - i - 1}\n" + new string('-', 50)); }
 
                     // This try block is where the actual clue selection and assertions happen.
                     try
