@@ -1,8 +1,5 @@
 ﻿namespace SMM.Views;
 
-using System.Windows;
-using System.Windows.Controls;
-
 public partial class SettingsScreen : UserControl
 {
     private readonly MainWindow _main;

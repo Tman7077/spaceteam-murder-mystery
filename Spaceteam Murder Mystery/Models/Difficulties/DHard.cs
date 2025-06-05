@@ -1,7 +1,5 @@
 namespace SMM.Models.Difficulties;
 
-using SMM.Models.Helpers;
-
 /// <summary>
 /// A class containing methods specific to a game on hard difficulty.
 /// </summary>

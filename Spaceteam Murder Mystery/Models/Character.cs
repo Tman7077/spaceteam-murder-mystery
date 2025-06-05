@@ -1,7 +1,5 @@
 namespace SMM.Models;
 
-using Helpers;
-
 /// <summary>
 /// Represents an entire character, including their personal information,
 /// relevant image filepaths, quotes, and clues to other characters.

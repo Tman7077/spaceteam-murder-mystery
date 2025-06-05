@@ -1,7 +1,6 @@
-using System.IO;
-using SMM.Services;
-
 namespace SMM.Models;
+
+using System.IO;
 
 /// <summary>
 /// Represents a complete crime scene.

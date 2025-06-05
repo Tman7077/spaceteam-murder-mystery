@@ -1,11 +1,5 @@
 namespace SMM.Views;
 
-using System.Windows;
-using System.Windows.Controls;
-using Models;
-using Models.Difficulties;
-using Services;
-
 public partial class GameScreen : UserControl
 {
     private readonly MainWindow _main;
@@ -18,7 +12,7 @@ public partial class GameScreen : UserControl
         _main = main;
         // _currentScene = "Intro";
         _gameState = new GameState(difficulty);
-        header.Content = _gameState.GetDifficulty() + " mode selected. ";
+        header.Content = _gameState.GetDifficultyName() + " mode selected. ";
     }
     private void Kill_Click(object sender, RoutedEventArgs e)
     {

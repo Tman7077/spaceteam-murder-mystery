@@ -1,10 +1,5 @@
 ﻿namespace SMM;
 
-using Models.Difficulties;
-using System.Windows;
-using System.Windows.Controls;
-using Views;
-
 public partial class MainWindow : Window
 {
     private readonly Dictionary<string, Func<UserControl>> _viewMap;

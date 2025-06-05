@@ -1,7 +1,5 @@
 namespace SMM.Services;
 
-using Models;
-using Models.Helpers;
 using System.IO;
 using System.Text.RegularExpressions;
 
