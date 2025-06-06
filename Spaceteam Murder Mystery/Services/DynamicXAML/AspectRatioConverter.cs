@@ -4,7 +4,7 @@ using System.Globalization;
 
 public class AspectRatioConverter : IValueConverter
 {
-    public double Ratio { get; set; } = 0.4; // default 1:1
+    public double Ratio { get; set; } = 0.4; // height = 40% of width (by default)
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
