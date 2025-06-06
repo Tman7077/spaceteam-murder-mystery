@@ -16,6 +16,7 @@
     <SolidColorBrush x:Key="SMMBackgroundDark" Color="#FF111418" />
     <SolidColorBrush x:Key="SMMWhite" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="SMMBlack" Color="#FF000000" />
+    <SolidColorBrush x:Key="SMMTransparent" Color="#00000000" />
     
     <SolidColorBrush x:Key="SMMYellow" Color="#FFFFC625" />
     <SolidColorBrush x:Key="SMMOrange" Color="#FFFE4416" />

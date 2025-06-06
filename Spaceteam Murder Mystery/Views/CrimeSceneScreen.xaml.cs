@@ -1,11 +1,5 @@
 namespace SMM.Views;
 
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using Models;
-using Services;
-
 public partial class CrimeSceneScreen : UserControl
 {
     private readonly MainWindow _main;
@@ -19,6 +13,13 @@ public partial class CrimeSceneScreen : UserControl
         _victim = _scene.State.Characters[victim];
         LoadScreen();
     }
+
+    public void Clue_Click(object sender, RoutedEventArgs e)
+    {
+        var something = sender.GetType();
+        MessageBox.Show($"{something} Clicked!");
+    }
+
     private void LoadScreen()
     {
         // HashSet<Clue> clues = [];
@@ -32,21 +33,21 @@ public partial class CrimeSceneScreen : UserControl
 
         Label label2 = new()
         {
-            Content = $"Difficulty: {_scene.State.GetDifficulty()}",
+            Content = $"Difficulty: {_scene.State.GetDifficultyName()}",
             Style = (Style)FindResource("BodyText")
         };
 
         SP.Children.Add(label1);
         SP.Children.Add(label2);
 
-        Image image = new()
+        Image sceneImage = new()
         {
             Source = new BitmapImage(new Uri(_victim.CrimeSceneImagePath, UriKind.Absolute)),
             Width = 320,
             Height = 180,
             Margin = new Thickness(10)
         };
-        SP.Children.Add(image);
+        SP.Children.Add(sceneImage);
 
         StackPanel cluesPanel = new()
         {
@@ -63,7 +64,13 @@ public partial class CrimeSceneScreen : UserControl
                 Height = 30,
                 Margin = new Thickness(5)
             };
-            cluesPanel.Children.Add(clueImage);
+            Button imageButton = new()
+            {
+                Style = (Style)FindResource("ClueImageButton"),
+                Content = clueImage,
+            };
+            imageButton.Click += Clue_Click;
+            cluesPanel.Children.Add(imageButton);
         }
         SP.Children.Add(cluesPanel);
     }
