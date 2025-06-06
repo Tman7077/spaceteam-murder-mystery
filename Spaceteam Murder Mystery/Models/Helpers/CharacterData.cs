@@ -13,7 +13,8 @@ namespace SMM.Models.Helpers;
 /// <param name="Clues">A set of Clues that link the character to each other character's death.</param>
 /// <param name="Interviews">A collection of the character's responses to being interviewed.</param>
 /// <param name="Accusations">A collection of the character's responses to being accused.</param>
-public record CharacterData(
+public record CharacterData
+(
     string Name,
     string Role,
     string Motto,
