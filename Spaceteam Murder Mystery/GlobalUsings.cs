@@ -3,11 +3,15 @@ global using SMM.Models;
 global using SMM.Models.Difficulties;
 global using SMM.Models.Helpers;
 global using SMM.Services;
+global using SMM.Services.DynamicXAML;
 global using SMM.Views;
 
 // WPF namespaces
+global using System.Runtime.InteropServices;
 global using System.Windows;
 global using System.Windows.Controls;
+global using System.Windows.Data;
 global using System.Windows.Input;
-global using System.Windows.Media;
+global using System.Windows.Interop;
+// global using System.Windows.Media;
 global using System.Windows.Media.Imaging;

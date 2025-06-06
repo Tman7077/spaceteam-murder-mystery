@@ -12,7 +12,6 @@
                 Content="You're on the spaceship..." />
             <Button
                 Style="{StaticResource CornerCutButton}"
-                Width="200"
                 Click="Kill_Click"
                 Content="Kill Someone!" />
         </StackPanel>

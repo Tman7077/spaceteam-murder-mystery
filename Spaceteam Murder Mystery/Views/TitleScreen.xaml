@@ -12,7 +12,7 @@
         HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
@@ -29,10 +29,10 @@
             </Style>
         </Grid.Resources>
         <Label
-            Style="{StaticResource ScreenHeader}"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
+            Style="{StaticResource ScreenHeader}"
             Content="Space Team Murder Mystery"/>
         <Button
             Grid.Row="2"
