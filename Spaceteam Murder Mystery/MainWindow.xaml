@@ -12,7 +12,8 @@
     MinWidth="854"
     MinHeight="480"
     Icon="pack://application:,,,/Assets/Images/nebula-rounded.ico"
-    Style="{StaticResource DarkTheme}">
+    Style="{StaticResource DarkTheme}"
+    KeyDown="MainWindow_KeyDown">
     <Grid Margin="18,10">
         <ContentControl
             x:Name="MainContent"
