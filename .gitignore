@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# SMM nonexistent file extension for backups of previous iterations of files
+*.bak
+
 # dotenv files
 .env
 
