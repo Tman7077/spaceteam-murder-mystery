@@ -32,7 +32,6 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            FontSize="20"
             Style="{StaticResource ScreenHeader}"
             Content="Choose a Difficulty" />
         <Button

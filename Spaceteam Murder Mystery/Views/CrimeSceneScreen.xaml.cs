@@ -22,7 +22,6 @@ public partial class CrimeSceneScreen : UserControl
 
     private void LoadScreen()
     {
-        // HashSet<Clue> clues = [];
         SP.Children.Clear();
 
         Label label1 = new()

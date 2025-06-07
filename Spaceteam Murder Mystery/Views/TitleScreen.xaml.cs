@@ -15,10 +15,13 @@ public partial class TitleScreen : UserControl
         // Navigate to the game window
         _main.ChangeView("Difficulty");
     }
+    private void ContinueGame_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("Coming soon!");
+    }
     private void Settings_Click(object sender, RoutedEventArgs e)
     {
         _main.ChangeView("Settings");
-        return;
     }
     private void Quit_Click(object sender, RoutedEventArgs e)
     {
