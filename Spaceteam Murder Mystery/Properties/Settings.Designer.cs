@@ -106,5 +106,17 @@ namespace SMM.Properties {
                 this["ResizeMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsFullScreen {
+            get {
+                return ((bool)(this["IsFullScreen"]));
+            }
+            set {
+                this["IsFullScreen"] = value;
+            }
+        }
     }
 }

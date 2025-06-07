@@ -10,18 +10,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        AppSettings.Load(this);
-        _windowHandler = new WindowHandler
-        (
-            window:          this,
-            prevWindowState: WindowState.Normal,
-            prevWindowStyle: WindowStyle.SingleBorderWindow,
-            prevResizeMode:  ResizeMode.CanResize,
-            prevLeft:        Left,
-            prevTop:         Top,
-            prevWidth:       Width,
-            prevHeight:      Height
-        );
+
+        _windowHandler = new(this);
+        bool fullscreen = AppSettings.Load(_windowHandler);
+        if (fullscreen) SourceInitialized += ImmediateFullScreen;
+
         Activated   += _windowHandler.MainWindow_Activated;
         Deactivated += _windowHandler.MainWindow_Deactivated;
 
@@ -34,6 +27,7 @@ public partial class MainWindow : Window
             { "MediumGame", () => new GameScreen(this, new DMedium()) },
             { "HardGame",   () => new GameScreen(this, new DHard()) }
         };
+        
         ChangeView("Title");
     }
 
@@ -59,9 +53,14 @@ public partial class MainWindow : Window
         { _windowHandler.ToggleFullScreen(); }
     }
 
+    private void ImmediateFullScreen(object? sender, EventArgs e)
+    {
+        _windowHandler.ToggleFullScreen();
+        SourceInitialized -= ImmediateFullScreen;
+    }
     protected override void OnClosing(CancelEventArgs e)
     {
-        AppSettings.Save(this);
+        AppSettings.Save(_windowHandler);
         base.OnClosing(e);
     }
 }

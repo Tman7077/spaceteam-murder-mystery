@@ -6,36 +6,31 @@ namespace SMM.Services.DynamicXAML;
 /// <param name="prevWindowState">The previous window mode (minimized, maximized, etc.).</param>
 /// <param name="prevWindowStyle">The previous window chrome.</param>
 /// <param name="prevResizeMode">The previous resizability state.</param>
-/// <param name="prevLeft">The previous offset from the left border of the screen.</param>
-/// <param name="prevTop">The previous offset from the top of the screen.</param>
 /// <param name="prevWidth">The previous width.</param>
 /// <param name="prevHeight">The previous height.</param>
-public partial class WindowHandler
-(
-    Window window,
-    WindowState prevWindowState,
-    WindowStyle prevWindowStyle,
-    ResizeMode prevResizeMode,
-    double prevLeft, double prevTop,
-    double prevWidth, double prevHeight
-)
+/// <param name="prevLeft">The previous offset from the left border of the screen.</param>
+/// <param name="prevTop">The previous offset from the top of the screen.</param>
+public partial class WindowHandler(Window window)
 {
+    public Window Win { get; } = window;
+    public bool IsFullScreen { get; set; } = false;
     private IntPtr HWND { get; } = new WindowInteropHelper(window).Handle;
     private static IntPtr HWND_TOPMOST { get; } = new IntPtr(-1);
     private static IntPtr HWND_NOTOPMOST { get; } = new IntPtr(-2);
     private const uint SWP_SHOWWINDOW = 0x0040;
     private const int SM_CXSCREEN = 0;
     private const int SM_CYSCREEN = 1;
-    private Window Win { get; } = window;
-    private WindowState PrevWindowState { get; set; } = prevWindowState;
-    private WindowStyle PrevWindowStyle { get; set; } = prevWindowStyle;
-    private ResizeMode PrevResizeMode { get; set; } = prevResizeMode;
+
+    // =============== “Previous” window state properties ===============
+    private WindowState PrevWindowState { get; set; } = WindowState.Normal;
+    private WindowStyle PrevWindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
+    private ResizeMode PrevResizeMode { get; set; } = ResizeMode.CanResize;
     private bool PrevTopmost { get; set; } = false;
-    private double PrevLeft { get; set; } = prevLeft;
-    private double PrevTop { get; set; } = prevTop;
-    private double PrevWidth { get; set; } = prevWidth;
-    private double PrevHeight { get; set; } = prevHeight;
-    private bool IsFullScreen { get; set; } = false;
+    private double PrevWidth { get; set; } = 854;
+    private double PrevHeight { get; set; } = 480;
+    private double PrevLeft { get; set; } = 100;
+    private double PrevTop { get; set; } = 100;
+    // ===============================================================
 
     /// <summary>
     /// Handles the event when the main window loses focus (e.g., Alt+Tab to another app).
@@ -44,8 +39,7 @@ public partial class WindowHandler
     /// <param name="e">Event arguments.</param>
     public void MainWindow_Deactivated(object? sender, EventArgs e)
     {
-        if (IsFullScreen)
-        { SetTopmostAndBounds(HWND, false); }
+        if (IsFullScreen) SetTopmostAndBounds(HWND, false);
     }
 
     /// <summary>
@@ -55,8 +49,7 @@ public partial class WindowHandler
     /// <param name="e">Event arguments.</param>
     public void MainWindow_Activated(object? sender, EventArgs e)
     {
-        if (IsFullScreen)
-        { SetTopmostAndBounds(HWND, true); }
+        if (IsFullScreen) SetTopmostAndBounds(HWND, true);
     }
     
     /// <summary>
@@ -64,10 +57,8 @@ public partial class WindowHandler
     /// </summary>
     public void ToggleFullScreen()
     {
-        if (IsFullScreen)
-        { ExitFullScreen(); }
-        else
-        { GoFullScreen(); }
+        if (IsFullScreen) ExitFullScreen();
+        else EnterFullScreen();
     }
 
     /// <summary>
@@ -102,31 +93,30 @@ public partial class WindowHandler
     /// <summary>
     /// Switches the window to fullscreen mode, saving previous window state and style.
     /// </summary>
-    private void GoFullScreen()
+    private void EnterFullScreen()
     {
-        if (IsFullScreen)
-        { return; } // already fullscreen
+        if (IsFullScreen) return;
 
         // Save “before” values:
         PrevWindowState = Win.WindowState;
         PrevWindowStyle = Win.WindowStyle;
-        PrevResizeMode = Win.ResizeMode;
-        PrevTopmost = Win.Topmost;
-        PrevLeft = Win.Left;
-        PrevTop = Win.Top;
-        PrevWidth = Win.Width;
-        PrevHeight = Win.Height;
+        PrevResizeMode  = Win.ResizeMode;
+        PrevTopmost     = Win.Topmost;
+        PrevWidth       = Win.Width;
+        PrevHeight      = Win.Height;
+        PrevLeft        = Win.Left;
+        PrevTop         = Win.Top;
 
         // Remove chrome and prevent resizing:
-        Win.WindowStyle = WindowStyle.None;
-        Win.ResizeMode = ResizeMode.NoResize;
         Win.WindowState = WindowState.Normal; // we’ll manage size ourselves
+        Win.WindowStyle = WindowStyle.None;
+        Win.ResizeMode  = ResizeMode.NoResize;
 
         // Grab the HWND for SetWindowPos:
         nint hwnd = new WindowInteropHelper(Win).Handle;
 
         // Determine “primary screen” dimensions in WPF units (DIPs):
-        int screenWidthPx = GetSystemMetrics(SM_CXSCREEN);
+        int screenWidthPx  = GetSystemMetrics(SM_CXSCREEN);
         int screenHeightPx = GetSystemMetrics(SM_CYSCREEN);
 
         // Move/resize window to (0,0)-(screenWidth,screenHeight), set Topmost:
@@ -139,7 +129,7 @@ public partial class WindowHandler
             SWP_SHOWWINDOW
         );
 
-        Win.Topmost = true;
+        Win.Topmost  = true;
         IsFullScreen = true;
     }
 
@@ -148,22 +138,19 @@ public partial class WindowHandler
     /// </summary>
     private void ExitFullScreen()
     {
-        if (!IsFullScreen)
-        { return; }
-
-        // Restore style, resize mode, and topmost:
-        Win.WindowStyle = PrevWindowStyle;
-        Win.ResizeMode = PrevResizeMode;
-        Win.Topmost = PrevTopmost;
+        if (!IsFullScreen) return;
 
         // Restore size & position
-        Win.Left = PrevLeft;
-        Win.Top = PrevTop;
-        Win.Width = PrevWidth;
+        Win.Width  = PrevWidth;
         Win.Height = PrevHeight;
+        Win.Left   = PrevLeft;
+        Win.Top    = PrevTop;
 
-        // Restore WindowState
+        // Restore state, style, resize mode, and topmost:
         Win.WindowState = PrevWindowState;
+        Win.WindowStyle = PrevWindowStyle;
+        Win.ResizeMode  = PrevResizeMode;
+        Win.Topmost     = PrevTopmost;
 
         IsFullScreen = false;
     }
@@ -186,7 +173,7 @@ public partial class WindowHandler
     (
         IntPtr hWnd,
         IntPtr hWndInsertAfter,
-        int X, int Y,
+        int X,  int Y,
         int cx, int cy,
         uint uFlags
     );
