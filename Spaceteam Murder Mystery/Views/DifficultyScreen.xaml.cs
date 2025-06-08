@@ -2,7 +2,6 @@ namespace SMM.Views;
 
 public partial class DifficultyScreen : UserControl
 {
-    // Reference to the main window
     private readonly MainWindow _main;
 
     public DifficultyScreen(MainWindow main)
@@ -17,18 +16,7 @@ public partial class DifficultyScreen : UserControl
             MessageBox.Show("Sender was not a valid button.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
-        string? difficulty = button.Tag.ToString();
-        switch (difficulty)
-        {
-            case "Easy":
-            case "Medium":
-            case "Hard":
-                break;
-            default:
-                MessageBox.Show($"Unknown difficulty \"{difficulty}\" selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-        }
-        // Navigate to the game window
-        _main.ChangeView($"{difficulty}Game");
+        
+        _main.StartGame(button.Tag.ToString());
     }
 }
