@@ -10,16 +10,17 @@ public class DivideWidthExtension : MarkupExtension
     public DivideWidthExtension(double divisor)
     { Divisor = divisor; }
 
-    public override object ProvideValue(IServiceProvider serviceProvider)
+    public static Binding GetBinding(double divisor)
     {
-        var binding = new Binding("ActualWidth")
+        return new Binding("ActualWidth")
         {
             RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1),
             Converter = new DivideWidthConverter(),
-            ConverterParameter = Divisor,
+            ConverterParameter = divisor,
             Mode = BindingMode.OneWay
         };
-
-        return binding.ProvideValue(serviceProvider);
     }
+
+    public override object ProvideValue(IServiceProvider serviceProvider) =>
+        GetBinding(Divisor).ProvideValue(serviceProvider);
 }
