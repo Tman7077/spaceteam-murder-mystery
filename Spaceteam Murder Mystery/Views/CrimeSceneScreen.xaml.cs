@@ -5,12 +5,13 @@ public partial class CrimeSceneScreen : UserControl
     private readonly MainWindow _main;
     private readonly CrimeScene _scene;
     private readonly Character _victim;
-    public CrimeSceneScreen(MainWindow main, GameState state, string victim)
+    private GameState State { get => _main.State; }
+    public CrimeSceneScreen(MainWindow main, string victim)
     {
         InitializeComponent();
         _main = main;
-        _scene = new CrimeScene(victim, state);
-        _victim = _scene.State.Characters[victim];
+        _scene = new CrimeScene(victim, State);
+        _victim = State.Characters[victim];
         LoadScreen();
     }
 
@@ -32,7 +33,7 @@ public partial class CrimeSceneScreen : UserControl
 
         Label label2 = new()
         {
-            Content = $"Difficulty: {_scene.State.GetDifficultyName()}",
+            Content = $"Difficulty: {State.GetDifficultyName()}",
             Style = (Style)FindResource("BodyText")
         };
 

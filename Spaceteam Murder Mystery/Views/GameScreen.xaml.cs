@@ -3,19 +3,19 @@ namespace SMM.Views;
 public partial class GameScreen : UserControl
 {
     private readonly MainWindow _main;
-    // private string _currentScene;
-    private readonly GameState _gameState;
-    public GameState State { get => _gameState; }
-    public GameScreen(MainWindow main, IDifficulty difficulty)
+    private GameState State { get => _main.State; }
+    public GameScreen(MainWindow main)
     {
         InitializeComponent();
         _main = main;
-        // _currentScene = "Intro";
-        _gameState = new GameState(difficulty);
-        header.Content = _gameState.GetDifficultyName() + " mode selected. ";
+        header.Content = State.GetDifficultyName() + " mode selected.";
     }
     private void Kill_Click(object sender, RoutedEventArgs e)
     {
-        _main.LoadCrimeScene(_gameState.KillCharacter());
+        _main.LoadCrimeSceneFor(State.KillCharacter());
+    }
+    private void Talk_Click(object sender, RoutedEventArgs e)
+    {
+        _main.ChangeView("Interviews");
     }
 }
