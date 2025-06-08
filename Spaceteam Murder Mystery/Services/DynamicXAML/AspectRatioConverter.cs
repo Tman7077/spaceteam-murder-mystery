@@ -2,7 +2,7 @@ namespace SMM.Services.DynamicXAML;
 
 public class AspectRatioConverter : IValueConverter
 {
-    public double Ratio { get; set; } = 0.33; // height = 3% of width (by default)
+    public double Ratio { get; set; } = 0.33; // height = 33% of width (by default)
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
