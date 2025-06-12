@@ -6,7 +6,7 @@ global using SMM.Services;
 global using SMM.Services.DynamicXAML;
 global using SMM.Views;
 
-// WPF namespaces
+// Other namespaces
 global using System.Globalization;
 global using System.Runtime.InteropServices;
 global using System.Windows;
