@@ -13,7 +13,7 @@
     Icon="pack://application:,,,/Assets/Images/nebula-rounded.ico"
     Style="{StaticResource DarkTheme}"
     KeyDown="MainWindow_KeyDown">
-    <Grid Margin="18,10">
+    <Grid>
         <ContentControl
             x:Name="MainContent"
             Grid.Row="0"
