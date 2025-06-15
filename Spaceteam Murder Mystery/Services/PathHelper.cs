@@ -18,18 +18,14 @@ public static class PathHelper
     /// <returns>The full path to the root directory.</returns>
     public static string GetProjectRoot()
     {
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        string marker = ".root";
+        DirectoryInfo? dir = new(AppContext.BaseDirectory);
+        string marker      = ".root";
 
         while (dir != null && !File.Exists(Path.Combine(dir.FullName, marker)))
-        {
-            dir = dir.Parent;
-        }
+        { dir = dir.Parent; }
 
         if (dir == null)
-        {
-            throw new DirectoryNotFoundException($"Could not find project root containing '{marker}'.");
-        }
+        { throw new DirectoryNotFoundException($"Could not find project root containing '{marker}'."); }
 
         return Path.Combine(dir.FullName, "Spaceteam Murder Mystery");
     }
@@ -39,8 +35,6 @@ public static class PathHelper
     /// from which files can be loaded.
     /// </summary>
     /// <returns>The full path to the Assets directory.</returns>
-    public static string GetAssetDirectory()
-    {
-        return Path.Combine(GetProjectRoot(), "Assets");
-    }
+    public static string GetAssetDirectory() =>
+        Path.Combine(GetProjectRoot(), "Assets");
 }

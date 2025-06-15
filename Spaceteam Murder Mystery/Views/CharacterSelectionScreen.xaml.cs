@@ -4,7 +4,9 @@ public partial class CharacterSelectionScreen : UserControl
 {
     private readonly MainWindow _main;
     private readonly string _labelContent;
+
     private GameState State { get => _main.State; }
+    
     public CharacterSelectionScreen(MainWindow main, string type)
     {
         InitializeComponent();
@@ -17,6 +19,12 @@ public partial class CharacterSelectionScreen : UserControl
             _ => throw new ArgumentException($"Unknown type: {type}")
         };
         DisplayCharacters();
+    }
+
+    public void Interview_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button && button.Tag is string characterName)
+        { _main.LoadInterviewFor(characterName); }
     }
 
     private void DisplayCharacters()
@@ -71,16 +79,6 @@ public partial class CharacterSelectionScreen : UserControl
         charGrid.Children.Add(nameLabel);
         charGrid.Children.Add(selectButton);
 
-        // charGrid.Tag = character.Name;
-
         return charGrid;
-    }
-
-    public void Interview_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button button && button.Tag is string characterName)
-        {
-            _main.LoadInterviewFor(characterName);
-        }
     }
 }

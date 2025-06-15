@@ -6,9 +6,7 @@ public class DivideWidthExtension : MarkupExtension
     public double Divisor { get; set; } = 6.0;
 
     public DivideWidthExtension() { }
-
-    public DivideWidthExtension(double divisor)
-    { Divisor = divisor; }
+    public DivideWidthExtension(double divisor) => Divisor = divisor;
 
     public static Binding GetBinding(double divisor)
     {

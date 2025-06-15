@@ -21,6 +21,7 @@ public class ParentBasedMarginExtension : MarkupExtension
             Mode = BindingMode.OneWay
         };
     }
+    
     public override object ProvideValue(IServiceProvider serviceProvider) =>
         GetBinding(Ratio).ProvideValue(serviceProvider);
 }

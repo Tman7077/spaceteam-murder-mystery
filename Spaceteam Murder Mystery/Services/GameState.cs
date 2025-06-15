@@ -8,6 +8,7 @@ using System.IO;
 public class GameState
 {
     private readonly CharacterSet _characters = [];
+    
     public CharacterSet Characters { get => _characters; }
     public string Difficulty { get; set; }
 

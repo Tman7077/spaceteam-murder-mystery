@@ -6,9 +6,7 @@ public class FontScaleExtension : MarkupExtension
     public double Scale { get; set; } = 1.0;
 
     public FontScaleExtension() { }
-
-    public FontScaleExtension(double scale)
-    { Scale = scale; }
+    public FontScaleExtension(double scale) => Scale = scale;
 
     public static MultiBinding GetBinding(double scale)
     {
@@ -26,6 +24,7 @@ public class FontScaleExtension : MarkupExtension
             }
         };
     }
+    
     public override object ProvideValue(IServiceProvider serviceProvider) =>
         GetBinding(Scale).ProvideValue(serviceProvider);
 }

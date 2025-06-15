@@ -7,6 +7,7 @@ namespace SMM.Models.Helpers;
 public class InterviewSet
 {
     private readonly Dictionary<string, ResponseSet> _responses = [];
+    
     public IEnumerable<string> CharacterNames => _responses.Keys;
 
     /// <summary>
@@ -26,25 +27,21 @@ public class InterviewSet
     /// </summary>
     /// <param name="characterName">The character (victim) for whom to retrieve a response.</param>
     /// <returns>The response for the given character.</returns>
-    public string GetInnocentResponse(string characterName)
-    {
-        return Get(characterName).Innocent;
-    }
+    public string GetInnocentResponse(string characterName) =>
+        Get(characterName).Innocent;
 
     /// <summary>
     /// Gets the guilty response for a character in the interview set.
     /// </summary>
     /// <param name="characterName">The character (victim) for whom to retrieve a response.</param>
     /// <returns>The response for the given character.</returns>
-    public string GetGuiltyResponse(string characterName)
-    {
-        return Get(characterName).Guilty;
-    }
+    public string GetGuiltyResponse(string characterName) =>
+        Get(characterName).Guilty;
     
     private ResponseSet Get(string characterName)
     {
-        if (_responses.TryGetValue(characterName, out var responses))
-        { return responses; }
-        throw new KeyNotFoundException($"Character {characterName} not found in the interview set.");
+        if (!_responses.TryGetValue(characterName, out var responses))
+        { throw new KeyNotFoundException($"Character {characterName} not found in the interview set."); }
+        return responses;
     }
 }

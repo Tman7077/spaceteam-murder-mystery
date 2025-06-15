@@ -12,10 +12,8 @@ public class TestDEasy(ITestOutputHelper output)
 
     [Theory]
     [MemberData(nameof(CharacterNames))]
-    public void TestSelectClues(string guilty)
-    {
+    public void TestSelectClues(string guilty) =>
         TestDifficultyHelper.TestSelectClues([guilty], "Easy", EasyAsserts, Output);
-    }
 
     /// <summary>
     /// This method contains the assertions for <i>TestSelectClues</i> above.

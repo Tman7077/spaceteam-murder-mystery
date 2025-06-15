@@ -5,20 +5,22 @@ public partial class CrimeSceneScreen : UserControl
     private readonly MainWindow _main;
     private readonly CrimeScene _scene;
     private readonly Character _victim;
+
     private GameState State { get => _main.State; }
+    
     public CrimeSceneScreen(MainWindow main, string victim)
     {
         InitializeComponent();
-        _main   = main;
-        _scene  = new CrimeScene(victim, State);
+        _main = main;
+        _scene = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
         LoadScreen();
     }
 
     public void Clue_Click(object sender, RoutedEventArgs e)
     {
-        var something = sender.GetType().GetProperty("Tag")?.GetValue(sender, null) as string;
-        MessageBox.Show($"{something} Clicked!");
+        var itemName = sender.GetType().GetProperty("Tag")?.GetValue(sender, null) as string;
+        MessageBox.Show($"{itemName} Clicked!");
     }
 
     private void LoadScreen()
