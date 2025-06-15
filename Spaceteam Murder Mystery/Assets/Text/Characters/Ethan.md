@@ -11,28 +11,28 @@ Ethan spent the afternoon prepping dinner in the galley, upbeat as always, jokin
 ## CLUES & HINTS
 
 ### Alex
-- *Sweatband*: A sweatband from Ethan's workout set, draped over the back of Alex's chair.
+- *Sweatband* (3000, 502, 0): A sweatband from Ethan's workout set, draped over the back of Alex's chair.
 
 ### Cade
-- *Phone*: A phone that looks like Ethan's, sitting on the bench.
+- *Phone* (932, 1659, 0): A phone that looks like Ethan's, sitting on the bench.
 
 ### Colter
-- *Unusual Beef*: A bag of Ethan's ground beef, half-defrosted, turned some unnatural colors.
+- *Unusual Beef* (3154, 1769, 0): A bag of Ethan's ground beef, half-defrosted, turned some unnatural colors.
 
 ### Courtney
-- *Tortilla Press*: A press for making tortillas, one of Ethan's oft-used kitchen gadgets.
+- *Tortilla Press* (2687, 1873, 0): A press for making tortillas, one of Ethan's oft-used kitchen gadgets.
 
 ### Ethan
-- *Melted Frisbee*: A frisbee Ethan often used, laying half-melted and scorched by the oven burners.
+- *Melted Frisbee* (1120, 259, 0): A frisbee Ethan often used, laying half-melted and scorched by the oven burners.
 
 ### Jacie
-- *Dirty Cleats*: A pair of Ethan's cleats, dirty on all sides.
+- *Dirty Cleats* (1207, 1222, 0): A pair of Ethan's cleats, dirty on all sides.
 
 ### Olsen
-- *Half-Eaten Burger*: A hand-crafted hamburger, obviously Ethan's, sitting half-eaten on a plate.
+- *Half-Eaten Burger* (2503, 289, 0): A hand-crafted hamburger, obviously Ethan's, sitting half-eaten on a plate.
 
 ### Tyler
-- *Handheld Device*: A handheld gaming device belonging to Ethan, resting on the table next to Tyler.
+- *Handheld Device* (2954, 1300, 0): A handheld gaming device belonging to Ethan, resting on the table next to Tyler.
 
 ## INTERVIEW RESPONSES
 

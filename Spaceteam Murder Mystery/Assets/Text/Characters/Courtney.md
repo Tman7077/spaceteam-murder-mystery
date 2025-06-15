@@ -11,29 +11,29 @@ Courtney often retreats to the observation deck to find inspiration among the st
 ## CLUES & HINTS
 
 ### Alex
-- *Screwdriver*: A stray screwdriver left near the console, matching Courtney's usual tools.
+- *Screwdriver* (270, 1662, 0): A stray screwdriver left near the console, matching Courtney's usual tools.
 
 ### Cade
-- *Oily Boot Print*: A boot print covered in oil, likely from Courtney’s mechanical work.
+- *Oily Boot Print* (0, 1505, 0): A boot print covered in oil, likely from Courtney’s mechanical work.
 
 ### Colter
-- *Keycard*: A keycard left on the counter, opening Courtney's bedroom door.
+- *Keycard* (3170, 1491, 0): A keycard left on the counter, opening Courtney's bedroom door.
 
 ### Courtney
-- *Scribbled Plans*: A brief explanation of Courtney’s plans for what turned out to be her final night.
+- *Scribbled Plans* (932, 1780, 1): A brief explanation of Courtney’s plans for what turned out to be her final night.
   - *She was writing kind notes about everyone, to distribute at the upcoming celebratory dinner, to express her gratitude for everyone on the ship. She gathered something small from everyone, and went to the stars for inspiration in her writing.*
 
 ### Ethan
-- *Scorched Pan*: A pan Ethan was using, with an obvious scorch mark on the otherwise-pristine bottom, suggesting Courtney's blow torch.
+- *Scorched Pan* (2102, 478, 0): A pan Ethan was using, with an obvious scorch mark on the otherwise-pristine bottom, suggesting Courtney's blow torch.
 
 ### Jacie
-- *Dragon Medallion*: A dragon medallion, the same one Courtney typically wears on her shoulder.
+- *Dragon Medallion* (2778, 1728, 0): A dragon medallion, the same one Courtney typically wears on her shoulder.
 
 ### Olsen
-- *Sheared Fabric*: A tuft of blue fabric, matching Courtney's shark onesie.
+- *Sheared Fabric* (0, 267, 0): A tuft of blue fabric, matching Courtney's shark onesie.
 
 ### Tyler
-- *Charcoal Pencil*: A charcoal pencil, like what Courtney uses for sketching, broken on top of the navigation notepad.
+- *Charcoal Pencil* (1404, 1280, 0): A charcoal pencil, like what Courtney uses for sketching, broken on top of the navigation notepad.
 
 ## INTERVIEW RESPONSES
 

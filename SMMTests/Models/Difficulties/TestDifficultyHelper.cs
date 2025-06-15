@@ -36,6 +36,7 @@ public static class TestDifficultyHelper
         string crimeSceneImagePath = "testCrimeSceneImagePathUnused";
         string description = "testDescriptionUnused";
         string deathStory = "testDeathStoryUnused";
+        int[] xyz = [0, 0, 0];
         InterviewSet interviews = new();
         InterviewSet accusations = new();
 
@@ -48,7 +49,7 @@ public static class TestDifficultyHelper
             // Create clues for each character, where each clue points to every other character as a victim.
             foreach (string victim in _shortCharacterNames)
             {
-                Clue testClue = new("testName", "testDescription", victim, shortName);
+                Clue testClue = new("testName", "testDescription", victim, shortName, xyz);
                 testClueSet.Add(testClue);
             }
             CharacterData cData = new(

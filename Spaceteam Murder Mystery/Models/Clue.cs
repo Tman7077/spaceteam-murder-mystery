@@ -13,6 +13,9 @@ public class Clue
     public string Victim { get; }
     public string Owner { get; }
     public string ImagePath { get; }
+    public int X { get; }
+    public int Y { get; }
+    public int Z { get; }
     public bool IsFound { get; set; }
 
     /// <summary>
@@ -22,13 +25,22 @@ public class Clue
     /// <param name="description">The more full description of the item. This hints at who the clue is meant to implicate.</param>
     /// <param name="victim">The character to whose death this clue is relevant.</param>
     /// <param name="owner">The character this clue implicates.</param>
-    public Clue(string clueName, string description, string victim, string owner)
+    public Clue(string clueName, string description, string victim, string owner, int[] xyz)
     {
         Name = clueName;
         Description = description;
         Victim = victim;
         Owner = owner;
-        ImagePath = Path.Combine(PathHelper.GetAssetDirectory(), "Images", "Crime Scenes", $"{Victim}Clues", $"{Owner}.png");
+        X = xyz[0];
+        Y = xyz[1];
+        Z = xyz[2];
+        ImagePath = Path.Combine(
+            PathHelper.GetAssetDirectory(),
+            "Images",
+            "Crime Scenes",
+            $"{Victim}Clues",
+            $"{Owner}.png"
+        );
         IsFound = false;
     }
 }

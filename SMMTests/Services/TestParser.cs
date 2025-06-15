@@ -62,6 +62,7 @@ public class TestParser(ITestOutputHelper output)
                 Output.WriteLine($"Clue for {clue.Victim}'s death:");
                 Output.WriteLine($"       Name : {clue.Name}");
                 Output.WriteLine($"Description : {clue.Description}");
+                Output.WriteLine($"Coordinates : ({clue.X}, {clue.Y}, {clue.Z})");
                 Output.WriteLine($" Image Path : {clue.ImagePath}\n");
             }
 

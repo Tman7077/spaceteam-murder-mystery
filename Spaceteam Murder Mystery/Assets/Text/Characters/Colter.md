@@ -11,28 +11,28 @@ Colter spends the evenings engrossed in experiments within the laboratory, his n
 ## CLUES & HINTS
 
 ### Alex
-- *Diagnostic Notebook*: A notebook with partially erased notes about system diagnostics, in Colter's handwriting.
+- *Diagnostic Notebook* (1575, 1307, 0): A notebook with partially erased notes about system diagnostics, in Colter's handwriting.
 
 ### Cade
-- *Burnt Turf*: A small burnt patch of turf, possibly because of one of Colter's chemical reactions.
+- *Burnt Turf* (2, 2061, 0): A small burnt patch of turf, possibly because of one of Colter's chemical reactions.
 
 ### Colter
-- *Shattered Vial*: A broken vial with a faint residue near Colter's workstation, with traces of his chemicals.
+- *Shattered Vial* (2662, 1815, 0): A broken vial with a faint residue near Colter's workstation, with traces of his chemicals.
 
 ### Courtney
-- *Colored Smudge*: A smudge on the edge of the drawing pad, similar in color to one of Colter's recent experiments.
+- *Colored Smudge* (1514, 1934, 0): A smudge on the edge of the drawing pad, similar in color to one of Colter's recent experiments.
 
 ### Ethan
-- *Musical Note*: A scrap of lab notebook with musical notes scrawled in Colter's handwriting.
+- *Musical Note* (2370, 1738, 0): A scrap of lab notebook with musical notes scrawled in Colter's handwriting.
 
 ### Jacie
-- *Chemical-stained Glove*: A glove with faint chemical residue, often used by Colter.
+- *Chemical-stained Glove* (716, 1185, 0): A glove with faint chemical residue, often used by Colter.
 
 ### Olsen
-- *Mysterious Handprint*: A large, faint handprint on Olsen’s cup, identified as Colter's.
+- *Mysterious Handprint* (2324, 278, 0): A large, faint handprint on Olsen’s cup, identified as Colter's.
 
 ### Tyler
-- *Chemical Note*: A cryptic note tucked under the keyboard, containing symbols resembling Colter's chemical formulas.
+- *Chemical Note* (1637, 1324, 0): A cryptic note tucked under the keyboard, containing symbols resembling Colter's chemical formulas.
 
 ## INTERVIEW RESPONSES
 

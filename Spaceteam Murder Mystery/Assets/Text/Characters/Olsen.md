@@ -11,28 +11,28 @@ Olsen spends most of his free time in the common area, solving puzzles, reading 
 ## CLUES & HINTS
 
 ### Alex
-- *Cocoa Mug*: A mug of hot cocoa sitting on the console, the same mug Olsen often drinks out of.
+- *Cocoa Mug* (1262, 1404, 0): A mug of hot cocoa sitting on the console, the same mug Olsen often drinks out of.
 
 ### Cade
-- *Translation Dictionary*: An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried.
+- *Translation Dictionary* (3736, 1432, 0): An English-to-Spanish dictionary resting on the bench, something Olsen frequently carried.
 
 ### Colter
-- *Charred Puzzle Piece*: A charred puzzle piece doused in the spill, from Olsen's puzzle.
+- *Charred Puzzle Piece* (2858, 1338, 0): A charred puzzle piece doused in the spill, from Olsen's puzzle.
 
 ### Courtney
-- *Borrowed Book*: A book Olsen was last seen reading.
+- *Borrowed Book* (3584, 1945, 0): A book Olsen was last seen reading.
 
 ### Ethan
-- *Bowl of Broth*: A bowl from Olsen's fine china set, filled with still-steaming broth.
+- *Bowl of Broth* (3032, 400, 0): A bowl from Olsen's fine china set, filled with still-steaming broth.
 
 ### Jacie
-- *Soup*: A half-eaten container of some chicken soup Olsen made earlier.
+- *Soup* (248, 1332, 0): A half-eaten container of some chicken soup Olsen made earlier.
 
 ### Olsen
-- *Handwritten Note*: A notebook page with a handwritten message, matching Olsen’s style.
+- *Handwritten Note* (2219, 1806, 0): A notebook page with a handwritten message, matching Olsen’s style.
 
 ### Tyler
-- *Puzzle Reference*: A puzzle reference image left on the console, from the puzzle Olsen was last seen doing.
+- *Puzzle Reference* (3546, 1921, 0): A puzzle reference image left on the console, from the puzzle Olsen was last seen doing.
 
 ## INTERVIEW RESPONSES
 

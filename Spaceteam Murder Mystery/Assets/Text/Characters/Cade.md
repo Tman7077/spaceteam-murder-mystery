@@ -11,28 +11,28 @@ Cade was taking a break in the recreation room, practicing his swings in the bat
 ## CLUES & HINTS
 
 ### Alex
-- *Charcoal Pencil*: A charcoal pencil broken in half, something Cade was seen borrowing earlier.
+- *Charcoal Pencil* (1962, 1498, 0): A charcoal pencil broken in half, something Cade was seen borrowing earlier.
 
 ### Cade
-- *Broken Bat*: A broken wooden bat, belonging to Cade.
+- *Broken Bat* (2029, 1792, 0): A broken wooden bat, belonging to Cade.
 
 ### Colter
-- *Helmet Visor*: A part of a space suit’s helmet visor, matching Cade’s suit.
+- *Helmet Visor* (3430, 1495, 1): A part of a space suit’s helmet visor, matching Cade’s suit.
 
 ### Courtney
-- *Greasy Hat*: A baseball cap with a faint smudge of grease, known to belong to Cade.
+- *Greasy Hat* (3739, 1350, 0): A baseball cap with a faint smudge of grease, known to belong to Cade.
 
 ### Ethan
-- *Hat*: A hat of Cade’s, left on the floor beside the galley entrance.
+- *Hat* (1590, 218, 0): A hat of Cade’s, left on the floor beside the galley entrance.
 
 ### Jacie
-- *Wooden Splinters*: A small patch of soil with small splinters of wood, possibly from a bat Cade brought.
+- *Wooden Splinters* (1022, 1386, 0): A small patch of soil with small splinters of wood, possibly from a bat Cade brought.
 
 ### Olsen
-- *Faraway Puzzle Piece*: A puzzle piece all the way across the room, possibly linked to Cade's mischievous nature.
+- *Faraway Puzzle Piece* (112, 819, 0): A puzzle piece all the way across the room, possibly linked to Cade's mischievous nature.
 
 ### Tyler
-- *Game Controller*: A game controller Cade often used in the control room, because of the big screens.
+- *Game Controller* (2240, 1240, 0): A game controller Cade often used in the control room, because of the big screens.
 
 ## INTERVIEW RESPONSES
 

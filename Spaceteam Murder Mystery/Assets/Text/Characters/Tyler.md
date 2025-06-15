@@ -11,28 +11,28 @@ Tyler spends long hours in the control room, fine-tuning the ship’s systems an
 ## CLUES & HINTS
 
 ### Alex
-- *Cryptic Note*: A cryptic note tucked into the console’s edge, containing coding symbols Tyler would recognize.
+- *Cryptic Note* (1576, 128, 0): A cryptic note tucked into the console’s edge, containing coding symbols Tyler would recognize.
 
 ### Cade
-- *Cracked Laptop*: A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room.
+- *Cracked Laptop* (216, 1339, 0): A laptop Tyler frequently uses, its screen cracked, lying on the floor of the room.
 
 ### Colter
-- *Diagnostic Tools*: A set of diagnostic tools nearby, typically found in Tyler's workspace.
+- *Diagnostic Tools* (1922, 1900, 0): A set of diagnostic tools nearby, typically found in Tyler's workspace.
 
 ### Courtney
-- *Torn Page*: A page ripped out of Courtney's notepad, with "Ty-" written right before the tear.
+- *Torn Page* (1192, 1757, 2): A page ripped out of Courtney's notepad, with "Ty-" written right before the tear.
 
 ### Ethan
-- *Miswired Speaker*: A tiny speaker used for diagnostics, crunched and playing static, known to be from Tyler’s audio kit.
+- *Miswired Speaker* (3540, 692, 0): A tiny speaker used for diagnostics, crunched and playing static, known to be from Tyler’s audio kit.
 
 ### Jacie
-- *Circuit Board*: A small circuit board fragment from Tyler’s toolkit, found near the watering system.
+- *Circuit Board* (3334, 1955, 0): A small circuit board fragment from Tyler’s toolkit, found near the watering system.
 
 ### Olsen
-- *Plastic Chip*: A chipped piece of orange plastic, possibly from part of Tyler's suit.
+- *Plastic Chip* (3318, 1152, 0): A chipped piece of orange plastic, possibly from part of Tyler's suit.
 
 ### Tyler
-- *Diagnostic Tablet*: A diagnostic tablet left on the table, showing Tyler's latest analysis logs.
+- *Diagnostic Tablet* (71, 1924, 0): A diagnostic tablet left on the table, showing Tyler's latest analysis logs.
 
 ## INTERVIEW RESPONSES
 

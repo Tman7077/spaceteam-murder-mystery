@@ -11,28 +11,28 @@ Alex was conducting a routine inspection of the ship’s navigation systems to i
 ## CLUES & HINTS
 
 ### Alex
-- *Knife*: A utility knife with a faint trace of dried blood, often carried by Alex.
+- *Knife* (2361, 1300, 0): A utility knife with a faint trace of dried blood, often carried by Alex.
 
 ### Cade
-- *Cracked Band*: A cracked sports band, the same kind that Alex wears for his daily run.
+- *Cracked Band* (3557, 1956, 0): A cracked sports band, the same kind that Alex wears for his daily run.
 
 ### Colter
-- *Burnt Glove*: A white glove with faint burns, often seen worn by Alex.
+- *Burnt Glove* (1701, 1482, 0): A white glove with faint burns, often seen worn by Alex.
 
 ### Courtney
-- *Interstellar Pen*: A blue and silver Interstellar pen that both Courtney and Alex own, something that Alex might know about.
+- *Interstellar Pen* (143, 1352, 0): A blue and silver Interstellar pen that both Courtney and Alex own, something that Alex might know about.
 
 ### Ethan
-- *Bagel Bag*: An open bag of Alex’s bagels, despite Ethan cooking alone that evening.
+- *Bagel Bag* (146, 632, 0): An open bag of Alex’s bagels, despite Ethan cooking alone that evening.
 
 ### Jacie
-- *Pruning Shears*: A set of pruning shears left open nearby, commonly used by Alex.
+- *Pruning Shears* (3086, 1400, 0): A set of pruning shears left open nearby, commonly used by Alex.
 
 ### Olsen
-- *Cup, Part 2*: A second cup, placed opposite Olsen’s seat, still warm, matching Alex's preferred drinkware.
+- *Cup, Part 2* (2772, 220, 0): A second cup, placed opposite Olsen’s seat, still warm, matching Alex's preferred drinkware.
 
 ### Tyler
-- *Navigation Notebook*: A small notepad used to note navigation and trajectory info, shared by Tyler and Alex.
+- *Navigation Notebook* (648, 1940, 0): A small notepad used to note navigation and trajectory info, shared by Tyler and Alex.
 
 ## INTERVIEW RESPONSES
 

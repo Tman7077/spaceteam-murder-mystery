@@ -11,28 +11,28 @@ Jacie spent her evening tending to the geoponics bay, as she often does, ensurin
 ## CLUES & HINTS
 
 ### Alex
-- *Wristband*: A white wristband that matches Jacie's sterile suit.
+- *Wristband* (3738, 1734, 0): A white wristband that matches Jacie's sterile suit.
 
 ### Cade
-- *Mysterious Dirt*: A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod.
+- *Mysterious Dirt* (2918, 1434, 0): A patch of soil in the turf tracked in, similar to that in Jacie's geoponics pod.
 
 ### Colter
-- *Luscious Lock*: A tuft of blonde hair matching Jacie's hair color.
+- *Luscious Lock* (2506, 1041, 0): A tuft of blonde hair matching Jacie's hair color.
 
 ### Courtney
-- *Vine Clipping*: A fragment of vine from Jacie's garden stuffed in between the pages of the sketchbook.
+- *Vine Clipping* (959, 1968, 0): A fragment of vine from Jacie's garden stuffed in between the pages of the sketchbook.
 
 ### Ethan
-- *Vegetable Clump*: A clump of root vegetables from Jacie’s garden, unusually placed near the stovetop.
+- *Vegetable Clump* (714, 412, 0): A clump of root vegetables from Jacie’s garden, unusually placed near the stovetop.
 
 ### Jacie
-- *Blood-stained Leaf*: A trace of blood on a pineapple crown leaf clutched in Jacie's hand.
+- *Blood-stained Leaf* (1835, 1751, 0): A trace of blood on a pineapple crown leaf clutched in Jacie's hand.
 
 ### Olsen
-- *Dirty Track*: A dirty footprint, likely tracked in from Jacie's geoponics bay.
+- *Dirty Track* (0, 2015, 0): A dirty footprint, likely tracked in from Jacie's geoponics bay.
 
 ### Tyler
-- *Spilled Juice*: A spilled bit of pineapple juice spilled on the wiring, likely from Jacie's plant.
+- *Spilled Juice* (1941, 1234, 0): A spilled bit of pineapple juice spilled on the wiring, likely from Jacie's plant.
 
 ## INTERVIEW RESPONSES
 

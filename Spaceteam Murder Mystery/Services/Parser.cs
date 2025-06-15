@@ -102,10 +102,14 @@ public static partial class Parser
             else if (line.StartsWith('-'))
             {
                 string[] parts = line[2..].Split(": ");
-                string clueName = parts[0].Trim('*', ' ');
+                // string clueName = parts[0].Trim('*', ' ');
+                string[] nameAndCoords = parts[0].Split('(');
+                string clueName = nameAndCoords[0].Trim('*', ' ');
+                string[] coords = nameAndCoords[1].Trim(')').Split(',');
+                int[] xyz = [.. coords.Select(int.Parse)];
                 string clueDesc = parts[1].Trim();
 
-                clues.Add(new Clue(clueName, clueDesc, deadCharName, owner));
+                clues.Add(new Clue(clueName, clueDesc, deadCharName, owner, xyz));
             }
         }
         return clues;
