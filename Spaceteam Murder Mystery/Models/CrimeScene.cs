@@ -25,6 +25,6 @@ public class CrimeScene
         _clues = [];
         Victim = victim;
         State = gameState;
-        State.SelectClues(ref _clues, Victim);
+        State.SelectClues(_clues, Victim);
     }
 }

@@ -14,8 +14,7 @@ public class TestDMedium(ITestOutputHelper output)
     [MemberData(nameof(CharacterNames))]
     public void TestSelectClues(string guilty)
     {
-        IDifficulty medium = new DMedium();
-        TestDifficultyHelper.TestSelectClues([guilty], medium, MediumAsserts, Output);
+        TestDifficultyHelper.TestSelectClues([guilty], "Medium", MediumAsserts, Output);
     }
 
     /// <summary>

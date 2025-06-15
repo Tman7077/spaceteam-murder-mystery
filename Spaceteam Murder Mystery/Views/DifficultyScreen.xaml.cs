@@ -17,6 +17,10 @@ public partial class DifficultyScreen : UserControl
             return;
         }
         
-        _main.StartGame(button.Tag.ToString());
+        string? difficulty = button.Tag?.ToString();
+        if (string.IsNullOrEmpty(difficulty))
+        { throw new ArgumentException("Button does not have a valid difficulty tag.", button.Name); }
+        
+        _main.StartGame(difficulty);
     }
 }

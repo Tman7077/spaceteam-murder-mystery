@@ -7,37 +7,20 @@ using System.IO;
 /// </summary>
 public class GameState
 {
-    private IDifficulty _difficulty;
-    private CharacterSet _characters = new();
+    private readonly CharacterSet _characters = [];
     public CharacterSet Characters { get => _characters; }
+    public string Difficulty { get; set; }
 
     /// <summary>
     /// Initializes a GameState given a difficulty level.
     /// </summary>
     /// <param name="difficulty">The difficulty level on which to play the game.</param>
-    public GameState(IDifficulty difficulty)
+    public GameState(string difficulty)
     {
-        _difficulty = difficulty;
+        Difficulty = difficulty;
         LoadCharacters();
     }
 
-    #region Settings
-    /// <summary>
-    /// Gets the current difficulty level.
-    /// </summary>
-    /// <returns>The name of the difficulty.</returns>
-    public string GetDifficultyName()
-    { return _difficulty.GetType().Name[1..]; }
-
-    /// <summary>
-    /// Sets the difficulty level.
-    /// </summary>
-    /// <param name="difficulty">The difficulty level to which to change.</param>
-    public void ChangeDifficulty(IDifficulty difficulty)
-    { _difficulty = difficulty; }
-    #endregion
-
-    #region In-Game Actions
     /// <summary>
     /// Kills a character. If a name is not provided, kill a random character.
     /// </summary>
@@ -70,16 +53,14 @@ public class GameState
     /// </summary>
     /// <param name="clues">The set of clues to which to add.</param>
     /// <param name="victimName">The victim for whose crime scene to select clues.</param>
-    public void SelectClues(ref HashSet<Clue> clues, string victimName)
+    public void SelectClues(HashSet<Clue> clues, string victimName)
     {
         if (!Characters.ContainsKey(victimName))
         { throw new ArgumentException($"Character '{victimName}' does not exist."); }
 
-        _difficulty.SelectClues(ref clues, ref _characters, victimName);
+        Difficulties.All[Difficulty].SelectClues(clues, _characters, victimName);
     }
-    #endregion
-
-    #region Private Methods
+    
     private void LoadCharacters()
     {
         Characters.Clear();
@@ -93,7 +74,6 @@ public class GameState
             Characters[charName] = new Character(data);
         }
 
-        _difficulty.SelectGuilty(Characters);
+        Difficulties.All[Difficulty].SelectGuilty(Characters);
     }
-    #endregion
 }

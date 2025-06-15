@@ -14,8 +14,7 @@ public class TestDEasy(ITestOutputHelper output)
     [MemberData(nameof(CharacterNames))]
     public void TestSelectClues(string guilty)
     {
-        IDifficulty easy = new DEasy();
-        TestDifficultyHelper.TestSelectClues([guilty], easy, EasyAsserts, Output);
+        TestDifficultyHelper.TestSelectClues([guilty], "Easy", EasyAsserts, Output);
     }
 
     /// <summary>

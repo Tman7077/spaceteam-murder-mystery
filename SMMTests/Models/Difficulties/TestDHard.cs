@@ -14,14 +14,12 @@ public class TestDHard(ITestOutputHelper output)
     [MemberData(nameof(CharacterNames))]
     public void TestSelectClues(string guilty)
     {
-        IDifficulty hard = new DHard();
-
         HashSet<string[]> pairs = [];
         foreach (string accomplice in CharacterNames)
         { pairs.Add([guilty, accomplice]); }
 
         foreach (string[] pair in pairs)
-        { TestDifficultyHelper.TestSelectClues(pair, hard, HardAsserts, Output); }
+        { TestDifficultyHelper.TestSelectClues(pair, "Hard", HardAsserts, Output); }
     }
 
     /// <summary>

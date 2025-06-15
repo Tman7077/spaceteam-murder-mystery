@@ -39,7 +39,7 @@ public class DHard : IDifficulty
     /// <param name="clues">The empty set of clues to which to add.</param>
     /// <param name="chars">The current CharacterSet, containing innocence and life status.</param>
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
-    public void SelectClues(ref HashSet<Clue> clues, ref CharacterSet chars, string victim)
+    public static void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim)
     {
         List<string> guilty = chars.GetGuiltyNames();
         List<string> livingInnocent = chars.GetLivingNames(includeGuilty: false);

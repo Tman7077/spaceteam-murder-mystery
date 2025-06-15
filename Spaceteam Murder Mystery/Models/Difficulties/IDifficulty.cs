@@ -12,7 +12,7 @@ public interface IDifficulty
     /// <code>Hard: 2</code>
     /// </summary>
     /// <param name="chars"></param>
-    void SelectGuilty(CharacterSet chars)
+    static void SelectGuilty(CharacterSet chars)
     {
         string key = chars.Keys.ElementAt(new Random().Next(chars.Count));
         chars[key].IsGuilty = true;
@@ -29,5 +29,5 @@ public interface IDifficulty
     /// <param name="clues">The empty set of clues to which to add.</param>
     /// <param name="chars">The current CharacterSet, containing innocence and life status.</param>
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
-    void SelectClues(ref HashSet<Clue> clues, ref CharacterSet chars, string victim);
+    static abstract void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim);
 }

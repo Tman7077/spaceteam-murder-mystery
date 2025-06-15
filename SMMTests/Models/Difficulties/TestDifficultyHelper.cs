@@ -26,7 +26,7 @@ public static class TestDifficultyHelper
     /// <returns> A complete CharacterSet containing test characters with clues pointing to each other. </returns>
     public static CharacterSet MockCharSet()
     {
-        CharacterSet testChars = new();
+        CharacterSet testChars = [];
 
         // None of these values are actually used in the tests,
         // but they are required to create a CharacterData object.
@@ -73,7 +73,7 @@ public static class TestDifficultyHelper
     /// <param name="diff">A difficulty class based on the IDifficulty interface</param>
     /// <param name="difficultyAsserts">A method containing the actual assertions that depend on the difficulty</param>
     /// <param name="output">A test output to which to write for debugging</param>
-    public static void TestSelectClues(string[] guilty, IDifficulty diff, Action<HashSet<Clue>, CharacterSet> difficultyAsserts, ITestOutputHelper output)
+    public static void TestSelectClues(string[] guilty, string diff, Action<HashSet<Clue>, CharacterSet> difficultyAsserts, ITestOutputHelper output)
     {
         // This method is intended to be used in unit tests to ensure that the SelectClues
         // method behaves correctly across different scenarios and difficulties.
@@ -85,7 +85,6 @@ public static class TestDifficultyHelper
 
         CharacterSet characters = MockCharSet();
         HashSet<Clue> clues = [];
-        IDifficulty difficulty = diff;
 
         // Set the guilty characters' IsGuilty property in the CharacterSet
         foreach (string owner in guilty)
@@ -114,12 +113,12 @@ public static class TestDifficultyHelper
                 for (int j = 1; j <= 50; j++)
                 {
                     if (Debugger.IsAttached)
-                    { output.WriteLine(new string('-', 50) + $"\nIteration {j} for victim: {victim}\nDifficulty: {difficulty.GetType().Name[1..]} | Living Characters: {livingInnocent.Count - i - 1}\n" + new string('-', 50)); }
+                    { output.WriteLine(new string('-', 50) + $"\nIteration {j} for victim: {victim}\nDifficulty: {diff} | Living Characters: {livingInnocent.Count - i - 1}\n" + new string('-', 50)); }
 
                     // This try block is where the actual clue selection and assertions happen.
                     try
                     {
-                        difficulty.SelectClues(ref clues, ref characters, victim);
+                        Difficulties.All[diff].SelectClues(clues, characters, victim);
 
                         if (Debugger.IsAttached)
                         {
