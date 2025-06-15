@@ -7,7 +7,4 @@
     mc:Ignorable="d" 
     d:DesignWidth="854"
     d:DesignHeight="480">
-    <Grid Margin="20">
-        <StackPanel x:Name="SP" />
-    </Grid>
 </UserControl>

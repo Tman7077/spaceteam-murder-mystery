@@ -9,69 +9,75 @@ public partial class CrimeSceneScreen : UserControl
     public CrimeSceneScreen(MainWindow main, string victim)
     {
         InitializeComponent();
-        _main = main;
-        _scene = new CrimeScene(victim, State);
+        _main   = main;
+        _scene  = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
         LoadScreen();
     }
 
     public void Clue_Click(object sender, RoutedEventArgs e)
     {
-        var something = sender.GetType();
+        var something = sender.GetType().GetProperty("Tag")?.GetValue(sender, null) as string;
         MessageBox.Show($"{something} Clicked!");
     }
 
     private void LoadScreen()
     {
-        SP.Children.Clear();
-
-        Label label1 = new()
+        Canvas canvas = new()
         {
-            Content = $"Victim: {_victim.Name}",
-            Style = (Style)FindResource("ScreenHeader")
+            ClipToBounds = true,
+            Width        = 3840,
+            Height       = 2160
         };
 
-        Label label2 = new()
+        Viewbox viewbox = new()
         {
-            Content = $"Difficulty: {State.GetDifficultyName()}",
-            Style = (Style)FindResource("BodyText")
+            ClipToBounds        = true,
+            Stretch             = Stretch.Uniform,
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment   = VerticalAlignment.Stretch,
+            Child               = canvas
         };
 
-        SP.Children.Add(label1);
-        SP.Children.Add(label2);
+        Border root = new()
+        {
+            ClipToBounds = true,
+            Child        = viewbox
+        };
 
         Image sceneImage = new()
         {
-            Source = new BitmapImage(new Uri(_victim.CrimeSceneImagePath, UriKind.Absolute)),
-            Width = 320,
-            Height = 180,
-            Margin = new Thickness(10)
-        };
-        SP.Children.Add(sceneImage);
-
-        StackPanel cluesPanel = new()
-        {
-            Orientation = Orientation.Horizontal,
-            Margin = new Thickness(10)
+            Source  = new BitmapImage(new Uri(_victim.CrimeSceneImagePath, UriKind.Absolute)),
+            Stretch = Stretch.UniformToFill,
+            Width   = canvas.Width,
+            Height  = canvas.Height,
         };
 
-        foreach (Clue clue in _scene.Clues)
+        Canvas.SetLeft(sceneImage, 0);
+        Canvas.SetTop(sceneImage,  0);
+        canvas.Children.Add(sceneImage);
+
+        List<Clue> cluesByZ  =  [.. _scene.Clues];
+        cluesByZ.Sort((a, b) => a.Z.CompareTo(b.Z));
+
+        foreach (Clue clue in cluesByZ)
         {
             Image clueImage = new()
-            {
-                Source = new BitmapImage(new Uri(clue.ImagePath, UriKind.Absolute)),
-                Width = 30,
-                Height = 30,
-                Margin = new Thickness(5)
-            };
+            { Source = new BitmapImage(new Uri(clue.ImagePath, UriKind.Absolute)) };
+
             Button imageButton = new()
             {
                 Style = (Style)FindResource("ClueImageButton"),
                 Content = clueImage,
+                Tag = clue.Name
             };
             imageButton.Click += Clue_Click;
-            cluesPanel.Children.Add(imageButton);
+            
+            Canvas.SetLeft(imageButton, clue.X);
+            Canvas.SetTop(imageButton,  clue.Y);
+            canvas.Children.Add(imageButton);
         }
-        SP.Children.Add(cluesPanel);
+
+        Content = root;
     }
 }
