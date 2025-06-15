@@ -1,5 +1,6 @@
 namespace SMM.Models.Helpers;
 
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
 /// <summary>
@@ -7,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 /// Typical properties and methods for dictionaries are exposed,
 /// but some additional methods are available.
 /// </summary>
-public class CharacterSet
+public class CharacterSet : IEnumerable<KeyValuePair<string, Character>>
 {
     private readonly Dictionary<string, Character> _characters = [];
 
@@ -23,11 +24,15 @@ public class CharacterSet
         set => _characters[key] = value;
     }
 
-    // I don't think I need this one :).
-    // public void Add(string key, Character character) => _characters.Add(key, character);
     public void Clear() => _characters.Clear();
     public bool TryGetValue(string key, [MaybeNullWhen(false)] out Character character) => _characters.TryGetValue(key, out character);
     public bool ContainsKey(string key) => _characters.ContainsKey(key);
+
+    // Methods required to be recognized as a collection and initialized with [].
+    public void Add(string key, Character character) => _characters.Add(key, character);
+    public IEnumerator<KeyValuePair<string, Character>> GetEnumerator() => _characters.GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => _characters.GetEnumerator();
+
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     /// <summary>
