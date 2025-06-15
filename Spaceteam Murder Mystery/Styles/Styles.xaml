@@ -19,6 +19,11 @@
         <Setter Property="Foreground" Value="{StaticResource SMMWhite}"/>
     </Style>
 
+    <Style x:Key="LightTheme" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource SMMWhite}"/>
+        <Setter Property="Foreground" Value="{StaticResource SMMBlack}"/>
+    </Style>
+
     <!-- - - - - - - - - - - - - -->
     <!--       Other Styles      -->
     <!-- - - - - - - - - - - - - -->
