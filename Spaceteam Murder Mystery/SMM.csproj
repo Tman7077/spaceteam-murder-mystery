@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Audio\mystery-in-the-stars.mp3" />
+    <None Remove="Assets\Audio\title.mp3" />
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\Electrolize-Regular.ttf" />
     <None Remove="Assets\Images\nebula-rounded.ico" />
@@ -20,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Audio\mystery-in-the-stars.mp3" />
+    <Resource Include="Assets\Audio\title.mp3" />
     <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\Electrolize-Regular.ttf" />
     <Resource Include="Assets\Images\nebula-rounded.ico" />
