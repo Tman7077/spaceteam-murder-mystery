@@ -15,6 +15,7 @@ public class Character(CharacterData data)
     public string Motto { get; } = data.Motto;
     public string ProfileImagePath { get; } = data.ProfileImagePath;
     public string CrimeSceneImagePath { get; } = data.CrimeSceneImagePath;
+    public Direction Facing { get; } = data.Facing;
     public string Description { get; } = data.Description;
     public string DeathStory { get; } = data.DeathStory;
     public HashSet<Clue> Clues { get; } = data.Clues;
@@ -30,9 +31,7 @@ public class Character(CharacterData data)
     /// </summary>
     /// <param name="victim">The name of the victim for whom to retrieve a clue.</param>
     /// <returns>The relevant clue.</returns>
-    public Clue GetClue(string victim)
-    {
-        return Clues.FirstOrDefault(clue => clue.Victim == victim)
+    public Clue GetClue(string victim) =>
+        Clues.FirstOrDefault(clue => clue.Victim == victim)
             ?? throw new InvalidOperationException($"No clue found for victim '{victim}' in character '{ShortName}'.");
-    }
 }

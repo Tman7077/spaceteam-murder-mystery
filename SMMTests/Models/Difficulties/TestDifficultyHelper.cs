@@ -34,6 +34,7 @@ public static class TestDifficultyHelper
         string motto = "testMottoUnused";
         string profileImagePath = "testProfileImagePathUnused";
         string crimeSceneImagePath = "testCrimeSceneImagePathUnused";
+        Direction facing = Direction.Left;
         string description = "testDescriptionUnused";
         string deathStory = "testDeathStoryUnused";
         int[] xyz = [0, 0, 0];
@@ -53,7 +54,7 @@ public static class TestDifficultyHelper
                 testClueSet.Add(testClue);
             }
             CharacterData cData = new(
-                fullName, role, motto, profileImagePath, crimeSceneImagePath,
+                fullName, role, motto, profileImagePath, crimeSceneImagePath, facing,
                 description, deathStory, testClueSet, interviews, accusations
             );
             Character testChar = new(cData);

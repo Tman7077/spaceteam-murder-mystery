@@ -2,6 +2,8 @@
 
 *"Keep your eye on the ball, and you’ll never miss."*
 
+`Facing: Left`
+
 Cade's passion for baseball is as constant as Earth's gravity, and his love for the game has followed him into the stars. Whether he's pitching ideas or swinging into action, he’s the team player everyone can rely on. With his easy-going charm and knack for lightening the mood, Cade is the kind of person who always hits home. But even the best players sometimes strike out, and when the stakes rise, his calm exterior might just crack.
 
 ## DEATH

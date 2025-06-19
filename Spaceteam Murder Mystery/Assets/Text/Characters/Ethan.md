@@ -2,6 +2,8 @@
 
 *"Passion powers progress—why hold back?"*
 
+`Facing: Left`
+
 Ethan brings an unmatched energy to the Ardent Dawn. Always in motion, he balances athleticism with practical skills, navigating each day with a mix of competitive spirit and flair. Whether he's challenging someone to a friendly contest or stirring up a gourmet meal with casual ease, Ethan fills any room with momentum. His confidence and charisma make him easy to trust—perhaps too easy. In the closed environment of deep space, even the brightest presence can cast a long shadow.
 
 ## DEATH

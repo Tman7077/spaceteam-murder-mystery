@@ -2,6 +2,8 @@
 
 *"Improvement is the path to progress."*
 
+`Facing: Right`
+
 Introspective and attentive, Tyler’s mind is a web of algorithms and possibilities. He thrives on solving problems, from debugging code to outsmarting complex systems. The ship’s technology is both a playground and a challenge for him, and he’s always a step ahead in understanding its quirks. But being a step ahead can mean seeing what others miss—or hiding what others shouldn’t see. In space, every move is calculated, and Tyler’s next one might be the most critical.
 
 ## DEATH

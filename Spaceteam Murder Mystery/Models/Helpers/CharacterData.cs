@@ -8,6 +8,7 @@ namespace SMM.Models.Helpers;
 /// <param name="Motto">The character's flavor quote/slogan.</param>
 /// <param name="ProfileImagePath">The full path to the character's portrait.</param>
 /// <param name="CrimeSceneImagePath">The full path to the character's crime scene image.</param>
+/// <param name="Facing">The direction that the character's portrait is facing.</param>
 /// <param name="Description">The full description of/introduction for the character.</param>
 /// <param name="DeathStory">The full description of the character's death.</param>
 /// <param name="Clues">A set of Clues that link the character to each other character's death.</param>
@@ -20,6 +21,7 @@ public record CharacterData
     string Motto,
     string ProfileImagePath,
     string CrimeSceneImagePath,
+    Direction Facing,
     string Description,
     string DeathStory,
     HashSet<Clue> Clues,

@@ -53,6 +53,7 @@ public class TestParser(ITestOutputHelper output)
             Output.WriteLine($"         Motto : {character.Motto}");
             Output.WriteLine($"ProfileImgPath : {character.ProfileImagePath}");
             Output.WriteLine($"     CSImgPath : {character.CrimeSceneImagePath}");
+            Output.WriteLine($"     Direction : {character.Facing}");
             Output.WriteLine($"   Description : {character.Description}");
             Output.WriteLine($"    DeathStory : {character.DeathStory}");
 

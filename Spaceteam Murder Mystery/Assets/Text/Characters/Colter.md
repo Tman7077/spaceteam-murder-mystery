@@ -2,6 +2,8 @@
 
 *"The higher you climb, the farther you can see."*
 
+`Facing: Left`
+
 Colter’s towering frame and projecting confidence make him a natural presence in any room—or ship. His resourcefulness and knack for problem-solving are matched only by his dry wit. He’s a curious blend of studious and spontaneous, often experimenting with chemicals or exploring new ideas for the sheer thrill of it. Colter’s laid-back nature draws people in, but his occasional bursts of loud enthusiasm remind everyone that there’s always more to him than meets the eye.
 
 ## DEATH
