@@ -1,4 +1,3 @@
-
 namespace SMM.Models.Helpers;
 
 public readonly struct Direction
@@ -20,8 +19,7 @@ public readonly struct Direction
 
     public static bool operator !=(Direction left, Direction right) => !(left == right);
 
-    public static Direction operator !(Direction dir) =>
-        dir.Dir == "Left" ? Right : Left;
+    public static Direction operator !(Direction dir) => dir == "Left" ? Right : Left;
 
     public static implicit operator string(Direction d) => d.Dir;
 }
