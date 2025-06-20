@@ -10,6 +10,7 @@ public class GameState
     private readonly CharacterSet _characters = [];
     
     public CharacterSet Characters { get => _characters; }
+    public string LastVictim { get; private set; } = string.Empty;
     public string Difficulty { get; set; }
 
     /// <summary>
@@ -45,7 +46,8 @@ public class GameState
         // Kill the character and return their short name.
         Character character =  Characters[name];
         character.IsAlive = false;
-        return character.ShortName;
+        LastVictim = name;
+        return LastVictim;
     }
 
     /// <summary>
