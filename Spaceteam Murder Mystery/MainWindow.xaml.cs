@@ -4,8 +4,8 @@ using System.ComponentModel;
 
 public partial class MainWindow : Window
 {
-    private readonly Dictionary<string, Func<UserControl>> _viewMap;
     private readonly WindowHandler _windowHandler;
+    private UserControl? _prevScreen;
     private GameState? _gameState;
 
     public GameState State
@@ -19,26 +19,15 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         _windowHandler = new(this);
-        
+
         bool fullscreen = AppSettings.Load(_windowHandler);
         if (fullscreen)
         { SourceInitialized += ImmediateFullScreen; }
 
-        Activated   += _windowHandler.MainWindow_Activated;
+        Activated += _windowHandler.MainWindow_Activated;
         Deactivated += _windowHandler.MainWindow_Deactivated;
 
-        _viewMap = new()
-        {
-            { "Title",      () => new TitleScreen(this) },
-            { "Settings",   () => new SettingsScreen(this) },
-            { "Difficulty", () => new DifficultyScreen(this) },
-            { "NewGame",    () => new GameScreen(this) },
-            { "Interview",  () => new CharacterSelectionScreen(this, InterviewType.Interview) },
-            { "Accusation", () => new CharacterSelectionScreen(this, InterviewType.Accusation) },
-            { "Voting",     () => new CharacterSelectionScreen(this, "Voting") }
-        };
-
-        ChangeView("Title");
+        ChangeView(new Screen.Title());
     }
 
     public void StartGame(string difficulty)
@@ -47,27 +36,26 @@ public partial class MainWindow : Window
         { throw new ArgumentException($"Unknown difficulty: {difficulty}"); }
 
         State = new GameState(difficulty);
-        ChangeView("NewGame");
+        ChangeView(new Screen.NewGame());
     }
 
-    public void ChangeView(string viewName)
+    public void ChangeView(Screen screen)
     {
-        if (_viewMap.TryGetValue(viewName, out Func<UserControl>? createView))
-        { MainContent.Content = createView(); }
-        else throw new ArgumentException($"Unknown view: {viewName}", nameof(viewName));
+        _prevScreen = View.Request(this, screen)();
+        MainContent.Content = _prevScreen;
     }
 
     public void LoadCrimeSceneFor(string victimName) =>
-        MainContent.Content = new CrimeSceneScreen(this, victimName);
+        ChangeView(new Screen.CrimeScene(victimName));
 
     public void LoadInterviewFor(string interviewee) =>
-        MainContent.Content = new InterviewScreen(this, InterviewType.Interview, interviewee, State.LastVictim);
+        ChangeView(new Screen.InspectionChar(InterviewType.Interview, interviewee, State.LastVictim));
 
     public void LoadAccusationFor(string interviewee) =>
-        MainContent.Content = new InterviewScreen(this, InterviewType.Accusation, interviewee, State.LastVictim);
+        ChangeView(new Screen.InspectionChar(InterviewType.Accusation, interviewee, State.LastVictim));
 
     public void LoadClueInspectionFor(Clue clue) =>
-        MainContent.Content = new ClueScreen(this, clue);
+        ChangeView(new Screen.InspectionClue(clue));
 
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
         _windowHandler.ToggleFullScreen();

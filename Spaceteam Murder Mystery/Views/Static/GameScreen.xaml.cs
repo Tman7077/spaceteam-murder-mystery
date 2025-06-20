@@ -14,8 +14,8 @@ public partial class GameScreen : UserControl
     }
 
     private void Kill_Click(object sender, RoutedEventArgs e) =>
-        _main.LoadCrimeSceneFor(State.KillCharacter("Courtney"));
+        _main.LoadCrimeSceneFor(State.KillCharacter());
         
     private void Talk_Click(object sender, RoutedEventArgs e) =>
-        _main.ChangeView(InterviewType.Interview);
+        _main.ChangeView(new Screen.Selection(InterviewType.Interview));
 }
