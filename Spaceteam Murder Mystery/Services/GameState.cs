@@ -44,9 +44,9 @@ public class GameState
         { name = livingInnocents[new Random().Next(livingInnocents.Count)]; }
 
         // Kill the character and return their short name.
-        Character character =  Characters[name];
-        character.IsAlive = false;
-        LastVictim = name;
+        Character character = Characters[name];
+        character.IsAlive   = false;
+        LastVictim          = character.ShortName;
         return LastVictim;
     }
 

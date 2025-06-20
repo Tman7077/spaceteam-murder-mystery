@@ -64,7 +64,7 @@ public partial class CharacterSelectionScreen : UserControl
         {
             Style   = (Style)FindResource("CornerCutButton"),
             Content = _labelContent,
-            Tag     = character.Name
+            Tag     = character.ShortName
         };
         selectButton.Click += Interview_Click;
         selectButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
