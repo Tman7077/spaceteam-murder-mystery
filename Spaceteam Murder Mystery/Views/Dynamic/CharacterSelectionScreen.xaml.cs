@@ -7,15 +7,14 @@ public partial class CharacterSelectionScreen : UserControl
 
     private GameState State { get => _main.State; }
     
-    public CharacterSelectionScreen(MainWindow main, string type)
+    public CharacterSelectionScreen(MainWindow main, InterviewType type)
     {
         InitializeComponent();
         _main = main;
         _labelContent = type switch
         {
-            "Interview"  => "Interview",
-            "Accusation" => "Accuse",
-            "Voting"     => "Vote Out",
+            InterviewType.Interview  => "Interview",
+            InterviewType.Accusation => "Accuse",
             _ => throw new ArgumentException($"Unknown type: {type}")
         };
         DisplayCharacters();

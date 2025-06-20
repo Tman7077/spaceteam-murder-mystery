@@ -37,15 +37,15 @@ public class Character(CharacterData data)
     
     public string GetResponse(bool actGuilty, InterviewType type, string victim)
     {
-        return (actGuilty, (string)type) switch
+        return (actGuilty, type) switch
         {
-            (false, "Interview")  => Interviews.GetInnocentResponse(victim),
-            (true,  "Interview")  => Interviews.GetGuiltyResponse(victim),
-            (false, "Accusation") => Accusations.GetInnocentResponse(victim),
-            (true,  "Accusation") => Accusations.GetGuiltyResponse(victim),
+            (false, InterviewType.Interview)  => Interviews.GetInnocentResponse(victim),
+            (true,  InterviewType.Interview)  => Interviews.GetGuiltyResponse(victim),
+            (false, InterviewType.Accusation) => Accusations.GetInnocentResponse(victim),
+            (true,  InterviewType.Accusation) => Accusations.GetGuiltyResponse(victim),
             _ => throw
                 new ArgumentException(
-                    $"Invalid interviewee (act) guilty state or interview type." +
+                    $"Invalid interviewee (act) guilty state or interview type. " +
                     $"{Name}, {actGuilty}, {type}"
                 ),
         };
