@@ -43,4 +43,7 @@ public class DEasy : IDifficulty
             clues.Add(chars[name].GetClue(victim));
         }
     }
+
+    public static string GetResponse(Character interviewee, InterviewType type, string victim) =>
+        interviewee.GetResponse(interviewee.IsGuilty, type, victim);
 }

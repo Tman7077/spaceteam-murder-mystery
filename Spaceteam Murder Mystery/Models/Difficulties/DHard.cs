@@ -17,23 +17,13 @@ public class DHard : IDifficulty
         chars[key1].IsGuilty = true;
         chars[key2].IsGuilty = true;
     }
-    
+
     /// <summary>
     /// Selects clues for the easy difficulty.
-    /// Assuming everyone is alive, this will select:
-    /// <para>
-    /// • <b>All</b> clues from living innocent characters;
-    /// </para>
-    /// <para>
-    /// • <b>1</b> clue from the victim's own character; and
-    /// </para>
-    /// <para>
-    /// • <b>1</b> clue from each guilty character <i>(with a 50% chance each)</i>.
-    /// </para>
+    /// Assuming everyone is alive, this will select <b>all</b> clues from living innocent characters.
     /// <para>
     /// If not all characters are alive,
-    /// it will select as many clues as there are living innocent characters
-    /// (in addition to the random possible selections above).
+    /// it will select as many clues as there are living innocent characters.
     /// </para>
     /// </summary>
     /// <param name="clues">The empty set of clues to which to add.</param>
@@ -41,28 +31,13 @@ public class DHard : IDifficulty
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
     public static void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim)
     {
-        List<string> guilty = chars.GetGuiltyNames();
-        List<string> livingInnocent = chars.GetLivingNames(includeGuilty: false);
-        Random r = new();
-
-        // Add the victim's own clue into the mix
-        clues.Add(chars[victim].GetClue(victim));
-
-        foreach (string guiltyChar in guilty)
+        foreach (Character character in chars.Values)
         {
-            // 50% chance to include a guilty clue
-            bool maybe = r.Next(0, 2) != 0;
-            if (maybe) { clues.Add(chars[guiltyChar].GetClue(victim)); }
-        }
-
-        // Add all clues from living innocent characters.
-        int num = livingInnocent.Count;
-        for (int i = 0; i < num; i++)
-        {
-            int index = r.Next(0, livingInnocent.Count);
-            string name = livingInnocent[index];
-            livingInnocent.Remove(name);
-            clues.Add(chars[name].GetClue(victim));
+            if (character.IsAlive)
+            { clues.Add(character.GetClue(victim)); }
         }
     }
+
+    public static string GetResponse(Character interviewee, InterviewType type, string victim) =>
+        interviewee.GetResponse(new Random().Next(2) == 0, type, victim);
 }

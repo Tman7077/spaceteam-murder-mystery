@@ -34,4 +34,20 @@ public class Character(CharacterData data)
     public Clue GetClue(string victim) =>
         Clues.FirstOrDefault(clue => clue.Victim == victim)
             ?? throw new InvalidOperationException($"No clue found for victim '{victim}' in character '{ShortName}'.");
+    
+    public string GetResponse(bool actGuilty, InterviewType type, string victim)
+    {
+        return (actGuilty, (string)type) switch
+        {
+            (false, "Interview")  => Interviews.GetInnocentResponse(victim),
+            (true,  "Interview")  => Interviews.GetGuiltyResponse(victim),
+            (false, "Accusation") => Accusations.GetInnocentResponse(victim),
+            (true,  "Accusation") => Accusations.GetGuiltyResponse(victim),
+            _ => throw
+                new ArgumentException(
+                    $"Invalid interviewee (act) guilty state or interview type." +
+                    $"{Name}, {actGuilty}, {type}"
+                ),
+        };
+    }
 }

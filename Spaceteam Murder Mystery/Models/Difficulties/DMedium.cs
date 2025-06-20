@@ -53,4 +53,11 @@ public class DMedium : IDifficulty
             clues.Add(chars[name].GetClue(victim));
         }
     }
+
+    public static string GetResponse(Character interviewee, InterviewType type, string victim)
+    {
+        bool flip = new Random().Next(3) == 0;
+        bool actGuilty = interviewee.IsGuilty ^ flip; // 1/3 chance to rspond with wrong guilt state
+        return interviewee.GetResponse(actGuilty, type, victim);
+    }
 }

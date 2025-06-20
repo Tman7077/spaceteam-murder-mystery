@@ -17,7 +17,7 @@ public interface IDifficulty
         string key = chars.Keys.ElementAt(new Random().Next(chars.Count));
         chars[key].IsGuilty = true;
     }
-    
+
     /// <summary>
     /// Selects clues to fill a crime scene for the given victim character.
     /// The method of clue selection is determined by the difficulty level.
@@ -30,4 +30,6 @@ public interface IDifficulty
     /// <param name="chars">The current CharacterSet, containing innocence and life status.</param>
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
     static abstract void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim);
+
+    static abstract string GetResponse(Character interviewee, InterviewType type, string victim);
 }
