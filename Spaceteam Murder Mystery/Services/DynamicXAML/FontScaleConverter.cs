@@ -2,7 +2,7 @@ namespace SMM.Services.DynamicXAML;
 
 public class FontScaleConverter : IMultiValueConverter
 {
-    public double BaseFontSize { get; set; } = 10.0;       // logical "default" font size
+    public double BaseFontSize { get; set; } = 14.0;       // logical "default" font size
     public double DesignWidth { get; set; } = 854.0;       // base window width for scaling
     public double MaxHeightProportion { get; set; } = 0.1; // max 10% of window height
 
