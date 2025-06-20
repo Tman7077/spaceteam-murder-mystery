@@ -6,6 +6,7 @@ using SMM.Models.Helpers;
 using System.Diagnostics;
 using Xunit.Abstractions;
 
+
 public static class TestDifficultyHelper
 {
     // Hard-coded names of the characters, full and short names
@@ -14,6 +15,7 @@ public static class TestDifficultyHelper
         "Ethan Aurora", "Jacie Starwalker", "Olsen Horizon", "Tyler Bytewell"
     ];
     private static readonly string[] _shortCharacterNames = [.. _fullCharacterNames.Select(name => name.Split()[0])];
+    public delegate void DifficultyAssertions(HashSet<Clue> clues, CharacterSet characters);
 
     // Expose the short character names as TheoryData for use in tests
     public static TheoryData<string> ShortCharacterNames { get; } = [.. _shortCharacterNames];
@@ -68,13 +70,13 @@ public static class TestDifficultyHelper
     /// Tests the SelectClues method of a given difficulty by simulating various scenarios.
     /// It iterates through all combinations of guilty characters and victims,
     /// ensuring that the clues selected are valid according to the difficulty's rules.
-    /// Most of the assertions are made in the Action param <b>difficultyAsserts</b>.
+    /// Most of the assertions are made in the DifficultyAssertions parameter <b>asserts</b>.
     /// </summary>
     /// <param name="guilty">One or more characters to mark as guilty</param>
     /// <param name="diff">A difficulty class based on the IDifficulty interface</param>
-    /// <param name="difficultyAsserts">A method containing the actual assertions that depend on the difficulty</param>
+    /// <param name="asserts">A method containing the actual assertions that depend on the difficulty</param>
     /// <param name="output">A test output to which to write for debugging</param>
-    public static void TestSelectClues(string[] guilty, string diff, Action<HashSet<Clue>, CharacterSet> difficultyAsserts, ITestOutputHelper output)
+    public static void TestSelectClues(string[] guilty, string diff, DifficultyAssertions asserts, ITestOutputHelper output)
     {
         // This method is intended to be used in unit tests to ensure that the SelectClues
         // method behaves correctly across different scenarios and difficulties.
@@ -114,7 +116,15 @@ public static class TestDifficultyHelper
                 for (int j = 1; j <= 50; j++)
                 {
                     if (Debugger.IsAttached)
-                    { output.WriteLine(new string('-', 50) + $"\nIteration {j} for victim: {victim}\nDifficulty: {diff} | Living Characters: {livingInnocent.Count - i - 1}\n" + new string('-', 50)); }
+                    {
+                        output.WriteLine(
+                            new string('-', 50) +
+                            $"\nIteration {j} for victim: {victim}\n" +
+                            $"Difficulty: {diff} | " +
+                            $"Living Characters: {livingInnocent.Count - i - 1}\n" +
+                            new string('-', 50)
+                        );
+                    }
 
                     // This try block is where the actual clue selection and assertions happen.
                     try
@@ -137,7 +147,7 @@ public static class TestDifficultyHelper
                         // -------------------------
                         // This is  where the actual assertions are made
                         // -------------------------
-                        difficultyAsserts(clues, characters);
+                        asserts(clues, characters);
 
                         // After the assertions, clear the clues for the next iteration.
                         clues.Clear();

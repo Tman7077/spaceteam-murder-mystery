@@ -1,7 +1,6 @@
 namespace SMMTests.Models.Difficulties;
 
 using SMM.Models;
-using SMM.Models.Difficulties;
 using SMM.Models.Helpers;
 using Xunit.Abstractions;
 
