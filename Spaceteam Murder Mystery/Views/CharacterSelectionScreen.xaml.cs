@@ -13,9 +13,9 @@ public partial class CharacterSelectionScreen : UserControl
         _main = main;
         _labelContent = type switch
         {
-            "Interviews" => "Interview",
-            "Accusations" => "Accuse",
-            "Voting" => "Vote Out",
+            "Interview"  => "Interview",
+            "Accusation" => "Accuse",
+            "Voting"     => "Vote Out",
             _ => throw new ArgumentException($"Unknown type: {type}")
         };
         DisplayCharacters();
@@ -55,24 +55,23 @@ public partial class CharacterSelectionScreen : UserControl
 
         Label nameLabel = new()
         {
-            Content = character.Name,
-            Style = (Style)FindResource("BodyText"),
-            Foreground = (Brush)FindResource("SMMWhite"),
-            HorizontalAlignment = HorizontalAlignment.Center
+            Style      = (Style)FindResource("BodyTextLabel"),
+            Content    = character.Name,
+            Foreground = (Brush)FindResource("SMMWhite")
         };
 
         Button selectButton = new()
         {
+            Style   = (Style)FindResource("CornerCutButton"),
             Content = _labelContent,
-            Style = (Style)FindResource("CornerCutButton"),
-            Tag = character.Name
+            Tag     = character.Name
         };
         selectButton.Click += Interview_Click;
         selectButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
         selectButton.SetBinding(MarginProperty, ParentBasedMarginExtension.GetBinding(0.1));
 
-        Grid.SetRow(portrait, 0);
-        Grid.SetRow(nameLabel, 1);
+        Grid.SetRow(portrait,     0);
+        Grid.SetRow(nameLabel,    1);
         Grid.SetRow(selectButton, 2);
 
         charGrid.Children.Add(portrait);
