@@ -17,5 +17,5 @@ public partial class GameScreen : UserControl
         _main.LoadCrimeSceneFor(State.KillCharacter("Courtney"));
         
     private void Talk_Click(object sender, RoutedEventArgs e) =>
-        _main.ChangeView("Interviews");
+        _main.ChangeView(InterviewType.Interview);
 }
