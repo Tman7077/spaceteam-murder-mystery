@@ -1,4 +1,4 @@
-namespace SMM.Views;
+namespace SMM.Views.Dynamic;
 
 public partial class CrimeSceneScreen : UserControl
 {

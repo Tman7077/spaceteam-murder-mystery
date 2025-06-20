@@ -1,4 +1,4 @@
-namespace SMM.Views;
+namespace SMM.Views.Static;
 
 public partial class TitleScreen : UserControl
 {

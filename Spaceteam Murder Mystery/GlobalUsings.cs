@@ -4,7 +4,8 @@ global using SMM.Models.Difficulties;
 global using SMM.Models.Helpers;
 global using SMM.Services;
 global using SMM.Services.DynamicXAML;
-global using SMM.Views;
+global using SMM.Views.Dynamic;
+global using SMM.Views.Static;
 
 // Other namespaces
 global using System.Globalization;

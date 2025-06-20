@@ -1,4 +1,4 @@
-﻿namespace SMM.Views;
+﻿namespace SMM.Views.Dynamic;
 
 public abstract partial class InspectionScreen : UserControl
 {
