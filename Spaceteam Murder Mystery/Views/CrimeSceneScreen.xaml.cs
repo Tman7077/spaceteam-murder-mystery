@@ -19,8 +19,12 @@ public partial class CrimeSceneScreen : UserControl
 
     public void Clue_Click(object sender, RoutedEventArgs e)
     {
-        var itemName = sender.GetType().GetProperty("Tag")?.GetValue(sender, null) as string;
-        MessageBox.Show($"{itemName} Clicked!");
+        string? itemName = sender.GetType().GetProperty("Tag")?.GetValue(sender) as string;
+
+        if (_scene.Clues.FirstOrDefault(c => c.Name == itemName) is not Clue clue)
+        { return; }
+
+        _main.LoadClueInspectionFor(clue);
     }
 
     private void LoadScreen()
@@ -69,9 +73,9 @@ public partial class CrimeSceneScreen : UserControl
 
             Button imageButton = new()
             {
-                Style = (Style)FindResource("ClueImageButton"),
+                Style   = (Style)FindResource("ClueImageButton"),
                 Content = clueImage,
-                Tag = clue.Name
+                Tag     = clue.Name
             };
             imageButton.Click += Clue_Click;
             
