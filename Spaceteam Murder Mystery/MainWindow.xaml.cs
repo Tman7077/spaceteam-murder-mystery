@@ -29,13 +29,13 @@ public partial class MainWindow : Window
 
         _viewMap = new()
         {
-            { "Title",       () => new TitleScreen(this) },
-            { "Settings",    () => new SettingsScreen(this) },
-            { "Difficulty",  () => new DifficultyScreen(this) },
-            { "NewGame",     () => new GameScreen(this) },
-            { "Interviews",  () => new CharacterSelectionScreen(this, "Interviews") },
-            { "Accusations", () => new CharacterSelectionScreen(this, "Accusations") },
-            { "Voting",      () => new CharacterSelectionScreen(this, "Voting") }
+            { "Title",      () => new TitleScreen(this) },
+            { "Settings",   () => new SettingsScreen(this) },
+            { "Difficulty", () => new DifficultyScreen(this) },
+            { "NewGame",    () => new GameScreen(this) },
+            { "Interview",  () => new CharacterSelectionScreen(this, InterviewType.Interview) },
+            { "Accusation", () => new CharacterSelectionScreen(this, InterviewType.Accusation) },
+            { "Voting",     () => new CharacterSelectionScreen(this, "Voting") }
         };
 
         ChangeView("Title");
@@ -61,10 +61,13 @@ public partial class MainWindow : Window
         MainContent.Content = new CrimeSceneScreen(this, victimName);
 
     public void LoadInterviewFor(string interviewee) =>
-        MainContent.Content = new InterviewScreen(this, interviewee);
+        MainContent.Content = new InterviewScreen(this, InterviewType.Interview, interviewee, State.LastVictim);
+
+    public void LoadAccusationFor(string interviewee) =>
+        MainContent.Content = new InterviewScreen(this, InterviewType.Accusation, interviewee, State.LastVictim);
 
     public void LoadClueInspectionFor(Clue clue) =>
-        MainContent.Content = new ClueInspectionScreen(this, clue);
+        MainContent.Content = new ClueScreen(this, clue);
 
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
         _windowHandler.ToggleFullScreen();
