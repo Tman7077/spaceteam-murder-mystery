@@ -6,14 +6,14 @@ public static class View
     {
         return screen switch
         {
-            Screen.CrimeScene     s => () => new CrimeSceneScreen(window, s.VictimName),
-            Screen.Difficulty       => () => new DifficultyScreen(window),
-            Screen.InspectionChar s => () => new InterviewScreen(window, s.Type, s.Interviewee, s.Victim),
-            Screen.InspectionClue s => () => new ClueScreen(window, s.Clue),
-            Screen.NewGame          => () => new GameScreen(window),
-            Screen.Selection      s => () => new CharacterSelectionScreen(window, s.Type),
-            Screen.Settings         => () => new SettingsScreen(window),
-            Screen.Title            => () => new TitleScreen(window),
+            Screen.CrimeScene  s => () => new CrimeSceneScreen(window, s.VictimName),
+            Screen.Difficulty    => () => new DifficultyScreen(window),
+            Screen.InspectChar s => () => new InterviewScreen(window, s.Type, s.Interviewee, s.Victim),
+            Screen.InspectClue s => () => new ClueScreen(window, s.Clue),
+            Screen.NewGame       => () => new GameScreen(window),
+            Screen.Selection   s => () => new CharacterSelectionScreen(window, s.Type),
+            Screen.Settings      => () => new SettingsScreen(window),
+            Screen.Title         => () => new TitleScreen(window),
             _ => throw new ArgumentException($"Unknown view {screen}.", nameof(screen))
         };
     }
