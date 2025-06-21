@@ -20,7 +20,7 @@ public partial class MainWindow : Window
 
         _windowHandler = new(this);
 
-        bool fullscreen = AppSettings.Load(_windowHandler);
+        AppSettings.Load(_windowHandler, out bool fullscreen);
         if (fullscreen)
         { SourceInitialized += ImmediateFullScreen; }
 
@@ -49,22 +49,22 @@ public partial class MainWindow : Window
         ChangeView(new Screen.CrimeScene(victimName));
 
     public void LoadInterviewFor(string interviewee) =>
-        ChangeView(new Screen.InspectionChar(InterviewType.Interview, interviewee, State.LastVictim));
+        ChangeView(new Screen.InspectChar(InterviewType.Interview, interviewee, State.LastVictim));
 
     public void LoadAccusationFor(string interviewee) =>
-        ChangeView(new Screen.InspectionChar(InterviewType.Accusation, interviewee, State.LastVictim));
+        ChangeView(new Screen.InspectChar(InterviewType.Accusation, interviewee, State.LastVictim));
 
     public void LoadClueInspectionFor(Clue clue) =>
-        ChangeView(new Screen.InspectionClue(clue));
-
-    private void ImmediateFullScreen(object? sender, EventArgs e) =>
-        _windowHandler.ToggleFullScreen();
+        ChangeView(new Screen.InspectClue(clue));
 
     public void MainWindow_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.F11)
         { _windowHandler.ToggleFullScreen(); }
     }
+    
+    private void ImmediateFullScreen(object? sender, EventArgs e) =>
+        _windowHandler.ToggleFullScreen();
     
     protected override void OnClosing(CancelEventArgs e)
     {

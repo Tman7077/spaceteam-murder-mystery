@@ -36,21 +36,27 @@ public static class AppSettings
     /// Loads the window state, size, and position from the application settings.
     /// </summary>
     /// <param name="handler">The window handler to which to apply settings.</param>
-    public static bool Load(WindowHandler handler)
+    public static void Load(WindowHandler handler, out bool fullscreen)
     {
-        if (Settings.Default.IsFullScreen) return true;
+        if (Settings.Default.IsFullScreen)
+        {
+            fullscreen = true;
+            return;
+        }
+        
+        fullscreen = false;
 
         Window window = handler.Win;
 
-        if (Settings.Default.WindowWidth  > 0 &&
+        if (Settings.Default.WindowWidth > 0 &&
             Settings.Default.WindowHeight > 0)
         {
-            window.Width  = Settings.Default.WindowWidth;
+            window.Width = Settings.Default.WindowWidth;
             window.Height = Settings.Default.WindowHeight;
         }
 
         window.Left = Settings.Default.WindowLeft;
-        window.Top  = Settings.Default.WindowTop;
+        window.Top = Settings.Default.WindowTop;
 
         if (Enum.TryParse(Settings.Default.WindowState, out WindowState state))
         { window.WindowState = state; }
@@ -60,7 +66,5 @@ public static class AppSettings
 
         if (Enum.TryParse(Settings.Default.ResizeMode, out ResizeMode resize))
         { window.ResizeMode = resize; }
-
-        return false;
     }
 }
