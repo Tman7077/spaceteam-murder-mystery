@@ -13,7 +13,12 @@ public partial class InterviewScreen : InspectionScreen
         _type = type;
         _interviewee = character;
         _victim = victim;
-        _dir = !character.Facing;
+        _dir = character.Facing switch 
+        {
+            Direction.Left  => Direction.Right,
+            Direction.Right => Direction.Left,
+            _ => throw new ArgumentException($"Unknown character facing direction: {character.Facing}")
+        };
         LoadScreen();
     }
 
