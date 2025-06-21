@@ -62,6 +62,7 @@
     <!-- Standard styled button with cut corners -->
     <Style x:Key="CornerCutButton" TargetType="{x:Type Button}" BasedOn="{StaticResource CornerCutBase}">
         <Setter Property="Height" Value="{dynamic:AspectRatio 0.33}"/>
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <!-- Standard styled label with cut corners -->
