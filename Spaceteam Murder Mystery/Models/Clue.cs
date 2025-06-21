@@ -8,11 +8,11 @@ using System.IO;
 /// </summary>
 public class Clue
 {
-    public string Name { get; }
+    public string Name        { get; }
     public string Description { get; }
-    public string Victim { get; }
-    public string Owner { get; }
-    public string ImagePath { get; }
+    public string Victim      { get; }
+    public string Owner       { get; }
+    public string ImagePath   { get; }
     public int X { get; }
     public int Y { get; }
     public int Z { get; }
@@ -27,10 +27,13 @@ public class Clue
     /// <param name="owner">The character this clue implicates.</param>
     public Clue(string clueName, string description, string victim, string owner, int[] xyz)
     {
-        Name = clueName;
+        Validator.ValidateShortCharacterName(victim);
+        Validator.ValidateShortCharacterName(owner);
+
+        Name        = clueName;
         Description = description;
-        Victim = victim;
-        Owner = owner;
+        Victim      = victim;
+        Owner       = owner;
         X = xyz[0];
         Y = xyz[1];
         Z = xyz[2];

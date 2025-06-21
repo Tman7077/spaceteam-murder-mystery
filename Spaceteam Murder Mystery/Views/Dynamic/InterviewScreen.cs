@@ -7,10 +7,8 @@ public partial class InterviewScreen : InspectionScreen
     private readonly string _victim;
     public InterviewScreen(MainWindow main, InterviewType type, string interviewee, string victim) : base(main)
     {
-        if (!main.State.Characters.ContainsKey(interviewee))
-        { throw new ArgumentException($"Interviewee '{interviewee}' not found in game data."); }
-        if (!main.State.Characters.ContainsKey(victim))
-        { throw new ArgumentException($"Victim '{victim}' not found in game data."); }
+        Validator.ValidateCharacter(interviewee, main.State);
+        Validator.ValidateCharacter(victim, main.State);
         
         Character character = main.State.Characters[interviewee];
         _type = type;

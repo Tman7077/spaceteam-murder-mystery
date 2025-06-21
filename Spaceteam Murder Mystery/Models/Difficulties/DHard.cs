@@ -31,6 +31,8 @@ public class DHard : IDifficulty
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
     public static void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim)
     {
+        Validator.ValidateShortCharacterName(victim);
+
         foreach (Character character in chars.Values)
         {
             if (character.IsAlive)
@@ -38,6 +40,9 @@ public class DHard : IDifficulty
         }
     }
 
-    public static string GetResponse(Character interviewee, InterviewType type, string victim) =>
-        interviewee.GetResponse(new Random().Next(2) == 0, type, victim);
+    public static string GetResponse(Character interviewee, InterviewType type, string victim)
+    {
+        Validator.ValidateShortCharacterName(victim);
+        return interviewee.GetResponse(new Random().Next(2) == 0, type, victim);
+    }
 }

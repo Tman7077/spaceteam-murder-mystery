@@ -25,6 +25,8 @@ public class DEasy : IDifficulty
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
     public static void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim)
     {
+        Validator.ValidateShortCharacterName(victim);
+
         List<string> guilty = chars.GetGuiltyNames();
         List<string> livingInnocent = chars.GetLivingNames(includeGuilty: false);
         Random r = new();
@@ -44,6 +46,9 @@ public class DEasy : IDifficulty
         }
     }
 
-    public static string GetResponse(Character interviewee, InterviewType type, string victim) =>
-        interviewee.GetResponse(interviewee.IsGuilty, type, victim);
+    public static string GetResponse(Character interviewee, InterviewType type, string victim)
+    {
+        Validator.ValidateShortCharacterName(victim);
+        return interviewee.GetResponse(interviewee.IsGuilty, type, victim);
+    }
 }

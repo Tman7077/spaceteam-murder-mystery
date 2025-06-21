@@ -40,6 +40,8 @@ public class InterviewSet
     
     private ResponseSet Get(string characterName)
     {
+        Validator.ValidateShortCharacterName(characterName);
+        
         if (!_responses.TryGetValue(characterName, out var responses))
         { throw new KeyNotFoundException($"Character {characterName} not found in the interview set."); }
         return responses;

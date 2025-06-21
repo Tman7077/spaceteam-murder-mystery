@@ -56,8 +56,7 @@ public class GameState
             _ => throw new ArgumentException($"Unknown victim type: {victim.GetType()}")
         };
 
-        if (!Characters.ContainsKey(name))
-        { throw new ArgumentException($"Character '{name}' does not exist in game data."); }
+        Validator.ValidateCharacter(name, this);
 
         // Kill the character.
         Character character = Characters[name];
@@ -79,8 +78,7 @@ public class GameState
     /// <param name="victimName">The victim for whose crime scene to select clues.</param>
     public void SelectClues(HashSet<Clue> clues, string victimName)
     {
-        if (!Characters.ContainsKey(victimName))
-        { throw new ArgumentException($"Character '{victimName}' does not exist."); }
+        Validator.ValidateCharacter(victimName, this);
 
         Difficulties.All[Difficulty].SelectClues(clues, _characters, victimName);
     }

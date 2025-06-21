@@ -10,10 +10,10 @@ public partial class CrimeSceneScreen : UserControl
     
     public CrimeSceneScreen(MainWindow main, string victim)
     {
+        Validator.ValidateCharacter(victim, main.State);
+
         InitializeComponent();
         _main = main;
-        if (!State.Characters.ContainsKey(victim))
-        { throw new ArgumentException($"Unknown victim: {victim}", nameof(victim)); }
         _scene = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
         LoadScreen();

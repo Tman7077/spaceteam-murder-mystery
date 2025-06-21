@@ -2,17 +2,16 @@ namespace SMM.Models.Helpers;
 
 public abstract record Victim
 {
-    public sealed record Random : Victim;
+    public sealed record Random   : Victim;
     public abstract record ByName : Victim
     {
-        protected ByName(string name)
+        public string Name { get; init; }
+        protected ByName(string Name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            { throw new ArgumentException("CharacterName is required.", nameof(name)); }
-            if (name.Contains(' '))
-            { throw new ArgumentException("Provide the short character name.", nameof(name)); }
+            Validator.ValidateShortCharacterName(Name);
+            this.Name = Name;
         }
         public sealed record Innocent(string Name) : ByName(Name);
-        public sealed record Voted(string Name) : ByName(Name);
+        public sealed record Voted(string Name)    : ByName(Name);
     }
 }
