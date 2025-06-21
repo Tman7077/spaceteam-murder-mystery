@@ -1,6 +1,6 @@
 namespace SMM.Views.Helpers;
 
-public record Screen
+public abstract record Screen
 {
     public sealed record CrimeScene(string VictimName) : Screen;
     public sealed record Difficulty : Screen;
