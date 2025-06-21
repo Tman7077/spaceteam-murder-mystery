@@ -13,9 +13,12 @@ public partial class GameScreen : UserControl
         header.Content = $"{State.Difficulty} mode selected.";
     }
 
-    private void Kill_Click(object sender, RoutedEventArgs e) =>
-        _main.LoadCrimeSceneFor(State.KillCharacter());
-        
+    private void Kill_Click(object sender, RoutedEventArgs e)
+    {
+        State.KillCharacter(new Victim.Random(), out string who);
+        _main.LoadCrimeSceneFor(who);
+    }
+  
     private void Talk_Click(object sender, RoutedEventArgs e) =>
         _main.ChangeView(new Screen.Selection(InterviewType.Interview));
 }

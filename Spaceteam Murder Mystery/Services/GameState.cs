@@ -8,10 +8,15 @@ using System.IO;
 public class GameState
 {
     private readonly CharacterSet _characters = [];
+    private readonly Stack<string> _victims = [];
     
     public CharacterSet Characters { get => _characters; }
-    public string LastVictim { get; private set; } = string.Empty;
     public string Difficulty { get; set; }
+    public string LastVictim
+    {
+        get => _victims.Count > 0 ? _victims.Peek() : throw new InvalidOperationException("No victims have been killed yet.");
+        private set => _victims.Push(value);
+    }
 
     /// <summary>
     /// Initializes a GameState given a difficulty level.
@@ -26,12 +31,13 @@ public class GameState
     /// <summary>
     /// Kills a character. If a name is not provided, kill a random character.
     /// </summary>
-    /// <param name="name">The name of a character to kill.</param>
+    /// <param name="victim">The character to kill.</param>
+    /// <param name="who">The short name of the character killed.</param>
     /// <returns>
     /// The short name of the character killed.
     /// This will be equal to the <b>name</b> argument, if it is provided.
     /// </returns>
-    public string KillCharacter(string? name = null)
+    public void KillCharacter(Victim victim, out string who)
     {
         // Select a random character if no name is provided. Ignores guilty characters.
         List<string> livingInnocents = Characters.GetLivingNames(includeGuilty: false);
@@ -40,14 +46,29 @@ public class GameState
         if (livingInnocents.Count == 0)
         { throw new InvalidOperationException("No living characters available to kill."); }
 
-        if (string.IsNullOrEmpty(name))
-        { name = livingInnocents[new Random().Next(livingInnocents.Count)]; }
+        // Assign the name based on victim type.
+        string name = victim switch
+        {
+            // Random victim = random name (from living innocents).
+            Victim.Random            => livingInnocents[new Random().Next(livingInnocents.Count)],
+            Victim.ByName.Innocent v => v.Name,
+            Victim.ByName.Voted    v => v.Name,
+            _ => throw new ArgumentException($"Unknown victim type: {victim.GetType()}")
+        };
 
-        // Kill the character and return their short name.
+        if (!Characters.ContainsKey(name))
+        { throw new ArgumentException($"Character '{name}' does not exist in game data."); }
+
+        // Kill the character.
         Character character = Characters[name];
         character.IsAlive   = false;
-        LastVictim          = character.ShortName;
-        return LastVictim;
+
+        // Report the character's name.
+        who = character.ShortName;
+
+        // If the character was not voted out, add them to the list of victims.
+        if (victim is not Victim.ByName.Voted)
+        { LastVictim = who; }
     }
 
     /// <summary>
