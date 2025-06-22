@@ -70,6 +70,9 @@ public class GameState
         { LastVictim = who; }
     }
 
+    public void KillCharacter(Victim.ByName.Voted victim) =>
+        KillCharacter(victim, out _);
+
     /// <summary>
     /// Selects a subset of clues for a certain victim's crime scene
     /// based on the difficulty level and current living characters.
