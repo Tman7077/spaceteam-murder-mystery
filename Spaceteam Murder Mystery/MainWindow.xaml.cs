@@ -50,7 +50,7 @@ public partial class MainWindow : Window
         { throw new ArgumentException($"Unknown difficulty: {difficulty}"); }
 
         State = new GameState(difficulty);
-        ChangeView(new Screen.NewGame());
+        ChangeView(new Screen.Story());
     }
 
     public void ChangeView(Screen screen)
@@ -58,7 +58,25 @@ public partial class MainWindow : Window
         PrevScreen = CurrentScreen;
         CurrentScreen = View.Request(this, screen)();
     }
+    private void ChangeView(UserControl control)
+    {
+        PrevScreen = CurrentScreen;
+        CurrentScreen = control;
+    }
     public void ToPreviousScreen() => CurrentScreen = PrevScreen;
+
+    public void AdvanceStory()
+    {
+        StoryScreen? ss = CurrentScreen as StoryScreen;
+        while (ss is null)
+        {
+            if (PrevScreen is StoryScreen storyScreen)
+            { ss = storyScreen; }
+        }
+
+        ss.LoadScreen();
+        ChangeView(ss);
+    }
 
     public void LoadCrimeSceneFor(string victimName) =>
         ChangeView(new Screen.CrimeScene(victimName));
@@ -74,8 +92,17 @@ public partial class MainWindow : Window
 
     public void MainWindow_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.F11)
-        { _windowHandler.ToggleFullScreen(); }
+        switch (e.Key)
+        {
+            case Key.F11:
+                _windowHandler.ToggleFullScreen();
+                break;
+            case Key.Escape:
+                // soon™
+                break;
+            default:
+                break;
+        }
     }
     
     private void ImmediateFullScreen(object? sender, EventArgs e) =>

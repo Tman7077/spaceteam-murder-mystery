@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="SMM.Views.Dynamic.StoryScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dynamic="clr-namespace:SMM.Services.DynamicXAML"
+    mc:Ignorable="d" 
+    d:DesignWidth="854"
+    d:DesignHeight="480">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Label
+            x:Name="Header"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Style="{StaticResource ScreenHeader}" />
+        <TextBlock
+            x:Name="MainText"
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Style="{StaticResource BodyTextBlock}" />
+        <Button
+            x:Name="NextButton"
+            Grid.Row="3"
+            Grid.Column="3"
+            Style="{StaticResource CornerCutButton}"
+            Margin="{dynamic:GridColumnMargin 0.1}"
+            Content="Next" />
+    </Grid>
+</UserControl>
