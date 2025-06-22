@@ -8,6 +8,6 @@ namespace SMM.Models;
 /// <param name="firstMurder">The content to display before the first murder.</param>
 public class Story(string intro, string firstMurder)
 {
-    public string Intro { get; } = intro;
+    public string Intro       { get; } = intro;
     public string FirstMurder { get; } = firstMurder;
 }

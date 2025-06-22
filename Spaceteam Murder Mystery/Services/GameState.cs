@@ -9,8 +9,9 @@ public class GameState
 {
     private readonly CharacterSet _characters = [];
     private readonly Stack<string> _victims = [];
-    
+
     public CharacterSet Characters { get => _characters; }
+    public Story Story { get; }
     public string Difficulty { get; set; }
     public string LastVictim
     {
@@ -25,6 +26,7 @@ public class GameState
     public GameState(string difficulty)
     {
         Difficulty = difficulty;
+        Story = Parser.ParseStoryData();
         LoadCharacters();
     }
 
@@ -60,7 +62,7 @@ public class GameState
 
         // Kill the character.
         Character character = Characters[name];
-        character.IsAlive   = false;
+        character.IsAlive = false;
 
         // Report the character's name.
         who = character.ShortName;
@@ -85,10 +87,9 @@ public class GameState
 
         Difficulties.All[Difficulty].SelectClues(clues, _characters, victimName);
     }
-    
+
     private void LoadCharacters()
     {
-        Characters.Clear();
         string assetDir = PathHelper.GetAssetDirectory();
         string charDir = Path.Combine(assetDir, "Text", "Characters");
 
