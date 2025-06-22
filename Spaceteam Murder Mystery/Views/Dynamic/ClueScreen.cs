@@ -9,10 +9,10 @@ public partial class ClueScreen : InspectionScreen
         _dir  = Direction.Left;
         LoadScreen();
     }
-    
+
     protected override void LoadScreen()
     {
-        (Grid root, _) = LoadScreenSetup();
+        Grid root = LoadScreenSetup();
 
         Grid block = CreateImageGrid(new Uri(_clue.ImagePath, UriKind.Absolute), _clue.Name);
 
@@ -22,9 +22,9 @@ public partial class ClueScreen : InspectionScreen
             Text  = _clue.Description
         };
 
-        Grid.SetColumn(block, 1);
-        Grid.SetColumn(text,  3);
+        void continueClick(object sender, RoutedEventArgs e) =>
+            _main.ToPreviousScreen();
 
-        LoadScreenFinal(root, block, text);
+        LoadScreenFinal(root, block, text, continueClick);
     }
 }

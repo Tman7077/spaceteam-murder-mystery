@@ -20,32 +20,38 @@ public partial class InterviewScreen : InspectionScreen
             Direction.Right => Direction.Left,
             _ => throw new ArgumentException($"Unknown character facing direction: {character.Facing}")
         };
+        
         LoadScreen();
     }
 
     protected override void LoadScreen()
     {
-        (Grid root, bool left) = LoadScreenSetup();
+        Grid root = LoadScreenSetup();
 
         Grid block = CreateImageGrid(new Uri(_interviewee.ProfileImagePath, UriKind.Absolute), _interviewee.Name);
 
         TextBlock text = new()
         {
             Style = (Style)FindResource("BodyTextBlock"),
-            Text  = Difficulties.All[_main.State.Difficulty].GetResponse(_interviewee, _type, _victim),
+            Text = Difficulties.All[_main.State.Difficulty].GetResponse(_interviewee, _type, _victim),
         };
 
-        if (left)
+        if (_type == InterviewType.Interview)
         {
-            Grid.SetColumn(block, 1);
-            Grid.SetColumn(text,  3);
+            void continueClick(object sender, RoutedEventArgs e) =>
+                _main.ToPreviousScreen();
+            
+            LoadScreenFinal(root, block, text, continueClick);
         }
-        else
+        else // _type == InterviewType.Accusation
         {
-            Grid.SetColumn(block, 3);
-            Grid.SetColumn(text,  1);
-        }
+            void continueClick(object sender, RoutedEventArgs e)
+            {
+                _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.Name));
+                _main.ToPreviousScreen();
+            }
 
-        LoadScreenFinal(root, block, text);
+            LoadScreenFinal(root, block, text, continueClick);
+        }
     }
 }
