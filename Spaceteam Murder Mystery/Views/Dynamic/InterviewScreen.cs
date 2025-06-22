@@ -47,8 +47,8 @@ public partial class InterviewScreen : InspectionScreen
         {
             void continueClick(object sender, RoutedEventArgs e)
             {
-                _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.Name));
-                _main.ToPreviousScreen();
+                _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.ShortName));
+                _main.AdvanceStory();
             }
 
             LoadScreenFinal(root, block, text, continueClick);
