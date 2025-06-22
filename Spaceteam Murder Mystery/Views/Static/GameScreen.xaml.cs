@@ -10,12 +10,12 @@ public partial class GameScreen : UserControl
     {
         InitializeComponent();
         _main = main;
-        header.Content = $"{State.Difficulty} mode selected.";
+        Header.Content = $"{State.Difficulty} mode selected.";
     }
 
     private void Kill_Click(object sender, RoutedEventArgs e)
     {
-        State.KillCharacter(new Victim.Random(), out string who);
+        State.KillCharacter(new Victim.ByName.Innocent("Ethan"), out string who);
         _main.LoadCrimeSceneFor(who);
     }
   
