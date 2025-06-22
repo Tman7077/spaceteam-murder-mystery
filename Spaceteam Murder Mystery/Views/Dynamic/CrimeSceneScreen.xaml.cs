@@ -4,7 +4,7 @@ public partial class CrimeSceneScreen : UserControl
 {
     private readonly MainWindow _main;
     private readonly CrimeScene _scene;
-    private readonly Character _victim;
+    private readonly Character  _victim;
 
     private GameState State { get => _main.State; }
     
@@ -13,8 +13,8 @@ public partial class CrimeSceneScreen : UserControl
         Validator.ValidateCharacter(victim, main.State);
 
         InitializeComponent();
-        _main = main;
-        _scene = new CrimeScene(victim, State);
+        _main   = main;
+        _scene  = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
         LoadScreen();
     }
@@ -26,6 +26,7 @@ public partial class CrimeSceneScreen : UserControl
         if (_scene.Clues.FirstOrDefault(c => c.Name == itemName) is not Clue clue)
         { return; }
 
+        clue.IsFound = true;
         _main.LoadClueInspectionFor(clue);
     }
 
