@@ -3,6 +3,7 @@
 public partial class CharacterSelectionScreen : UserControl
 {
     private readonly MainWindow _main;
+    private readonly InterviewType _type;
     private readonly string _labelContent;
 
     private GameState State { get => _main.State; }
@@ -11,13 +12,14 @@ public partial class CharacterSelectionScreen : UserControl
     {
         InitializeComponent();
         _main = main;
-        _labelContent = type switch
+        _type = type;
+        _labelContent = _type switch
         {
             InterviewType.Interview  => "Interview",
             InterviewType.Accusation => "Accuse",
             _ => throw new ArgumentException($"Unknown type: {type}")
         };
-        DisplayCharacters();
+        LoadScreen();
     }
 
     public void Interview_Click(object sender, RoutedEventArgs e)
@@ -26,8 +28,22 @@ public partial class CharacterSelectionScreen : UserControl
         { _main.LoadInterviewFor(characterName); }
     }
 
-    private void DisplayCharacters()
+    public void Accuse_Click(object sender, RoutedEventArgs e)
     {
+        if (sender is Button button && button.Tag is string characterName)
+        { _main.LoadAccusationFor(characterName); }
+    }
+
+    private void LoadScreen()
+    {
+        Grid mainGrid = new();
+
+        foreach (int h in (int[])[1, 2, 5, 5, 1])
+        { mainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(h, GridUnitType.Star) }); }
+
+        foreach (int w in (int[])[1, 3, 3, 3, 3, 1])
+        { mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(w, GridUnitType.Star) }); }
+
         int i = 0;
         foreach (Character character in State.Characters.Values)
         {
@@ -37,8 +53,28 @@ public partial class CharacterSelectionScreen : UserControl
             i++;
             Grid.SetColumn(charGrid, column);
             Grid.SetRow(charGrid, row);
-            MainGrid.Children.Add(charGrid);
+            mainGrid.Children.Add(charGrid);
         }
+
+        if (_type == InterviewType.Interview)
+        {
+            Button continueButton = new()
+            {
+                Style   = (Style)FindResource("CornerCutButton"),
+                Content = "Accuse"
+            };
+            continueButton.Click += (sender, e) =>
+                _main.ChangeView(new Screen.Selection(InterviewType.Accusation));
+            continueButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
+            continueButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
+
+            Grid.SetRow(continueButton, 1);
+            Grid.SetColumn(continueButton, 4);
+
+            mainGrid.Children.Add(continueButton);
+        }
+
+        Content = mainGrid;
     }
 
     private Grid CreateCharacterBlock(Character character)
@@ -65,7 +101,12 @@ public partial class CharacterSelectionScreen : UserControl
             Content = _labelContent,
             Tag     = character.ShortName
         };
-        selectButton.Click += Interview_Click;
+
+        selectButton.Click +=
+            _type == InterviewType.Interview
+            ? Interview_Click
+            : Accuse_Click;
+
         selectButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
         selectButton.SetBinding(MarginProperty, ParentBasedMarginExtension.GetBinding(0.1));
 
