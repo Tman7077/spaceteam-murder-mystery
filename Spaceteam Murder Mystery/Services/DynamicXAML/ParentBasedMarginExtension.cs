@@ -37,7 +37,7 @@ public class ParentBasedMarginExtension : MarkupExtension
                 && ratio > 0)
             {
                 var margin = width * ratio;
-                return new Thickness(margin, 0, margin, 0);   // all four sides
+                return new Thickness(margin, 0, margin, 0);
             }
 
             return new Thickness(0);
