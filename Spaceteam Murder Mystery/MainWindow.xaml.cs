@@ -5,12 +5,26 @@ using System.ComponentModel;
 public partial class MainWindow : Window
 {
     private readonly WindowHandler _windowHandler;
-    private UserControl? _prevScreen;
+    private readonly Stack<UserControl> _viewHistory = [];
     private GameState? _gameState;
 
+    private UserControl PrevScreen
+    {
+        get => _viewHistory.Count > 0
+            ? _viewHistory.Pop()
+            : throw new IndexOutOfRangeException("No previous screen available");
+        set => _viewHistory.Push(value);
+    }
+    private UserControl CurrentScreen
+    {
+        get => Content as UserControl
+            ?? throw new InvalidOperationException("MainContent is not set to a UserControl");
+        set => Content = value;
+    }
     public GameState State
     {
-        get => _gameState ?? throw new InvalidOperationException("GameState has not yet been initialized");
+        get => _gameState
+            ?? throw new InvalidOperationException("GameState has not yet been initialized");
         private set => _gameState = value;
     }
 
@@ -24,10 +38,10 @@ public partial class MainWindow : Window
         if (fullscreen)
         { SourceInitialized += ImmediateFullScreen; }
 
-        Activated += _windowHandler.MainWindow_Activated;
+        Activated   += _windowHandler.MainWindow_Activated;
         Deactivated += _windowHandler.MainWindow_Deactivated;
 
-        ChangeView(new Screen.Title());
+        CurrentScreen = View.Request(this, new Screen.Title())();
     }
 
     public void StartGame(string difficulty)
@@ -41,9 +55,10 @@ public partial class MainWindow : Window
 
     public void ChangeView(Screen screen)
     {
-        _prevScreen = View.Request(this, screen)();
-        MainContent.Content = _prevScreen;
+        PrevScreen = CurrentScreen;
+        CurrentScreen = View.Request(this, screen)();
     }
+    public void ToPreviousScreen() => CurrentScreen = PrevScreen;
 
     public void LoadCrimeSceneFor(string victimName) =>
         ChangeView(new Screen.CrimeScene(victimName));

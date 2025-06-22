@@ -13,10 +13,4 @@
     Icon="pack://application:,,,/Assets/Images/nebula-rounded.ico"
     Style="{StaticResource DarkTheme}"
     KeyDown="MainWindow_KeyDown">
-    <Grid>
-        <ContentControl
-            x:Name="MainContent"
-            Grid.Row="0"
-            Grid.Column="0" />
-    </Grid>
 </Window>
