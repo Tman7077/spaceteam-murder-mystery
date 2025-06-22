@@ -27,8 +27,9 @@ public abstract record Screen
         }
     }
     public sealed record InspectClue(Clue Clue)        : Screen;
-    public sealed record NewGame  : Screen;
+    // public sealed record NewGame  : Screen;
     public sealed record Selection(InterviewType Type) : Screen;
     public sealed record Settings : Screen;
+    public sealed record Story    : Screen;
     public sealed record Title    : Screen;
 }

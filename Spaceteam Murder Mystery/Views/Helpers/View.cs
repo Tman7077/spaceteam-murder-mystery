@@ -10,9 +10,10 @@ public static class View
             Screen.Difficulty    => () => new DifficultyScreen(window),
             Screen.InspectChar s => () => new InterviewScreen(window, s.Type, s.Interviewee, s.Victim),
             Screen.InspectClue s => () => new ClueScreen(window, s.Clue),
-            Screen.NewGame       => () => new GameScreen(window),
+            // Screen.NewGame       => () => new GameScreen(window),
             Screen.Selection   s => () => new CharacterSelectionScreen(window, s.Type),
             Screen.Settings      => () => new SettingsScreen(window),
+            Screen.Story         => () => new StoryScreen(window),
             Screen.Title         => () => new TitleScreen(window),
             _ => throw new ArgumentException($"Unknown view {screen}.", nameof(screen))
         };
