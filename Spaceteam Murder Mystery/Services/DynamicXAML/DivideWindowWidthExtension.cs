@@ -1,19 +1,19 @@
 namespace SMM.Services.DynamicXAML;
 
 [MarkupExtensionReturnType(typeof(double))]
-public class DivideWidthExtension : MarkupExtension
+public class DivideWindowWidthExtension : MarkupExtension
 {
     public double Divisor { get; set; } = 6.0;
 
-    public DivideWidthExtension() { }
-    public DivideWidthExtension(double divisor) => Divisor = divisor;
+    public DivideWindowWidthExtension() { }
+    public DivideWindowWidthExtension(double divisor) => Divisor = divisor;
 
     public static Binding GetBinding(double divisor)
     {
         return new Binding("ActualWidth")
         {
             RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1),
-            Converter = new DivideWidthConverter(),
+            Converter = new DivideWindowWidthConverter(),
             ConverterParameter = divisor,
             Mode = BindingMode.OneWay
         };
@@ -22,7 +22,7 @@ public class DivideWidthExtension : MarkupExtension
     public override object ProvideValue(IServiceProvider serviceProvider) =>
         GetBinding(Divisor).ProvideValue(serviceProvider);
     
-    private class DivideWidthConverter : IValueConverter
+    private class DivideWindowWidthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
