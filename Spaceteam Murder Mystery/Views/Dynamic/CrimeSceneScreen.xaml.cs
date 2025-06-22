@@ -86,6 +86,19 @@ public partial class CrimeSceneScreen : UserControl
             canvas.Children.Add(imageButton);
         }
 
+        Button continueButton = new()
+        {
+            Style    = (Style)FindResource("CornerCutButton"),
+            Content  = "Continue",
+            Width    = canvas.Width  * 0.1,
+            FontSize = canvas.Height * 0.02,
+        };
+        continueButton.Click += (sender, e) =>
+            _main.ChangeView(new Screen.Selection(InterviewType.Interview));
+        Canvas.SetLeft(continueButton, canvas.Width * 0.85);
+        Canvas.SetTop(continueButton,  canvas.Height * 0.05);
+        canvas.Children.Add(continueButton);
+
         Content = root;
     }
 }
