@@ -16,7 +16,7 @@ public abstract record Screen
     {
         public InterviewType Type { get; init; }
         public string Interviewee { get; init; }
-        public string Victim { get; init; }
+        public string Victim      { get; init; }
         public InspectChar(InterviewType Type, string Interviewee, string Victim)
         {
             Validator.ValidateShortCharacterName(Interviewee);
@@ -26,10 +26,11 @@ public abstract record Screen
             this.Victim = Victim;
         }
     }
-    public sealed record InspectClue(Clue Clue)        : Screen;
+    public sealed record InspectClue(Clue Clue)            : Screen;
     // public sealed record NewGame  : Screen;
-    public sealed record Selection(InterviewType Type) : Screen;
-    public sealed record Settings : Screen;
-    public sealed record Story    : Screen;
-    public sealed record Title    : Screen;
+    public sealed record Selection(InterviewType Type)     : Screen;
+    public sealed record Settings                          : Screen;
+    public sealed record Story(bool FirstLoad, Vote? Vote) : Screen;
+    public sealed record Success(Vote Vote)                : Screen;
+    public sealed record Title                             : Screen;
 }
