@@ -8,7 +8,7 @@ public partial class InterviewScreen : InspectionScreen
     public InterviewScreen(MainWindow main, InterviewType type, string interviewee, string victim) : base(main)
     {
         Validator.ValidateCharacter(interviewee, main.State);
-        Validator.ValidateCharacter(victim, main.State);
+        Validator.ValidateCharacter(victim,      main.State);
         
         Character character = main.State.Characters[interviewee];
         _type = type;
