@@ -11,14 +11,14 @@ public partial class TitleScreen : UserControl
         _main = main;
     }
 
-    private void StartGame_Click(object sender, RoutedEventArgs e) =>
-        _main.ChangeView(new Screen.Difficulty());
+    private async void StartGame_Click(object sender, RoutedEventArgs e) =>
+        await _main.ChangeView(new Screen.Difficulty());
 
     private void ContinueGame_Click(object sender, RoutedEventArgs e) =>
         MessageBox.Show("Coming soon!");
 
-    private void Settings_Click(object sender, RoutedEventArgs e) =>
-        _main.ChangeView(new Screen.Settings());
+    private async void Settings_Click(object sender, RoutedEventArgs e) =>
+        await _main.ChangeView(new Screen.Settings());
 
     private void Quit_Click(object sender, RoutedEventArgs e) =>
         Application.Current.Shutdown();

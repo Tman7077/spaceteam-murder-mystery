@@ -1,10 +1,13 @@
 ﻿namespace SMM;
 
 using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Windows.Media.Animation;
 
 public partial class MainWindow : Window
 {
-    private readonly WindowHandler _windowHandler;
+    private readonly WindowHandler      _windowHandler;
+    private readonly ContentControl     _mainControl = new();
     private readonly Stack<UserControl> _viewHistory = [];
     private GameState? _gameState;
 
@@ -17,9 +20,9 @@ public partial class MainWindow : Window
     }
     private UserControl CurrentScreen
     {
-        get => Content as UserControl
+        get => _mainControl.Content as UserControl
             ?? throw new InvalidOperationException("MainContent is not set to a UserControl");
-        set => Content = value;
+        set => _mainControl.Content = value;
     }
     public GameState State
     {
@@ -41,54 +44,63 @@ public partial class MainWindow : Window
         Activated   += _windowHandler.MainWindow_Activated;
         Deactivated += _windowHandler.MainWindow_Deactivated;
 
+        Grid mainGrid = new()
+        {
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment   = VerticalAlignment.Stretch,
+            Children            = { _mainControl }
+        };
+        Content       = mainGrid;
         CurrentScreen = View.Request(this, new Screen.Title())();
     }
 
-    public void StartGame(string difficulty)
+    public async Task StartGame(string difficulty)
     {
         if (!Difficulties.All.ContainsKey(difficulty))
         { throw new ArgumentException($"Unknown difficulty: {difficulty}"); }
 
         State = new GameState(difficulty);
-        ChangeView(new Screen.Story());
+        await ChangeView(new Screen.Story(FirstLoad: true, null));
     }
 
-    public void ChangeView(Screen screen)
+    public async Task ChangeView(Screen screen) =>
+        await ChangeView(View.Request(this, screen)());
+    private async Task ChangeView(UserControl control)
     {
-        PrevScreen = CurrentScreen;
-        CurrentScreen = View.Request(this, screen)();
-    }
-    private void ChangeView(UserControl control)
-    {
-        PrevScreen = CurrentScreen;
+        await FadeAsync(FadeType.Out);
+        PrevScreen    = CurrentScreen;
         CurrentScreen = control;
+        await FadeAsync(FadeType.In);
     }
-    public void ToPreviousScreen() => CurrentScreen = PrevScreen;
 
-    public void AdvanceStory()
+    public async Task ToPreviousScreen()
     {
-        StoryScreen? ss = CurrentScreen as StoryScreen;
-        while (ss is null)
-        {
-            if (PrevScreen is StoryScreen storyScreen)
-            { ss = storyScreen; }
-        }
-
-        ss.LoadScreen();
-        ChangeView(ss);
+        await FadeAsync(FadeType.Out);
+        CurrentScreen = PrevScreen;
+        await FadeAsync(FadeType.In);
     }
 
-    public void LoadCrimeSceneFor(string victimName) =>
-        ChangeView(new Screen.CrimeScene(victimName));
+    public async Task AdvanceStory(Vote vote)
+    {
+        Screen nextScreen = vote.Success
+            ? new Screen.Success(vote)
+            : new Screen.Story(FirstLoad: false, vote);
+        await ChangeView(nextScreen);
+    }
+    public async Task AdvanceStory() =>
+        await ChangeView(new Screen.Story(FirstLoad: false, null));
 
-    public void LoadInterviewFor(string interviewee) =>
-        ChangeView(new Screen.InspectChar(InterviewType.Interview, interviewee, State.LastVictim));
+    public async Task LoadCrimeSceneFor(string victimName) =>
+        await ChangeView(new Screen.CrimeScene(victimName));
 
-    public void LoadAccusationFor(string interviewee) =>
-        ChangeView(new Screen.InspectChar(InterviewType.Accusation, interviewee, State.LastVictim));
+    public async Task LoadInterviewFor(string interviewee) =>
+        await ChangeView(new Screen.InspectChar(InterviewType.Interview, interviewee, State.LastVictim));
 
-    public void LoadClueInspectionFor(Clue clue) =>
-        ChangeView(new Screen.InspectClue(clue));
+    public async Task LoadAccusationFor(string interviewee) =>
+        await ChangeView(new Screen.InspectChar(InterviewType.Accusation, interviewee, State.LastVictim));
+
+    public async Task LoadClueInspectionFor(Clue clue) =>
+        await ChangeView(new Screen.InspectClue(clue));
 
     public void MainWindow_KeyDown(object sender, KeyEventArgs e)
     {
@@ -107,6 +119,26 @@ public partial class MainWindow : Window
     
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
         _windowHandler.ToggleFullScreen();
+
+    private Task<bool> FadeAsync(FadeType inOut, double duration = 0.5)
+    {
+        Task.Delay(500).Wait();
+        var tcs = new TaskCompletionSource<bool>();
+        bool fadeIn = inOut == FadeType.In;
+
+        DoubleAnimation animation = new()
+        {
+            From         = fadeIn ? 0 : 1,
+            To           = fadeIn ? 1 : 0,
+            Duration     = TimeSpan.FromSeconds(duration),
+            FillBehavior = FillBehavior.HoldEnd
+        };
+        animation.Completed += (_, __) => tcs.SetResult(true);
+
+        _mainControl.BeginAnimation(OpacityProperty, animation);
+
+        return tcs.Task;
+    }
     
     protected override void OnClosing(CancelEventArgs e)
     {

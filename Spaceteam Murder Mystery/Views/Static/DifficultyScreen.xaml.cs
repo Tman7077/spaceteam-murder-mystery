@@ -10,7 +10,7 @@ public partial class DifficultyScreen : UserControl
         _main = main;
     }
     
-    private void DifficultyButton_Click(object sender, RoutedEventArgs e)
+    private async void DifficultyButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is not Button button)
         { throw new ArgumentException("Sender is not a Button.", nameof(sender)); }
@@ -19,6 +19,6 @@ public partial class DifficultyScreen : UserControl
         if (string.IsNullOrEmpty(difficulty))
         { throw new ArgumentException("Button does not have a valid difficulty tag.", button.Name); }
 
-        _main.StartGame(difficulty);
+        await _main.StartGame(difficulty);
     }
 }

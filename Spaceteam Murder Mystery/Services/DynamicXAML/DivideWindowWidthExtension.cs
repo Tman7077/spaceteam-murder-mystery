@@ -12,7 +12,7 @@ public class DivideWindowWidthExtension : MarkupExtension
     {
         return new Binding("ActualWidth")
         {
-            RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1),
+            Source = Application.Current.MainWindow,
             Converter = new DivideWindowWidthConverter(),
             ConverterParameter = divisor,
             Mode = BindingMode.OneWay

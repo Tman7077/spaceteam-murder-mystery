@@ -18,28 +18,28 @@ public class FontScaleExtension : MarkupExtension
             Bindings =
             {
                 new Binding("ActualWidth")
-                { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1) },
+                { Source = Application.Current.MainWindow },
                 new Binding("ActualHeight")
-                { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(Window), 1) }
+                { Source = Application.Current.MainWindow }
             }
         };
     }
-    
+
     public override object ProvideValue(IServiceProvider serviceProvider) =>
         GetBinding(Scale).ProvideValue(serviceProvider);
     
     private class FontScaleConverter : IMultiValueConverter
     {
-        public double BaseFontSize { get; set; } = 14.0;       // logical "default" font size
-        public double DesignWidth { get; set; } = 854.0;       // base window width for scaling
-        public double MaxHeightProportion { get; set; } = 0.1; // max 10% of window height
+        public double BaseFontSize        { get; set; } = 14.0;  // logical "default" font size
+        public double DesignWidth         { get; set; } = 854.0; // base window width for scaling
+        public double MaxHeightProportion { get; set; } = 0.1;   // max 10% of window height
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length < 2 ||
                 values[0] is not double windowWidth ||
                 values[1] is not double windowHeight)
-                return BaseFontSize;
+            { return BaseFontSize; }
 
             double multiplier = 1.0;
             if (parameter != null && double.TryParse(parameter.ToString(), out double parsedMultiplier))
@@ -51,7 +51,8 @@ public class FontScaleExtension : MarkupExtension
 
             // Step 2: Cap based on height
             double maxFontSize = windowHeight * MaxHeightProportion;
-            return Math.Min(scaledFontSize, maxFontSize);
+            double final = Math.Min(scaledFontSize, maxFontSize);
+            return final == 0 ? BaseFontSize : final;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

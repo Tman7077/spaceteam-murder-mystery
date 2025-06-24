@@ -22,16 +22,16 @@ public partial class CharacterSelectionScreen : UserControl
         LoadScreen();
     }
 
-    public void Interview_Click(object sender, RoutedEventArgs e)
+    public async void Interview_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is string characterName)
-        { _main.LoadInterviewFor(characterName); }
+        { await _main.LoadInterviewFor(characterName); }
     }
 
-    public void Accuse_Click(object sender, RoutedEventArgs e)
+    public async void Accuse_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is string characterName)
-        { _main.LoadAccusationFor(characterName); }
+        { await _main.LoadAccusationFor(characterName); }
     }
 
     private void LoadScreen()
@@ -63,8 +63,8 @@ public partial class CharacterSelectionScreen : UserControl
                 Style   = (Style)FindResource("CornerCutButton"),
                 Content = "Accuse"
             };
-            continueButton.Click += (sender, e) =>
-                _main.ChangeView(new Screen.Selection(InterviewType.Accusation));
+            continueButton.Click += async (sender, e) =>
+                await _main.ChangeView(new Screen.Selection(InterviewType.Accusation));
             continueButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
             continueButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
 

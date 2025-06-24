@@ -38,17 +38,18 @@ public partial class InterviewScreen : InspectionScreen
 
         if (_type == InterviewType.Interview)
         {
-            void continueClick(object sender, RoutedEventArgs e) =>
-                _main.ToPreviousScreen();
+            async void continueClick(object sender, RoutedEventArgs e) =>
+                await _main.ToPreviousScreen();
             
             LoadScreenFinal(root, block, text, continueClick);
         }
         else // _type == InterviewType.Accusation
         {
-            void continueClick(object sender, RoutedEventArgs e)
+            async void continueClick(object sender, RoutedEventArgs e)
             {
                 _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.ShortName));
-                _main.AdvanceStory();
+                Vote vote = new(_interviewee.ShortName, _main.State);
+                await _main.AdvanceStory(vote);
             }
 
             LoadScreenFinal(root, block, text, continueClick);

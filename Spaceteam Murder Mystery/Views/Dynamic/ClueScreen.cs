@@ -22,8 +22,8 @@ public partial class ClueScreen : InspectionScreen
             Text  = _clue.Description
         };
 
-        void continueClick(object sender, RoutedEventArgs e) =>
-            _main.ToPreviousScreen();
+        async void continueClick(object sender, RoutedEventArgs e) =>
+            await _main.ToPreviousScreen();
 
         LoadScreenFinal(root, block, text, continueClick);
     }

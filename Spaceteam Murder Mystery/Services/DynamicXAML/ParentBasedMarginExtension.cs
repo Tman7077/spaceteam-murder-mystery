@@ -12,10 +12,7 @@ public class ParentBasedMarginExtension : MarkupExtension
     {
         return new Binding("ActualWidth")
         {
-            RelativeSource = new RelativeSource(
-                RelativeSourceMode.FindAncestor,
-                typeof(FrameworkElement),
-                1),
+            RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(FrameworkElement), 1),
             Converter = new ParentBasedMarginConverter(),
             ConverterParameter = ratio,
             Mode = BindingMode.OneWay
