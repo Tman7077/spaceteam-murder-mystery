@@ -17,7 +17,7 @@ public class InterviewSet
     /// <param name="responses">The responses to be added.</param>
     public void Add(string characterName, ResponseSet responses)
     {
-        if (_responses.ContainsKey(characterName))
+        if (CharacterNames.Contains(characterName))
         { throw new ArgumentException($"Character {characterName} already exists in the interview set."); }
         _responses[characterName] = responses;
     }
