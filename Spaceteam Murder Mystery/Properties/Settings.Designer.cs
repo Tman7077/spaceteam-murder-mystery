@@ -118,5 +118,41 @@ namespace SMM.Properties {
                 this["IsFullScreen"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double Volume {
+            get {
+                return ((double)(this["Volume"]));
+            }
+            set {
+                this["Volume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Muted {
+            get {
+                return ((bool)(this["Muted"]));
+            }
+            set {
+                this["Muted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PauseOnLoseFocus {
+            get {
+                return ((bool)(this["PauseOnLoseFocus"]));
+            }
+            set {
+                this["PauseOnLoseFocus"] = value;
+            }
+        }
     }
 }

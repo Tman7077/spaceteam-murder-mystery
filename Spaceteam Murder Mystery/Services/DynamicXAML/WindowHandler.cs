@@ -3,11 +3,11 @@ namespace SMM.Services.DynamicXAML;
 /// <summary>
 /// A wrapper for all of the data pertaining to the current state of the app window.
 /// </summary>
-public partial class WindowHandler(Window window)
+public partial class WindowHandler(MainWindow window)
 {
-    private const uint SWP_SHOWWINDOW  = 0x0040;
-    private const int  SM_CXSCREEN     = 0;
-    private const int  SM_CYSCREEN     = 1;
+    private const uint SWP_SHOWWINDOW = 0x0040;
+    private const int  SM_CXSCREEN    = 0;
+    private const int  SM_CYSCREEN    = 1;
     private IntPtr HWND { get; } = new WindowInteropHelper(window).Handle;
     private static IntPtr HWND_TOPMOST   { get; } = new IntPtr(-1);
     private static IntPtr HWND_NOTOPMOST { get; } = new IntPtr(-2);
@@ -16,14 +16,15 @@ public partial class WindowHandler(Window window)
     private WindowState PrevWindowState { get; set; } = WindowState.Normal;
     private WindowStyle PrevWindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
     private ResizeMode  PrevResizeMode  { get; set; } = ResizeMode.CanResize;
-    private bool   PrevTopmost  { get; set; } = false;
-    private double PrevWidth    { get; set; } = 854;
-    private double PrevHeight   { get; set; } = 480;
-    private double PrevLeft     { get; set; } = 100;
-    private double PrevTop      { get; set; } = 100;
+    private bool   PrevTopmost { get; set; } = false;
+    private double PrevWidth   { get; set; } = 854;
+    private double PrevHeight  { get; set; } = 480;
+    private double PrevLeft    { get; set; } = 100;
+    private double PrevTop     { get; set; } = 100;
     // ==================================================================
-    public Window Win { get; } = window;
-    public bool IsFullScreen { get; set; } = false;
+    public MainWindow Win        { get; }      = window;
+    public bool IsFullScreen     { get; set; } = false;
+    public bool PauseOnLoseFocus { get; set; } = true;
 
     /// <summary>
     /// Handles the event when the main window loses focus
@@ -32,7 +33,12 @@ public partial class WindowHandler(Window window)
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">Event arguments.</param>
     public void MainWindow_Deactivated(object? sender, EventArgs e)
-    { if (IsFullScreen) SetTopmostAndBounds(HWND, false); }
+    {
+        if (IsFullScreen)
+            SetTopmostAndBounds(HWND, false);
+        if (PauseOnLoseFocus)
+            Win.Soundtrack.Pause();
+    }
 
     /// <summary>
     /// Handles the event when the main window regains focus.
@@ -40,7 +46,12 @@ public partial class WindowHandler(Window window)
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">Event arguments.</param>
     public void MainWindow_Activated(object? sender, EventArgs e)
-    { if (IsFullScreen) SetTopmostAndBounds(HWND, true); }
+    {
+        if (IsFullScreen)
+            SetTopmostAndBounds(HWND, true);
+        if (PauseOnLoseFocus)
+            Win.Soundtrack.Resume();
+    }
     
     /// <summary>
     /// Toggles the window between fullscreen and windowed mode.

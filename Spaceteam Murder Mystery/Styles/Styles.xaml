@@ -113,4 +113,55 @@
         <Setter Property="FontSize" Value="{dynamic:FontScale 2}"/>
     </Style>
 
+    <Style TargetType="Slider" x:Key="FlatSlider">
+        <Setter Property="Background" Value="{StaticResource SMMLightGray}"/>
+        <Setter Property="Foreground" Value="{StaticResource SMMBlueGray}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="TickFrequency" Value="1"/>
+        <Setter Property="IsSnapToTickEnabled" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid VerticalAlignment="Center">
+                        <!-- Your flat track background -->
+                        <Border
+                            Height="10"
+                            Background="{TemplateBinding Background}"
+                            HorizontalAlignment="Stretch" />
+
+                        <!-- Core track that wires up dragging -->
+                        <Track
+                            x:Name="PART_Track"
+                            Minimum="{TemplateBinding Minimum}"
+                            Maximum="{TemplateBinding Maximum}"
+                            Value="{TemplateBinding Value}"
+                            IsDirectionReversed="{TemplateBinding IsDirectionReversed}">
+                            
+                            <!-- “empty” buttons so there are no arrows -->
+                            <Track.DecreaseRepeatButton>
+                            <RepeatButton
+                                Command="Slider.DecreaseLarge"
+                                Style="{x:Null}"
+                                IsTabStop="False"/>
+                            </Track.DecreaseRepeatButton>
+
+                            <Track.Thumb>
+                            <Thumb
+                                Width="16" Height="16"
+                                Background="{TemplateBinding Foreground}"
+                                BorderThickness="0"/>
+                            </Track.Thumb>
+
+                            <Track.IncreaseRepeatButton>
+                            <RepeatButton
+                                Command="Slider.IncreaseLarge"
+                                Style="{x:Null}"
+                                IsTabStop="False"/>
+                            </Track.IncreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

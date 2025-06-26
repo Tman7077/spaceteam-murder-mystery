@@ -3,6 +3,27 @@ namespace SMM.Services.DynamicXAML;
 using Properties;
 public static class AppSettings
 {
+    public static double Volume
+    {
+        get => Settings.Default.Volume;
+        set
+        {
+            if (value < 0 || value > 1)
+            { throw new ArgumentOutOfRangeException(nameof(value), "Volume must be between 0 and 1"); }
+            Settings.Default.Volume = value;
+            Settings.Default.Save();
+        }
+    }
+    public static bool Muted
+    {
+        get => Settings.Default.Muted;
+        set
+        {
+            Settings.Default.Muted = value;
+            Settings.Default.Save();
+        }
+    }
+    
     /// <summary>
     /// Saves the current window state, size, and position to the application settings.
     /// </summary>
@@ -25,10 +46,11 @@ public static class AppSettings
             Settings.Default.WindowTop    = window.Top;
         }
 
-        Settings.Default.WindowState  = window.WindowState.ToString();
-        Settings.Default.WindowStyle  = window.WindowStyle.ToString();
-        Settings.Default.ResizeMode   = window.ResizeMode.ToString();
-        Settings.Default.IsFullScreen = handler.IsFullScreen;
+        Settings.Default.WindowState      = window.WindowState.ToString();
+        Settings.Default.WindowStyle      = window.WindowStyle.ToString();
+        Settings.Default.ResizeMode       = window.ResizeMode.ToString();
+        Settings.Default.IsFullScreen     = handler.IsFullScreen;
+        Settings.Default.PauseOnLoseFocus = handler.PauseOnLoseFocus;
         Settings.Default.Save();
     }
 
@@ -44,19 +66,18 @@ public static class AppSettings
             return;
         }
         
-        fullscreen = false;
-
+        fullscreen    = false;
         Window window = handler.Win;
 
-        if (Settings.Default.WindowWidth > 0 &&
+        if (Settings.Default.WindowWidth  > 0 &&
             Settings.Default.WindowHeight > 0)
         {
-            window.Width = Settings.Default.WindowWidth;
+            window.Width  = Settings.Default.WindowWidth;
             window.Height = Settings.Default.WindowHeight;
         }
 
         window.Left = Settings.Default.WindowLeft;
-        window.Top = Settings.Default.WindowTop;
+        window.Top  = Settings.Default.WindowTop;
 
         if (Enum.TryParse(Settings.Default.WindowState, out WindowState state))
         { window.WindowState = state; }
@@ -64,7 +85,9 @@ public static class AppSettings
         if (Enum.TryParse(Settings.Default.WindowStyle, out WindowStyle style))
         { window.WindowStyle = style; }
 
-        if (Enum.TryParse(Settings.Default.ResizeMode, out ResizeMode resize))
-        { window.ResizeMode = resize; }
+        if (Enum.TryParse(Settings.Default.ResizeMode,  out ResizeMode resize))
+        { window.ResizeMode  = resize; }
+        
+        handler.PauseOnLoseFocus = Settings.Default.PauseOnLoseFocus;
     }
 }

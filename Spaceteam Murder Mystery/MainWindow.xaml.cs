@@ -6,7 +6,6 @@ using System.Windows.Media.Animation;
 
 public partial class MainWindow : Window
 {
-    private readonly WindowHandler      _windowHandler;
     private readonly ContentControl     _mainControl = new();
     private readonly Stack<UserControl> _viewHistory = [];
     private GameState? _gameState;
@@ -30,28 +29,32 @@ public partial class MainWindow : Window
             ?? throw new InvalidOperationException("GameState has not yet been initialized");
         private set => _gameState = value;
     }
+    public Soundtrack    Soundtrack     { get; } = new(SoundtrackType.TitleTheme);
+    public WindowHandler WindowHandler  { get; }
 
     public MainWindow()
     {
         InitializeComponent();
 
-        _windowHandler = new(this);
+        WindowHandler = new(this);
 
-        AppSettings.Load(_windowHandler, out bool fullscreen);
+        AppSettings.Load(WindowHandler, out bool fullscreen);
         if (fullscreen)
         { SourceInitialized += ImmediateFullScreen; }
 
-        Activated   += _windowHandler.MainWindow_Activated;
-        Deactivated += _windowHandler.MainWindow_Deactivated;
+        Activated += WindowHandler.MainWindow_Activated;
+        Deactivated += WindowHandler.MainWindow_Deactivated;
 
         Grid mainGrid = new()
         {
             HorizontalAlignment = HorizontalAlignment.Stretch,
-            VerticalAlignment   = VerticalAlignment.Stretch,
-            Children            = { _mainControl }
+            VerticalAlignment = VerticalAlignment.Stretch,
+            Children = { _mainControl }
         };
-        Content       = mainGrid;
+        Content = mainGrid;
         CurrentScreen = View.Request(this, new Screen.Title())();
+
+        _ = Soundtrack.Start();
     }
 
     public async Task StartGame(string difficulty)
@@ -60,17 +63,18 @@ public partial class MainWindow : Window
         { throw new ArgumentException($"Unknown difficulty: {difficulty}"); }
 
         State = new GameState(difficulty);
-        await ChangeView(new Screen.Story(FirstLoad: true, null));
+        _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme);
+        await ChangeView(new Screen.Story(FirstLoad: true, null), 2, 2);
     }
 
-    public async Task ChangeView(Screen screen) =>
-        await ChangeView(View.Request(this, screen)());
-    private async Task ChangeView(UserControl control)
+    public async Task ChangeView(Screen screen, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5) =>
+        await ChangeView(View.Request(this, screen)(), fadeOutSeconds, fadeInSeconds);
+    private async Task ChangeView(UserControl control, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5)
     {
-        await FadeAsync(FadeType.Out);
+        await FadeAsync(FadeType.Out, fadeOutSeconds);
         PrevScreen    = CurrentScreen;
         CurrentScreen = control;
-        await FadeAsync(FadeType.In);
+        await FadeAsync(FadeType.In, fadeInSeconds);
     }
 
     public async Task ToPreviousScreen()
@@ -107,7 +111,7 @@ public partial class MainWindow : Window
         switch (e.Key)
         {
             case Key.F11:
-                _windowHandler.ToggleFullScreen();
+                WindowHandler.ToggleFullScreen();
                 break;
             case Key.Escape:
                 // soon™
@@ -118,19 +122,21 @@ public partial class MainWindow : Window
     }
     
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
-        _windowHandler.ToggleFullScreen();
+        WindowHandler.ToggleFullScreen();
 
-    private Task<bool> FadeAsync(FadeType inOut, double duration = 0.5)
+    private Task<bool> FadeAsync(FadeType inOut, TimeSpan duration)
     {
-        Task.Delay(500).Wait();
-        var tcs = new TaskCompletionSource<bool>();
+        if (duration.TotalMilliseconds <= 0)
+        { throw new ArgumentOutOfRangeException(nameof(duration), "Duration must be greater than zero"); }
+
+        TaskCompletionSource<bool> tcs = new();
         bool fadeIn = inOut == FadeType.In;
 
         DoubleAnimation animation = new()
         {
             From         = fadeIn ? 0 : 1,
             To           = fadeIn ? 1 : 0,
-            Duration     = TimeSpan.FromSeconds(duration),
+            Duration     = duration,
             FillBehavior = FillBehavior.HoldEnd
         };
         animation.Completed += (_, __) => tcs.SetResult(true);
@@ -139,10 +145,12 @@ public partial class MainWindow : Window
 
         return tcs.Task;
     }
+    private Task<bool> FadeAsync(FadeType inOut, double seconds = 0.5) =>
+        FadeAsync(inOut, TimeSpan.FromSeconds(seconds));
     
     protected override void OnClosing(CancelEventArgs e)
     {
-        AppSettings.Save(_windowHandler);
+        AppSettings.Save(WindowHandler);
         base.OnClosing(e);
     }
 }

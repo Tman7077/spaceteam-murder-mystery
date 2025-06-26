@@ -4,7 +4,95 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dynamic="clr-namespace:SMM.Services.DynamicXAML"
     mc:Ignorable="d" 
     d:DesignWidth="854"
     d:DesignHeight="480">
+    <Grid
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CornerCutButton}">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </Grid.Resources>
+        <!-- Header -->
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource ScreenHeader}"
+            Content="Settings" />
+        <!-- Back Button -->
+        <Button
+            x:Name="BackButton"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="{dynamic:GridColumnMargin 0.2}"
+            Click="Back_Click"
+            Content="Back" />
+        <!-- Fullscreen -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource BodyTextLabel}"
+            FontSize="{dynamic:FontScale 1.5}"
+            Foreground="{StaticResource SMMWhite}"
+            Content="Fullscreen" />
+        <Button
+            x:Name="FullscreenButton"
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="{dynamic:GridColumnMargin 0.2}"
+            Click="Fullscreen_Click" />
+        <!-- Mute -->
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource BodyTextLabel}"
+            FontSize="{dynamic:FontScale 1.5}"
+            Foreground="{StaticResource SMMWhite}"
+            Content="Mute" />
+        <Button
+            x:Name="MuteButton"
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="{dynamic:GridColumnMargin 0.2}"
+            Click="Mute_Click"
+            Content="Mute" />
+        <!-- Volume -->
+        <Label
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource BodyTextLabel}"
+            FontSize="{dynamic:FontScale 1.5}"
+            Foreground="{StaticResource SMMWhite}"
+            Content="Volume" />
+        <Slider
+            x:Name="VolumeSlider"
+            Grid.Row="4"
+            Grid.Column="2"
+            Minimum="0"
+            Maximum="100"
+            TickPlacement="None"
+            TickFrequency="10"
+            IsSnapToTickEnabled="True"
+            Width="{dynamic:DivideWindowWidth 6}"
+            Style="{StaticResource FlatSlider}"
+            ValueChanged="VolumeSlider_ValueChanged" />
+    </Grid>
 </UserControl>
