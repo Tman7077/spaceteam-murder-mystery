@@ -102,6 +102,13 @@ public partial class CharacterSelectionScreen : UserControl
             Tag     = character.ShortName
         };
 
+        if (!character.IsAlive)
+        {
+            selectButton.IsEnabled = false;
+            selectButton.Opacity = 0.5;
+            selectButton.Background = (Brush)FindResource("SMMBlueGray");
+        }
+
         selectButton.Click +=
             _type == InterviewType.Interview
             ? Interview_Click
