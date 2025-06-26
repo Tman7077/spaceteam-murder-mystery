@@ -3,24 +3,22 @@ namespace SMM.Models;
 /// <summary>
 /// Represents an entire character, including their personal information,
 /// relevant image filepaths, quotes, and clues to other characters.
-/// Built from a CharacterData object.
 /// </summary>
-/// <param name="data">All data necessary to create a character. See CharacterData record for details.</param>
-public class Character(CharacterData data)
+public class Character()
 {
     // About the character: static
-    public string Name              { get; } = data.Name;
-    public string ShortName         { get; } = data.Name.Split()[0];
-    public string Role              { get; } = data.Role;
-    public string Motto             { get; } = data.Motto;
-    public Uri ProfileUri           { get; } = data.ProfileUri;
-    public Uri CrimeSceneUri        { get; } = data.CrimeSceneUri;
-    public Direction Facing         { get; } = data.Facing;
-    public string Description       { get; } = data.Description;
-    public string DeathStory        { get; } = data.DeathStory;
-    public HashSet<Clue> Clues      { get; } = data.Clues;
-    public InterviewSet Interviews  { get; } = data.Interviews;
-    public InterviewSet Accusations { get; } = data.Accusations;
+    public required string Name              { get; init; }
+    public required string ShortName         { get; init; }
+    public required string Role              { get; init; }
+    public required string Motto             { get; init; }
+    public required Uri ProfileUri           { get; init; }
+    public required Uri CrimeSceneUri        { get; init; }
+    public required Direction Facing         { get; init; }
+    public required string Description       { get; init; }
+    public required string DeathStory        { get; init; }
+    public required HashSet<Clue> Clues      { get; init; }
+    public required InterviewSet Interviews  { get; init; }
+    public required InterviewSet Accusations { get; init; }
 
     // Mutable character status: can change mid-game.
     public bool IsGuilty { get; set; } = false;

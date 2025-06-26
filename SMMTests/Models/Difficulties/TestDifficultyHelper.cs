@@ -31,7 +31,7 @@ public static class TestDifficultyHelper
         CharacterSet testChars = [];
 
         // None of these values are actually used in the tests,
-        // but they are required to create a CharacterData object.
+        // but they are required to create a Character.
         string role        = "testRoleUnused";
         string motto       = "testMottoUnused";
         Uri profileUri     = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
@@ -55,11 +55,21 @@ public static class TestDifficultyHelper
                 Clue testClue = new("testName", "testDescription", victim, shortName, xyz);
                 testClueSet.Add(testClue);
             }
-            CharacterData cData = new(
-                fullName, role, motto, profileUri, crimeSceneUri, facing,
-                description, deathStory, testClueSet, interviews, accusations
-            );
-            Character testChar = new(cData);
+            Character testChar = new()
+            {
+                Name          = fullName,
+                ShortName     = shortName,
+                Role          = role,
+                Motto         = motto,
+                ProfileUri    = profileUri,
+                CrimeSceneUri = crimeSceneUri,
+                Facing        = facing,
+                Description   = description,
+                DeathStory    = deathStory,
+                Clues         = testClueSet,
+                Interviews    = interviews,
+                Accusations   = accusations
+            };
             testChars[shortName] = testChar;
         }
 

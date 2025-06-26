@@ -96,8 +96,8 @@ public class GameState
         foreach (string charFile in Directory.GetFiles(charDir, "*.md"))
         {
             string charName = Path.GetFileNameWithoutExtension(charFile);
-            CharacterData data = Parser.ParseCharacter(charName);
-            Characters[charName] = new Character(data);
+            Character character = Parser.ParseCharacter(charName);
+            Characters[charName] = character;
         }
 
         Difficulties.All[Difficulty].SelectGuilty(Characters);

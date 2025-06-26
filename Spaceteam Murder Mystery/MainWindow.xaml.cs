@@ -42,16 +42,16 @@ public partial class MainWindow : Window
         if (fullscreen)
         { SourceInitialized += ImmediateFullScreen; }
 
-        Activated += WindowHandler.MainWindow_Activated;
+        Activated   += WindowHandler.MainWindow_Activated;
         Deactivated += WindowHandler.MainWindow_Deactivated;
 
         Grid mainGrid = new()
         {
             HorizontalAlignment = HorizontalAlignment.Stretch,
-            VerticalAlignment = VerticalAlignment.Stretch,
-            Children = { _mainControl }
+            VerticalAlignment   = VerticalAlignment.Stretch,
+            Children            = { _mainControl }
         };
-        Content = mainGrid;
+        Content       = mainGrid;
         CurrentScreen = View.Request(this, new Screen.Title())();
 
         _ = Soundtrack.Start();
@@ -64,7 +64,7 @@ public partial class MainWindow : Window
 
         State = new GameState(difficulty);
         _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme);
-        await ChangeView(new Screen.Story(FirstLoad: true, null), 2, 2);
+        await ChangeView(new Screen.Story(FirstLoad: true, Vote: null), 2, 2);
     }
 
     public async Task ChangeView(Screen screen, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5) =>

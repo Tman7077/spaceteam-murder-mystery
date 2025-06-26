@@ -35,7 +35,7 @@ public class TestParser(ITestOutputHelper output)
         // Confirm that the character name is at least right
         // This will come from reading the files in the directory
         Output.WriteLine($"Loaded Character: {characterName}");
-        CharacterData character = Parser.ParseCharacter(characterName);
+        Character character = Parser.ParseCharacter(characterName);
 
         // If at least the name was read correctly, this will pass.
         Assert.Contains(characterName, character.Name);

@@ -8,10 +8,8 @@ using System.IO;
 /// </summary>
 public class CrimeScene
 {
-    private readonly HashSet<Clue> _clues;
-
     public string        Victim { get; }
-    public HashSet<Clue> Clues  { get => _clues; }
+    public HashSet<Clue> Clues  { get; } = [];
     public GameState     State  { get; }
 
     /// <summary>
@@ -23,9 +21,8 @@ public class CrimeScene
     {
         Validator.ValidateShortCharacterName(victim);
 
-        _clues = [];
         Victim = victim;
         State = gameState;
-        State.SelectClues(_clues, Victim);
+        State.SelectClues(Clues, Victim);
     }
 }

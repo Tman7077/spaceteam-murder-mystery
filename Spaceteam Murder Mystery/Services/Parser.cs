@@ -15,7 +15,7 @@ public static partial class Parser
     /// </summary>
     /// <param name="characterName">The short name of a character, aligning with a filename to parse.</param>
     /// <returns>The data necessary to create a Character.</returns>
-    public static CharacterData ParseCharacter(string characterName)
+    public static Character ParseCharacter(string characterName)
     {
         string charDir = Path.Combine(_assetDir, "Text", "Characters");
 
@@ -54,12 +54,21 @@ public static partial class Parser
         string[] accusationLines = lines[accusationsIndex..];
         InterviewSet accusations = ParseResponses(accusationLines);
 
-        return new CharacterData(
-            name,        role,       motto,
-            profileUri,  csUri,      direction,
-            description, deathStory, clues,
-            interviews,  accusations
-        );
+        return new Character()
+        {
+            Name          = name,
+            ShortName     = name.Split()[0],
+            Role          = role,
+            Motto         = motto,
+            ProfileUri    = profileUri,
+            CrimeSceneUri = csUri,
+            Facing        = direction,
+            Description   = description,
+            DeathStory    = deathStory,
+            Clues         = clues,
+            Interviews    = interviews,
+            Accusations   = accusations
+        };
     }
 
     /// <summary>
