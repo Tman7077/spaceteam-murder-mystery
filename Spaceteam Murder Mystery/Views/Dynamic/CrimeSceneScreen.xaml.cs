@@ -56,7 +56,7 @@ public partial class CrimeSceneScreen : UserControl
 
         Image sceneImage = new()
         {
-            Source  = new BitmapImage(new Uri(_victim.CrimeSceneImagePath, UriKind.Absolute)),
+            Source  = new BitmapImage(_victim.CrimeSceneUri),
             Stretch = Stretch.UniformToFill,
             Width   = canvas.Width,
             Height  = canvas.Height,
@@ -72,7 +72,7 @@ public partial class CrimeSceneScreen : UserControl
         foreach (Clue clue in cluesByZ)
         {
             Image clueImage = new()
-            { Source = new BitmapImage(new Uri(clue.ImagePath, UriKind.Absolute)) };
+            { Source = new BitmapImage(clue.Uri) };
 
             Button imageButton = new()
             {

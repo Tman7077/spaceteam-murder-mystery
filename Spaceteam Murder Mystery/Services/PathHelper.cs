@@ -16,19 +16,19 @@ public static class PathHelper
     /// denoted by the presence of a ".root" file.
     /// </summary>
     /// <returns>The full path to the root directory.</returns>
-    public static string GetProjectRoot()
-    {
-        DirectoryInfo? dir = new(AppContext.BaseDirectory);
-        string marker      = ".root";
+    // public static string GetProjectRoot()
+    // {
+    //     DirectoryInfo? dir = new(AppContext.BaseDirectory);
+    //     string marker      = ".root";
 
-        while (dir != null && !File.Exists(Path.Combine(dir.FullName, marker)))
-        { dir = dir.Parent; }
+    //     while (dir != null && !File.Exists(Path.Combine(dir.FullName, marker)))
+    //     { dir = dir.Parent; }
 
-        if (dir == null)
-        { throw new DirectoryNotFoundException($"Could not find project root containing '{marker}'."); }
+    //     if (dir == null)
+    //     { throw new DirectoryNotFoundException($"Could not find project root containing '{marker}'."); }
 
-        return Path.Combine(dir.FullName, "Spaceteam Murder Mystery");
-    }
+    //     return Path.Combine(dir.FullName, "Spaceteam Murder Mystery");
+    // }
 
     /// <summary>
     /// Gets the path to the SMM Assets directory,
@@ -36,5 +36,6 @@ public static class PathHelper
     /// </summary>
     /// <returns>The full path to the Assets directory.</returns>
     public static string GetAssetDirectory() =>
-        Path.Combine(GetProjectRoot(), "Assets");
+        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
+        // Path.Combine(GetProjectRoot(), "Assets");
 }

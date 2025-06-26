@@ -86,7 +86,7 @@ public partial class CharacterSelectionScreen : UserControl
         charGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 
         Image portrait = new()
-        { Source = new BitmapImage(new Uri(character.ProfileImagePath, UriKind.Absolute)) };
+        { Source = new BitmapImage(character.ProfileUri) };
 
         Label nameLabel = new()
         {

@@ -32,7 +32,7 @@ public class TestDEasy(ITestOutputHelper output)
         Assert.Equal(numLivingInnocent >= 3 ? 4 : numLivingInnocent + 1, testClues.Count);
         // Ensure all clues have valid image paths.
         foreach (Clue clue in testClues)
-        { Assert.True(File.Exists(clue.ImagePath)); }
+        { Assert.True(File.Exists(clue.Uri.LocalPath)); }
         Assert.Contains(testClues, c => c.Owner == testChars[owner].ShortName);
     }
 }

@@ -28,7 +28,7 @@ public partial class InterviewScreen : InspectionScreen
     {
         Grid root = LoadScreenSetup();
 
-        Grid block = CreateImageGrid(new Uri(_interviewee.ProfileImagePath, UriKind.Absolute), _interviewee.Name);
+        Grid block = CreateImageGrid(_interviewee.ProfileUri, _interviewee.Name);
 
         TextBlock text = new()
         {

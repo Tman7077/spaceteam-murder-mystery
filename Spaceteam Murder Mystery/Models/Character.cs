@@ -9,18 +9,18 @@ namespace SMM.Models;
 public class Character(CharacterData data)
 {
     // About the character: static
-    public string Name                { get; } = data.Name;
-    public string ShortName           { get; } = data.Name.Split()[0];
-    public string Role                { get; } = data.Role;
-    public string Motto               { get; } = data.Motto;
-    public string ProfileImagePath    { get; } = data.ProfileImagePath;
-    public string CrimeSceneImagePath { get; } = data.CrimeSceneImagePath;
-    public Direction Facing           { get; } = data.Facing;
-    public string Description         { get; } = data.Description;
-    public string DeathStory          { get; } = data.DeathStory;
-    public HashSet<Clue> Clues        { get; } = data.Clues;
-    public InterviewSet Interviews    { get; } = data.Interviews;
-    public InterviewSet Accusations   { get; } = data.Accusations;
+    public string Name              { get; } = data.Name;
+    public string ShortName         { get; } = data.Name.Split()[0];
+    public string Role              { get; } = data.Role;
+    public string Motto             { get; } = data.Motto;
+    public Uri ProfileUri           { get; } = data.ProfileUri;
+    public Uri CrimeSceneUri        { get; } = data.CrimeSceneUri;
+    public Direction Facing         { get; } = data.Facing;
+    public string Description       { get; } = data.Description;
+    public string DeathStory        { get; } = data.DeathStory;
+    public HashSet<Clue> Clues      { get; } = data.Clues;
+    public InterviewSet Interviews  { get; } = data.Interviews;
+    public InterviewSet Accusations { get; } = data.Accusations;
 
     // Mutable character status: can change mid-game.
     public bool IsGuilty { get; set; } = false;

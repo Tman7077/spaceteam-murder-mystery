@@ -30,6 +30,9 @@ public static partial class Parser
         string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits", $"{characterName}.png");
         string csImagePath      = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
+        Uri profileUri = new (profileImagePath, UriKind.Absolute);
+        Uri csUri      = new (csImagePath,      UriKind.Absolute);
+
         int directionIndex  = Array.FindIndex(lines, line => line.StartsWith('`'));
         Direction direction = lines[directionIndex].Split(':')[1].Trim('`', ' ') == "Left" ? Direction.Left : Direction.Right;
 
@@ -52,17 +55,10 @@ public static partial class Parser
         InterviewSet accusations = ParseResponses(accusationLines);
 
         return new CharacterData(
-            name,
-            role,
-            motto,
-            profileImagePath,
-            csImagePath,
-            direction,
-            description,
-            deathStory,
-            clues,
-            interviews,
-            accusations
+            name,        role,       motto,
+            profileUri,  csUri,      direction,
+            description, deathStory, clues,
+            interviews,  accusations
         );
     }
 
@@ -125,7 +121,7 @@ public static partial class Parser
         {
             string name     = RegexCharacterName().Replace(lines[i], "$1").Trim('#', ':', ' ');
             string innocent = lines[i + 1].Trim('>', ' ');
-            string guilty  = lines[i + 2].Trim('>', ' ');
+            string guilty   = lines[i + 2].Trim('>', ' ');
             responses.Add(name, new ResponseSet(innocent, guilty));
         }
         return responses;

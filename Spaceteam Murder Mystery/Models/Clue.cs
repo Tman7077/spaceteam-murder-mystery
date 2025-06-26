@@ -12,10 +12,10 @@ public class Clue
     public string Description { get; }
     public string Victim      { get; }
     public string Owner       { get; }
-    public string ImagePath   { get; }
-    public int X { get; }
-    public int Y { get; }
-    public int Z { get; }
+    public Uri Uri { get; }
+    public int X   { get; }
+    public int Y   { get; }
+    public int Z   { get; }
     public bool IsFound { get; set; }
 
     /// <summary>
@@ -37,13 +37,14 @@ public class Clue
         X = xyz[0];
         Y = xyz[1];
         Z = xyz[2];
-        ImagePath = Path.Combine(
-            PathHelper.GetAssetDirectory(),
-            "Images",
-            "Crime Scenes",
-            $"{Victim}Clues",
-            $"{Owner}.png"
-        );
+        Uri = new Uri(
+            Path.Combine(
+                PathHelper.GetAssetDirectory(),
+                "Images",
+                "Crime Scenes",
+                $"{Victim}Clues",
+                $"{Owner}.png"),
+            UriKind.Absolute);
         IsFound = false;
     }
 }

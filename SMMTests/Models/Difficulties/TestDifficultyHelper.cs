@@ -32,15 +32,15 @@ public static class TestDifficultyHelper
 
         // None of these values are actually used in the tests,
         // but they are required to create a CharacterData object.
-        string role = "testRoleUnused";
-        string motto = "testMottoUnused";
-        string profileImagePath = "testProfileImagePathUnused";
-        string crimeSceneImagePath = "testCrimeSceneImagePathUnused";
-        Direction facing = Direction.Left;
+        string role        = "testRoleUnused";
+        string motto       = "testMottoUnused";
+        Uri profileUri     = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
+        Uri crimeSceneUri  = new("testCrimeSceneUriUnused", UriKind.RelativeOrAbsolute);
+        Direction facing   = Direction.Left;
         string description = "testDescriptionUnused";
-        string deathStory = "testDeathStoryUnused";
+        string deathStory  = "testDeathStoryUnused";
         int[] xyz = [0, 0, 0];
-        InterviewSet interviews = new();
+        InterviewSet interviews  = new();
         InterviewSet accusations = new();
 
         // Using full names here, because the Character class expects full names.
@@ -56,7 +56,7 @@ public static class TestDifficultyHelper
                 testClueSet.Add(testClue);
             }
             CharacterData cData = new(
-                fullName, role, motto, profileImagePath, crimeSceneImagePath, facing,
+                fullName, role, motto, profileUri, crimeSceneUri, facing,
                 description, deathStory, testClueSet, interviews, accusations
             );
             Character testChar = new(cData);
@@ -137,9 +137,9 @@ public static class TestDifficultyHelper
                             foreach (Clue c in clues)
                             {
                                 output.WriteLine(new string('v', 25));
-                                output.WriteLine($"    Owner : {c.Owner}");
-                                output.WriteLine($"   Victim : {c.Victim}");
-                                output.WriteLine($"ImagePath : {c.ImagePath}");
+                                output.WriteLine($" Owner : {c.Owner}");
+                                output.WriteLine($"Victim : {c.Victim}");
+                                output.WriteLine($"   Uri : {c.Uri.LocalPath}");
                                 output.WriteLine(new string('^', 25));
                             }
                         }
