@@ -30,8 +30,8 @@ public static partial class Parser
         string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits", $"{characterName}.png");
         string csImagePath      = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
-        Uri profileUri = new (profileImagePath, UriKind.Absolute);
-        Uri csUri      = new (csImagePath,      UriKind.Absolute);
+        Uri profileUri = new(profileImagePath);
+        Uri csUri      = new(csImagePath);
 
         int directionIndex  = Array.FindIndex(lines, line => line.StartsWith('`'));
         Direction direction = lines[directionIndex].Split(':')[1].Trim('`', ' ') == "Left" ? Direction.Left : Direction.Right;

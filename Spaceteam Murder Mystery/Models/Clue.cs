@@ -43,8 +43,7 @@ public class Clue
                 "Images",
                 "Crime Scenes",
                 $"{Victim}Clues",
-                $"{Owner}.png"),
-            UriKind.Absolute);
+                $"{Owner}.png"));
         IsFound = false;
     }
 }
