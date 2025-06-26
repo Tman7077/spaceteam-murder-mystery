@@ -5,7 +5,7 @@ public abstract record Victim
     public sealed record Random   : Victim;
     public abstract record ByName : Victim
     {
-        public string Name { get; init; }
+        public string Name { get; }
         protected ByName(string Name)
         {
             Validator.ValidateShortCharacterName(Name);
