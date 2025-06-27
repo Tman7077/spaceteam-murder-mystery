@@ -32,16 +32,17 @@ public static class TestDifficultyHelper
 
         // None of these values are actually used in the tests,
         // but they are required to create a Character.
-        string role        = "testRoleUnused";
-        string motto       = "testMottoUnused";
-        Uri profileUri     = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
-        Uri crimeSceneUri  = new("testCrimeSceneUriUnused", UriKind.RelativeOrAbsolute);
-        Direction facing   = Direction.Left;
-        string description = "testDescriptionUnused";
-        string deathStory  = "testDeathStoryUnused";
-        int[] xyz = [0, 0, 0];
-        InterviewSet interviews  = new();
-        InterviewSet accusations = new();
+        string       role           = "testRoleUnused";
+        string       motto          = "testMottoUnused";
+        Uri          profileUri     = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
+        Uri          crimeSceneUri  = new("testCrimeSceneUriUnused", UriKind.RelativeOrAbsolute);
+        Direction    facing         = Direction.Left;
+        string       description    = "testDescriptionUnused";
+        string       preDeathBlurb  = "testPreDeathBlurbUnused";
+        string       postDeathBlurb = "testPostDeathBlurbUnused";
+        int[]        xyz            = [0, 0, 0];
+        InterviewSet interviews     = new();
+        InterviewSet accusations    = new();
 
         // Using full names here, because the Character class expects full names.
         foreach (string fullName in _fullCharacterNames)
@@ -57,18 +58,19 @@ public static class TestDifficultyHelper
             }
             Character testChar = new()
             {
-                Name          = fullName,
-                ShortName     = shortName,
-                Role          = role,
-                Motto         = motto,
-                ProfileUri    = profileUri,
-                CrimeSceneUri = crimeSceneUri,
-                Facing        = facing,
-                Description   = description,
-                DeathStory    = deathStory,
-                Clues         = testClueSet,
-                Interviews    = interviews,
-                Accusations   = accusations
+                Name           = fullName,
+                ShortName      = shortName,
+                Role           = role,
+                Motto          = motto,
+                ProfileUri     = profileUri,
+                CrimeSceneUri  = crimeSceneUri,
+                Facing         = facing,
+                Description    = description,
+                PreDeathBlurb  = preDeathBlurb,
+                PostDeathBlurb = postDeathBlurb,
+                Clues          = testClueSet,
+                Interviews     = interviews,
+                Accusations    = accusations
             };
             testChars[shortName] = testChar;
         }

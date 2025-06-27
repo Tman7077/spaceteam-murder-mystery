@@ -48,14 +48,15 @@ public class TestParser(ITestOutputHelper output)
             Output.WriteLine(new string('-', 50));
             Output.WriteLine("Debugging is attached, printing character data:");
 
-            Output.WriteLine($"       Name : {character.Name}");
-            Output.WriteLine($"       Role : {character.Role}");
-            Output.WriteLine($"      Motto : {character.Motto}");
-            Output.WriteLine($" ProfileUri : {character.ProfileUri.LocalPath}");
-            Output.WriteLine($"      CSUri : {character.CrimeSceneUri.LocalPath}");
-            Output.WriteLine($"  Direction : {character.Facing}");
-            Output.WriteLine($"Description : {character.Description}");
-            Output.WriteLine($" DeathStory : {character.DeathStory}");
+            Output.WriteLine($"          Name : {character.Name}");
+            Output.WriteLine($"          Role : {character.Role}");
+            Output.WriteLine($"         Motto : {character.Motto}");
+            Output.WriteLine($"    ProfileUri : {character.ProfileUri.LocalPath}");
+            Output.WriteLine($"         CSUri : {character.CrimeSceneUri.LocalPath}");
+            Output.WriteLine($"     Direction : {character.Facing}");
+            Output.WriteLine($"   Description : {character.Description}");
+            Output.WriteLine($" PreDeathBlurb : {character.PreDeathBlurb}");
+            Output.WriteLine($"PostDeathBlurb : {character.PostDeathBlurb}");
 
             Output.WriteLine(new string('-', 25));
             foreach (var clue in character.Clues)

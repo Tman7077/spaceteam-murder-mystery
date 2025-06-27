@@ -26,8 +26,6 @@ The launch of the Ardent Dawn is a spectacle unlike any before it. The towering 
 
 The Ardent Dawn is equipped with cutting-edge technology, geoponic systems, and enough supplies for a three-year mission. Spirits are high as we set off, the first few days filled with excitement and routine tasks. But the journey takes an unexpected turn when a minor systems error sends us off-course. We brush it off at first, but as the days pass, tensions begin to bubble beneath the surface—and as the Ardent Dawn drifts farther from its intended path, one thing becomes clear: not all dangers come from the void outside.
 
-*There's probably going to be more here*
-
 ## Misc.
 
 ### Space suit prompt *(flux-dev-fp8)*:

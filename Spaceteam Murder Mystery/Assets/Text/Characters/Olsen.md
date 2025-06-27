@@ -8,7 +8,13 @@ Olsen is a born educator, always seeking to share knowledge and help others grow
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Olsen spends most of his free time in the common area, solving puzzles, reading books, or chatting with the crew. Just a few minutes ago, he was seen working on a particularly intricate puzzle, sipping hot cocoa. But we just found him slumped over the table, the puzzle unfinished. A sediment in his cup hints at poisoning, and the peaceful scene begins to take on a sinister undertone. The apparent lack of struggle only deepens the mystery, leaving us to question what may have gone down.
+
+### Post-Death Blurb
+
+Olsen saw the best in all of us, even when we couldn’t see it ourselves. His wisdom steadied us. With him gone, the road ahead feels even more uncertain, but we carry his belief in each other forward.
 
 ## CLUES & HINTS
 

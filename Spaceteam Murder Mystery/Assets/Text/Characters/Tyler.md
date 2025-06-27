@@ -8,7 +8,13 @@ Introspective and attentive, Tyler’s mind is a web of algorithms and possibili
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Tyler spends long hours in the control room, fine-tuning the ship’s systems and addressing minor glitches. His meticulous nature led him to stay late last night, analyzing a persistent error on the main console. When he failed to report back this morning for breakfast, we went looking and found him slumped over the terminal, a message flashing on the screen. A faint scorch mark on the console suggests a short circuit, but an open breaker panel indicates something far more deliberate. Could this have been the result of some unfortunate troubleshooting, or was it sabotage?
+
+### Post-Death Blurb
+
+Tyler understood the systems better than anyone. The tech, sure, but the social systems between all of us, the intricate dynamics that brought us together. Now we’re without his insight. If we’re going to make it, we have to start thinking like he did: carefully and as one.
 
 ## CLUES & HINTS
 

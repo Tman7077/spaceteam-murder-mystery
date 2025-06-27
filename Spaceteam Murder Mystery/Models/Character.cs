@@ -7,18 +7,19 @@ namespace SMM.Models;
 public class Character()
 {
     // About the character: static
-    public required string Name              { get; init; }
-    public required string ShortName         { get; init; }
-    public required string Role              { get; init; }
-    public required string Motto             { get; init; }
-    public required Uri ProfileUri           { get; init; }
-    public required Uri CrimeSceneUri        { get; init; }
-    public required Direction Facing         { get; init; }
-    public required string Description       { get; init; }
-    public required string DeathStory        { get; init; }
-    public required HashSet<Clue> Clues      { get; init; }
-    public required InterviewSet Interviews  { get; init; }
-    public required InterviewSet Accusations { get; init; }
+    public required string        Name           { get; init; }
+    public required string        ShortName      { get; init; }
+    public required string        Role           { get; init; }
+    public required string        Motto          { get; init; }
+    public required Uri           ProfileUri     { get; init; }
+    public required Uri           CrimeSceneUri  { get; init; }
+    public required Direction     Facing         { get; init; }
+    public required string        Description    { get; init; }
+    public required string        PreDeathBlurb  { get; init; }
+    public required string        PostDeathBlurb { get; init; }
+    public required HashSet<Clue> Clues          { get; init; }
+    public required InterviewSet  Interviews     { get; init; }
+    public required InterviewSet  Accusations    { get; init; }
 
     // Mutable character status: can change mid-game.
     public bool IsGuilty { get; set; } = false;

@@ -8,7 +8,13 @@ Colter’s towering frame and projecting confidence make him a natural presence 
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Colter spends the evenings engrossed in experiments within the laboratory, his natural curiosity leading him to tinker with complex chemical compounds. This morning, however, he was absent at breakfast. We found him slumped over his workstation, a chemical spill spreading across the counter. The acrid smell in the air suggests toxic fumes, but the arrangement of equipment hints at a more calculated setup. Was Colter’s intellect the target, or his downfall?
+
+### Post-Death Blurb
+
+Colter was always thinking ahead: experimenting, solving, creating. Now his brilliance has been snuffed out. We owe it to him to find the truth and make sure no more light is lost in the dark.
 
 ## CLUES & HINTS
 

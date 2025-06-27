@@ -8,7 +8,13 @@ Cade's passion for baseball is as constant as Earth's gravity, and his love for 
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Cade was taking a break in the recreation room, practicing his swings in the batting cage he set up to pass time. During our evening check-in tonight, Cade never showed. We investigated and found him collapsed near the cage. A fractured bat lies nearby, its splinters scattered across the floor. It seems like it could have been an accident, but the positioning of the equipment and a faint bruise on his temple suggest otherwise. What—or who—could have caused this?
+
+### Post-Death Blurb
+
+Cade brought us all together. Despite being millions of miles away, he made the ship feel like home. Now that warmth is missing. It’s hard to imagine the team without him, but we have to stay sharp. He wouldn't want us to give up.
 
 ## CLUES & HINTS
 

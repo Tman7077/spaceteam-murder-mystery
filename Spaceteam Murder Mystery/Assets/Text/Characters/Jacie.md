@@ -8,7 +8,13 @@ Jacie’s nurturing disposition makes her the group’s caretaker. Whether tendi
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Jacie spent her evening tending to the geoponics bay, as she often does, ensuring the plants are thriving. She spoke frequently about the garden’s importance to the mission, but she always came to bed when she was done, so her absence this morning was alarming. We found her in the bay, face down in a pile of dirt. Such a large pile of dirt outside of the planters was a mess Jacie would never make, so how—and why—did this happen?
+
+### Post-Death Blurb
+
+Jacie gave life to every corner of this ship, from plants, to friendships, to hope. Her kindness made this place feel human. Now we must honor her memory by keeping that humanity, and the rest of us, alive.
 
 ## CLUES & HINTS
 

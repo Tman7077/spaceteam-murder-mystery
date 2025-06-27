@@ -8,7 +8,13 @@ Courtney’s artistic soul finds inspiration in the boundless expanse of the cos
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Courtney often retreats to the observation deck to find inspiration among the stars. On this particular night, she brought her notepad, eager to capture the cosmic beauty outside. When she failed to return when we were heading to bed, we discovered her lifeless body. Her notepad lies open to a half-finished drawing, but she is positioned facing away from the window—strange.
+
+### Post-Death Blurb
+
+Courtney turned the cold emptiness of space into something beautiful. Her creativity and kindness meant something. We have to hold onto that meaning now, and make sure we don’t lose anyone else.
 
 ## CLUES & HINTS
 

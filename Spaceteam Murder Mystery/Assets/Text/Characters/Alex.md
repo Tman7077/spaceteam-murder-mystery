@@ -8,7 +8,13 @@ Alex has a sharp mind and a sharper focus, known for his uncanny ability to iden
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Alex was conducting a routine inspection of the ship’s navigation systems to investigate minor anomalies. While examining the console, a muffled noise echoed, and the lights flickered—but the crew passed it off as turbulence. Just now, he failed to arrive at the evening check-in, so we searched and found him slumped near the navigation console. A faint burn mark on his palm suggests an electrical discharge, but the scene feels too deliberate to be a simple accident.
+
+### Post-Death Blurb
+
+Alex's steady hands and guiding voice are gone, leaving behind silence where there was once certainty. But we can't afford to dwell too long... Someone or something took him from us, and if we don't figure out what, it could take more.
 
 ## CLUES & HINTS
 

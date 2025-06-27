@@ -8,7 +8,13 @@ Ethan brings an unmatched energy to the Ardent Dawn. Always in motion, he balanc
 
 ## DEATH
 
+### Pre-Death Blurb
+
 Ethan spent the afternoon prepping dinner in the galley, upbeat as always, joking and tossing around kitchen banter while throwing pizza dough with the finesse of his frisbee throws. As the evening approached and the crew gathered for the meal, Ethan never appeared. Eventually, someone went to check, and found him collapsed behind the food prep station, apron still tied, the meal half-cooked. Though the scene appears natural at first, a thin red mark on his neck suggests otherwise. The liveliness that had filled every corner of the ship now echoes as silence.
+
+### Post-Death Blurb
+
+Ethan's energy filled every room—his passion, his relentless optimism. With the fire of his soul and the fire on his stove put out for good, we must work together to put an end to this treachery.
 
 ## CLUES & HINTS
 

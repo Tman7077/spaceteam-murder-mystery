@@ -38,8 +38,10 @@ public static partial class Parser
 
         string description = lines[directionIndex + 1];
 
-        int deathIndex    = Array.FindIndex(lines, line => line == "## DEATH") + 1;
-        string deathStory = lines[deathIndex];
+        int preDeathIndex     = Array.FindIndex(lines, line => line == "### Pre-Death Story") + 1;
+        string preDeathBlurb  = lines[preDeathIndex];
+        int postDeathIndex    = Array.FindIndex(lines, line => line == "### Post-Death Story") + 1;
+        string postDeathBlurb = lines[postDeathIndex];
 
         int cluesIndex       = Array.FindIndex(lines, line => line == "## CLUES & HINTS") + 1;
         int interviewsIndex  = Array.FindIndex(lines, line => line == "## INTERVIEW RESPONSES") + 1;
@@ -56,18 +58,19 @@ public static partial class Parser
 
         return new Character()
         {
-            Name          = name,
-            ShortName     = name.Split()[0],
-            Role          = role,
-            Motto         = motto,
-            ProfileUri    = profileUri,
-            CrimeSceneUri = csUri,
-            Facing        = direction,
-            Description   = description,
-            DeathStory    = deathStory,
-            Clues         = clues,
-            Interviews    = interviews,
-            Accusations   = accusations
+            Name           = name,
+            ShortName      = name.Split()[0],
+            Role           = role,
+            Motto          = motto,
+            ProfileUri     = profileUri,
+            CrimeSceneUri  = csUri,
+            Facing         = direction,
+            Description    = description,
+            PreDeathBlurb  = preDeathBlurb,
+            PostDeathBlurb = postDeathBlurb,
+            Clues          = clues,
+            Interviews     = interviews,
+            Accusations    = accusations
         };
     }
 
@@ -82,7 +85,7 @@ public static partial class Parser
 
         int introIndex       = Array.FindIndex(lines, line => line == "### Intro") + 1;
         int firstMurderIndex = Array.FindIndex(lines, line => line == "### First Murder Intro") + 1;
-        int stopIndex        = Array.FindIndex(lines, line => line == "*There's probably going to be more here*");
+        int stopIndex        = Array.FindIndex(lines, line => line == "## Misc.");
 
         string[] introLines       = lines[introIndex..(firstMurderIndex - 1)];
         string[] firstMurderLines = lines[firstMurderIndex..stopIndex];
