@@ -43,13 +43,13 @@ public partial class InterviewScreen : InspectionScreen
             
             LoadScreenFinal(root, block, text, continueClick);
         }
-        else // _type == InterviewType.Accusation
+        else // if (_type == InterviewType.Accusation)
         {
             async void continueClick(object sender, RoutedEventArgs e)
             {
                 _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.ShortName));
                 Vote vote = new(_interviewee.ShortName, _main.State);
-                await _main.AdvanceStory(vote);
+                await _main.AdvanceStory(new Advance.PostAccusation(vote));
             }
 
             LoadScreenFinal(root, block, text, continueClick);

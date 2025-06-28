@@ -19,9 +19,7 @@ public static class View
             Screen.Settings      =>
                 () => new SettingsScreen(window),
             Screen.Story       s =>
-                () => new StoryScreen(window, s.FirstLoad, s.Vote),
-            Screen.Success     s =>
-                () => new SuccessScreen(window, s.Vote),
+                () => new StoryScreen(window, s.Advance),
             Screen.Title         =>
                 () => new TitleScreen(window),
             _ => throw new ArgumentException($"Unknown view {screen}.", nameof(screen))

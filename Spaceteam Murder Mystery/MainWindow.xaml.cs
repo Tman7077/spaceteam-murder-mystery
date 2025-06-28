@@ -64,7 +64,7 @@ public partial class MainWindow : Window
 
         State = new GameState(difficulty);
         _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme);
-        await ChangeView(new Screen.Story(FirstLoad: true, Vote: null), 2, 2);
+        await ChangeView(new Screen.Story(new Advance.Intro()), 2, 2);
     }
 
     public async Task ChangeView(Screen screen, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5) =>
@@ -72,7 +72,7 @@ public partial class MainWindow : Window
     private async Task ChangeView(UserControl control, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5)
     {
         await FadeAsync(FadeType.Out, fadeOutSeconds);
-        PrevScreen    = CurrentScreen;
+        PrevScreen = CurrentScreen;
         CurrentScreen = control;
         await FadeAsync(FadeType.In, fadeInSeconds);
     }
@@ -83,16 +83,9 @@ public partial class MainWindow : Window
         CurrentScreen = PrevScreen;
         await FadeAsync(FadeType.In);
     }
-
-    public async Task AdvanceStory(Vote vote)
-    {
-        Screen nextScreen = vote.Success
-            ? new Screen.Success(vote)
-            : new Screen.Story(FirstLoad: false, vote);
-        await ChangeView(nextScreen);
-    }
-    public async Task AdvanceStory() =>
-        await ChangeView(new Screen.Story(FirstLoad: false, null));
+    
+    public async Task AdvanceStory(Advance advance) =>
+        await ChangeView(new Screen.Story(advance));
 
     public async Task LoadCrimeSceneFor(string victimName) =>
         await ChangeView(new Screen.CrimeScene(victimName));

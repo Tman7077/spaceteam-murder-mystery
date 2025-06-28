@@ -26,10 +26,9 @@ public abstract record Screen
             this.Victim      = Victim;
         }
     }
-    public sealed record InspectClue(Clue Clue)            : Screen;
-    public sealed record Selection(InterviewType Type)     : Screen;
-    public sealed record Settings                          : Screen;
-    public sealed record Story(bool FirstLoad, Vote? Vote) : Screen;
-    public sealed record Success(Vote Vote)                : Screen;
-    public sealed record Title                             : Screen;
+    public sealed record InspectClue(Clue Clue)        : Screen;
+    public sealed record Selection(InterviewType Type) : Screen;
+    public sealed record Settings                      : Screen;
+    public sealed record Story(Advance Advance)        : Screen;
+    public sealed record Title                         : Screen;
 }
