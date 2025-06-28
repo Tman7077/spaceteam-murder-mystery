@@ -93,13 +93,17 @@ public class TestParser(ITestOutputHelper output)
         Assert.NotNull(story);
         Assert.NotEmpty(story.Intro);
         Assert.NotEmpty(story.FirstMurder);
+        Assert.NotEmpty(story.Victory);
+        Assert.NotEmpty(story.Defeat);
         Output.WriteLine("Story parsed successfully.");
         if (Debugger.IsAttached)
         {
             Output.WriteLine(new string('-', 50));
             Output.WriteLine("Debugging is attached, printing story data:");
             Output.WriteLine($"       Intro : {story.Intro}\n");
-            Output.WriteLine($"First Murder : {story.FirstMurder}");
+            Output.WriteLine($"First Murder : {story.FirstMurder}\n");
+            Output.WriteLine($"     Victory : {story.Victory}\n");
+            Output.WriteLine($"      Defeat : {story.Defeat}");
         }
     }
 }

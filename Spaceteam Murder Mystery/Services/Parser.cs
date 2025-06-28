@@ -38,9 +38,9 @@ public static partial class Parser
 
         string description = lines[directionIndex + 1];
 
-        int preDeathIndex     = Array.FindIndex(lines, line => line == "### Pre-Death Story") + 1;
+        int preDeathIndex     = Array.FindIndex(lines, line => line == "### Pre-Death Blurb") + 1;
         string preDeathBlurb  = lines[preDeathIndex];
-        int postDeathIndex    = Array.FindIndex(lines, line => line == "### Post-Death Story") + 1;
+        int postDeathIndex    = Array.FindIndex(lines, line => line == "### Post-Death Blurb") + 1;
         string postDeathBlurb = lines[postDeathIndex];
 
         int cluesIndex       = Array.FindIndex(lines, line => line == "## CLUES & HINTS") + 1;
@@ -85,15 +85,23 @@ public static partial class Parser
 
         int introIndex       = Array.FindIndex(lines, line => line == "### Intro") + 1;
         int firstMurderIndex = Array.FindIndex(lines, line => line == "### First Murder Intro") + 1;
-        int stopIndex        = Array.FindIndex(lines, line => line == "## Misc.");
+        int victoryIndex     = Array.FindIndex(lines, line => line == "### Victory") + 1;
+        int defeatIndex      = Array.FindIndex(lines, line => line == "### Defeat") + 1;
 
-        string[] introLines       = lines[introIndex..(firstMurderIndex - 1)];
-        string[] firstMurderLines = lines[firstMurderIndex..stopIndex];
+        string[] introLines = lines[introIndex..(firstMurderIndex - 1)];
 
         string intro       = string.Join("\n\n", introLines);
-        string firstMurder = string.Join("\n\n", firstMurderLines);
+        string firstMurder = lines[firstMurderIndex];
+        string victory     = lines[victoryIndex];
+        string defeat      = lines[defeatIndex];
 
-        return new Story(intro, firstMurder);
+        return new Story
+        {
+            Intro       = intro,
+            FirstMurder = firstMurder,
+            Victory     = victory,
+            Defeat      = defeat
+        };
     }
 
     private static (string, string) ParseNameAndRole(string line)

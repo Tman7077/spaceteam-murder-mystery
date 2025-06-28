@@ -26,6 +26,14 @@ The launch of the Ardent Dawn is a spectacle unlike any before it. The towering 
 
 The Ardent Dawn is equipped with cutting-edge technology, geoponic systems, and enough supplies for a three-year mission. Spirits are high as we set off, the first few days filled with excitement and routine tasks. But the journey takes an unexpected turn when a minor systems error sends us off-course. We brush it off at first, but as the days pass, tensions begin to bubble beneath the surface—and as the Ardent Dawn drifts farther from its intended path, one thing becomes clear: not all dangers come from the void outside.
 
+### Victory
+
+We stood firm despite the darkness, distrust, and devastating losses. Through sharp eyes and sound judgment, we were able to prevent any more tragedy. Now, with the remaining crew intact and the threat behind us, the Ardent Dawn can chart a course forward. The cost was high, but the mission and the memory of those lost endures. Onward.
+
+### Defeat
+
+One by one, hope slipped away. The crew fell, suspicion flared, and the trust that once held them together unraveled into silence. The killers were never stopped—never revealed. The remaining few are left adrift, the Ardent Dawn now a tomb of potential, echoing with voices that once laughed, communed, and dreamed. Somewhere along the way, the mission was lost—and with it, the future we came here to build. In the void of space, failure is final.
+
 ## Misc.
 
 ### Space suit prompt *(flux-dev-fp8)*:
