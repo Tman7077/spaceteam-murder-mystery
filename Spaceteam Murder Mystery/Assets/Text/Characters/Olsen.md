@@ -40,7 +40,7 @@ Olsen saw the best in all of us, even when we couldn’t see it ourselves. His w
 - *Handwritten Note* (2219, 1806, 0): A notebook page with a handwritten message, matching Olsen’s style.
 
 ### Tyler
-- *Puzzle Reference* (3546, 1921, 0): A puzzle reference image left on the console, from the puzzle Olsen was last seen doing.
+- *Puzzle Reference* (3546, 921, 0): A puzzle reference image left on the console, from the puzzle Olsen was last seen doing.
 
 ## INTERVIEW RESPONSES
 

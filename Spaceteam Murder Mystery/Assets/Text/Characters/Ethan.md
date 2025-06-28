@@ -22,7 +22,7 @@ Ethan's energy filled every room—his passion, his relentless optimism. With th
 - *Sweatband* (3000, 502, 0): A sweatband from Ethan's workout set, draped over the back of Alex's chair.
 
 ### Cade
-- *Phone* (932, 1659, 0): A phone that looks like Ethan's, sitting on the bench.
+- *Phone* (932, 1659, 0): A phone that looks like Ethan's, laying on the floor.
 
 ### Colter
 - *Unusual Beef* (3154, 1769, 0): A bag of Ethan's ground beef, half-defrosted, turned some unnatural colors.
@@ -52,7 +52,7 @@ Ethan's energy filled every room—his passion, his relentless optimism. With th
 
 ### [Cade](Cade.md#death):
 
-> Yeah, that’s my phone on the bench. Cade and I were trading playlists while he practiced, so I left it there by accident. I was only in the rec room for a few minutes before heading to the galley.
+> Yep, that’s my phone. Cade and I were trading playlists while he practiced, so I left it there by accident. I was only in the rec room for a few minutes before heading to the galley. You all know how often I leave my phone laying around.
 
 > My phone being there doesn’t mean I did anything to Cade. We always hang out in the rec room, and I leave my stuff around all the time. Don’t start blaming me just because I forgot it.
 

@@ -65,7 +65,8 @@ public class TestParser(ITestOutputHelper output)
                 Output.WriteLine($"       Name : {clue.Name}");
                 Output.WriteLine($"Description : {clue.Description}");
                 Output.WriteLine($"Coordinates : ({clue.X}, {clue.Y}, {clue.Z})");
-                Output.WriteLine($"        Uri : {clue.Uri.LocalPath}\n");
+                Output.WriteLine($"    SceneUri : {clue.SceneUri.LocalPath}");
+                Output.WriteLine($"    CleanUri : {clue.CleanUri.LocalPath}\n");
             }
 
             Output.WriteLine(new string('-', 25));
