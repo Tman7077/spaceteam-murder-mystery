@@ -12,7 +12,8 @@ public class Clue
     public string Description { get; }
     public string Victim      { get; }
     public string Owner       { get; }
-    public Uri Uri { get; }
+    public Uri SceneUri       { get; }
+    public Uri CleanUri       { get; }
     public int X   { get; }
     public int Y   { get; }
     public int Z   { get; }
@@ -37,13 +38,15 @@ public class Clue
         X = xyz[0];
         Y = xyz[1];
         Z = xyz[2];
-        Uri = new Uri(
-            Path.Combine(
-                PathHelper.GetAssetDirectory(),
-                "Images",
-                "Crime Scenes",
-                $"{Victim}Clues",
-                $"{Owner}.png"));
+        string path = Path.Combine(
+            PathHelper.GetAssetDirectory(),
+            "Images",
+            "Crime Scenes",
+            $"{Victim}Clues",
+            $"{Owner}.png");
+        string pathClean = path.Replace("Clues", "CluesClean");
+        SceneUri = new Uri(path);
+        CleanUri = new Uri(pathClean);
         IsFound = false;
     }
 }

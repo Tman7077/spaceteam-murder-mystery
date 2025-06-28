@@ -72,7 +72,7 @@ public partial class CrimeSceneScreen : UserControl
         foreach (Clue clue in cluesByZ)
         {
             Image clueImage = new()
-            { Source = new BitmapImage(clue.Uri) };
+            { Source = new BitmapImage(clue.SceneUri) };
 
             Button imageButton = new()
             {

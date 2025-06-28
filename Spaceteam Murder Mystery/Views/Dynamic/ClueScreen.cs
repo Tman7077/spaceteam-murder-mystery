@@ -14,7 +14,7 @@ public partial class ClueScreen : InspectionScreen
     {
         Grid root = LoadScreenSetup();
 
-        Grid block = CreateImageGrid(_clue.Uri, _clue.Name);
+        Grid block = CreateImageGrid(_clue.CleanUri, _clue.Name);
 
         TextBlock text = new()
         {

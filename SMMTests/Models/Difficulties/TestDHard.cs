@@ -36,6 +36,9 @@ public class TestDHard(ITestOutputHelper output)
         Assert.InRange(testClues.Count, minClues, maxClues);
         // Ensure all clues have valid image paths.
         foreach (Clue clue in testClues)
-        { Assert.True(File.Exists(clue.Uri.LocalPath)); }
+        {
+            Assert.True(File.Exists(clue.SceneUri.LocalPath)); 
+            Assert.True(File.Exists(clue.CleanUri.LocalPath)); 
+        }
     }
 }

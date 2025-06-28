@@ -38,9 +38,9 @@ public static partial class Parser
 
         string description = lines[directionIndex + 1];
 
-        int preDeathIndex     = Array.FindIndex(lines, line => line == "### Pre-Death Blurb") + 1;
+        int    preDeathIndex  = Array.FindIndex(lines, line => line == "### Pre-Death Blurb") + 1;
         string preDeathBlurb  = lines[preDeathIndex];
-        int postDeathIndex    = Array.FindIndex(lines, line => line == "### Post-Death Blurb") + 1;
+        int    postDeathIndex = Array.FindIndex(lines, line => line == "### Post-Death Blurb") + 1;
         string postDeathBlurb = lines[postDeathIndex];
 
         int cluesIndex       = Array.FindIndex(lines, line => line == "## CLUES & HINTS") + 1;

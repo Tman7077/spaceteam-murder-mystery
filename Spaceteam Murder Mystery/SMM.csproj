@@ -18,6 +18,13 @@
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\Electrolize-Regular.ttf" />
     <None Remove="Assets\Images\Crime Scenes\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\AlexCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\AlexClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\AlexClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\AlexClues\Colter.png" />
@@ -27,6 +34,14 @@
     <None Remove="Assets\Images\Crime Scenes\AlexClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\AlexClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\CadeCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\CadeClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\CadeClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\CadeClues\Colter.png" />
@@ -36,6 +51,14 @@
     <None Remove="Assets\Images\Crime Scenes\CadeClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\CadeClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\ColterCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\ColterClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\ColterClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\ColterClues\Colter.png" />
@@ -45,6 +68,14 @@
     <None Remove="Assets\Images\Crime Scenes\ColterClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\ColterClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\CourtneyCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\CourtneyClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\CourtneyClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\CourtneyClues\Colter.png" />
@@ -54,6 +85,14 @@
     <None Remove="Assets\Images\Crime Scenes\CourtneyClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\CourtneyClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\EthanCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\EthanClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\EthanClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\EthanClues\Colter.png" />
@@ -63,6 +102,14 @@
     <None Remove="Assets\Images\Crime Scenes\EthanClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\EthanClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\JacieCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\JacieClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\JacieClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\JacieClues\Colter.png" />
@@ -72,6 +119,14 @@
     <None Remove="Assets\Images\Crime Scenes\JacieClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\JacieClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\OlsenCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\OlsenClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\OlsenClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\OlsenClues\Colter.png" />
@@ -81,6 +136,14 @@
     <None Remove="Assets\Images\Crime Scenes\OlsenClues\Olsen.png" />
     <None Remove="Assets\Images\Crime Scenes\OlsenClues\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\Tyler.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Alex.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Cade.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Colter.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Courtney.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Ethan.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Jacie.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Olsen.png" />
+    <None Remove="Assets\Images\Crime Scenes\TylerCluesClean\Tyler.png" />
     <None Remove="Assets\Images\Crime Scenes\TylerClues\Alex.png" />
     <None Remove="Assets\Images\Crime Scenes\TylerClues\Cade.png" />
     <None Remove="Assets\Images\Crime Scenes\TylerClues\Colter.png" />
@@ -120,6 +183,27 @@
     <Content Include="Assets\Images\Crime Scenes\Alex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\AlexCluesClean\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Images\Crime Scenes\AlexClues\Alex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -147,6 +231,30 @@
     <Content Include="Assets\Images\Crime Scenes\Cade.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CadeCluesClean\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Images\Crime Scenes\CadeClues\Alex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -172,6 +280,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\ColterCluesClean\Tyler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\ColterClues\Alex.png">
@@ -228,6 +360,30 @@
     <Content Include="Assets\Images\Crime Scenes\Ethan.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\EthanCluesClean\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Images\Crime Scenes\EthanClues\Alex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -253,6 +409,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\JacieCluesClean\Tyler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\JacieClues\Alex.png">
@@ -282,6 +462,30 @@
     <Content Include="Assets\Images\Crime Scenes\Olsen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\OlsenCluesClean\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Images\Crime Scenes\OlsenClues\Alex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -307,6 +511,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\TylerCluesClean\Tyler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Crime Scenes\TylerClues\Alex.png">
@@ -382,6 +610,33 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Text\Overview.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Alex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Cade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Colter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Courtney.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Ethan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Jacie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Olsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Crime Scenes\CourtneyCluesClean\Tyler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

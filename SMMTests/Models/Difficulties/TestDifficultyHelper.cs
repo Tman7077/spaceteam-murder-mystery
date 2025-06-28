@@ -149,9 +149,10 @@ public static class TestDifficultyHelper
                             foreach (Clue c in clues)
                             {
                                 output.WriteLine(new string('v', 25));
-                                output.WriteLine($" Owner : {c.Owner}");
-                                output.WriteLine($"Victim : {c.Victim}");
-                                output.WriteLine($"   Uri : {c.Uri.LocalPath}");
+                                output.WriteLine($"   Owner : {c.Owner}");
+                                output.WriteLine($"  Victim : {c.Victim}");
+                                output.WriteLine($"SceneUri : {c.SceneUri.LocalPath}");
+                                output.WriteLine($"CleanUri : {c.CleanUri.LocalPath}");
                                 output.WriteLine(new string('^', 25));
                             }
                         }
