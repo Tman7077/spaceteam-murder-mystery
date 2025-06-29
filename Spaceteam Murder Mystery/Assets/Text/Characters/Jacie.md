@@ -2,7 +2,7 @@
 
 *"Life is a homestead; it thrives when we care for it together."*
 
-`Facing: Right`
+`Facing: Right` `1201, 1031, 5`
 
 Jacie’s nurturing disposition makes her the group’s caretaker. Whether tending to plants, calming animals, or soothing tensions, she thrives on bringing life to others. On the spaceship, her green thumb extends to the small garden she’s cultivated—an oasis of calm in the sterile environment. Her desire to please often leaves her overlooked, but even the softest voices carry weight in the silence of space.
 

@@ -2,7 +2,7 @@
 
 *"The human body is a puzzle—every joint, every bone, every nerve has its place."*
 
-`Facing: Right`
+`Facing: Right` `606, 1056, 4`
 
 Alex has a sharp mind and a sharper focus, known for his uncanny ability to identify and alleviate physical discomfort. He’s always ready to crack a joke—or a spine—but beneath his calm demeanor lies a meticulous curiosity. His fascination with anatomy borders on the obsessive, making his expertise both reassuring and, perhaps, unsettling. On the spaceship, his steady hands and precise knowledge are invaluable, but in the quiet vastness of space, precision can be a double-edged sword.
 

@@ -2,7 +2,7 @@
 
 *"Building bridges is the most important thing we’ll ever do."*
 
-`Facing: Right`
+`Facing: Right` `152, 1063, 2`
 
 Olsen is a born educator, always seeking to share knowledge and help others grow. He is calm and encouraging, making him a steadying force among the group. On the spaceship, he often organizes debates or puzzles to keep minds sharp and spirits high. But in the cold void of space, even the brightest minds can falter, and Olsen’s unshakable faith in people might be his greatest strength—or his undoing.
 

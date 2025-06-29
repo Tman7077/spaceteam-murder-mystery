@@ -2,7 +2,7 @@
 
 *"Space is a blank canvas, and I can’t wait to fill it."*
 
-`Facing: Left`
+`Facing: Left` `2529, 1049, 3`
 
 Courtney’s artistic soul finds inspiration in the boundless expanse of the cosmos. She’s the dreamer of the group, always capturing moments through her sketches or finding beauty in the cold, dark void. Her playful side, epitomized by her beloved shark onesie, masks a sharp intelligence and quiet resilience. In the vacuum of space, creativity is survival, and Courtney's ability to see what others don’t might be the key to unlocking more than just inspiration.
 
