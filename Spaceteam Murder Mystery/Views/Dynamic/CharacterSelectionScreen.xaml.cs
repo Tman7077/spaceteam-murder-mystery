@@ -104,9 +104,13 @@ public partial class CharacterSelectionScreen : UserControl
 
         if (!character.IsAlive)
         {
-            selectButton.IsEnabled = false;
-            selectButton.Opacity = 0.5;
+            selectButton.IsEnabled  = false;
+            selectButton.Opacity    = 0.5;
             selectButton.Background = (Brush)FindResource("SMMBlueGray");
+
+            MultiplyEffect tint = new()
+            { OverlayColor = Color.FromArgb(128, 0, 0, 0) };
+            portrait.Effect = tint;
         }
 
         selectButton.Click +=

@@ -13,6 +13,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Shader Include="Shaders\MultiplyEffect.fx">
+      <EntryPoint>main</EntryPoint>
+      <ShaderModel>ps_3_0</ShaderModel>
+      <OutputFile>Shaders\MultiplyEffect.ps</OutputFile>
+    </Shader>
+    <Resource Include="Shaders\MultiplyEffect.ps">
+      <Link>Shaders\MultiplyEffect.ps</Link>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Audio\mystery-in-the-stars.mp3" />
     <None Remove="Assets\Audio\title.mp3" />
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
