@@ -67,7 +67,7 @@ public partial class CrimeSceneScreen : UserControl
         canvas.Children.Add(sceneImage);
 
         List<Clue> cluesByZ  =  [.. _scene.Clues];
-        cluesByZ.Sort((a, b) => a.Z.CompareTo(b.Z));
+        cluesByZ.Sort((a, b) => a.CrimeScenePos[2].CompareTo(b.CrimeScenePos[2]));
 
         foreach (Clue clue in cluesByZ)
         {
@@ -82,8 +82,8 @@ public partial class CrimeSceneScreen : UserControl
             };
             imageButton.Click += Clue_Click;
             
-            Canvas.SetLeft(imageButton, clue.X);
-            Canvas.SetTop(imageButton,  clue.Y);
+            Canvas.SetLeft(imageButton, clue.CrimeScenePos[0]);
+            Canvas.SetTop(imageButton,  clue.CrimeScenePos[1]);
             canvas.Children.Add(imageButton);
         }
 

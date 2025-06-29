@@ -8,16 +8,14 @@ using System.IO;
 /// </summary>
 public class Clue
 {
-    public string Name        { get; }
-    public string Description { get; }
-    public string Victim      { get; }
-    public string Owner       { get; }
-    public Uri SceneUri       { get; }
-    public Uri CleanUri       { get; }
-    public int X   { get; }
-    public int Y   { get; }
-    public int Z   { get; }
-    public bool IsFound { get; set; }
+    public string Name         { get; }
+    public string Description  { get; }
+    public string Victim       { get; }
+    public string Owner        { get; }
+    public Uri SceneUri        { get; }
+    public Uri CleanUri        { get; }
+    public int[] CrimeScenePos { get; }
+    public bool IsFound        { get; set; }
 
     /// <summary>
     ///  Initializes a new instance of the Clue class with the specified parameters.
@@ -26,6 +24,7 @@ public class Clue
     /// <param name="description">The more full description of the item. This hints at who the clue is meant to implicate.</param>
     /// <param name="victim">The character to whose death this clue is relevant.</param>
     /// <param name="owner">The character this clue implicates.</param>
+    /// <param name="xyz">The position at which this clue will be placed in a crime scene.</param>
     public Clue(string clueName, string description, string victim, string owner, int[] xyz)
     {
         Validator.ValidateShortCharacterName(victim);
@@ -35,9 +34,7 @@ public class Clue
         Description = description;
         Victim      = victim;
         Owner       = owner;
-        X = xyz[0];
-        Y = xyz[1];
-        Z = xyz[2];
+        CrimeScenePos = xyz;
         string path = Path.Combine(
             PathHelper.GetAssetDirectory(),
             "Images",

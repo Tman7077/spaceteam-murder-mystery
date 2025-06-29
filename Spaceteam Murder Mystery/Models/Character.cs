@@ -12,8 +12,10 @@ public class Character()
     public required string        Role           { get; init; }
     public required string        Motto          { get; init; }
     public required Uri           ProfileUri     { get; init; }
+    public required Uri           EndProfileUri  { get; init; }
     public required Uri           CrimeSceneUri  { get; init; }
     public required Direction     Facing         { get; init; }
+    public required int[]         EndScreenPos   { get; init; }
     public required string        Description    { get; init; }
     public required string        PreDeathBlurb  { get; init; }
     public required string        PostDeathBlurb { get; init; }

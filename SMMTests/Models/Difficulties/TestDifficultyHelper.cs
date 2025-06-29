@@ -35,6 +35,7 @@ public static class TestDifficultyHelper
         string       role           = "testRoleUnused";
         string       motto          = "testMottoUnused";
         Uri          profileUri     = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
+        Uri          endProfileUri  = new("testProfileUriUnused",    UriKind.RelativeOrAbsolute);
         Uri          crimeSceneUri  = new("testCrimeSceneUriUnused", UriKind.RelativeOrAbsolute);
         Direction    facing         = Direction.Left;
         string       description    = "testDescriptionUnused";
@@ -63,8 +64,10 @@ public static class TestDifficultyHelper
                 Role           = role,
                 Motto          = motto,
                 ProfileUri     = profileUri,
+                EndProfileUri  = endProfileUri,
                 CrimeSceneUri  = crimeSceneUri,
                 Facing         = facing,
+                EndScreenPos   = xyz,
                 Description    = description,
                 PreDeathBlurb  = preDeathBlurb,
                 PostDeathBlurb = postDeathBlurb,

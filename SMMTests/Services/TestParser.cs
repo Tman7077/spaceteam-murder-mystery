@@ -64,9 +64,9 @@ public class TestParser(ITestOutputHelper output)
                 Output.WriteLine($"Clue for {clue.Victim}'s death:");
                 Output.WriteLine($"       Name : {clue.Name}");
                 Output.WriteLine($"Description : {clue.Description}");
-                Output.WriteLine($"Coordinates : ({clue.X}, {clue.Y}, {clue.Z})");
-                Output.WriteLine($"    SceneUri : {clue.SceneUri.LocalPath}");
-                Output.WriteLine($"    CleanUri : {clue.CleanUri.LocalPath}\n");
+                Output.WriteLine($"Coordinates : ({clue.CrimeScenePos[0]}, {clue.CrimeScenePos[1]}, {clue.CrimeScenePos[2]})");
+                Output.WriteLine($"   SceneUri : {clue.SceneUri.LocalPath}");
+                Output.WriteLine($"   CleanUri : {clue.CleanUri.LocalPath}\n");
             }
 
             Output.WriteLine(new string('-', 25));

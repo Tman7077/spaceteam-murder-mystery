@@ -27,16 +27,24 @@ public static partial class Parser
         int mottoIndex = Array.FindIndex(lines, line => line.StartsWith("*\""));
         string motto   = lines[mottoIndex].Trim('*');
 
-        string profileImagePath = Path.Combine(_assetDir, "Images", "Portraits", $"{characterName}.png");
-        string csImagePath      = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
+        string profileImagePath    = Path.Combine(_assetDir, "Images", "Portraits", $"{characterName}.png");
+        string endProfileImagePath = Path.Combine(_assetDir, "Images", "Portraits", "EndScreen", $"{characterName}.png");
+        string csImagePath         = Path.Combine(_assetDir, "Images", "Crime Scenes", $"{characterName}.png");
 
-        Uri profileUri = new(profileImagePath);
-        Uri csUri      = new(csImagePath);
+        Uri profileUri    = new(profileImagePath);
+        Uri endProfileUri = new(endProfileImagePath);
+        Uri csUri         = new(csImagePath);
 
-        int directionIndex  = Array.FindIndex(lines, line => line.StartsWith('`'));
-        Direction direction = lines[directionIndex].Split(':')[1].Trim('`', ' ') == "Left" ? Direction.Left : Direction.Right;
+        int DirLocIndex = Array.FindIndex(lines, line => line.StartsWith('`'));
+        int split       = lines[DirLocIndex].IndexOf("` `");
 
-        string description = lines[directionIndex + 1];
+        string dirUnparsed  = lines[DirLocIndex][..split];
+        Direction direction = dirUnparsed.Split(':')[1].Trim('`', ' ') == "Left" ? Direction.Left : Direction.Right;
+
+        string locationUnparsed = lines[DirLocIndex][split..];
+        int[]  xyz = [..locationUnparsed.Trim('`', ' ').Split(',').Select(int.Parse)];
+
+        string description = lines[DirLocIndex + 1];
 
         int    preDeathIndex  = Array.FindIndex(lines, line => line == "### Pre-Death Blurb") + 1;
         string preDeathBlurb  = lines[preDeathIndex];
@@ -63,8 +71,10 @@ public static partial class Parser
             Role           = role,
             Motto          = motto,
             ProfileUri     = profileUri,
+            EndProfileUri  = endProfileUri,
             CrimeSceneUri  = csUri,
             Facing         = direction,
+            EndScreenPos   = xyz,
             Description    = description,
             PreDeathBlurb  = preDeathBlurb,
             PostDeathBlurb = postDeathBlurb,
