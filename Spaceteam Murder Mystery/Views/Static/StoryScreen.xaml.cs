@@ -33,15 +33,15 @@ public partial class StoryScreen : UserControl
 
     private void LoadScreen(Advance.Intro _)
     {
-        Header.Content   = "Welcome Aboard!";
-        MainText.Text    = _main.State.Story.Intro;
+        Header.Content = "Welcome Aboard!";
+        MainText.Text = _main.State.Story.Intro;
         NextButton.Click +=
             async (s, e) => await _main.AdvanceStory(new Advance.FirstMurder());
     }
     private void LoadScreen(Advance.FirstMurder _)
     {
-        Header.Content   = "Welcome Aboard!";
-        MainText.Text    = _main.State.Story.FirstMurder;
+        Header.Content = "Welcome Aboard!";
+        MainText.Text = _main.State.Story.FirstMurder;
         NextButton.Click +=
             async (s, e) => await _main.AdvanceStory(new Advance.PreDeath());
     }
@@ -49,16 +49,16 @@ public partial class StoryScreen : UserControl
     {
         _main.State.KillCharacter(new Victim.Random(), out string who);
         Character victim = _main.State.Characters[who];
-        Header.Content   = $"Poor {victim.ShortName}...";
-        MainText.Text    = victim.PreDeathBlurb;
+        Header.Content = $"Poor {victim.ShortName}...";
+        MainText.Text = victim.PreDeathBlurb;
         NextButton.Click += async (s, e) =>
             await _main.LoadCrimeSceneFor(who);
     }
     private void LoadScreen(Advance.PostDeath _)
     {
         Character victim = _main.State.Characters[_main.State.LastVictim];
-        Header.Content   = $"Poor {victim.ShortName}...";
-        MainText.Text    = victim.PostDeathBlurb;
+        Header.Content = $"Poor {victim.ShortName}...";
+        MainText.Text = victim.PostDeathBlurb;
         NextButton.Click += async (s, e) =>
             await _main.AdvanceStory(new Advance.PreDeath());
     }
@@ -68,32 +68,42 @@ public partial class StoryScreen : UserControl
         int numLivingInnocent = _main.State.Characters.GetLivingNames(includeGuilty: false).Count;
 
         if (numLivingGuilty == 0)
-        {
-            Header.Content   = "You Win!";
-            MainText.Text    = _main.State.Story.Victory;
-            NextButton.Click += async (s, e) =>
-                await _main.ChangeView(new Screen.Title());
-        }
+        { ShowVictory(); }
         else if (numLivingGuilty >= numLivingInnocent)
-        {
-            Header.Content   = "You lose!";
-            MainText.Text    = _main.State.Story.Defeat;
-            NextButton.Click += async (s, e) =>
-                await _main.ChangeView(new Screen.Title());
-        }
+        { ShowDefeat(); }
+        else if (advance.Vote is Vote.None)
+        { LoadScreen(new Advance.PostDeath()); }
         else if (advance.Vote.Success)
-        {
-            Header.Content   = "Getting There!";
-            MainText.Text    = $"{advance.Vote.Voted} was guilty.";
-            NextButton.Click += async (s, e) =>
-                await _main.AdvanceStory(new Advance.PostDeath());
-        }
+        { ShowGuilty(advance.Vote.Voted); }
         else
-        {
-            Header.Content   = "Ouch.";
-            MainText.Text    = $"{advance.Vote.Voted} was not guilty.";
-            NextButton.Click += async (s, e) =>
-                await _main.AdvanceStory(new Advance.PostDeath());
-        }
+        { ShowInnocent(advance.Vote.Voted); }
+    }
+    private void ShowVictory()
+    {
+        Header.Content    = "You Win!";
+        MainText.Text     = _main.State.Story.Victory;
+        NextButton.Click += async (s, e) =>
+            await _main.ChangeView(new Screen.End(Victory: true));
+    }
+    private void ShowDefeat()
+    {
+        Header.Content    = "You lose!";
+        MainText.Text     = _main.State.Story.Defeat;
+        NextButton.Click += async (s, e) =>
+            await _main.ChangeView(new Screen.End(Victory: false));
+    }
+    private void ShowGuilty(string name)
+    {
+        Header.Content    = "Getting There!";
+        MainText.Text     = $"{name} was guilty.";
+        NextButton.Click += async (s, e) =>
+            await _main.AdvanceStory(new Advance.PostDeath());
+    }
+    private void ShowInnocent(string name)
+    {
+        Header.Content    = "Ouch.";
+        MainText.Text     = $"{name} was not guilty.";
+        NextButton.Click += async (s, e) =>
+            await _main.AdvanceStory(new Advance.PostDeath());
     }
 }
