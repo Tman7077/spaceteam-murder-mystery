@@ -7,13 +7,12 @@ using System.IO;
 /// </summary>
 public class GameState
 {
-    private readonly CharacterSet _characters = [];
     private readonly Stack<string> _victims = [];
 
-    public CharacterSet Characters { get => _characters; }
-    public Story Story { get; }
-    public string Difficulty { get; set; }
-    public string LastVictim
+    public CharacterSet Characters { get; } = [];
+    public Story        Story      { get; }
+    public string       Difficulty { get; set; }
+    public string       LastVictim
     {
         get => _victims.Count > 0 ? _victims.Peek() : throw new InvalidOperationException("No victims have been killed yet.");
         private set => _victims.Push(value);
@@ -85,7 +84,7 @@ public class GameState
     {
         Validator.ValidateCharacter(victimName, this);
 
-        Difficulties.All[Difficulty].SelectClues(clues, _characters, victimName);
+        Difficulties.All[Difficulty].SelectClues(clues, Characters, victimName);
     }
 
     private void LoadCharacters()
