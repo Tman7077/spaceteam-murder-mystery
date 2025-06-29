@@ -11,8 +11,9 @@ public abstract record Screen
             this.VictimName = VictimName;
         }
     }
-    public sealed record Difficulty  : Screen;
-    public sealed record InspectChar : Screen
+    public sealed record Difficulty        : Screen;
+    public sealed record End(bool Victory) : Screen;
+    public sealed record InspectChar       : Screen
     {
         public InterviewType Type { get; }
         public string Interviewee { get; }

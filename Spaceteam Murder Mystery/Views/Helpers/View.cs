@@ -10,6 +10,8 @@ public static class View
                 () => new CrimeSceneScreen(window, s.VictimName),
             Screen.Difficulty    =>
                 () => new DifficultyScreen(window),
+            Screen.End         s =>
+                () => new EndScreen(window, s.Victory),
             Screen.InspectChar s =>
                 () => new InterviewScreen(window, s.Type, s.Interviewee, s.Victim),
             Screen.InspectClue s =>
