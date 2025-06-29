@@ -56,23 +56,41 @@ public partial class CharacterSelectionScreen : UserControl
             mainGrid.Children.Add(charGrid);
         }
 
+        Button continueButton = new()
+        { Style = (Style)FindResource("CornerCutButton") };
+
         if (_type == InterviewType.Interview)
         {
-            Button continueButton = new()
-            {
-                Style   = (Style)FindResource("CornerCutButton"),
-                Content = "Accuse"
-            };
-            continueButton.Click += async (sender, e) =>
+            continueButton.Content = "Accuse";
+            continueButton.Click  += async (sender, e) =>
                 await _main.ChangeView(new Screen.Selection(InterviewType.Accusation));
-            continueButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
-            continueButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
-
-            Grid.SetRow(continueButton, 1);
-            Grid.SetColumn(continueButton, 4);
-
-            mainGrid.Children.Add(continueButton);
         }
+        else // if (_type == InterviewType.Accusation)
+        {
+            continueButton.Content = "Skip";
+            continueButton.Click  += async (sender, e) =>
+                await _main.AdvanceStory(new Advance.PostAccusation(new Vote.None()));
+        }
+        Button backButton = new()
+        {
+            Style = (Style)FindResource("CornerCutButton"),
+            Content = "Back",
+        };
+        backButton.Click += async (sender, e) =>
+            await _main.ToPreviousScreen();
+
+        backButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
+        backButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
+        continueButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
+        continueButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
+
+        Grid.SetRow(backButton,     1);
+        Grid.SetRow(continueButton, 1);
+        Grid.SetColumn(backButton,     1);
+        Grid.SetColumn(continueButton, 4);
+        
+        mainGrid.Children.Add(backButton);
+        mainGrid.Children.Add(continueButton);
 
         Content = mainGrid;
     }
