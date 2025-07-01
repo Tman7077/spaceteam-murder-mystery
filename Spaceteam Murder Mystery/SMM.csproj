@@ -183,6 +183,7 @@
     <None Remove="Assets\Images\Portraits\Jacie.png" />
     <None Remove="Assets\Images\Portraits\Olsen.png" />
     <None Remove="Assets\Images\Portraits\Tyler.png" />
+    <None Remove="Assets\Images\Wall-Dimmed.png" />
     <None Remove="Assets\Text\Characters\Alex.md" />
     <None Remove="Assets\Text\Characters\Cade.md" />
     <None Remove="Assets\Text\Characters\Colter.md" />
@@ -631,6 +632,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Images\Portraits\Tyler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Wall-Dimmed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Text\Characters\Alex.md">
