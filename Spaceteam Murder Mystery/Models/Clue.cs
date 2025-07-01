@@ -15,7 +15,6 @@ public class Clue
     public Uri SceneUri        { get; }
     public Uri CleanUri        { get; }
     public int[] CrimeScenePos { get; }
-    public bool IsFound        { get; set; }
 
     /// <summary>
     ///  Initializes a new instance of the Clue class with the specified parameters.
@@ -30,20 +29,19 @@ public class Clue
         Validator.ValidateShortCharacterName(victim);
         Validator.ValidateShortCharacterName(owner);
 
-        Name        = clueName;
-        Description = description;
-        Victim      = victim;
-        Owner       = owner;
+        Name          = clueName;
+        Description   = description;
+        Victim        = victim;
+        Owner         = owner;
         CrimeScenePos = xyz;
-        string path = Path.Combine(
-            PathHelper.GetAssetDirectory(),
+        string path   = Path.Combine(
+            AssetHelper.AssetDirectory,
             "Images",
             "Crime Scenes",
             $"{Victim}Clues",
             $"{Owner}.png");
         string pathClean = path.Replace("Clues", "CluesClean");
-        SceneUri = new Uri(path);
-        CleanUri = new Uri(pathClean);
-        IsFound = false;
+        SceneUri         = new Uri(path);
+        CleanUri         = new Uri(pathClean);
     }
 }

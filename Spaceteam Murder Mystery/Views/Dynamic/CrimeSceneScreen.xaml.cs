@@ -26,7 +26,6 @@ public partial class CrimeSceneScreen : UserControl
         if (_scene.Clues.FirstOrDefault(c => c.Name == itemName) is not Clue clue)
         { return; }
 
-        clue.IsFound = true;
         await _main.LoadClueInspectionFor(clue);
     }
 
