@@ -1,4 +1,4 @@
-namespace SMM.Services.DynamicXAML;
+namespace SMM.Services;
 
 using Properties;
 public static class AppSettings

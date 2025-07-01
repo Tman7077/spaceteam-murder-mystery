@@ -1,4 +1,4 @@
-namespace SMM.Services.DynamicXAML;
+namespace SMM.Services;
 
 /// <summary>
 /// A wrapper for all of the data pertaining to the current state of the app window.
