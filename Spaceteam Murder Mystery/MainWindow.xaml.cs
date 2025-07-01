@@ -13,8 +13,8 @@ public partial class MainWindow : Window
     private UserControl PrevScreen
     {
         get => _viewHistory.Count > 0
-            ? _viewHistory.Pop()
-            : throw new IndexOutOfRangeException("No previous screen available");
+            ?  _viewHistory.Pop()
+            :  throw new IndexOutOfRangeException("No previous screen available");
         set => _viewHistory.Push(value);
     }
     private UserControl CurrentScreen
@@ -77,11 +77,11 @@ public partial class MainWindow : Window
         await FadeAsync(FadeType.In, fadeInSeconds);
     }
 
-    public async Task ToPreviousScreen()
+    public async Task ToPreviousScreen(double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5)
     {
-        await FadeAsync(FadeType.Out);
+        await FadeAsync(FadeType.Out, fadeOutSeconds);
         CurrentScreen = PrevScreen;
-        await FadeAsync(FadeType.In);
+        await FadeAsync(FadeType.In, fadeInSeconds);
     }
     
     public async Task AdvanceStory(Advance advance) =>
@@ -99,7 +99,7 @@ public partial class MainWindow : Window
     public async Task LoadClueInspectionFor(Clue clue) =>
         await ChangeView(new Screen.InspectClue(clue));
 
-    public void MainWindow_KeyDown(object sender, KeyEventArgs e)
+    public async void MainWindow_KeyDown(object sender, KeyEventArgs e)
     {
         switch (e.Key)
         {
@@ -107,20 +107,30 @@ public partial class MainWindow : Window
                 WindowHandler.ToggleFullScreen();
                 break;
             case Key.Escape:
-                // soon™
-                break;
-            default:
+                await MaybePause();
                 break;
         }
     }
-    
+
+    private async Task MaybePause()
+    {
+        if (CurrentScreen is TitleScreen) return;
+
+        if (CurrentScreen is PauseScreen or DifficultyScreen or SettingsScreen)
+        { await ToPreviousScreen(0, 0); }
+        else
+        { await ChangeView(new Screen.Pause(), 0, 0); }
+    }
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
         WindowHandler.ToggleFullScreen();
 
     private Task<bool> FadeAsync(FadeType inOut, TimeSpan duration)
     {
-        if (duration.TotalMilliseconds <= 0)
-        { throw new ArgumentOutOfRangeException(nameof(duration), "Duration must be greater than zero"); }
+        if (duration.TotalMilliseconds < 0)
+        { throw new ArgumentOutOfRangeException(nameof(duration), "Duration must be greater than or equal to zero"); }
+
+        if (duration.TotalMilliseconds == 0)
+        { return Task.FromResult(true); }
 
         TaskCompletionSource<bool> tcs = new();
         bool fadeIn = inOut == FadeType.In;

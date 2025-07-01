@@ -28,6 +28,7 @@ public abstract record Screen
         }
     }
     public sealed record InspectClue(Clue Clue)        : Screen;
+    public sealed record Pause                         : Screen;
     public sealed record Selection(InterviewType Type) : Screen;
     public sealed record Settings                      : Screen;
     public sealed record Story(Advance Advance)        : Screen;

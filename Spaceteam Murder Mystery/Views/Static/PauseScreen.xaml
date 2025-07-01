@@ -1,0 +1,61 @@
+<UserControl
+    x:Class="SMM.Views.Static.PauseScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d" 
+    d:DesignWidth="854"
+    d:DesignHeight="480"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch">
+    <Grid
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CornerCutButton}">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </Grid.Resources>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Style="{StaticResource ScreenHeader}"
+            Content="Game Paused" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Click="Back_Click"
+            Content="Back" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Click="Settings_Click"
+            Content="Settings" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Click="QuitToTitle_Click"
+            Content="Quit to Title" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Click="QuitToDesktop_Click"
+            Content="Quit to Desktop" />
+    </Grid>
+</UserControl>

@@ -16,6 +16,8 @@ public static class View
                 () => new InterviewScreen(window, s.Type, s.Interviewee, s.Victim),
             Screen.InspectClue s =>
                 () => new ClueScreen(window, s.Clue),
+            Screen.Pause         =>
+                () => new PauseScreen(window),
             Screen.Selection   s =>
                 () => new CharacterSelectionScreen(window, s.Type),
             Screen.Settings      =>
