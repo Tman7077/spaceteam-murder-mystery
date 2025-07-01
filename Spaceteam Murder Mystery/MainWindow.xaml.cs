@@ -57,15 +57,42 @@ public partial class MainWindow : Window
         _ = Soundtrack.Start();
     }
 
-    public async Task StartGame(string difficulty)
+    private void SetupGame(string difficulty)
     {
         if (!Difficulties.All.ContainsKey(difficulty))
         { throw new ArgumentException($"Unknown difficulty: {difficulty}"); }
 
         State = new GameState(difficulty);
+    }
+    
+    public async Task StartGame(string difficulty)
+    {
+        SetupGame(difficulty);
         _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme);
         await ChangeView(new Screen.Story(new Advance.Intro()), 2, 2);
     }
+
+    public async Task SaveGame()
+    {
+        UserControl lastView = CurrentScreen;
+        while (lastView is not StoryScreen && lastView is not CrimeSceneScreen)
+        { lastView = PrevScreen; }
+        await GameSaveManager.SaveGameAsync(this, lastView);
+    }
+    
+    public async Task LoadGame()
+    {
+        UserControl? lastView = await GameSaveManager.LoadGameAsync(this);
+        if (lastView is null)
+        {
+            MessageBox.Show("No saved game found. Please start a new game.");
+            return;
+        }
+        _viewHistory.Clear();
+        await ChangeView(lastView).ContinueWith(_ => _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme));
+    }
+    
+    public void SetGameState(GameState state) => State = state;
 
     public async Task ChangeView(Screen screen, double fadeOutSeconds = 0.5, double fadeInSeconds = 0.5) =>
         await ChangeView(View.Request(this, screen)(), fadeOutSeconds, fadeInSeconds);

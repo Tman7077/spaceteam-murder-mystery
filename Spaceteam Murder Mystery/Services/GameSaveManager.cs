@@ -1,0 +1,154 @@
+namespace SMM.Services;
+
+using MessagePack;
+using System.Configuration;
+using System.IO;
+using System.Threading.Tasks;
+public static class GameSaveManager
+{
+    private static readonly MessagePackSerializerOptions Options =
+        MessagePackSerializerOptions.Standard.WithCompression(
+            MessagePackCompression.Lz4BlockArray);
+    private static readonly string _saveFolder =
+        Path.GetDirectoryName(
+            ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath)!;
+    private static readonly string _saveFileName =
+        Path.Combine(_saveFolder, "game.state");
+
+    public static async Task SaveGameAsync(MainWindow main, UserControl lastView)
+    {
+        Directory.CreateDirectory(_saveFolder);
+
+        Dictionary<string, (bool, bool)> characterData = [];
+        foreach (KeyValuePair<string, Character> kvp in main.State.Characters)
+        { characterData[kvp.Key] = (kvp.Value.IsAlive, kvp.Value.IsGuilty); }
+
+        string difficulty = main.State.Difficulty;
+
+        string lastVictim;
+        try
+        { lastVictim = main.State.LastVictim; }
+        catch (InvalidOperationException)
+        { lastVictim = string.Empty; }
+
+        string lastViewName = lastView.GetType().Name;
+
+        GameSave saveData = new()
+        {
+            CharacterData = characterData,
+            Difficulty = difficulty,
+            LastVictim = lastVictim,
+            LastViewName = lastViewName
+        };
+
+        switch (lastView)
+        {
+            case CrimeSceneScreen css:
+                saveData.CrimeSceneData = css.GetSaveData();
+                break;
+            case StoryScreen ss:
+                saveData.StoryScreenData = ss.GetSaveData();
+                break;
+            default:
+                throw new ArgumentException(
+                    $"Cannot save state for view type (unsupported screen type): " +
+                    $"{lastView.GetType().Name}",
+                    nameof(lastView));
+        }
+
+        byte[] payload = MessagePackSerializer.Serialize(saveData, Options);
+        string tmp = _saveFileName + ".tmp";
+        await File.WriteAllBytesAsync(tmp, payload);
+        File.Move(tmp, _saveFileName, overwrite: true);
+    }
+
+    public static async Task<UserControl?> LoadGameAsync(MainWindow main)
+    {
+        GameSave? save = await ImportGameSaveAsync();
+        if (save is null) return null;
+
+        GameState state = new(save.Difficulty);
+
+        if (!string.IsNullOrWhiteSpace(save.LastVictim))
+        { state.LastVictim = save.LastVictim; }
+
+        foreach (KeyValuePair<string, (bool, bool)> kvp in save.CharacterData)
+        {
+            state.Characters[kvp.Key].IsAlive = kvp.Value.Item1;
+            state.Characters[kvp.Key].IsGuilty = kvp.Value.Item2;
+        }
+
+        main.SetGameState(state);
+
+        UserControl? view = save.LastViewName switch
+        {
+            nameof(StoryScreen)      => CreateStoryScreen(main, state, save.StoryScreenData),
+            nameof(CrimeSceneScreen) => CreateCrimeSceneScreen(main, save.LastVictim, save.CrimeSceneData),
+            _ => throw new InvalidOperationException($"Cannot load state for view type (unsupported screen type): {save.LastViewName}")
+        };
+
+        return view;
+    }
+
+    private static async Task<GameSave?> ImportGameSaveAsync()
+    {
+        if (!File.Exists(_saveFileName)) return null;
+
+        byte[] payload = await File.ReadAllBytesAsync(_saveFileName);
+        return MessagePackSerializer.Deserialize<GameSave>(payload, Options);
+    }
+
+    private static StoryScreen CreateStoryScreen(MainWindow main, GameState state, (string, string?)? saveData)
+    {
+        (string advanceType, string? name) = saveData
+            ?? throw new InvalidOperationException("Story screen data is missing in save file.");
+
+        StoryScreen ss;
+        switch (advanceType)
+        {
+            case nameof(Advance.Intro):
+                ss = new StoryScreen(main, new Advance.Intro());
+                break;
+            case nameof(Advance.FirstMurder):
+                ss = new StoryScreen(main, new Advance.FirstMurder());
+                break;
+            case nameof(Advance.PreDeath):
+                if (name is null)
+                { throw new InvalidOperationException("Victim is required for PreDeath advance."); }
+                ss = new StoryScreen(main, new Advance.PreDeath(name));
+                break;
+            case nameof(Advance.PostDeath):
+                ss = new StoryScreen(main, new Advance.PostDeath());
+                break;
+            case nameof(Advance.PostAccusation):
+                if (name is null)
+                { throw new InvalidOperationException("Name is required for PostAccusation advance."); }
+                Vote vote;
+                if (name == string.Empty)
+                { vote = new Vote.None(); }
+                else vote = new(name, state);
+                ss = new StoryScreen(main, new Advance.PostAccusation(vote));
+                break;
+            default:
+                throw new InvalidOperationException($"Unknown advance type: {advanceType}");
+        }
+
+        return ss;
+    }
+    private static CrimeSceneScreen CreateCrimeSceneScreen(MainWindow main, string lastVictim, string[]? saveData)
+    {
+        string[] clueOwners = saveData
+            ?? throw new InvalidOperationException("Crime scene data is missing in save file.");
+
+        List<Clue> clues = [];
+        foreach (string owner in clueOwners)
+        {
+            if (main.State.Characters[owner].GetClue(lastVictim) is not Clue clue)
+            { throw new InvalidOperationException($"Clue with owner '{owner}' not found in game state."); }
+            else clues.Add(clue);
+        }
+
+        return new CrimeSceneScreen(main, lastVictim, clues);
+    }
+}

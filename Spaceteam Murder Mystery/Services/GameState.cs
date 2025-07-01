@@ -7,15 +7,15 @@ using System.IO;
 /// </summary>
 public class GameState
 {
-    private readonly Stack<string> _victims = [];
+    private string?    _lastVictim = null;
 
     public CharacterSet Characters { get; } = [];
     public Story        Story      { get; }
     public string       Difficulty { get; set; }
     public string       LastVictim
     {
-        get => _victims.Count > 0 ? _victims.Peek() : throw new InvalidOperationException("No victims have been killed yet.");
-        private set => _victims.Push(value);
+        get => _lastVictim ?? throw new InvalidOperationException("No victims have been killed yet.");
+        set => _lastVictim = value;
     }
 
     /// <summary>
