@@ -8,8 +8,13 @@ public partial class DifficultyScreen : UserControl
     {
         InitializeComponent();
         _main = main;
+        Background = new ImageBrush()
+        {
+            ImageSource = AssetHelper.NebulaBG,
+            Stretch     = Stretch.UniformToFill
+        };
     }
-    
+
     private async void DifficultyButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is not Button button)

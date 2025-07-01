@@ -1,7 +1,6 @@
 ﻿namespace SMMTests.Services;
 
 using SMM.Models;
-using SMM.Models.Helpers;
 using SMM.Services;
 using System.Diagnostics;
 using Xunit.Abstractions;
@@ -15,8 +14,7 @@ public class TestParser(ITestOutputHelper output)
         get
         {
             var data = new TheoryData<string>();
-            string assetDir = PathHelper.GetAssetDirectory();
-            string mdFolder = Path.Combine(assetDir, "Text", "Characters");
+            string mdFolder = Path.Combine(AssetHelper.AssetDirectory, "Text", "Characters");
 
             foreach (var charFile in Directory.GetFiles(mdFolder, "*.md"))
             {

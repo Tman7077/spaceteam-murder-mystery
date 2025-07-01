@@ -89,8 +89,7 @@ public class GameState
 
     private void LoadCharacters()
     {
-        string assetDir = PathHelper.GetAssetDirectory();
-        string charDir = Path.Combine(assetDir, "Text", "Characters");
+        string charDir = Path.Combine(AssetHelper.AssetDirectory, "Text", "Characters");
 
         foreach (string charFile in Directory.GetFiles(charDir, "*.md"))
         {

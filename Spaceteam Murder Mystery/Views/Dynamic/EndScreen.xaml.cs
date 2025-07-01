@@ -46,10 +46,9 @@ public partial class EndScreen : UserControl
         Grid.SetRowSpan(viewbox, 3);
         root.Children.Add(viewbox);
 
-        string bgImgPath = Path.Combine(PathHelper.GetAssetDirectory(), "Images", "Nebula-Background.png");
         Image sceneImage = new()
         {
-            Source  = new BitmapImage(new Uri(bgImgPath)),
+            Source  = AssetHelper.NebulaBG,
             Stretch = Stretch.UniformToFill,
             Width   = canvas.Width,
             Height  = canvas.Height
@@ -61,7 +60,6 @@ public partial class EndScreen : UserControl
 
         List<string> namesToDisplay = _victory switch
         {
-            // true  => [.._main.State.Characters.Select(c => c.Key)],
             true  => [.._main.State.Characters.Select(c => c.Key).Where(name => !_main.State.Characters[name].IsGuilty)],
             false => _main.State.Characters.GetGuiltyNames(includeDead: true)
         };

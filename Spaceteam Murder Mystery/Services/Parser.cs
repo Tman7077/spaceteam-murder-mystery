@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 /// </summary>
 public static partial class Parser
 {
-    private static readonly string _assetDir = PathHelper.GetAssetDirectory();
+    private static readonly string _assetDir = AssetHelper.AssetDirectory;
 
     /// <summary>
     /// Parses a character's data from the markdown file with the given name.

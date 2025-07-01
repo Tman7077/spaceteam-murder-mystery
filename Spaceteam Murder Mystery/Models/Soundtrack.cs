@@ -3,8 +3,8 @@ namespace SMM.Models;
 using System.Windows.Media.Animation;
 public class Soundtrack
 {
-    private readonly Uri _titleTheme = new($"{PathHelper.GetAssetDirectory()}/Audio/title.mp3");
-    private readonly Uri _mainTheme  = new($"{PathHelper.GetAssetDirectory()}/Audio/mystery-in-the-stars.mp3");
+    private readonly Uri _titleTheme = new($"{AssetHelper.AssetDirectory}/Audio/title.mp3");
+    private readonly Uri _mainTheme  = new($"{AssetHelper.AssetDirectory}/Audio/mystery-in-the-stars.mp3");
     private double       _maxVolume  = AppSettings.Volume;
     private MediaPlayer  _mp;
 
