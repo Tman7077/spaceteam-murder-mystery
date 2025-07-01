@@ -91,6 +91,16 @@ public static class GameSaveManager
         return view;
     }
 
+    public static void RemoveGameSaveAsync()
+    {
+        if (File.Exists(_saveFileName))
+        {
+            string tmp = _saveFileName + ".tmp";
+            if (File.Exists(tmp)) File.Delete(tmp);
+            File.Delete(_saveFileName);
+        }
+    }
+
     private static async Task<GameSave?> ImportGameSaveAsync()
     {
         if (!File.Exists(_saveFileName)) return null;

@@ -107,6 +107,7 @@ public partial class StoryScreen : UserControl
         MainText.Text     = _main.State.Story.Victory;
         NextButton.Click += async (s, e) =>
             await _main.ChangeView(new Screen.End(Victory: true));
+        GameSaveManager.RemoveGameSaveAsync();
     }
     private void ShowDefeat()
     {
@@ -114,6 +115,7 @@ public partial class StoryScreen : UserControl
         MainText.Text     = _main.State.Story.Defeat;
         NextButton.Click += async (s, e) =>
             await _main.ChangeView(new Screen.End(Victory: false));
+        GameSaveManager.RemoveGameSaveAsync();
     }
     private void ShowGuilty(string name)
     {
