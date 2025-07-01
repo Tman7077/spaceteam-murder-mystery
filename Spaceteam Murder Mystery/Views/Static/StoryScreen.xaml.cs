@@ -3,13 +3,16 @@
 public partial class StoryScreen : UserControl
 {
     private readonly MainWindow _main;
+    private readonly Advance _advance;
 
     public StoryScreen(MainWindow main, Advance advance)
     {
         _main = main;
         InitializeComponent();
 
-        switch (advance)
+        _advance = advance;
+
+        switch (_advance)
         {
             case Advance.Intro i:
                 LoadScreen(i);
@@ -31,35 +34,55 @@ public partial class StoryScreen : UserControl
         }
     }
 
+    public (string, string?) GetSaveData()
+    {
+        string advanceType = _advance.GetType().Name
+            ?? throw new InvalidOperationException("Advance type is not set");
+        string? name = null;
+        if (_advance is Advance.PostAccusation pa)
+        { name = pa.Vote.Voted; }
+        else if (_advance is Advance.PreDeath)
+        { name = _main.State.LastVictim; }
+        return (advanceType, name);
+    }
+
     private void LoadScreen(Advance.Intro _)
     {
-        Header.Content = "Welcome Aboard!";
-        MainText.Text = _main.State.Story.Intro;
+        Header.Content    = "Welcome Aboard!";
+        MainText.Text     = _main.State.Story.Intro;
         NextButton.Click +=
             async (s, e) => await _main.AdvanceStory(new Advance.FirstMurder());
     }
     private void LoadScreen(Advance.FirstMurder _)
     {
-        Header.Content = "Welcome Aboard!";
-        MainText.Text = _main.State.Story.FirstMurder;
+        Header.Content    = "Welcome Aboard!";
+        MainText.Text     = _main.State.Story.FirstMurder;
         NextButton.Click +=
             async (s, e) => await _main.AdvanceStory(new Advance.PreDeath());
     }
-    private void LoadScreen(Advance.PreDeath _)
+    private void LoadScreen(Advance.PreDeath advance)
     {
-        _main.State.KillCharacter(new Victim.Random(), out string who);
-        Character victim = _main.State.Characters[who];
-        Header.Content = $"Poor {victim.ShortName}...";
-        MainText.Text = victim.PreDeathBlurb;
-        NextButton.Click += async (s, e) =>
+        Victim victim;
+        if (advance.Victim is string who)
+        {
+            Validator.ValidateCharacter(who, _main.State);
+            victim = new Victim.ByName.Innocent(who);
+        }
+        else victim = new Victim.Random();
+        _main.State.KillCharacter(victim, out who);
+
+        Character deadChar = _main.State.Characters[who];
+        Header.Content     = $"Poor {deadChar.ShortName}...";
+        MainText.Text      = deadChar.PreDeathBlurb;
+        NextButton.Click  += async (s, e) =>
             await _main.LoadCrimeSceneFor(who);
     }
     private void LoadScreen(Advance.PostDeath _)
     {
-        Character victim = _main.State.Characters[_main.State.LastVictim];
-        Header.Content = $"Poor {victim.ShortName}...";
-        MainText.Text = victim.PostDeathBlurb;
-        NextButton.Click += async (s, e) =>
+        Character deadChar = _main.State.Characters[_main.State.LastVictim];
+        Header.Content     = $"Poor {deadChar.ShortName}...";
+        MainText.Text      = deadChar.PostDeathBlurb;
+        NextButton.Click  += async (s, e) =>
             await _main.AdvanceStory(new Advance.PreDeath());
     }
     private void LoadScreen(Advance.PostAccusation advance)

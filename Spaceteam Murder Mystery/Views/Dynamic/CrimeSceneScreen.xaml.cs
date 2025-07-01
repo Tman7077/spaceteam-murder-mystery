@@ -8,7 +8,7 @@ public partial class CrimeSceneScreen : UserControl
 
     private GameState State { get => _main.State; }
     
-    public CrimeSceneScreen(MainWindow main, string victim)
+    public CrimeSceneScreen(MainWindow main, string victim, List<Clue>? clues = null)
     {
         Validator.ValidateCharacter(victim, main.State);
 
@@ -16,7 +16,7 @@ public partial class CrimeSceneScreen : UserControl
         _main   = main;
         _scene  = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
-        LoadScreen();
+        LoadScreen(clues);
     }
 
     public async void Clue_Click(object sender, RoutedEventArgs e)
@@ -30,7 +30,10 @@ public partial class CrimeSceneScreen : UserControl
         await _main.LoadClueInspectionFor(clue);
     }
 
-    private void LoadScreen()
+    public string[] GetSaveData() =>
+        [.. _scene.Clues.Select(c => c.Owner)];
+
+    private void LoadScreen(List<Clue>? clues = null)
     {
         Canvas canvas = new()
         {
@@ -63,13 +66,13 @@ public partial class CrimeSceneScreen : UserControl
         };
 
         Canvas.SetLeft(sceneImage, 0);
-        Canvas.SetTop(sceneImage,  0);
+        Canvas.SetTop(sceneImage, 0);
         canvas.Children.Add(sceneImage);
 
-        List<Clue> cluesByZ  =  [.. _scene.Clues];
-        cluesByZ.Sort((a, b) => a.CrimeScenePos[2].CompareTo(b.CrimeScenePos[2]));
+        clues ??= [.. _scene.Clues];
+        clues.Sort((a, b) => a.CrimeScenePos[2].CompareTo(b.CrimeScenePos[2]));
 
-        foreach (Clue clue in cluesByZ)
+        foreach (Clue clue in clues)
         {
             Image clueImage = new()
             { Source = new BitmapImage(clue.SceneUri) };
@@ -81,7 +84,7 @@ public partial class CrimeSceneScreen : UserControl
                 Tag     = clue.Name
             };
             imageButton.Click += Clue_Click;
-            
+
             Canvas.SetLeft(imageButton, clue.CrimeScenePos[0]);
             Canvas.SetTop(imageButton,  clue.CrimeScenePos[1]);
             canvas.Children.Add(imageButton);
@@ -97,7 +100,7 @@ public partial class CrimeSceneScreen : UserControl
         continueButton.Click += async (sender, e) =>
             await _main.ChangeView(new Screen.Selection(InterviewType.Interview));
         Canvas.SetLeft(continueButton, canvas.Width * 0.85);
-        Canvas.SetTop(continueButton,  canvas.Height * 0.05);
+        Canvas.SetTop(continueButton, canvas.Height * 0.05);
         canvas.Children.Add(continueButton);
 
         Content = root;

@@ -22,7 +22,7 @@ public class CrimeScene
         Validator.ValidateShortCharacterName(victim);
 
         Victim = victim;
-        State = gameState;
+        State  = gameState;
         State.SelectClues(Clues, Victim);
     }
 }
