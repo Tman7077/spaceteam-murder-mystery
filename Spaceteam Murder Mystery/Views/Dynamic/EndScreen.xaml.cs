@@ -11,8 +11,9 @@ public partial class EndScreen : UserControl
 
     public EndScreen(MainWindow main, bool victory)
     {
+        _main = main;
         InitializeComponent();
-        _main    = main;
+
         _victory = victory;
         LoadScreen();
     }

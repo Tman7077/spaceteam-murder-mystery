@@ -10,8 +10,9 @@ public partial class CharacterSelectionScreen : UserControl
     
     public CharacterSelectionScreen(MainWindow main, InterviewType type)
     {
-        InitializeComponent();
         _main = main;
+        InitializeComponent();
+        
         _type = type;
         _labelContent = _type switch
         {

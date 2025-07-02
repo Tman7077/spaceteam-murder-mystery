@@ -12,8 +12,9 @@ public partial class CrimeSceneScreen : UserControl
     {
         Validator.ValidateCharacter(victim, main.State);
 
-        InitializeComponent();
         _main   = main;
+        InitializeComponent();
+        
         _scene  = new CrimeScene(victim, State);
         _victim = State.Characters[victim];
         LoadScreen(clues);

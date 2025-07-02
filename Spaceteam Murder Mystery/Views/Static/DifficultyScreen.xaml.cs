@@ -6,8 +6,9 @@ public partial class DifficultyScreen : UserControl
 
     public DifficultyScreen(MainWindow main)
     {
-        InitializeComponent();
         _main = main;
+        InitializeComponent();
+        
         Background = new ImageBrush()
         {
             ImageSource = AssetHelper.NebulaBG,

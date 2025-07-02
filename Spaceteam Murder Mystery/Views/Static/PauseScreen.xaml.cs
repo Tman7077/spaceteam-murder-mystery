@@ -6,8 +6,8 @@ public partial class PauseScreen : UserControl
 
     public PauseScreen(MainWindow main)
     {
-        InitializeComponent();
         _main = main;
+        InitializeComponent();
     }
 
     private async void Back_Click(object sender, RoutedEventArgs e) =>

@@ -8,13 +8,15 @@ public partial class TitleScreen : UserControl
 
     public TitleScreen(MainWindow main)
     {
-        InitializeComponent();
         _main = main;
+        InitializeComponent();
+
         Background = new ImageBrush()
         {
             ImageSource = AssetHelper.NebulaBG,
-            Stretch = Stretch.UniformToFill
+            Stretch     = Stretch.UniformToFill
         };
+        
         AnimateTitleGradient();
     }
 

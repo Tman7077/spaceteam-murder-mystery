@@ -9,8 +9,9 @@ public abstract partial class InspectionScreen : UserControl
     
     protected InspectionScreen(MainWindow main)
     {
-        InitializeComponent();
         _main = main;
+        InitializeComponent();
+        
         _button = new()
         {
             Style = (Style)FindResource("CornerCutButton"),
