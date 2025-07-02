@@ -8,6 +8,11 @@ public partial class MainWindow : Window
 {
     private readonly ContentControl     _mainControl = new();
     private readonly Stack<UserControl> _viewHistory = [];
+    private readonly string[]           _orderedCharacterNames =
+    [
+        "Alex", "Cade", "Colter", "Courtney",
+        "Ethan", "Jacie", "Olsen", "Tyler"
+    ];
     private GameState? _gameState;
 
     private UserControl PrevScreen
@@ -125,6 +130,23 @@ public partial class MainWindow : Window
 
     public async Task LoadClueInspectionFor(Clue clue) =>
         await ChangeView(new Screen.InspectClue(clue));
+
+    public async Task LoadCharacterIntroNumber(int i)
+    {
+        if (i == 0)
+        {
+            string[] characterNames = [.. State.Characters.Keys];
+            foreach (string name in _orderedCharacterNames)
+            {
+                if (!characterNames.Contains(name))
+                    throw new ArgumentException($"Character {name} not found in game state");
+            }
+        }
+
+        string character = _orderedCharacterNames[i];
+        Validator.ValidateCharacter(character, State);
+        await ChangeView(new Screen.CharacterIntro(character, i));
+    }
 
     public async void MainWindow_KeyDown(object sender, KeyEventArgs e)
     {

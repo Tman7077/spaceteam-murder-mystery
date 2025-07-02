@@ -11,13 +11,24 @@ public abstract partial class InspectionScreen : UserControl
     {
         InitializeComponent();
         _main = main;
-    }       
+        _button = new()
+        {
+            Style = (Style)FindResource("CornerCutButton"),
+            Content = "Continue",
+        };
+        _button.SetBinding(WidthProperty, DivideWindowWidthExtension.GetBinding(10));
+    }
 
     protected abstract void LoadScreen();
 
     protected Grid LoadScreenSetup()
     {
         Grid root = new();
+
+        _button.HorizontalAlignment =
+            _dir == Direction.Left
+                ? HorizontalAlignment.Right
+                : HorizontalAlignment.Left;
 
         int[] colDefs = _dir switch
         {
@@ -37,17 +48,7 @@ public abstract partial class InspectionScreen : UserControl
     
     protected void LoadScreenFinal(Grid root, Grid block, TextBlock text, Continue_Click continueClick)
     {
-        Button button = new()
-        {
-            Style = (Style)FindResource("CornerCutButton"),
-            Content = "Continue",
-            HorizontalAlignment =
-                _dir == Direction.Left
-                ? HorizontalAlignment.Right
-                : HorizontalAlignment.Left
-        };
-        button.SetBinding(WidthProperty, DivideWindowWidthExtension.GetBinding(10));
-        button.Click += (sender, e) => continueClick(sender, e);
+        _button.Click += async (sender, e) => await continueClick(sender, e);
 
         int[] colAssignments = _dir switch
         {
@@ -58,26 +59,27 @@ public abstract partial class InspectionScreen : UserControl
 
         Grid.SetColumnSpan(text, 2);
 
-        Grid.SetColumn(block,  colAssignments[0]);
-        Grid.SetColumn(text,   colAssignments[1]);
-        Grid.SetColumn(button, colAssignments[2]);;
+        Grid.SetColumn(block,   colAssignments[0]);
+        Grid.SetColumn(text,    colAssignments[1]);
+        Grid.SetColumn(_button, colAssignments[2]); ;
 
-        Grid.SetRow(block,  2);
-        Grid.SetRow(text,   2);
-        Grid.SetRow(button, 3);
+        Grid.SetRow(block,   2);
+        Grid.SetRow(text,    2);
+        Grid.SetRow(_button, 3);
 
         root.Children.Add(block);
         root.Children.Add(text);
-        root.Children.Add(button);
+        root.Children.Add(_button);
 
         Content = root;
     }
 
-    protected Grid CreateImageGrid(Uri imgUri, string name)
+    protected Grid CreateImageGrid(Uri imgUri, string name, TextBlock? mottoBlock = null)
     {
         Grid imgGrid = new();
 
         imgGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(3, GridUnitType.Star) });
+        imgGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         imgGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 
         Image image = new()
@@ -90,10 +92,16 @@ public abstract partial class InspectionScreen : UserControl
         };
 
         Grid.SetRow(image,     0);
-        Grid.SetRow(nameLabel, 1);
+        Grid.SetRow(nameLabel, 2);
 
         imgGrid.Children.Add(image);
         imgGrid.Children.Add(nameLabel);
+
+        if (mottoBlock is not null)
+        {
+            Grid.SetRow(mottoBlock, 1);
+            imgGrid.Children.Add(mottoBlock);
+        }
 
         return imgGrid;
     }

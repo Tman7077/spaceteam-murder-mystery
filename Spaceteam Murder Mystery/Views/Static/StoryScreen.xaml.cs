@@ -51,7 +51,7 @@ public partial class StoryScreen : UserControl
         Header.Content    = "Welcome Aboard!";
         MainText.Text     = _main.State.Story.Intro;
         NextButton.Click +=
-            async (s, e) => await _main.AdvanceStory(new Advance.FirstMurder());
+            async (s, e) => await _main.LoadCharacterIntroNumber(0);
     }
     private void LoadScreen(Advance.FirstMurder _)
     {

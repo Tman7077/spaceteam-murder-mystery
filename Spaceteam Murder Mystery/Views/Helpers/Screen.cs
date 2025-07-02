@@ -11,6 +11,17 @@ public abstract record Screen
             this.VictimName = VictimName;
         }
     }
+    public sealed record CharacterIntro : Screen
+    {
+        public string Name  { get; }
+        public int    Index { get; }
+        public CharacterIntro(string Name, int Index)
+        {
+            Validator.ValidateShortCharacterName(Name);
+            this.Name  = Name;
+            this.Index = Index;
+        }
+    }
     public sealed record Difficulty        : Screen;
     public sealed record End(bool Victory) : Screen;
     public sealed record InspectChar       : Screen
