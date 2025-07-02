@@ -36,23 +36,19 @@ public partial class InterviewScreen : InspectionScreen
             Text = Difficulties.All[_main.State.Difficulty].GetResponse(_interviewee, _type, _victim),
         };
 
+        Continue_Click continueClick;
         if (_type == InterviewType.Interview)
-        {
-            async void continueClick(object sender, RoutedEventArgs e) =>
-                await _main.ToPreviousScreen();
-            
-            LoadScreenFinal(root, block, text, continueClick);
-        }
+        { continueClick = async (s, e) => await _main.ToPreviousScreen(); }
         else // if (_type == InterviewType.Accusation)
         {
-            async void continueClick(object sender, RoutedEventArgs e)
+            continueClick = async (s, e) =>
             {
                 _main.State.KillCharacter(new Victim.ByName.Voted(_interviewee.ShortName));
                 Vote vote = new(_interviewee.ShortName, _main.State);
                 await _main.AdvanceStory(new Advance.PostAccusation(vote));
-            }
-
-            LoadScreenFinal(root, block, text, continueClick);
+            };
         }
+        
+        LoadScreenFinal(root, block, text, continueClick);
     }
 }

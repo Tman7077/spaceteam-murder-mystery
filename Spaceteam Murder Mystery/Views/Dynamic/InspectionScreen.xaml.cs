@@ -2,10 +2,11 @@
 
 public abstract partial class InspectionScreen : UserControl
 {
-    protected readonly MainWindow _main;
-    protected Direction _dir;
-    protected delegate void Continue_Click(object sender, RoutedEventArgs e);
-
+    protected delegate Task Continue_Click(object sender, RoutedEventArgs e);
+    protected readonly MainWindow      _main;
+    protected          Direction       _dir;
+    protected          Button          _button;
+    
     protected InspectionScreen(MainWindow main)
     {
         InitializeComponent();
@@ -30,9 +31,10 @@ public abstract partial class InspectionScreen : UserControl
 
         foreach (int height in (int[])[1, 1, 6, 1, 1])
         { root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(height, GridUnitType.Star) }); }
-        
+
         return root;
     }
+    
     protected void LoadScreenFinal(Grid root, Grid block, TextBlock text, Continue_Click continueClick)
     {
         Button button = new()

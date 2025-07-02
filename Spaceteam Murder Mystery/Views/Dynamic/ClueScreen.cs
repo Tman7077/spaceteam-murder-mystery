@@ -22,7 +22,7 @@ public partial class ClueScreen : InspectionScreen
             Text  = _clue.Description
         };
 
-        async void continueClick(object sender, RoutedEventArgs e) =>
+        async Task continueClick(object sender, RoutedEventArgs e) =>
             await _main.ToPreviousScreen();
 
         LoadScreenFinal(root, block, text, continueClick);
