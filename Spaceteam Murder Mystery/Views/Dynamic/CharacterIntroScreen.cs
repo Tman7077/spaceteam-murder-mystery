@@ -1,6 +1,4 @@
-﻿using System.Windows.Navigation;
-
-namespace SMM.Views.Dynamic;
+﻿namespace SMM.Views.Dynamic;
 
 public partial class CharacterIntroScreen : InspectionScreen
 {

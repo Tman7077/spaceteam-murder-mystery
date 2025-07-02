@@ -1,7 +1,5 @@
 namespace SMM.Models;
 
-using System.IO;
-
 /// <summary>
 /// Contains all information relevant to a single clue, including
 /// its textual information, image file path, and "found" state.

@@ -1,7 +1,5 @@
 namespace SMM.Services;
 
-using System.IO;
-
 /// <summary>
 /// A helper class intended to work within the project directory and return valid filepaths.
 /// </summary>

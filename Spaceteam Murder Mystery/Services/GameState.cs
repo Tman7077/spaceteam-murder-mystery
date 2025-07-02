@@ -1,7 +1,5 @@
 namespace SMM.Services;
 
-using System.IO;
-
 /// <summary>
 /// A general state tracker for various information pertaining to a game.
 /// </summary>

@@ -1,6 +1,7 @@
 namespace SMM.Models;
 
 using System.Windows.Media.Animation;
+
 public class Soundtrack
 {
     private readonly Uri _titleTheme = new($"{AssetHelper.AssetDirectory}/Audio/title.mp3");

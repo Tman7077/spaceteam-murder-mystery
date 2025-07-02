@@ -1,7 +1,5 @@
 namespace SMM.Models;
 
-using System.IO;
-
 /// <summary>
 /// Represents a complete crime scene.
 /// Contains all clues relevant to a given victim's death and the scene's image path.

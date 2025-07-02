@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace SMM.Views.Dynamic;
 
 public partial class EndScreen : UserControl

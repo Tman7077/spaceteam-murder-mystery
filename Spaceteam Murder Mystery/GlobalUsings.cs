@@ -10,6 +10,7 @@ global using SMM.Views.Static;
 
 // Other namespaces
 global using System.Globalization;
+global using System.IO;
 global using System.Runtime.InteropServices;
 global using System.Windows;
 global using System.Windows.Controls;

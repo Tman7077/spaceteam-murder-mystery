@@ -1,6 +1,7 @@
 namespace SMM.Services;
 
 using Properties;
+
 public static class AppSettings
 {
     public static double Volume
