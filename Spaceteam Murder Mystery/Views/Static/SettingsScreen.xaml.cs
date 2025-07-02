@@ -1,4 +1,6 @@
-﻿namespace SMM.Views.Static;
+﻿using SMM.Properties;
+
+namespace SMM.Views.Static;
 
 public partial class SettingsScreen : UserControl
 {
@@ -34,6 +36,20 @@ public partial class SettingsScreen : UserControl
         {
             MuteButton.Content = "Unmute";
             await _main.Soundtrack.Mute();
+        }
+    }
+
+    public void PauseOnLoseFocus_Click(object sender, RoutedEventArgs e)
+    {
+        if (_main.WindowHandler.PauseOnLoseFocus)
+        {
+            _main.WindowHandler.PauseOnLoseFocus = false;
+            PauseOnLoseFocusButton.Content = "Disabled";
+        }
+        else
+        {
+            _main.WindowHandler.PauseOnLoseFocus = true;
+            PauseOnLoseFocusButton.Content = "Enabled";
         }
     }
     

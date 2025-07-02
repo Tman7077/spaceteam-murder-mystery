@@ -17,6 +17,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -50,7 +51,7 @@
             Grid.Row="2"
             Grid.Column="1"
             Style="{StaticResource BodyTextLabel}"
-            FontSize="{dynamic:FontScale 1.5}"
+            FontSize="{dynamic:FontScale 1.3}"
             Foreground="{StaticResource SMMWhite}"
             Content="Fullscreen" />
         <Button
@@ -64,7 +65,7 @@
             Grid.Row="3"
             Grid.Column="1"
             Style="{StaticResource BodyTextLabel}"
-            FontSize="{dynamic:FontScale 1.5}"
+            FontSize="{dynamic:FontScale 1.3}"
             Foreground="{StaticResource SMMWhite}"
             Content="Mute" />
         <Button
@@ -74,17 +75,32 @@
             Margin="{dynamic:GridColumnMargin 0.2}"
             Click="Mute_Click"
             Content="Mute" />
-        <!-- Volume -->
+        <!-- Pause on lost window focus -->
         <Label
             Grid.Row="4"
             Grid.Column="1"
             Style="{StaticResource BodyTextLabel}"
-            FontSize="{dynamic:FontScale 1.5}"
+            FontSize="{dynamic:FontScale 1.3}"
+            Foreground="{StaticResource SMMWhite}"
+            Content="Pause in Background" />
+        <Button
+            x:Name="PauseOnLoseFocusButton"
+            Grid.Row="4"
+            Grid.Column="2"
+            Margin="{dynamic:GridColumnMargin 0.2}"
+            Click="PauseOnLoseFocus_Click"
+            Content="Enabled" />
+        <!-- Volume -->
+        <Label
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource BodyTextLabel}"
+            FontSize="{dynamic:FontScale 1.3}"
             Foreground="{StaticResource SMMWhite}"
             Content="Volume" />
         <Slider
             x:Name="VolumeSlider"
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="2"
             Minimum="0"
             Maximum="100"
