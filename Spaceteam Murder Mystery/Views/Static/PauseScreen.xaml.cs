@@ -19,12 +19,8 @@ public partial class PauseScreen : UserControl
     private async void QuitToTitle_Click(object sender, RoutedEventArgs e) =>
         await Quit(async () => await _main.ChangeView(new Screen.Title()));
 
-    private async void QuitToDesktop_Click(object sender, RoutedEventArgs e) =>
-        await Quit(() =>
-        {
-            Application.Current.Shutdown();
-            return Task.CompletedTask;
-        });
+    private  void QuitToDesktop_Click(object sender, RoutedEventArgs e) =>
+        Application.Current.Shutdown();
     
     private async Task Quit(Func<Task> quitHere)
     {

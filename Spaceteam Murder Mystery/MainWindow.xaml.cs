@@ -161,6 +161,7 @@ public partial class MainWindow : Window
         }
     }
 
+
     private async Task MaybePause()
     {
         if (CurrentScreen is TitleScreen) return;
@@ -170,6 +171,7 @@ public partial class MainWindow : Window
         else
         { await ChangeView(new Screen.Pause(), 0, 0); }
     }
+
     private void ImmediateFullScreen(object? sender, EventArgs e) =>
         WindowHandler.ToggleFullScreen();
 
@@ -200,8 +202,36 @@ public partial class MainWindow : Window
     private Task<bool> FadeAsync(FadeType inOut, double seconds = 0.5) =>
         FadeAsync(inOut, TimeSpan.FromSeconds(seconds));
     
-    protected override void OnClosing(CancelEventArgs e)
+    protected async override void OnClosing(CancelEventArgs e)
     {
+        bool askSave = true;
+        if (CurrentScreen is TitleScreen ||
+            CurrentScreen is DifficultyScreen ||
+            (CurrentScreen is SettingsScreen && _viewHistory.Peek() is TitleScreen))
+        { askSave = false; }
+
+        if (askSave)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "Would you like to save your progress?",
+                "Quit",
+                MessageBoxButton.YesNoCancel,
+                MessageBoxImage.Question
+            );
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    await SaveGame();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+                case MessageBoxResult.Cancel:
+                case MessageBoxResult.None:
+                    return;
+            }
+        }
+
         AppSettings.Save(WindowHandler);
         base.OnClosing(e);
     }
