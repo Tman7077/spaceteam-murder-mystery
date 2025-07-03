@@ -6,6 +6,9 @@
 # SMM nonexistent file extension for backups of previous iterations of files
 *.bak
 
+# Publishing files
+MysteryintheStars.Packaging/
+
 # dotenv files
 .env
 
