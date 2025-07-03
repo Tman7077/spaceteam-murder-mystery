@@ -10,6 +10,8 @@
     <ApplicationIcon>Assets\Images\nebula-rounded.ico</ApplicationIcon>
     <UserSecretsId>fc37a518-7816-44c1-af01-3b2d0a306c9e</UserSecretsId>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AppendRuntimeIdentifierToOutputPath>False</AppendRuntimeIdentifierToOutputPath>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
