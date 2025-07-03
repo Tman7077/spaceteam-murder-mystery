@@ -1,5 +1,8 @@
 namespace SMM.Services;
 
+/// <summary>
+/// Validates the format and existence of character names.
+/// </summary>
 public static class Validator
 {
     /// <summary>

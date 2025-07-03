@@ -1,18 +1,37 @@
 ﻿namespace SMM.Views.Dynamic;
 
+/// <summary>
+/// Displays a grid of all of the characters with buttons beneath each one.
+/// The buttons allow the user to select a character to interview or accuse.
+/// </summary>
 public partial class CharacterSelectionScreen : UserControl
 {
+    /// <summary>
+    /// The main window of the application.
+    /// </summary>
     private readonly MainWindow _main;
+
+    /// <summary>
+    /// The type of interview or accusation being made.
+    /// </summary>
     private readonly InterviewType _type;
+
+    /// <summary>
+    /// The content of the label on the buttons,
+    /// which is either "Interview" or "Accuse"
+    /// </summary>
     private readonly string _labelContent;
 
-    private GameState State { get => _main.State; }
-    
+    /// <summary>
+    /// Creates a new character selection screen for the given type of interview or accusation.
+    /// </summary>
+    /// <param name="main">The application's MainWindow.</param>
+    /// <param name="type">The type of interview or accusation being made.</param>
     public CharacterSelectionScreen(MainWindow main, InterviewType type)
     {
         _main = main;
         InitializeComponent();
-        
+
         _type = type;
         _labelContent = _type switch
         {
@@ -20,21 +39,35 @@ public partial class CharacterSelectionScreen : UserControl
             InterviewType.Accusation => "Accuse",
             _ => throw new ArgumentException($"Unknown type: {type}")
         };
+
         LoadScreen();
     }
 
+    /// <summary>
+    /// Handles the click event for the interview button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the object called the method.</param>
     public async void Interview_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is string characterName)
         { await _main.LoadInterviewFor(characterName); }
     }
 
+    /// <summary>
+    /// Handles the click event for the accuse button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the object called the method.</param>
     public async void Accuse_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is string characterName)
         { await _main.LoadAccusationFor(characterName); }
     }
 
+    /// <summary>
+    /// Fills the screen with a grid of character blocks.
+    /// </summary>
     private void LoadScreen()
     {
         Grid mainGrid = new();
@@ -46,14 +79,14 @@ public partial class CharacterSelectionScreen : UserControl
         { mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(w, GridUnitType.Star) }); }
 
         int i = 0;
-        foreach (Character character in State.Characters.Values)
+        foreach (Character character in _main.State.Characters.Values)
         {
             Grid charGrid = CreateCharacterBlock(character);
             int column = i % 4 + 1;
-            int row = i / 4 + 2;
+            int row    = i / 4 + 2;
             i++;
             Grid.SetColumn(charGrid, column);
-            Grid.SetRow(charGrid, row);
+            Grid.SetRow(charGrid,    row);
             mainGrid.Children.Add(charGrid);
         }
 
@@ -72,30 +105,37 @@ public partial class CharacterSelectionScreen : UserControl
             continueButton.Click  += async (sender, e) =>
                 await _main.AdvanceStory(new Advance.PostAccusation(new Vote.None()));
         }
+
         Button backButton = new()
         {
-            Style = (Style)FindResource("CornerCutButton"),
+            Style   = (Style)FindResource("CornerCutButton"),
             Content = "Back",
         };
         backButton.Click += async (sender, e) =>
             await _main.ToPreviousScreen();
 
-        backButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
-        backButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
+        backButton.SetBinding(HeightProperty,     AspectRatioExtension.GetBinding(0.2));
+        backButton.SetBinding(MarginProperty,     GridColumnMarginExtension.GetBinding(0.1));
         continueButton.SetBinding(HeightProperty, AspectRatioExtension.GetBinding(0.2));
         continueButton.SetBinding(MarginProperty, GridColumnMarginExtension.GetBinding(0.1));
 
-        Grid.SetRow(backButton,     1);
-        Grid.SetRow(continueButton, 1);
+        Grid.SetRow(backButton,        1);
+        Grid.SetRow(continueButton,    1);
         Grid.SetColumn(backButton,     1);
         Grid.SetColumn(continueButton, 4);
-        
+
         mainGrid.Children.Add(backButton);
         mainGrid.Children.Add(continueButton);
 
         Content = mainGrid;
     }
 
+    /// <summary>
+    /// Creates a grid block for a character,
+    /// which contains their portrait, name, and a button to select them.
+    /// </summary>
+    /// <param name="character">The character to load.</param>
+    /// <returns>A complete Grid containing the character's information.</returns>
     private Grid CreateCharacterBlock(Character character)
     {
         Grid charGrid = new();

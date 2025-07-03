@@ -31,5 +31,12 @@ public interface IDifficulty
     /// <param name="victim">The name of the character for whose crime scene to select clues.</param>
     static abstract void SelectClues(HashSet<Clue> clues, CharacterSet chars, string victim);
 
+    /// <summary>
+    /// Gets the response of an interviewee character, based on the difficulty level.
+    /// </summary>
+    /// <param name="interviewee">The character to interview.</param>
+    /// <param name="type">Interview or Accusation.</param>
+    /// <param name="victim">About whom the interviewee should speak.</param>
+    /// <returns>The character's response.</returns>
     static abstract string GetResponse(Character interviewee, InterviewType type, string victim);
 }

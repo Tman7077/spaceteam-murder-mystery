@@ -9,14 +9,18 @@ namespace SMM.Services.DynamicXAML;
 public class GridColumnMarginExtension : MarkupExtension
 {
     /// <summary>
-    /// Fraction of the column’s width to use on each side.
-    /// e.g. 0.4 means 40% on left & right.
+    /// A double between 0 and 0.5 representing the percentage of the width on each side devoted to margin.
     /// </summary>
     public double Ratio { get; set; }
 
     public GridColumnMarginExtension() { }
     public GridColumnMarginExtension(double ratio) => Ratio = ratio;
 
+    /// <summary>
+    /// Returns the binding to apply to the object.
+    /// </summary>
+    /// <param name="ratio">A double between 0 and 0.5 representing the percentage of the width on each side devoted to margin.</param>
+    /// <returns>A Binding that controls the object's height.</returns>
     public static BindingBase GetBinding(double ratio)
     {
         MultiBinding mb = new()
@@ -49,21 +53,26 @@ public class GridColumnMarginExtension : MarkupExtension
         return mb;
     }
 
+    /// <summary>
+    /// Provides the value for the binding based on the specified service provider.
+    /// </summary>
+    /// <param name="serviceProvider">Provided by XAML when using the MarkupExtension.</param>
     public override object ProvideValue(IServiceProvider serviceProvider) =>
         GetBinding(Ratio).ProvideValue(serviceProvider);
 
-    // converter that does all the math
+    /// <summary>
+    /// Converter that calculates the width based on the width of the parent grid column.
+    /// </summary>
     private class GridColumnMarginMultiConverter : IMultiValueConverter
     {
-        // values[0] = gridActualWidth (double)
-        // values[1] = columnIndex     (int)
-        // values[2] = ColumnDefinitionCollection
-        // parameter = Ratio (double)
+        /// <summary>
+        /// Performs the calculation.
+        /// </summary>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length < 3 ||
                 values[0] is not double gridWidth ||
-                values[1] is not int   colIndex ||
+                values[1] is not int    colIndex  ||
                 values[2] is not ColumnDefinitionCollection cols ||
                 !double.TryParse(
                     parameter?.ToString(),

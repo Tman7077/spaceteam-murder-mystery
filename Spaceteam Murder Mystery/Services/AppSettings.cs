@@ -2,8 +2,15 @@ namespace SMM.Services;
 
 using Properties;
 
+/// <summary>
+/// Handles saving and loading app-related settings
+/// unrelated to a specific playthrough of the game.
+/// </summary>
 public static class AppSettings
 {
+    /// <summary>
+    /// The maximum volume of the background music.
+    /// </summary>
     public static double Volume
     {
         get => Settings.Default.Volume;
@@ -15,6 +22,10 @@ public static class AppSettings
             Settings.Default.Save();
         }
     }
+
+    /// <summary>
+    /// Whether or not the application is muted.
+    /// </summary>
     public static bool Muted
     {
         get => Settings.Default.Muted;
@@ -24,11 +35,12 @@ public static class AppSettings
             Settings.Default.Save();
         }
     }
-    
+
     /// <summary>
-    /// Saves the current window state, size, and position to the application settings.
+    /// Saves the current window state, size, and position to the application settings,
+    /// as well as whether the game should pause when the window loses focus.
     /// </summary>
-    /// <param name="handler">The window handler from which to save settings.</param>
+    /// <param name="handler">The window handler from which to pull the settings to be saved.</param>
     public static void Save(WindowHandler handler)
     {
         Window window = handler.Win;
@@ -56,9 +68,10 @@ public static class AppSettings
     }
 
     /// <summary>
-    /// Loads the window state, size, and position from the application settings.
+    /// Loads the window state, size, and position from the application settings,
+    /// as well as whether the game should pause when the window loses focus.
     /// </summary>
-    /// <param name="handler">The window handler to which to apply settings.</param>
+    /// <param name="handler">The window handler to which to apply loaded settings.</param>
     public static void Load(WindowHandler handler, out bool fullscreen)
     {
         if (Settings.Default.IsFullScreen)
@@ -66,11 +79,11 @@ public static class AppSettings
             fullscreen = true;
             return;
         }
-        
+
         fullscreen    = false;
         Window window = handler.Win;
 
-        if (Settings.Default.WindowWidth  > 0 &&
+        if (Settings.Default.WindowWidth > 0 &&
             Settings.Default.WindowHeight > 0)
         {
             window.Width  = Settings.Default.WindowWidth;
@@ -86,9 +99,9 @@ public static class AppSettings
         if (Enum.TryParse(Settings.Default.WindowStyle, out WindowStyle style))
         { window.WindowStyle = style; }
 
-        if (Enum.TryParse(Settings.Default.ResizeMode,  out ResizeMode resize))
-        { window.ResizeMode  = resize; }
-        
+        if (Enum.TryParse(Settings.Default.ResizeMode, out ResizeMode resize))
+        { window.ResizeMode = resize; }
+
         handler.PauseOnLoseFocus = Settings.Default.PauseOnLoseFocus;
     }
 }

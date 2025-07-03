@@ -56,12 +56,24 @@ public class DMedium : IDifficulty
         }
     }
 
+    /// <summary>
+    /// Gets the response of an interviewee character.
+    /// <para>
+    /// This has a 1/3 chance to return the character's interview response
+    /// that does not correspond to their guilt state <i>(i.e. a guilty character
+    /// may respond as if they were innocent, and vice versa).</i>
+    /// </para>
+    /// </summary>
+    /// <param name="interviewee">The character to interview.</param>
+    /// <param name="type">Interview or Accusation.</param>
+    /// <param name="victim">About whom the interviewee should speak.</param>
+    /// <returns>The character's response.</returns>
     public static string GetResponse(Character interviewee, InterviewType type, string victim)
     {
         Validator.ValidateShortCharacterName(victim);
-        
-        bool flip = new Random().Next(3) == 0;
-        bool actGuilty = interviewee.IsGuilty ^ flip; // 1/3 chance to rspond with wrong guilt state
+
+        bool flip      = new Random().Next(3) == 0;
+        bool actGuilty = interviewee.IsGuilty ^ flip; // 1/3 chance to respond with wrong guilt state
         return interviewee.GetResponse(actGuilty, type, victim);
     }
 }

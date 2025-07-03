@@ -6,12 +6,40 @@ namespace SMM.Models;
 /// </summary>
 public class Clue
 {
-    public string Name         { get; }
-    public string Description  { get; }
-    public string Victim       { get; }
-    public string Owner        { get; }
-    public Uri SceneUri        { get; }
-    public Uri CleanUri        { get; }
+    /// <summary>
+    /// The "name" of the clue, which is a short description of the item.
+    /// </summary>
+    public string Name { get; }
+
+    /// <summary>
+    /// The more full description of the item. This hints at who the clue is meant to implicate.
+    /// </summary>
+    public string Description { get; }
+
+    /// <summary>
+    /// The character to whose death this clue is relevant.
+    /// </summary>
+    public string Victim { get; }
+
+    /// <summary>
+    /// The character this clue implicates.
+    /// </summary>
+    public string Owner { get; }
+
+    /// <summary>
+    /// The path to the clue's image file used in the crime scene.
+    /// </summary>
+    public Uri SceneUri { get; }
+
+    /// <summary>
+    /// The path to the clue's image file used in the clue inspection screen.
+    /// This one is a more direct, clear look at the item.
+    /// </summary>
+    public Uri CleanUri { get; }
+
+    /// <summary>
+    /// The position at which this clue will be placed in the crime scene.
+    /// </summary>
     public int[] CrimeScenePos { get; }
 
     /// <summary>

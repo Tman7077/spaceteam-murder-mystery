@@ -46,6 +46,17 @@ public class DEasy : IDifficulty
         }
     }
 
+    /// <summary>
+    /// Gets the response of an interviewee character.
+    /// <para>
+    /// This will always return the less-aggravated interview response
+    /// for innocent characters, and the guilty response for guilty characters.
+    /// </para>
+    /// </summary>
+    /// <param name="interviewee">The character to interview.</param>
+    /// <param name="type">Interview or Accusation.</param>
+    /// <param name="victim">About whom the interviewee should speak.</param>
+    /// <returns>The character's response.</returns>
     public static string GetResponse(Character interviewee, InterviewType type, string victim)
     {
         Validator.ValidateShortCharacterName(victim);

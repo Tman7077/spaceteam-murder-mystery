@@ -2,10 +2,20 @@ namespace SMM.Views.Static;
 
 using System.Windows.Media.Animation;
 
+/// <summary>
+/// A screen to display the main/title menu of the game.
+/// </summary>
 public partial class TitleScreen : UserControl
 {
+    /// <summary>
+    /// The MainWindow of the application.
+    /// </summary>
     private readonly MainWindow _main;
 
+    /// <summary>
+    /// Creates a new title screen.
+    /// </summary>
+    /// <param name="main">The MainWindow of the game.</param>
     public TitleScreen(MainWindow main)
     {
         _main = main;
@@ -16,22 +26,45 @@ public partial class TitleScreen : UserControl
             ImageSource = AssetHelper.NebulaBG,
             Stretch     = Stretch.UniformToFill
         };
-        
+
         AnimateTitleGradient();
     }
 
+    /// <summary>
+    /// Handles the click event of the Start Game button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the method was called.</param>
     private async void StartGame_Click(object sender, RoutedEventArgs e) =>
         await _main.ChangeView(new Screen.Difficulty());
 
+    /// <summary>
+    /// Handles the click event of the Continue Game button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the method was called.</param>
     private async void ContinueGame_Click(object sender, RoutedEventArgs e) =>
         await _main.LoadGame();
 
+    /// <summary>
+    /// Handles the click event of the Settings button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the method was called.</param>
     private async void Settings_Click(object sender, RoutedEventArgs e) =>
         await _main.ChangeView(new Screen.Settings(), 0, 0);
 
+    /// <summary>
+    /// Handles the click event of the Quit button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the method was called.</param>
     private void Quit_Click(object sender, RoutedEventArgs e) =>
         Application.Current.Shutdown();
 
+    /// <summary>
+    /// Begins the scrolling gradient for the game title.
+    /// </summary>
     public void AnimateTitleGradient()
     {
         LinearGradientBrush gradient = new()
@@ -54,13 +87,8 @@ public partial class TitleScreen : UserControl
             ]
         };
 
-        // RotateTransform    rt    = new(30, 0.5, 0.5);
-        TranslateTransform tt    = new();
-        // TransformGroup     group = new();
-        // group.Children.Add(rt);
-        // group.Children.Add(tt);
+        TranslateTransform tt = new();
 
-        // gradient.RelativeTransform = group;
         gradient.RelativeTransform = tt;
 
         TitleTextBlock.Foreground = gradient;

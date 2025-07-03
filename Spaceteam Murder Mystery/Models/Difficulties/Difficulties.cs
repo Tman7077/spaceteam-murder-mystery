@@ -1,7 +1,13 @@
 namespace SMM.Models.Difficulties;
 
+/// <summary>
+/// Contains methods specific to a game on different difficulties.
+/// </summary>
 public static class Difficulties
 {
+    /// <summary>
+    /// Maps difficulty names to their methods.
+    /// </summary>
     public static readonly IReadOnlyDictionary<string, DifficultyMethods> All = new Dictionary<string, DifficultyMethods>
     {
         ["Easy"] =

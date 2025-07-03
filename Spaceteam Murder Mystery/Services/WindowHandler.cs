@@ -5,25 +5,93 @@ namespace SMM.Services;
 /// </summary>
 public partial class WindowHandler(MainWindow window)
 {
+    /// <summary>
+    /// System metric to ensure that the window is shown after resizing.
+    /// </summary>
     private const uint SWP_SHOWWINDOW = 0x0040;
-    private const int  SM_CXSCREEN    = 0;
-    private const int  SM_CYSCREEN    = 1;
+    
+    /// <summary>
+    /// System metric for the primary screen width.
+    /// </summary>
+    private const int SM_CXSCREEN = 0;
+    
+    /// <summary>
+    /// System metric for the primary screen height.
+    /// </summary>
+    private const int SM_CYSCREEN = 1;
+
+    /// <summary>
+    /// The handle to the main window.
+    /// </summary>
     private IntPtr HWND { get; } = new WindowInteropHelper(window).Handle;
-    private static IntPtr HWND_TOPMOST   { get; } = new IntPtr(-1);
+    
+    /// <summary>
+    /// Constant for setting the window as topmost.
+    /// </summary>
+    private static IntPtr HWND_TOPMOST { get; } = new IntPtr(-1);
+
+    /// <summary>
+    /// Constant for removing the topmost status from the window.
+    /// </summary>
     private static IntPtr HWND_NOTOPMOST { get; } = new IntPtr(-2);
 
-    // =============== "Previous" window state properties ===============
+    // =============== "Previous" window state properties =============== //
+
+    /// <summary>
+    /// Stores the previous window state before entering fullscreen.
+    /// </summary>
     private WindowState PrevWindowState { get; set; } = WindowState.Normal;
+
+    /// <summary>
+    /// Stores the previous window style before entering fullscreen.
+    /// </summary>
     private WindowStyle PrevWindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
-    private ResizeMode  PrevResizeMode  { get; set; } = ResizeMode.CanResize;
-    private bool   PrevTopmost { get; set; } = false;
-    private double PrevWidth   { get; set; } = 854;
-    private double PrevHeight  { get; set; } = 480;
-    private double PrevLeft    { get; set; } = 100;
-    private double PrevTop     { get; set; } = 100;
-    // ==================================================================
-    public MainWindow Win        { get; }      = window;
-    public bool IsFullScreen     { get; set; } = false;
+    
+    /// <summary>
+    /// Stores the previous resize mode before entering fullscreen.
+    /// </summary>
+    private ResizeMode PrevResizeMode { get; set; } = ResizeMode.CanResize;
+    
+    /// <summary>
+    /// Stores whether the window was previously topmost.
+    /// </summary>
+    private bool PrevTopmost { get; set; } = false;
+    
+    /// <summary>
+    /// Stores the previous width of the window before entering fullscreen.
+    /// </summary>
+    private double PrevWidth { get; set; } = 854;
+    
+    /// <summary>
+    /// Stores the previous height of the window before entering fullscreen.
+    /// </summary>
+    private double PrevHeight { get; set; } = 480;
+    
+    /// <summary>
+    /// Stores the previous left position of the window before entering fullscreen.
+    /// </summary>
+    private double PrevLeft { get; set; } = 100;
+    
+    /// <summary>
+    /// Stores the previous top position of the window before entering fullscreen.
+    /// </summary>
+    private double PrevTop { get; set; } = 100;
+
+    // ================================================================== //
+
+    /// <summary>
+    /// The main window of the application.
+    /// </summary>
+    public MainWindow Win { get; } = window;
+    
+    /// <summary>
+    /// Indicates whether the window is currently in fullscreen mode.
+    /// </summary>
+    public bool IsFullScreen { get; set; } = false;
+
+    /// <summary>
+    /// Whether or not to pause the soundtrack when the main window loses focus.
+    /// </summary>
     public bool PauseOnLoseFocus { get; set; } = true;
 
     /// <summary>

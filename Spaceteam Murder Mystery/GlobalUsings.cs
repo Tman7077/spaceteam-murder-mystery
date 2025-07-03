@@ -2,6 +2,7 @@
 global using SMM.Models;
 global using SMM.Models.Difficulties;
 global using SMM.Models.Helpers;
+global using SMM.Models.Helpers.Enums;
 global using SMM.Services;
 global using SMM.Services.DynamicXAML;
 global using SMM.Views.Dynamic;

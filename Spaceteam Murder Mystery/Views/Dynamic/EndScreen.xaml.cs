@@ -1,12 +1,25 @@
 namespace SMM.Views.Dynamic;
 
+/// <summary>
+/// A screen to display victory or loss at the end of a game.
+/// </summary>
 public partial class EndScreen : UserControl
 {
+    /// <summary>
+    /// The MainWindow of the application.
+    /// </summary>
     private readonly MainWindow _main;
+
+    /// <summary>
+    /// Whether the player won or lost the game.
+    /// </summary>
     private readonly bool _victory;
 
-    private GameState State { get => _main.State; }
-
+    /// <summary>
+    /// Creates a screen to display victory or loss at the end of a game.
+    /// </summary>
+    /// <param name="main">The MainWindow of the applciation.</param>
+    /// <param name="victory">Whether the player won or lost the game.</param>
     public EndScreen(MainWindow main, bool victory)
     {
         _main = main;
@@ -16,6 +29,9 @@ public partial class EndScreen : UserControl
         LoadScreen();
     }
 
+    /// <summary>
+    /// Loads the screen with the appropriate content based on the game outcome.
+    /// </summary>
     private void LoadScreen()
     {
         Canvas canvas = new()
@@ -41,7 +57,7 @@ public partial class EndScreen : UserControl
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Star) });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(9, GridUnitType.Star) });
 
-        Grid.SetRow(viewbox, 0);
+        Grid.SetRow(viewbox,     0);
         Grid.SetRowSpan(viewbox, 3);
         root.Children.Add(viewbox);
 
@@ -59,10 +75,10 @@ public partial class EndScreen : UserControl
 
         List<string> namesToDisplay = _victory switch
         {
-            true  => [.._main.State.Characters.Select(c => c.Key).Where(name => !_main.State.Characters[name].IsGuilty)],
+            true  => [.. _main.State.Characters.Select(c => c.Key).Where(name => !_main.State.Characters[name].IsGuilty)],
             false => _main.State.Characters.GetGuiltyNames(includeDead: true)
         };
-        List<Character> charsToDisplay = [..namesToDisplay.Select(name => _main.State.Characters[name])];
+        List<Character> charsToDisplay = [.. namesToDisplay.Select(name => _main.State.Characters[name])];
         charsToDisplay.Sort((a, b) => a.EndScreenPos[2].CompareTo(b.EndScreenPos[2]));
 
         foreach (Character character in charsToDisplay)
@@ -74,12 +90,12 @@ public partial class EndScreen : UserControl
             if (_victory && !character.IsAlive)
             {
                 tint.OverlayColor = Color.FromArgb(192, 0, 0, 0);
-                portrait.Effect   = tint;
+                portrait.Effect = tint;
             }
             else if (!_victory)
             {
                 tint.OverlayColor = Color.FromArgb(128, 255, 0, 0);
-                portrait.Effect   = tint;
+                portrait.Effect = tint;
             }
 
             Canvas.SetLeft(portrait, character.EndScreenPos[0]);
@@ -96,7 +112,7 @@ public partial class EndScreen : UserControl
         };
         continueButton.Click += async (sender, e) =>
             await _main.ChangeView(new Screen.Title());
-        Canvas.SetLeft(continueButton, canvas.Width * 0.85);
+        Canvas.SetLeft(continueButton, canvas.Width  * 0.85);
         Canvas.SetTop(continueButton,  canvas.Height * 0.9);
         canvas.Children.Add(continueButton);
 

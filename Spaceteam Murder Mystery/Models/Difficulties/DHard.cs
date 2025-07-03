@@ -40,6 +40,18 @@ public class DHard : IDifficulty
         }
     }
 
+    /// <summary>
+    /// Gets the response of an interviewee character.
+    /// <para>
+    /// This has a 50% chance to return the character's interview response
+    /// that does not correspond to their guilt state <i>(i.e. a guilty character
+    /// may respond as if they were innocent, and vice versa).</i>
+    /// </para>
+    /// </summary>
+    /// <param name="interviewee">The character to interview.</param>
+    /// <param name="type">Interview or Accusation.</param>
+    /// <param name="victim">About whom the interviewee should speak.</param>
+    /// <returns>The character's response.</returns>
     public static string GetResponse(Character interviewee, InterviewType type, string victim)
     {
         Validator.ValidateShortCharacterName(victim);

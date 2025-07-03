@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 /// </summary>
 public static partial class Parser
 {
+    /// <summary>
+    /// The directory in which all of the assets live.
+    /// </summary>
     private static readonly string _assetDir = AssetHelper.AssetDirectory;
 
     /// <summary>
@@ -21,7 +24,9 @@ public static partial class Parser
         string[] lineswithEmpty = File.ReadAllLines(Path.Combine(charDir, $"{characterName}.md"));
         string[] lines = [.. lineswithEmpty.Where(line => !string.IsNullOrWhiteSpace(line))];
 
-        (string name, string role) = ParseNameAndRole(lines[0]);
+        string[] parts = lines[0].Replace("# ", "").Split(": ");
+        string name    = parts[0].Trim();
+        string role    = parts[1].Trim();
 
         int mottoIndex = Array.FindIndex(lines, line => line.StartsWith("*\""));
         string motto   = lines[mottoIndex].Trim('*');
@@ -113,12 +118,12 @@ public static partial class Parser
         };
     }
 
-    private static (string, string) ParseNameAndRole(string line)
-    {
-        string[] parts = line.Replace("# ", "").Split(": ");
-        return (parts[0].Trim(), parts[1].Trim());
-    }
-
+    /// <summary>
+    /// Parses an array of lines containing clue data into a set of Clue objects.
+    /// </summary>
+    /// <param name="lines">The unparsed clue data.</param>
+    /// <param name="owner">The owner of the clues.</param>
+    /// <returns>A full set of clues.</returns>
     private static HashSet<Clue> ParseClues(string[] lines, string owner)
     {
         HashSet<Clue> clues = [];
@@ -142,6 +147,11 @@ public static partial class Parser
         return clues;
     }
 
+    /// <summary>
+    /// Parses an array of lines containing interview response data into an InterviewSet
+    /// </summary>
+    /// <param name="lines">The unparsed interview data.</param>
+    /// <returns>A complete InterviewSet.</returns>
     private static InterviewSet ParseResponses(string[] lines)
     {
         InterviewSet responses = new();
@@ -156,6 +166,9 @@ public static partial class Parser
         return responses;
     }
 
+    /// <summary>
+    /// A regex to match character names in the format [Name](link).
+    /// </summary>
     [GeneratedRegex(@"\[([A-Za-z]+)\]\(.+\)")]
     private static partial Regex RegexCharacterName();
 }

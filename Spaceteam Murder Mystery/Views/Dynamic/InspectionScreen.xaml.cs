@@ -1,35 +1,50 @@
 ﻿namespace SMM.Views.Dynamic;
 
+/// <summary>
+/// A screen to display an image and its description.
+/// </summary>
 public abstract partial class InspectionScreen : UserControl
 {
+    /// <summary>
+    /// An async method to assign to the continue button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the method was called.</param>
+    /// <returns></returns>
     protected delegate Task Continue_Click(object sender, RoutedEventArgs e);
-    protected readonly MainWindow      _main;
-    protected          Direction       _dir;
-    protected          Button          _button;
-    
+
+    /// <summary>
+    /// The MainWindow of the application.
+    /// </summary>
+    protected readonly MainWindow _main;
+
+    /// <summary>
+    /// The side of the screen on which the desription is displayed.
+    /// </summary>
+    protected Direction _dir;
+
+    /// <summary>
+    /// Creates a screen to display an image and its description.
+    /// </summary>
+    /// <param name="main">The MainWindow of the application.</param>
     protected InspectionScreen(MainWindow main)
     {
         _main = main;
         InitializeComponent();
-        
-        _button = new()
-        {
-            Style = (Style)FindResource("CornerCutButton"),
-            Content = "Continue",
-        };
-        _button.SetBinding(WidthProperty, DivideWindowWidthExtension.GetBinding(10));
     }
 
+    /// <summary>
+    /// Loads the screen with the appropriate content based on the image being inspected.
+    /// </summary>
     protected abstract void LoadScreen();
 
+    /// <summary>
+    /// Provides the always-present items to display.
+    /// </summary>
+    /// <returns>A Grid laid out as necessary to be filled.</returns>
     protected Grid LoadScreenSetup()
     {
         Grid root = new();
-
-        _button.HorizontalAlignment =
-            _dir == Direction.Left
-                ? HorizontalAlignment.Right
-                : HorizontalAlignment.Left;
 
         int[] colDefs = _dir switch
         {
@@ -46,10 +61,27 @@ public abstract partial class InspectionScreen : UserControl
 
         return root;
     }
-    
+
+    /// <summary>
+    /// Completes the screen setup.
+    /// </summary>
+    /// <param name="root">The main grid container.</param>
+    /// <param name="block">The grid containing the image and label.</param>
+    /// <param name="text">The text block (description) to show.</param>
+    /// <param name="continueClick">The method to apply to the click button.</param>
     protected void LoadScreenFinal(Grid root, Grid block, TextBlock text, Continue_Click continueClick)
     {
-        _button.Click += async (sender, e) => await continueClick(sender, e);
+        Button button = new()
+        {
+            Style   = (Style)FindResource("CornerCutButton"),
+            Content = "Continue",
+            HorizontalAlignment =
+                _dir == Direction.Left
+                    ? HorizontalAlignment.Right
+                    : HorizontalAlignment.Left
+        };
+        button.SetBinding(WidthProperty, DivideWindowWidthExtension.GetBinding(10));
+        button.Click += async (sender, e) => await continueClick(sender, e);
 
         int[] colAssignments = _dir switch
         {
@@ -60,21 +92,28 @@ public abstract partial class InspectionScreen : UserControl
 
         Grid.SetColumnSpan(text, 2);
 
-        Grid.SetColumn(block,   colAssignments[0]);
-        Grid.SetColumn(text,    colAssignments[1]);
-        Grid.SetColumn(_button, colAssignments[2]); ;
+        Grid.SetColumn(block,  colAssignments[0]);
+        Grid.SetColumn(text,   colAssignments[1]);
+        Grid.SetColumn(button, colAssignments[2]);
 
-        Grid.SetRow(block,   2);
-        Grid.SetRow(text,    2);
-        Grid.SetRow(_button, 3);
+        Grid.SetRow(block,  2);
+        Grid.SetRow(text,   2);
+        Grid.SetRow(button, 3);
 
         root.Children.Add(block);
         root.Children.Add(text);
-        root.Children.Add(_button);
+        root.Children.Add(button);
 
         Content = root;
     }
 
+    /// <summary>
+    /// Creates a grid to display an image, its name, and an optional motto.
+    /// </summary>
+    /// <param name="imgUri">The path to the image to display.</param>
+    /// <param name="name">The name of the item/character.</param>
+    /// <param name="mottoBlock">Optionally, the motto of the character.</param>
+    /// <returns>A completed Grid with the image, label, and motto(?).</returns>
     protected Grid CreateImageGrid(Uri imgUri, string name, TextBlock? mottoBlock = null)
     {
         Grid imgGrid = new();

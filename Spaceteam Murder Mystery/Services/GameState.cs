@@ -5,12 +5,31 @@ namespace SMM.Services;
 /// </summary>
 public class GameState
 {
-    private string?    _lastVictim = null;
+    /// <summary>
+    /// The last victim killed in the game.
+    /// </summary>
+    private string? _lastVictim = null;
 
+    /// <summary>
+    /// The set of characters in the game, loaded from text files.
+    /// </summary>
     public CharacterSet Characters { get; } = [];
-    public Story        Story      { get; }
-    public string       Difficulty { get; set; }
-    public string       LastVictim
+    
+    /// <summary>
+    /// The story of the game, parsed from the story data file.
+    /// </summary>
+    public Story Story { get; }
+    
+    /// <summary>
+    /// The difficulty level of the game.
+    /// </summary>
+    public string Difficulty { get; set; }
+    
+    /// <summary>
+    /// The name of the last victim killed in the game.
+    /// This is not updated when a character is voted out.
+    /// </summary>
+    public string LastVictim
     {
         get => _lastVictim ?? throw new InvalidOperationException("No victims have been killed yet.");
         set => _lastVictim = value;
@@ -59,7 +78,7 @@ public class GameState
 
         // Kill the character.
         Character character = Characters[name];
-        character.IsAlive = false;
+        character.IsAlive   = false;
 
         // Report the character's name.
         who = character.ShortName;
@@ -69,6 +88,11 @@ public class GameState
         { LastVictim = who; }
     }
 
+    /// <summary>
+    /// Kills a character tnat was voted out by the player.
+    /// Since this character waas voted, the out string name is not necessary.
+    /// </summary>
+    /// <param name="victim">The character voted out.</param>
     public void KillCharacter(Victim.ByName.Voted victim) =>
         KillCharacter(victim, out _);
 
@@ -85,14 +109,17 @@ public class GameState
         Difficulties.All[Difficulty].SelectClues(clues, Characters, victimName);
     }
 
+    /// <summary>
+    /// Loads the characters from the text files in the "Assets/Text/Characters" directory.
+    /// </summary>
     private void LoadCharacters()
     {
         string charDir = Path.Combine(AssetHelper.AssetDirectory, "Text", "Characters");
 
         foreach (string charFile in Directory.GetFiles(charDir, "*.md"))
         {
-            string charName = Path.GetFileNameWithoutExtension(charFile);
-            Character character = Parser.ParseCharacter(charName);
+            string charName      = Path.GetFileNameWithoutExtension(charFile);
+            Character character  = Parser.ParseCharacter(charName);
             Characters[charName] = character;
         }
 

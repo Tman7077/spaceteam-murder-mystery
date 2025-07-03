@@ -11,6 +11,13 @@ namespace SMM.Models.Helpers;
 /// <param name="guilty">The response if the interviewee is guilty.</param>
 public class ResponseSet(string innocent, string guilty)
 {
+    /// <summary>
+    /// The response if the interviewee is innocent.
+    /// </summary>
     public string Innocent { get; } = innocent;
-    public string Guilty   { get; } = guilty;
+
+    /// <summary>
+    /// The response if the interviewee is guilty.
+    /// </summary>
+    public string Guilty { get; } = guilty;
 }

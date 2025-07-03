@@ -1,25 +1,48 @@
 namespace SMM.Views.Dynamic;
 
+/// <summary>
+/// A screen to display a crime scene for a given victim.
+/// </summary>
 public partial class CrimeSceneScreen : UserControl
 {
+    /// <summary>
+    /// The MainWindow of the application.
+    /// </summary>
     private readonly MainWindow _main;
-    private readonly CrimeScene _scene;
-    private readonly Character  _victim;
 
-    private GameState State { get => _main.State; }
-    
+    /// <summary>
+    /// The CrimeScene containing the information to display.
+    /// </summary>
+    private readonly CrimeScene _scene;
+
+    /// <summary>
+    /// The victim of the crime.
+    /// </summary>
+    private readonly Character _victim;
+
+    /// <summary>
+    /// Creates a screen to display a victim's crime scene.
+    /// </summary>
+    /// <param name="main">The MainWindow of the application.</param>
+    /// <param name="victim">The short name of the character that is the victim.</param>
+    /// <param name="clues">Optionally, a list of clues to guarantee will be displayed.</param>
     public CrimeSceneScreen(MainWindow main, string victim, List<Clue>? clues = null)
     {
         Validator.ValidateCharacter(victim, main.State);
 
-        _main   = main;
+        _main = main;
         InitializeComponent();
-        
-        _scene  = new CrimeScene(victim, State);
-        _victim = State.Characters[victim];
+
+        _scene  = new CrimeScene(victim, _main.State);
+        _victim = _main.State.Characters[victim];
         LoadScreen(clues);
     }
 
+    /// <summary>
+    /// Handles the click event for a clue image button.
+    /// </summary>
+    /// <param name="sender">The object that called the method.</param>
+    /// <param name="e">The arguments with which the object called the method.</param>
     public async void Clue_Click(object sender, RoutedEventArgs e)
     {
         string? itemName = sender.GetType().GetProperty("Tag")?.GetValue(sender) as string;
@@ -30,9 +53,11 @@ public partial class CrimeSceneScreen : UserControl
         await _main.LoadClueInspectionFor(clue);
     }
 
-    public string[] GetSaveData() =>
-        [.. _scene.Clues.Select(c => c.Owner)];
-
+    /// <summary>
+    /// Loads the crime scene screen with clues.
+    /// If no clues are provided, it will load all clues from the scene.
+    /// </summary>
+    /// <param name="clues">A list of clues to force load.</param>
     private void LoadScreen(List<Clue>? clues = null)
     {
         Canvas canvas = new()
@@ -66,7 +91,7 @@ public partial class CrimeSceneScreen : UserControl
         };
 
         Canvas.SetLeft(sceneImage, 0);
-        Canvas.SetTop(sceneImage, 0);
+        Canvas.SetTop(sceneImage,  0);
         canvas.Children.Add(sceneImage);
 
         clues ??= [.. _scene.Clues];
@@ -92,9 +117,9 @@ public partial class CrimeSceneScreen : UserControl
 
         Button continueButton = new()
         {
-            Style    = (Style)FindResource("CornerCutButton"),
-            Content  = "Continue",
-            Width    = canvas.Width  * 0.1,
+            Style = (Style)FindResource("CornerCutButton"),
+            Content = "Continue",
+            Width = canvas.Width * 0.1,
             FontSize = canvas.Height * 0.02,
         };
         continueButton.Click += async (sender, e) =>
@@ -105,4 +130,11 @@ public partial class CrimeSceneScreen : UserControl
 
         Content = root;
     }
+    
+    /// <summary>
+    /// Gets the names of the owners of all clues in the crime scene,
+    /// so they can be saved and subsequently reloaded.
+    /// </summary>
+    /// <returns>An array of clue owner names.</returns>
+    public string[] GetSaveData() => [.. _scene.Clues.Select(c => c.Owner)];
 }

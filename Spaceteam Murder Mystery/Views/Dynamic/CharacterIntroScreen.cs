@@ -1,9 +1,27 @@
 ﻿namespace SMM.Views.Dynamic;
 
+/// <summary>
+/// Screen to show a character's introduction.
+/// </summary>
 public partial class CharacterIntroScreen : InspectionScreen
 {
+    /// <summary>
+    /// The character whose introduction to show.
+    /// </summary>
     private readonly Character _character;
-    private readonly int      _index;
+
+    /// <summary>
+    /// The number in a predefined order in which this character is introduced.
+    /// </summary>
+    private readonly int _index;
+
+    /// <summary>
+    /// Creates a new character introduction screen for a character,
+    /// given the index in the introduction order.
+    /// </summary>
+    /// <param name="main">The application's MainWindow.</param>
+    /// <param name="name">The name of the character to display.</param>
+    /// <param name="i">The character's index in the introduction order.</param>
     public CharacterIntroScreen(MainWindow main, string name, int i) : base(main)
     {
         Character character = main.State.Characters[name];
@@ -19,6 +37,9 @@ public partial class CharacterIntroScreen : InspectionScreen
         LoadScreen();
     }
 
+    /// <summary>
+    /// Loads the screen with the character's introduction.
+    /// </summary>
     protected override void LoadScreen()
     {
         Grid root = LoadScreenSetup();
@@ -47,7 +68,7 @@ public partial class CharacterIntroScreen : InspectionScreen
             continueClick = async (s, e) => await _main.AdvanceStory(new Advance.FirstMurder());
         else
             continueClick = async (s, e) => await _main.LoadCharacterIntroNumber(_index + 1);
-            
+
         LoadScreenFinal(root, block, text, continueClick);
 
     }

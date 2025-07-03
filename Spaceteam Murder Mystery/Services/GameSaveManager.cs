@@ -4,18 +4,37 @@ using MessagePack;
 using System.Configuration;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Manager for saving and loading data required to cleanly exit/reopen games and save progress.
+/// </summary>
 public static class GameSaveManager
 {
+    /// <summary>
+    /// Options with which to save the data.
+    /// </summary>
     private static readonly MessagePackSerializerOptions Options =
         MessagePackSerializerOptions.Standard.WithCompression(
             MessagePackCompression.Lz4BlockArray);
+
+    /// <summary>
+    /// The folder in which to save the file.
+    /// </summary>
     private static readonly string _saveFolder =
         Path.GetDirectoryName(
             ConfigurationManager.OpenExeConfiguration(
                 ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath)!;
+
+    /// <summary>
+    /// The name of the file in which to save the game state.
+    /// </summary>
     private static readonly string _saveFileName =
         Path.Combine(_saveFolder, "game.state");
 
+    /// <summary>
+    /// Saves the game state to a file.
+    /// </summary>
+    /// <param name="main">The window from which to collect required state information.</param>
+    /// <param name="lastView">The last screen shown of a supported type, also for information collection.</param>
     public static async Task SaveGameAsync(MainWindow main, UserControl lastView)
     {
         Directory.CreateDirectory(_saveFolder);
@@ -37,9 +56,9 @@ public static class GameSaveManager
         GameSave saveData = new()
         {
             CharacterData = characterData,
-            Difficulty = difficulty,
-            LastVictim = lastVictim,
-            LastViewName = lastViewName
+            Difficulty    = difficulty,
+            LastVictim    = lastVictim,
+            LastViewName  = lastViewName
         };
 
         switch (lastView)
@@ -58,11 +77,16 @@ public static class GameSaveManager
         }
 
         byte[] payload = MessagePackSerializer.Serialize(saveData, Options);
-        string tmp = _saveFileName + ".tmp";
+        string tmp     = _saveFileName + ".tmp";
         await File.WriteAllBytesAsync(tmp, payload);
         File.Move(tmp, _saveFileName, overwrite: true);
     }
 
+    /// <summary>
+    /// Loads the game state from a file, if it exists, and returns the appropriate screen to display.
+    /// </summary>
+    /// <param name="main">The window with which to create the UserControl and whose GameState to set.</param>
+    /// <returns>The UserControl to load to the screen to resume gameplay.</returns>
     public static async Task<UserControl?> LoadGameAsync(MainWindow main)
     {
         GameSave? save = await ImportGameSaveAsync();
@@ -91,6 +115,9 @@ public static class GameSaveManager
         return view;
     }
 
+    /// <summary>
+    /// Removes the game save file, if it exists (called upon game completion).
+    /// </summary>
     public static void RemoveGameSaveAsync()
     {
         if (File.Exists(_saveFileName))
@@ -101,6 +128,10 @@ public static class GameSaveManager
         }
     }
 
+    /// <summary>
+    /// Imports the game save from the file, if it exists, and deserializes it into a GameSave object.
+    /// </summary>
+    /// <returns>A GameSave object containing the deserialized data.</returns>
     private static async Task<GameSave?> ImportGameSaveAsync()
     {
         if (!File.Exists(_saveFileName)) return null;
@@ -109,6 +140,13 @@ public static class GameSaveManager
         return MessagePackSerializer.Deserialize<GameSave>(payload, Options);
     }
 
+    /// <summary>
+    /// Creates a StoryScreen based on the provided save data.
+    /// </summary>
+    /// <param name="main">The window with which to create the UserControl.</param>
+    /// <param name="state">The GameState with which to create a new Vote, if necessary.</param>
+    /// <param name="saveData">The required information with which to create the StoryScreen.</param>
+    /// <returns>A complete StoryScreen UserControl.</returns>
     private static StoryScreen CreateStoryScreen(MainWindow main, GameState state, (string, string?)? saveData)
     {
         (string advanceType, string? name) = saveData
@@ -146,6 +184,14 @@ public static class GameSaveManager
 
         return ss;
     }
+
+    /// <summary>
+    /// Creates a CrimeSceneScreen based on the provided save data.
+    /// </summary>
+    /// <param name="main">The window with which to create the UserControl.</param>
+    /// <param name="lastVictim">The victim whose scene to load.</param>
+    /// <param name="saveData">The list of clues to load.</param>
+    /// <returns>A completed CrimeSceneScreen UserControl.</returns>
     private static CrimeSceneScreen CreateCrimeSceneScreen(MainWindow main, string lastVictim, string[]? saveData)
     {
         string[] clueOwners = saveData

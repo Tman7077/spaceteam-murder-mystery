@@ -1,5 +1,8 @@
 namespace SMM.Views.Helpers;
 
+/// <summary>
+/// Translates Screen records to methods that instantiate UserControls.
+/// </summary>
 public static class View
 {
     public static Func<UserControl> Request(MainWindow window, Screen screen)

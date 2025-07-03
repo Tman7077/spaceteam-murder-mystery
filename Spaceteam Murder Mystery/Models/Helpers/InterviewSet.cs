@@ -38,10 +38,15 @@ public class InterviewSet
     public string GetGuiltyResponse(string characterName) =>
         Get(characterName).Guilty;
     
+    /// <summary>
+    /// Gets the response set for a character in the interview set.
+    /// </summary>
+    /// <param name="characterName">The name of the character about which to speak.</param>
+    /// <returns>The ResponseSet containing the innocent and guilty responses about this character.</returns>
     private ResponseSet Get(string characterName)
     {
         Validator.ValidateShortCharacterName(characterName);
-        
+
         if (!_responses.TryGetValue(characterName, out var responses))
         { throw new KeyNotFoundException($"Character {characterName} not found in the interview set."); }
         return responses;
