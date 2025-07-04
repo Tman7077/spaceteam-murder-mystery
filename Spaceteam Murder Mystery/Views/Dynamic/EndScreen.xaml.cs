@@ -111,7 +111,10 @@ public partial class EndScreen : UserControl
             FontSize = canvas.Height * 0.02,
         };
         continueButton.Click += async (sender, e) =>
+        {
+            _main.ChangeMusic(SoundtrackType.TitleTheme);
             await _main.ChangeView(new Screen.Title());
+        };
         Canvas.SetLeft(continueButton, canvas.Width  * 0.85);
         Canvas.SetTop(continueButton,  canvas.Height * 0.9);
         canvas.Children.Add(continueButton);

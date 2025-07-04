@@ -100,8 +100,6 @@ public partial class MainWindow : Window
         };
         Content       = mainGrid;
         CurrentScreen = View.Request(this, new Screen.Title())();
-
-        _ = Soundtrack.Start();
     }
 
     /// <summary>
@@ -111,9 +109,12 @@ public partial class MainWindow : Window
     public async Task StartGame(string difficulty)
     {
         SetupGame(difficulty);
-        _ = Soundtrack.SwitchTrack(SoundtrackType.MainTheme);
+        ChangeMusic(SoundtrackType.MainTheme);
         await ChangeView(new Screen.Story(new Advance.Intro()), 2, 2);
     }
+
+    public void ChangeMusic(SoundtrackType track) =>
+        _ = Soundtrack.SwitchTrack(track);
 
     /// <summary>
     /// Saves the current game state to a file.
