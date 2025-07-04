@@ -1,4 +1,4 @@
-# Spaceteam Murder Mystery
+# Mystery in the Stars
 
 ## An adventure by Tyler Bartle
 

@@ -1,7 +1,7 @@
-# 🚀 Spaceteam Murder Mystery
+# 🚀 Mystery in the Stars
 
 Welcome aboard the *Ardent Dawn*! What starts as a peaceful journey among close friends quickly spirals into suspicion, secrets, and sabotage.
-**Spaceteam Murder Mystery** is an interactive, narrative-driven experience where you piece together what went wrong.
+**Mystery in the Stars** is an interactive, narrative-driven experience where you piece together what went wrong.
 
 ---
 

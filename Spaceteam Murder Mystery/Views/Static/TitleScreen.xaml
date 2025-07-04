@@ -34,7 +34,7 @@
             FontSize="{dynamic:FontScale 2}"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Text="Space Team Murder Mystery" />
+            Text="Mystery in the Stars" />
         <StackPanel
             Grid.Row="4"
             Grid.Column="1"
